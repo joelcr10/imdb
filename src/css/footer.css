@@ -1,0 +1,89 @@
+:root{
+    --text: white;
+    --grey-color: rgb(105, 105, 105);
+
+}
+
+
+#footer{
+    width: 100%;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.footer-content{
+    width: 70%;
+    margin: auto;
+}
+
+
+.footer-content .social-container{
+    width: 35%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 30px;
+}
+
+#footer .social-container img{
+    height: 20px;
+    width: 20px;
+    filter: invert(100);
+}
+
+
+.footer-row{
+   display: flex;
+   justify-content: space-around; 
+   width: 80%;
+   margin: auto;
+   margin-top: 10px;
+ 
+   
+}
+
+.footer-row a{
+    text-decoration: none;
+    color: var(--text);
+
+}
+
+.footer-content .middle-row{
+    width: 90%;
+}
+
+.amazon-container{
+    padding-top: 15px;
+    width: 20%;
+    margin: auto;
+
+}
+
+.amazon-container img{
+    height: 60px;
+    width: 60px;
+    filter: invert(100);
+    margin-top: 5px;
+}
+
+.amazon-company{
+    display: flex;
+    align-items: center;
+}
+
+.copyright-container{
+
+    text-align: center;
+    font-size: 10px;
+    color: var(--grey-color);
+}
+
+.copyright-line{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.copyright-line img{
+    height: 10px;
+}
