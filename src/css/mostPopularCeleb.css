@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+#heading h2,h1{
+    margin:0%;
+   
+
+}
+#heading h2{
+    margin-left: -10px;
+}
+#heading p{
+    margin-left: -10px;
+}
+#heading h1{
+    font-weight: 300;
+    
+}
+#heading{
+    margin-left: 30px;
+    position: relative;
+    margin-top: 50px;
+}
+#heading hr{
+    width: 35px;
+    height: 3px;
+    background-color: #f5c518;
+    rotate: 90deg;
+    position: absolute;
+    border-radius: 30%;
+    top: 40%;
+    margin-left: -30px;
+   
+}
+#heading p{
+    color: grey;
+}
+#bigBox{
+    margin-top: 50px;
+    width: 800px;
+    height: 1000px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    border:1px solid rgba(128, 128, 128, 0.405);
+    border-radius: 10px;
+    
+}
+.celebrityBox{
+    width:780px ;
+    height: 110px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.308);
+   
+    margin: 10px;
+}
+#shareIcon{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 17px;
+    right: 45px;
+   
+}
+#shareText{
+    
+    position: absolute;
+    top: 20px;
+    right: 80px;
+    font-size: 20px;
+}   
+.celebrityBox{
+    position: relative;
+}
+#lastCelebrityBox{
+    border-bottom: none;
+}
+.celebIcon{
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    position: absolute;
+    top: 10%;
+    left: 15px;
+}
+.greenUpArrow{
+    width: 5px;
+}
+.firstLine{
+    margin-left: 100px;
+    margin-top: 30px;
+}
+.secondLine{
+    margin-left: 100px;
+    margin-top: 5px;
+    font-size: 18px;
+    font-weight: 900;
+}
+.secondLine:hover{
+    opacity: 50%;
+}
+.thirdLine{
+    font-size: 14px;
+    margin-left: 100px;
+    margin-top: 5px;
+}
+.fourthLine{
+    margin-left: 100px;
+    margin-top: 5px;
+   
+}
+
+.fourthLine a{
+    text-decoration: none;
+    color: rgb(43, 113, 225)
+}
+.fourthLine a:hover{
+    text-decoration: underline;
+}
+.plusIcon{
+    width: 15px;
+    height: 15px;
+}
+.plusIconDiv{
+    position: absolute;
+    top: 40%;
+    right: 15px;
+}
+#mainContainer{
+    position: relative;
+}
+#rightContainer{
+    position: absolute;
+    top: 15%;
+    right: 2%;
+    
+}
+#rightContainer hr{
+    width: 35px;
+    height: 3px;
+    background-color: #f5c518;
+    rotate: 90deg;
+    position: absolute;
+    border-radius: 30%;
+    margin-top: -30px;
+    right: 98%;
+    
+}
+#rightHeading{
+    font-size: 40px;
+    font-weight: bolder;
+    
+}
+#rightSubHeading{
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+}

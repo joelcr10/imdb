@@ -30,7 +30,8 @@ export const openSelectBox = () =>{
         anchor2.innerText = option2;
         
         
-        document.getElementById("articleOptions").append(anchor,anchor2);
+        document.getElementById("articleOptions").appendChild(anchor);
+        document.getElementById('articleOptions').appendChild(anchor2);
         
         document.getElementById("verticalButton").removeEventListener("click",function(){openSelectBox()});
     }else{
