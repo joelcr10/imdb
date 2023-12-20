@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS CDN -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/WhatToWatch.css">
+
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <div id="mainheading">
+        <h1>What To Watch - IMDb</h1>
+    </div>
+
+
+    <ul class="what-to-watch-tab" role="tablist">
+        <li class="" role="tab" tabindex="0" aria-selected="true">
+            <a href="watchguide.html" >WATCH GUIDE</a>
+        </li>
+        <li class="" role="tab" tabindex="0" aria-selected="false">
+            <a href="fanfavourites.html" >FAN FAVOURITES</a>
+        </li>
+        <li class="" role="tab" tabindex="0" aria-selected="false">
+            <a href="toppicks.html" >TOP PICKS</a>
+        </li>
+        <li class="" role="tab" tabindex="0" aria-selected="false">
+            <a href="fromyourwatchlist.html" >FROM YOUR WATCHLIST</a>
+        </li>
+        <li class="active-tab" role="tab" tabindex="0" aria-selected="false">
+            <a href="mostpopular.html" >MOST POPULAR</a>
+        </li>
+        <li role="presentation" data-currenttab="watch-guides" class="ipc-tabs__indicator" style="width: 139.363px; left: 0px;"></li>
+    </ul>
+
+    <div class="maincontainer">
+        <div class="mostpopular">
+            <h2><div class="header-line"></div>Most Popular</h2>
+            <div class="container">
+                <div class="row">
+                    <div id="firstlist"></div>
+                </div>
+            </div>
+        
+        </div>
+        <div class="buttons">
+            <p>Browse these IMDb collections to find the perfect next movie or TV show to watch</p>
+            <div class="firstbuttons">
+                <a href="watchguide.html"><button>Watch Guides</button></a>
+                <a href="fanfavourites.html"><button>Fan Favourites</button></a>
+                
+            </div>
+            <div class="secondbuttons">
+                <a href="toppicks.html"><button>Top Picks</button></a>
+                <a href="fromyourwatchlist.html"><button>From Your Watchlist</button></a>
+                
+            </div>
+            
+        </div>
+        <br>
+        <div class="recomendations">
+            <h2><div class="header-line"></div>Recomendations</h2>
+            <div class="container">
+                <div class="row">
+                    <div id="cardbody"></div>
+                </div>
+            </div>
+            
+
+        </div>
+        <div class="recentlyviewed">
+            <h2>Recently Viewed</h2>
+            <h6>You have no recently viewed pages</h6>
+
+        </div>
+    </div>
+
+    <div id="footer-container"></div>
+
+
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/includeNavbar&Footer.js"></script>
+    <script src="../scripts/navbarMenu.js"></script>
+    <script src="../scripts/api.js"></script>
+</body>
+
+</html>
