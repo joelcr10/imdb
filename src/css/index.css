@@ -17,8 +17,8 @@ body{
 }
 
 .home-section-container{
-    margin-left: 30px;
-    margin-top: 40px;
+    margin-left: 50px;
+    margin-top: 80px;
 }
 
 .card-slider{
@@ -54,6 +54,7 @@ body{
 .card{
     /* background-color: blue; */
     width: 180px;
+    min-width: 200px;
     height: auto;
     background-color: var(--grey) ;
     border-bottom-left-radius: 5px;
@@ -83,14 +84,15 @@ body{
 }
 
 .card img{
-    width: 180px;
-    height: 250px;
+    width: 100%;
+    height: 290px;
 }
 
 .card h3{
     font-size: 15px;
     font-weight: 400;
     margin: 0;
+    margin-top: 10px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -105,8 +107,8 @@ body{
     margin-top: 20px;
     background-color: var(--grey);
     border: 0;
-    color: rgb(21, 106, 185);
-    font-weight: 700;
+    color: rgba(74, 167, 255, 0.774);
+    font-weight: 600;
     font-size: 15px;
     display: flex; 
     align-items: center;
@@ -117,7 +119,38 @@ body{
 .card-text button span{
     font-size: 25px;
     margin-right: 5px;
+    font-weight: 200;
 }
+
+.card-trailer-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px;
+}
+
+.card-trailer-container img{
+    height: 15px;
+    width: 15px;
+}
+
+.info-icon{
+    height: 25px !important;
+    width: 25px !important;
+    /* background-color: #F5C518; */
+}
+
+.card-trailer{
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.card-trailer label{
+    margin-left: 10px;
+}
+
 
 
 .fan-favourites-container{
@@ -163,6 +196,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 20px;
 }
 
 .celeb-card img{
@@ -201,4 +235,128 @@ body{
 .watch-container button:hover{
     background-color: var(--grey);
     cursor: pointer;
+}
+
+
+
+/*//////////////// box office/////////////////// */
+
+.box-office-container{
+    display: flex;
+    width: 90%;
+    margin-top: 30px;
+    gap: 20px;
+    /* background-color: aqua; */
+}
+
+.box-office-left-container,.box-office-right-container{
+    flex: 1;
+}
+
+.box-office{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    margin-top: 20px;
+}
+
+.box-office-gradient{
+    /* background-color: red; */
+    background-image: linear-gradient(to left,rgba(49, 49, 49, 0.438),black);
+}
+
+.box-office label{
+    font-size: 15px;
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+.box-office-line{
+    width: 1px;
+    height: 40%;
+    background-color: var(--theme);
+    margin-right: 10px;
+}
+
+.box-office img{
+    height: 100%;
+    /* filter: invert(1); */
+
+}
+
+.box-office-text{
+    height: 100%;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    /* background-color: #F5C518; */
+}
+
+.box-office-text h3{
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    font-size: 17px;
+
+
+}
+
+.box-office-text label{
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--grey);
+    margin: 0;
+    padding: 0;
+    margin-top: -5px;
+}
+
+
+
+
+/*/////////////////////////// watchlist//////////////// */
+.watchlist-home{
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    width: 90%;
+    padding: 40px;
+}
+
+.watchlist-home img{
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.watchlist-home p{
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+}
+
+.watchlist-home label{
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    color: var(--white);
+}
+
+
+.watchlist-home button{
+    /* width: 100%; */
+    height: 40px;
+    margin-top: 30px;
+    background-color: var(--grey);
+    border: 0;
+    color: rgb(21, 106, 185);
+    font-weight: 700;
+    font-size: 15px;
+    display: flex; 
+    align-items: center;
+    justify-content: center ;
+    border-radius: 5px;
+    padding: 15px 20px;
 }

@@ -84,13 +84,20 @@ const popularMoviesSection = async () =>{
         let title = item.title;
         let poster = image_url+item.poster_path;
         let rating = item.vote_average;
-        console.log(title,rating,poster);
+        console.log(rating);
         const card = `
                         <img src="${poster}" alt="">
                         <div class="card-text">
-                            <label><img src="../../assets/img/star.png">${rating}<img class="starred-icon" src="../../assets/img/starred.png"></label>
+                            <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
                             <h3>${title}</h3>
                             <button><span>+</span> Watchlist</button>
+                            <div class="card-trailer-container">
+                                <div class="card-trailer">
+                                    <img src="../../assets/img/play-icon.png">
+                                    <label>Trailer</label>
+                                </div>
+                                <img src="../../assets/img/info.png" class="info-icon">
+                            </div>
                         </div>
                     `;
         let div = document.createElement('div');
@@ -117,20 +124,25 @@ const topRatedSection = async () =>{
         const response = await fetch(apiUrl,options);
         const result = await response.json();
         let image_url = "https://image.tmdb.org/t/p/w185"
-        console.log(result);
+        
         let resultList = result.results;
-        console.log(resultList);
         resultList.map((item) =>{
             let title = item.title;
             let poster = image_url+item.poster_path;
             let rating = item.vote_average;
-            console.log(title,rating,poster);
             const card = `
                             <img src="${poster}" alt="">
                             <div class="card-text">
                                 <label><img src="../../assets/img/star.png">${rating}<img class="starred-icon" src="../../assets/img/starred.png"></label>
                                 <h3>${title}</h3>
                                 <button><span>+</span> Watchlist</button>
+                                <div class="card-trailer-container">
+                                    <div class="card-trailer">
+                                        <img src="../../assets/img/play-icon.png">
+                                        <label>Trailer</label>
+                                    </div>
+                                    <img src="../../assets/img/info.png" class="info-icon">
+                                </div>
                             </div>
                         `;
             let div = document.createElement('div');
@@ -162,20 +174,27 @@ const upcomingMoviesSection = async () =>{
         const response = await fetch(apiUrl,options);
         const result = await response.json();
         let image_url = "https://image.tmdb.org/t/p/w185"
-        console.log(result);
+        
         let resultList = result.results;
-        console.log(resultList);
+        
         resultList.map((item) =>{
             let title = item.title;
             let poster = image_url+item.poster_path;
             let rating = item.vote_average;
-            console.log(title,rating,poster);
+            
             const card = `
                             <img src="${poster}" alt="">
                             <div class="card-text">
                                 <label><img src="../../assets/img/star.png">${rating}<img class="starred-icon" src="../../assets/img/starred.png"></label>
                                 <h3>${title}</h3>
-                                <button><span>+</span> Watchlist</button>
+                                <button>Watch options</button>
+                                <div class="card-trailer-container">
+                                <div class="card-trailer">
+                                    <img src="../../assets/img/play-icon.png">
+                                    <label>Trailer</label>
+                                </div>
+                                <img src="../../assets/img/info.png" class="info-icon">
+                            </div>
                             </div>
                         `;
             let div = document.createElement('div');
@@ -208,11 +227,11 @@ const trendingCelebSection = async () =>{
         const response = await fetch(apiUrl,options);
         const result = await response.json();
         let image_url = "https://image.tmdb.org/t/p/w185"
-        console.log(result);
+        
         let resultList = result.results;
-        console.log(resultList);
+       
         resultList.map((item) =>{
-            console.log(item);
+        
             let name = item.name;
             let profile = image_url+item.profile_path;
             let card = `
