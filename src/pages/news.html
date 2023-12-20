@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celebrity News-IMDB</title>
+    <link rel="stylesheet" href="/src/css/news.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <script type="module">
+        export{};
+    </script>
+   
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <h1 id="heading">Celebrity News</h1> <hr>
+    
+    <div id="mainContainer">
+        <div id="article">
+            <div id="firstBox" >
+                <div id="firstNews">
+                
+    
+                    <img src="/assets/img/first.jpeg" alt="" id="firstImage">
+    
+                    <div id="firstContent">
+                        <h3 id="firstTitle">Jack Axelrod, Actor on ‘General Hospital,’ ‘Grey’s  Anatomy’ and <br> ‘My Name Is Earl,’ Dies at 93 <img src="/assets/img/linkArrow.png" alt="" id="arrowOne"></h3>
+    
+                                <div id="firstArticle" >
+                                        <a href="">Jack Axelrod</a>, who played a mob boss on General Hospital for  three years and <br> had notable guest-starring turns on <a href="">My Name Is  Earl</a> and <a href="">Grey’s Anatomy</a>, has <br> died. He was 93.
+                    
+                                    <p>Axelrod died Nov. 28 of natural causes in Los Angeles, his rep <a href="">Jennifer Garland</a> <br> announced. </p>
+                    
+                                    <p>Axelrod showed up in Woody Allen’s Bananas (1971) in one of his first <br> onscreen roles, and his big-screen résumé also included <a href="">Hancock</a> (2008),<br> <a href="">Winged Creatures</a> (2008), <a href="">Little Fockers </a>(2010),<a href=""> Super 8</a> (2011),<br> <a href="">J. Edgar (2011) </a>and <a href="">The Lone Ranger </a>(2013).</p>
+                    
+                                    <p>Axelrod portrayed mobster Victor Jerome on the ABC soap General Hospital <br> from 1987-89 and the “Electrolarynx Guy” on the <a href="">NBC</a> <a href="">comedy My Name Is Earl</a> <br> in 2005-08.</p>
+                    
+                                    <p>And on the ABC drama <a href="">Grey’s Anatomy</a> in 2006-07, he stole scenes as the <br> patient Charlie Yost, who spent a long time in a semi-conscious state at Seattle <br> Grace before dying — just as he was about to get in a wheelchair to leave.</p>
+                    
+                                    He continued... <br>
+                                    <a href=""> See full article at The Hollywood Reporter - Movie News <img src="/assets/img/linkArrow.png" alt="" id="arrowTwo"> </a> <br>
+    
+                                </div>
+    
+                        
+                        </div>
+                    
+                </div>
+                
+            </div> 
+    
+            <div  id="bottomDiv"> 
+                <div id="articleOptions">
+    
+                </div>
+                <p>12/16/2023by Mike Barnes <br><a href="">The Hollywood Reporter - Movie News</a></p>
+            <button type="button" id="horizontalButton" > <img src="/assets/img/optionButtonHorizontal.png" alt="" id="optionButtonHorizontal"></button>
+            <button type="button" id="verticalButton"   > <img src="/assets/img/optionButtonHorizontal.png" alt="" id="optionButtonVertical"></button>
+                
+            </div>
+            
+        </div>  
+    
+       <div class="rightContainer">
+         <hr> <h2>More To Explore </h2>
+       </div>
+    </div>
+
+    
+  
+    
+    
+    <div id="footer-container"></div>
+    <script type="module">
+        import {expandArticle,glowOptions,stopGlow,openSelectBox} from "/src/scripts/news.js"
+
+       
+                document.getElementById('horizontalButton').onclick = function(){expandArticle()};
+
+                document.getElementById("firstArticle").addEventListener("mouseover",function(){glowOptions()});
+                document.getElementById("firstArticle").addEventListener("mouseleave",function(){stopGlow()});
+             
+               document.getElementById("verticalButton").addEventListener("click",function(){openSelectBox()});
+
+    </script> 
+
+    <script src="../scripts/includeNavbar&Footer.js"></script>
+    <script src="../scripts/navbarMenu.js"></script>
+
+    
+ 
+ 
+</body>
+</html>
