@@ -200,3 +200,12 @@ li:hover{
   margin-right: 10px;
   border-radius: 10px;
 }
+
+
+.b2,.b4{
+  margin-left: 20px;
+}
+
+.b1,.b2{
+  margin-bottom: 15px;
+}
