@@ -222,7 +222,7 @@ async function apifetch4(){
             divs.innerHTML = card;
             
             
-            document.getElementById("apilist4-0").append(divs);
+            document.getElementById("apilist4").append(divs);
             document.getElementById("apilist4-1").append(divs);
             document.getElementById("apilist4-2").append(divs);
             document.getElementById("apilist4-3").append(divs);
@@ -277,7 +277,7 @@ async function apifetch5(){
             divs.innerHTML = card;
             
             
-            document.getElementById("apilist5-0").append(divs);
+            document.getElementById("apilist5").append(divs);
             document.getElementById("apilist5-1").append(divs);
             document.getElementById("apilist5-2").append(divs);
             document.getElementById("apilist5-3").append(divs);
@@ -330,7 +330,7 @@ async function apifetch6(){
             divs.innerHTML = card;
             
           
-            document.getElementById("apilist6-0").append(divs);
+            document.getElementById("apilist6").append(divs);
             document.getElementById("apilist6-1").append(divs);
             document.getElementById("apilist6-2").append(divs);
             document.getElementById("apilist6-3").append(divs);
