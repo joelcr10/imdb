@@ -60,9 +60,9 @@ async function apifetch1(){
             divs.innerHTML = card;
             
                 document.getElementById("apilist1-0").append(divs);
-                document.getElementById("apilist1-1").append(divs);
-                document.getElementById("apilist1-2").append(divs);
-                document.getElementById("apilist1-3").append(divs);
+                document.getElementById("apilist2-0").append(divs);
+                document.getElementById("apilist3-0").append(divs);
+                document.getElementById("apilist4-0").append(divs);
 
 
 
@@ -113,10 +113,10 @@ async function apifetch2(){
             divs.setAttribute("class","card");
             divs.innerHTML = card;
             
-            document.getElementById("apilist2-0").append(divs);
+            document.getElementById("apilist1-1").append(divs);
             document.getElementById("apilist2-1").append(divs);
-            document.getElementById("apilist2-2").append(divs);
-            document.getElementById("apilist2-3").append(divs);
+            document.getElementById("apilist3-1").append(divs);
+            document.getElementById("apilist4-1").append(divs);
 
 
             
@@ -168,8 +168,8 @@ async function apifetch3(){
             divs.innerHTML = card;
             
             
-            document.getElementById("apilist3-0").append(divs);
-            document.getElementById("apilist3-1").append(divs);
+            document.getElementById("apilist1-2").append(divs);
+            document.getElementById("apilist2-2").append(divs);
             document.getElementById("apilist3-2").append(divs);
             document.getElementById("apilist4-2").append(divs);
 
@@ -222,9 +222,9 @@ async function apifetch4(){
             divs.innerHTML = card;
             
             
-            document.getElementById("apilist4").append(divs);
-            document.getElementById("apilist4-1").append(divs);
-            document.getElementById("apilist4-2").append(divs);
+            document.getElementById("apilist1-3").append(divs);
+            document.getElementById("apilist2-3").append(divs);
+            document.getElementById("apilist3-3").append(divs);
             document.getElementById("apilist4-3").append(divs);
 
 
@@ -277,10 +277,10 @@ async function apifetch5(){
             divs.innerHTML = card;
             
             
-            document.getElementById("apilist5").append(divs);
-            document.getElementById("apilist5-1").append(divs);
-            document.getElementById("apilist5-2").append(divs);
-            document.getElementById("apilist5-3").append(divs);
+            document.getElementById("apilist1-4").append(divs);
+            document.getElementById("apilist2-4").append(divs);
+            document.getElementById("apilist3-4").append(divs);
+            document.getElementById("apilist3-4").append(divs);
 
 
             
@@ -330,10 +330,10 @@ async function apifetch6(){
             divs.innerHTML = card;
             
           
-            document.getElementById("apilist6").append(divs);
-            document.getElementById("apilist6-1").append(divs);
-            document.getElementById("apilist6-2").append(divs);
-            document.getElementById("apilist6-3").append(divs);
+            document.getElementById("apilist1-4").append(divs);
+            document.getElementById("apilist2-4").append(divs);
+            document.getElementById("apilist3-4").append(divs);
+            document.getElementById("apilist4-4").append(divs);
 
 
 
