@@ -1,41 +1,49 @@
-export const expandArticle = () =>{
+
+export const expandArticle = (index) =>{
+   
+     document.getElementsByClassName('firstBox')[index].style.overflow= 'visible';
+     document.getElementsByClassName('firstBox')[index].style.height= "100%";
+     document.getElementsByClassName('bottomDiv')[index].style.borderTop = "none";
+     document.getElementsByClassName('firstBox')[index].style.borderBottom = "none";
+     document.getElementsByClassName('horizontalButton')[index].style.visibility="hidden";
     
-    document.getElementById('firstBox').style.overflow= 'visible';
-    document.getElementById('firstBox').style.height= "100%";
-    document.getElementById('bottomDiv').style.borderTop = "none";
-    document.getElementById('firstBox').style.borderBottom = "none";
-    document.getElementById('horizontalButton').style.visibility="hidden";
    
-  
-}
-
-export const glowOptions = () =>{
-    //console.log(index);
-  document.getElementById("horizontalButton").style.backgroundColor="yellow";
-  
-}
-
-export const stopGlow = () => {
-    document.getElementById("horizontalButton").style.backgroundColor="white";
-}
-
-export const openSelectBox = () =>{
-    let lenght = document.getElementById("articleOptions").children.length;
-    if(lenght==0){
-        let anchor = document.createElement('a');
-        let option1= "PERMALINK "; 
-        anchor.innerText = option1;
-        let anchor2= document.createElement("a");
-        let option2 = "REPORT THIS";
-        anchor2.innerText = option2;
-        
-        
-        document.getElementById("articleOptions").appendChild(anchor);
-        document.getElementById('articleOptions').appendChild(anchor2);
-        
-        document.getElementById("verticalButton").removeEventListener("click",function(){openSelectBox()});
-    }else{
-        document.getElementById('articleOptions').innerHTML = "";
-    }
+ }
+ 
+ export const glowOptions = (index) =>{
+     
+    
+   document.getElementsByClassName("horizontalButton")[index].style.color='#f5c518';
    
-}
+ }
+ 
+ export const stopGlow = (index) => {
+    
+     document.getElementsByClassName("horizontalButton")[index].style.color="black";
+ }
+ 
+ export const openSelectBox = (index) =>{
+     
+     let length = document.getElementsByClassName("articleOptions")[index].children.length;
+     if(length==0){
+         let anchor = document.createElement('a');
+         let option1= "PERMALINK "; 
+         anchor.innerText = option1;
+         anchor.classList.add("verticalOptions");
+         let anchor2= document.createElement("a");
+         let option2 = "REPORT THIS";
+         anchor2.innerText = option2;
+         anchor2.classList.add("verticalOptions");
+         
+         document.getElementsByClassName("articleOptions")[index].appendChild(anchor);
+         document.getElementsByClassName('articleOptions')[index].appendChild(anchor2);
+         
+         document.getElementsByClassName("verticalButton")[index].removeEventListener("click",function(){openSelectBox(index)});
+     }else{
+         document.getElementsByClassName('articleOptions')[index].innerHTML = "";
+     }
+
+     
+     
+    
+ } 
