@@ -57,13 +57,13 @@ export const celebrity = async (detailsVeno,firstLineNumber) => {
         const card = `
           <div class="celebrityImage"><img src="${scr}" alt=" " class="celebIcon"></div>
           <div class="firstLine" name="numberLine">( <div class="firstLineNumber">${firstLineNumber}</div>
-            <img src="/assets/img/greenUpArrow.png" alt="" class="greenUpArrow"> 
+            <img src="../../assets/img/greenUpArrow.png" alt="" class="greenUpArrow"> 
             <div class="firstLineRandomNumber">${firstLineRandomNumber}</div> )
           </div>
           <div class="secondLine" name="nameLine">${name}</div>
           <div class="thirdLine" name="positionLine">${department} </div>
           <div class="fourthLine" name="productLine"><a>${movie}</a></div>
-          <div class="plusIconDiv"><img src="/assets/img/plusIcon.png" alt="" class="plusIcon"></div>
+          <div class="plusIconDiv"><img src="../../assets/img/plusIcon.png" alt="" class="plusIcon"></div>
           <div class=details>${details}</div>
         `;
 
