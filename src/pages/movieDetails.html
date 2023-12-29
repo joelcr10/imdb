@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie details</title>
+
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/movieDetails.css">
+
+
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <div class="movie-details-top-section">
+        <div class="title-line">
+            <div class="title-container">
+                <h1 id="movie-title"></h1>
+                <label><span id="release-year"></span>&nbsp;<div class="dot"></div>&nbsp; PG-13&nbsp;<div class="dot"></div>&nbsp;<span id="movie-duration"></span></label>
+            </div>
+            <div class="rating-container">
+                <div class="imdb-rating">
+                    <label class="rating-heading">IMDb RATING</label>
+                    <div class="rating">
+                        <img src="../../assets/img/star.png" alt="">
+                        <div class="rating-count">
+                            <h3><b id="imdb-rating">6.0</b>/10</h3>
+                            <label>6.9k</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="imdb-rating">
+                    <label class="rating-heading">POPULARITY</label>
+                    <div class="rating">
+                        <img src="../../assets/img/popularity-arrow.png" alt="">
+                        <div class="rating-count">
+                            <h3><b id="movie-popularity">40</b></h3>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="movie-media-container">
+            <div class="left-side">
+                <img id="movie-poster" alt="">
+            </div>
+            <div class="right-side">
+                <!-- <iframe width="560" height="315" src="https://www.youtube.com/watch?v=zyp2j9hnn1I" frameborder="0" allowfullscreen></iframe> -->
+                <!-- <iframe width="75%" height="100%" src="https://www.youtube.com/embed/zyp2j9hnn1I?autoplay=1" frameborder="0" allowfullscreen allow="autoplay">
+                </iframe> -->
+
+                <iframe width="70%" height="100%" id="trailer-video" frameborder="0" allowfullscreen allow="autoplay">
+                </iframe>
+            </div>
+
+        </div>
+        <div class="genre-container" id="genre-container">
+            <!-- the movies genre will come here -->
+        </div>
+        <div class="movie-info-container">
+            <div class="info-left-side">
+                <div class="summary-container" >
+                    <p id="summary-container">
+                        <!-- the movie summary will come here -->
+                    </p>
+                </div>
+                <div class="info-line">
+                    <b>Director</b>
+                    <span id="director-name">
+                        <!-- Put director's name here -->
+                    </span>
+                </div>
+                <div class="info-line">
+                    <b>Writers</b>
+                    <span id="writers-name">David Leslie Johnson-McGoldrick</span>
+                    <!-- <span>James Wan</span> -->
+                </div>
+                <div class="info-line">
+                    <b>Stars</b>
+                    <span id="star1">
+                        <!-- Name of Main Star -->
+                    </span>
+                    <span id="star2">
+                        <!-- name of Co_star -->
+                    </span>
+                </div>
+            </div>
+            <div class="watchlist-right-side">
+                <div class="movie-info-watchlist-container">
+                    <label>+</label>
+                    <span>Add to Watchlist</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="detailed-info">
+        <div class="detailed-info-left">
+            <div class="photos-container">
+                <div class="header-line">
+                    <div class="yellow-line"></div>
+                    <h1>Photos</h1>
+                    <img src="../../assets/img/right-arrow.png">  
+                </div>
+                <div class="movie-details-card-slider" id="photos-container">
+                    <!-- put photos here -->
+                </div>
+            </div>
+            <div class="videos-container">
+                <div class="header-line">
+                    <div class="yellow-line"></div>
+                    <h1>Videos</h1>
+                    <img src="../../assets/img/right-arrow.png">  
+                </div>
+                <div class="movie-details-card-slider" id="videos-slider">
+                    <!-- <iframe class="vid"  src="https://www.youtube.com/embed/zyp2j9hnn1I?autoplay=0" frameborder="0" allowfullscreen allow="autoplay">
+                    </iframe>
+                    <iframe class="vid"  src="https://www.youtube.com/embed/zyp2j9hnn1I?autoplay=0" frameborder="0" allowfullscreen allow="autoplay">
+                    </iframe>
+                    <iframe class="vid"  src="https://www.youtube.com/embed/zyp2j9hnn1I?autoplay=0" frameborder="0" allowfullscreen allow="autoplay">
+                    </iframe>
+                    <iframe class="vid"  src="https://www.youtube.com/embed/zyp2j9hnn1I?autoplay=0" frameborder="0" allowfullscreen allow="autoplay">
+                    </iframe> -->
+                </div>
+            </div>
+            <div class="top-cast-container">
+                <div class="header-line">
+                    <div class="yellow-line"></div>
+                    <h1>Top Cast</h1>
+                    <img src="../../assets/img/right-arrow.png">  
+                </div>
+                <div class="cast-container" id="cast-container">
+                   <!-- Add cast card here -->
+                </div>
+                <div id="top-cast-bts">
+                    <div class="info-line">
+                        <b>Director</b>
+                        <span id="director-name-bts"></span>
+                    </div>
+                    <div class="info-line">
+                        <b>Writers</b>
+                        <span id="writers-name-bts"></span>
+                        <!-- <span>James Wan</span> -->
+                    </div>
+                </div>
+                <!-- <div class="info-line">
+                    <b>Stars</b>
+                    <span>Jason Momoa</span>
+                    <span>Patrik Wilson</span>
+                </div> -->
+            </div>
+            <div class="storyline-container">
+                <div class="header-line">
+                    <div class="yellow-line"></div>
+                    <h1>Storyline</h1>
+                </div>
+                <p id="storyline">
+                    <!-- movie's story line will come here -->
+                </p>
+                <div class="top-cast-bts">
+                    <div class="info-line">
+                        <b>Tagline</b>
+                        <span style="color: black;" id="tagline"></span>
+                    </div>
+                    <div class="info-line">
+                        <b>Genre</b>
+                        <span id="genre-list-span">
+                            <!-- genre list should be displayed here -->
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="details-container">
+                <div class="header-line">
+                    <div class="yellow-line"></div>
+                    <h1>Details</h1>
+                </div>
+                <div class="top-cast-bts">
+                    <div class="info-line">
+                        <b>Release Date</b>
+                        <span id="release-date">December 22, 2023</span>
+                    </div>
+                    <div class="info-line">
+                        <b>Country of Origin</b>
+                        <span id="countryOrigin">United States &nbsp; <div class="dot"></div> &nbsp; Canada &nbsp; <div class="dot"></div> &nbsp;United Kingdom</span>
+                    </div>
+                    <div class="info-line">
+                        <b>Official Site</b>
+                        <span><a href="" id="official-movie-site"></a></span>
+                    </div>
+                    <div class="info-line">
+                        <b>Language</b>
+                        <span id="movie-language"></span>
+                    </div>
+                    <div class="info-line">
+                        <b>Box Office</b>
+                        <span id="movie-budget"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="more-like-this-container">
+                <div class="header-line">
+                    <div class="yellow-line"></div>
+                    <h1>More Like This</h1>
+                </div>
+                <div id="similar-movies" class="card-slider">
+
+                </div>
+            </div>
+        </div>
+        <div class="detailed-info-right">
+
+        </div>
+    </div>
+
+
+    <div id="footer-container"></div>
+    <script src="../scripts/includeNavbar&Footer.js"></script>
+    <script src="../scripts/navbarMenu.js"></script>
+    <script src="../scripts/movieDetails.js" type="module"></script>
+</body>
+</html>
