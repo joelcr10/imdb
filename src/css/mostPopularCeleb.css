@@ -41,7 +41,7 @@ body{
 #bigBox{
     margin-top: 50px;
     width: 800px;
-    height: 1000px;
+  
     margin-bottom: 10px;
     margin-left: 20px;
     border:1px solid rgba(128, 128, 128, 0.405);
@@ -50,11 +50,17 @@ body{
 }
 .celebrityBox{
     width:780px ;
-    height: 110px;
+    height: auto;
     border-bottom: 1px solid rgba(128, 128, 128, 0.308);
    
     margin: 10px;
 }
+
+.celebrityBox .details{
+    width: 600px;
+    margin: 30px;
+}
+
 #shareIcon{
     width: 30px;
     height: 30px;
@@ -77,11 +83,11 @@ body{
     border-bottom: none;
 }
 .celebIcon{
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height:70px;
     border-radius: 100%;
     position: absolute;
-    top: 10%;
+    top: 15%;
     left: 15px;
 }
 .greenUpArrow{
@@ -89,13 +95,14 @@ body{
 }
 .firstLine{
     margin-left: 100px;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 .secondLine{
     margin-left: 100px;
     margin-top: 5px;
     font-size: 18px;
     font-weight: 900;
+    width: 30%;
 }
 .secondLine:hover{
     opacity: 50%;
@@ -132,7 +139,7 @@ body{
 }
 #rightContainer{
     position: absolute;
-    top: 15%;
+    top: 1%;
     right: 2%;
     
 }
@@ -157,3 +164,28 @@ body{
     font-weight: bold;
     margin-top: 20px;
 }
+
+
+.firstLine {
+    display: inline-flex;
+    align-items: center; /* Align items vertically in the center */
+  }
+
+  .firstLineNumber,
+  .greenUpArrow,
+  .firstLineRandomNumber {
+    margin: 0 5px; /* Add margin between elements */
+  }
+
+.contentButtons {
+   
+   margin-left: 680px;
+   margin-bottom: -50px;
+   
+  }
+  .compactView, .detailedView{
+    display: inline-block;
+    rotate: 90deg;
+    margin: 30px;
+    font-size: 30px;
+  }
