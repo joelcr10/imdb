@@ -98,7 +98,8 @@ const topRatedSection = async () =>{
             let title = item.title;
             let poster = image_url+item.poster_path;
             let rating = item.vote_average;
-            const card = `
+            let id = item.id;
+            const card = `<a href="movieDetails.html?id=${id}">
                             <img src="${poster}" alt="">
                             <div class="card-text">
                                 <label><img src="../../assets/img/star.png">${rating}<img class="starred-icon" src="../../assets/img/starred.png"></label>
@@ -112,11 +113,50 @@ const topRatedSection = async () =>{
                                     <img src="../../assets/img/info.png" class="info-icon">
                                 </div>
                             </div>
+                            </a>
                         `;
             let div = document.createElement('div');
             div.setAttribute("class","card");
             div.innerHTML = card;
             document.getElementById("top-rated").append(div);
+        })
+    
+    
+}
+
+
+const popularTvSection = async () =>{
+    
+    const apiUrl = 'https://api.themoviedb.org/3/tv/popular';
+    
+    let image_url = "https://image.tmdb.org/t/p/original";
+        
+        let resultList = await apiFetch(apiUrl);
+        resultList.map((item) =>{
+            let title = item.original_name;
+            let poster = image_url+item.poster_path;
+            let rating = item.vote_average;
+            let id = item.id;
+            const card = `<a href="tvDetails.html?id=${id}">
+                            <img src="${poster}" alt="">
+                            <div class="card-text">
+                                <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
+                                <h3>${title}</h3>
+                                <button><span>+</span> Watchlist</button>
+                                <div class="card-trailer-container">
+                                    <div class="card-trailer">
+                                        <img src="../../assets/img/play-icon.png">
+                                        <label>Trailer</label>
+                                    </div>
+                                    <img src="../../assets/img/info.png" class="info-icon">
+                                </div>
+                            </div>
+                            </a>
+                        `;
+            let div = document.createElement('div');
+            div.setAttribute("class","card");
+            div.innerHTML = card;
+            document.getElementById("popular-tv").append(div);
         })
     
     
@@ -209,6 +249,7 @@ popularMoviesSection();
 topRatedSection();
 upcomingMoviesSection();
 trendingCelebSection();
+popularTvSection();
 
 async function testData(){
     const data = await apiFetch();
