@@ -1,5 +1,6 @@
 body {
     font-family: Arial, sans-serif;
+    margin-top: 50px;
     margin: 0;
     padding: 0;
     display: flex;
@@ -24,15 +25,24 @@ form {
 
 label {
     margin-bottom: 8px;
+    font-weight: bolder;
+    font-size: small;
 }
 
 input {
     padding: 8px;
     margin-bottom: 16px;
+    border: 1px solid #ccc; /* Add a border for better visibility */
+    transition: box-shadow 0.3s; /* Add a transition for a smooth effect */
+}
+
+input:focus {
+    box-shadow: 0 0 5px 2px #79c3f5; /* Blue shadow when the input is focused */
+    outline: none; /* Remove the default outline */
 }
 
 button {
-    background-color: yellow;
+    background-color: rgb(227, 205, 33);
     color: black;
     padding: 10px;
     border: none;
@@ -41,7 +51,7 @@ button {
 }
 
 button:hover {
-    background-color: yellow;
+    background-color: rgb(238, 193, 80);
 }
 h2{
     font-weight: lighter;
