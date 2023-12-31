@@ -11,6 +11,8 @@
             background-color: black;
             display: inline-block;
             margin-right: 5px;
+            
+            
         }
 
         /* Style the active tab */
@@ -55,14 +57,17 @@
 
         .apifetch-container{
             margin-top: 80px;
+            
+
             max-width: 1300px;
         }
         
         .card-slider{
-            display: flex;
+            display: flex;            
             gap: 20px;
-            overflow-x: scroll;
-            scroll-behavior: smooth;
+            flex-wrap: wrap;
+            /* overflow-x: scroll; */
+            /* scroll-behavior: smooth; */
             margin-top: 20px;
         }
 

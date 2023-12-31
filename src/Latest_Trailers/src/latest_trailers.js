@@ -21,7 +21,7 @@ function openTab(tabName) {
 ///////////////////////////////////////   API FETCH   ///////////////////////////////////////////////// 
 
 
-async function apifetch1(){
+async function apifetchTrendingTrailers(){
     console.log("inside test");
     const API_KEY = 'd808cc664ed4f079c68e9cd427d4f86a';
     const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkODA4Y2M2NjRlZDRmMDc5YzY4ZTljZDQyN2Q0Zjg2YSIsInN1YiI6IjY1ODE0YjZlMjI2YzU2MDdmZTllZjkwYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.e9jwZv6dTRR_gOLQGXJlmMTAA69zTAThi1_sbyPVOgs';
@@ -37,15 +37,15 @@ async function apifetch1(){
     try{
         const response = await fetch(apiUrl,options);
         const result = await response.json();
-        console.log(result.results);
+        // console.log(result.results);
         const apilist = result.results;
         let image_url = "https://image.tmdb.org/t/p/w185";
         apilist.map((item)=>{
-            console.log(item);   
+            // console.log(item);   
             const title = item.title;
             const rating = item.vote_average;
             const poster = image_url+item.poster_path;
-            console.log(title,rating);
+            // console.log(title,rating);
             const card = `
                             
                             <img src="${poster}" alt="">
@@ -59,10 +59,8 @@ async function apifetch1(){
             divs.setAttribute("class","card");
             divs.innerHTML = card;
             
-                document.getElementById("apilist1-0").append(divs);
-                document.getElementById("apilist2-0").append(divs);
-                document.getElementById("apilist3-0").append(divs);
-                document.getElementById("apilist4-0").append(divs);
+                document.getElementById("apifetchTrendingTrailers").append(divs);
+                
 
 
 
@@ -72,10 +70,10 @@ async function apifetch1(){
         console.log(error);
     }
  }
-apifetch1();
+ apifetchTrendingTrailers();
 
 
-async function apifetch2(){
+async function apifetchMostAnticipated(){
     console.log("inside test");
     const API_KEY = 'd808cc664ed4f079c68e9cd427d4f86a';
     const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkODA4Y2M2NjRlZDRmMDc5YzY4ZTljZDQyN2Q0Zjg2YSIsInN1YiI6IjY1ODE0YjZlMjI2YzU2MDdmZTllZjkwYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.e9jwZv6dTRR_gOLQGXJlmMTAA69zTAThi1_sbyPVOgs';
@@ -91,15 +89,15 @@ async function apifetch2(){
     try{
         const response = await fetch(apiUrl,options);
         const result = await response.json();
-        console.log(result.results);
+        // console.log(result.results);
         const apilist = result.results;
         let image_url = "https://image.tmdb.org/t/p/w185";
         apilist.map((item)=>{
-            console.log(item);   
+            // console.log(item);   
             const title = item.title;
             const rating = item.vote_average;
             const poster = image_url+item.poster_path;
-            console.log(title,rating);
+            // console.log(title,rating);
             const card = `
                             
                             <img src="${poster}" alt="">
@@ -113,10 +111,8 @@ async function apifetch2(){
             divs.setAttribute("class","card");
             divs.innerHTML = card;
             
-            document.getElementById("apilist1-1").append(divs);
-            document.getElementById("apilist2-1").append(divs);
-            document.getElementById("apilist3-1").append(divs);
-            document.getElementById("apilist4-1").append(divs);
+            document.getElementById("apifetchMostAnticipated").append(divs);
+            
 
 
             
@@ -127,9 +123,9 @@ async function apifetch2(){
         console.log(error);
     }
  }
-apifetch2();
+ apifetchMostAnticipated();
 
-async function apifetch3(){
+async function apifetchMostPopular(){
     console.log("inside test");
     const API_KEY = 'd808cc664ed4f079c68e9cd427d4f86a';
     const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkODA4Y2M2NjRlZDRmMDc5YzY4ZTljZDQyN2Q0Zjg2YSIsInN1YiI6IjY1ODE0YjZlMjI2YzU2MDdmZTllZjkwYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.e9jwZv6dTRR_gOLQGXJlmMTAA69zTAThi1_sbyPVOgs';
@@ -145,20 +141,20 @@ async function apifetch3(){
     try{
         const response = await fetch(apiUrl,options);
         const result = await response.json();
-        console.log(result.results);
+        // console.log(result.results);
         const apilist = result.results;
         let image_url = "https://image.tmdb.org/t/p/w185";
         apilist.map((item)=>{
-            console.log(item);   
+            // console.log(item);   
             const title = item.title;
             const rating = item.vote_average;
             const poster = image_url+item.poster_path;
-            console.log(title,rating);
+            // console.log(title,rating); 
             const card = `
                             
                             <img src="${poster}" alt="">
                             <div class="card-text">
-                                <label><img src="../../assets/img/star.png">${rating}<img class="starred-icon" src="../../assets/img/starred.png"></label>
+                                <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
                                 <h3>${title}</h3>
                                 <button><span>+</span> Watchlist</button>
                             </div>
@@ -168,10 +164,8 @@ async function apifetch3(){
             divs.innerHTML = card;
             
             
-            document.getElementById("apilist1-2").append(divs);
-            document.getElementById("apilist2-2").append(divs);
-            document.getElementById("apilist3-2").append(divs);
-            document.getElementById("apilist4-2").append(divs);
+            document.getElementById("apifetchMostPopular").append(divs);
+           
 
 
             
@@ -181,12 +175,12 @@ async function apifetch3(){
         console.log(error);
     }
  }
-apifetch3();
+ apifetchMostPopular();
 
-async function apifetch4(){
+ async function apifetchRecentlyAddeded() {
     console.log("inside test");
     const API_KEY = 'd808cc664ed4f079c68e9cd427d4f86a';
-    const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkODA4Y2M2NjRlZDRmMDc5YzY4ZTljZDQyN2Q0Zjg2YSIsInN1YiI6IjY1ODE0YjZlMjI2YzU2MDdmZTllZjkwYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.e9jwZv6dTRR_gOLQGXJlmMTAA69zTAThi1_sbyPVOgs';
+    const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkODA4Y2M2NjRlZDRmMDc5YzY4ZTljZDQyN2Q4Zjg2YSIsInN1YiI6IjY1ODE0YjZlMjI2YzU2MDdmZTllZjkwYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.e9jwZv6dTRR_gOLQGXJlmMTAA69zTAThi1_sbyPVOgs';
     const apiUrl = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1';
     const options = {
         method: 'GET',
@@ -196,151 +190,38 @@ async function apifetch4(){
         }
     }
 
-    try{
-        const response = await fetch(apiUrl,options);
+    try {
+        const response = await fetch(apiUrl, options);
         const result = await response.json();
-        console.log(result.results);
+        // console.log(result.results);
         const apilist = result.results;
-        let image_url = "https://image.tmdb.org/t/p/w185";
-        apilist.map((item)=>{
-            console.log(item);   
+        console.log("inside recently adedd");
+        let image_url = "https://image.tmdb.org/t/p/original";
+        apilist.map((item) => {
+            // console.log(item);
             const title = item.title;
-            const rating = item.vote_average;
-            const poster = image_url+item.poster_path;
-            console.log(title,rating);
+            const rating = item.vote_average; // Round to 1 decimal point
+            const poster = image_url + item.poster_path;
+            console.log("recently",title, rating);
             const card = `
-                            
                             <img src="${poster}" alt="">
                             <div class="card-text">
-                                <label><img src="../../assets/img/star.png">${rating}<img class="starred-icon" src="../../assets/img/starred.png"></label>
+                                <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
                                 <h3>${title}</h3>
                                 <button><span>+</span> Watchlist</button>
                             </div>
                        `;
             let divs = document.createElement('div');
-            divs.setAttribute("class","card");
+            divs.setAttribute("class", "card");
             divs.innerHTML = card;
-            
-            
-            document.getElementById("apilist1-3").append(divs);
-            document.getElementById("apilist2-3").append(divs);
-            document.getElementById("apilist3-3").append(divs);
-            document.getElementById("apilist4-3").append(divs);
 
-
-            
-
-            
+            document.getElementById("recently-added").append(divs);
         })
-    }catch(error){
+    } catch (error) {
         console.log(error);
     }
- }
-apifetch4();
 
-async function apifetch5(){
-    console.log("inside test");
-    const API_KEY = 'd808cc664ed4f079c68e9cd427d4f86a';
-    const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkODA4Y2M2NjRlZDRmMDc5YzY4ZTljZDQyN2Q0Zjg2YSIsInN1YiI6IjY1ODE0YjZlMjI2YzU2MDdmZTllZjkwYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.e9jwZv6dTRR_gOLQGXJlmMTAA69zTAThi1_sbyPVOgs';
-    const apiUrl = 'https://api.themoviedb.org/3/trending/movie/day?language=en-US';
-    const options = {
-        method: 'GET',
-        headers: {
-            'Authorization': ACCESS_TOKEN,
-            'accept': 'application/json'
-        }
-    }
+}
 
-    try{
-        const response = await fetch(apiUrl,options);
-        const result = await response.json();
-        console.log(result.results);
-        const apilist = result.results;
-        let image_url = "https://image.tmdb.org/t/p/w185";
-        apilist.map((item)=>{
-            console.log(item);   
-            const title = item.title;
-            const rating = item.vote_average;
-            const poster = image_url+item.poster_path;
-            console.log(title,rating);
-            const card = `
-                            
-                            <img src="${poster}" alt="">
-                            <div class="card-text">
-                                <label><img src="../../assets/img/star.png">${rating}<img class="starred-icon" src="../../assets/img/starred.png"></label>
-                                <h3>${title}</h3>
-                                <button><span>+</span> Watchlist</button>
-                            </div>
-                       `;
-            let divs = document.createElement('div');
-            divs.setAttribute("class","card");
-            divs.innerHTML = card;
-            
-            
-            document.getElementById("apilist1-4").append(divs);
-            document.getElementById("apilist2-4").append(divs);
-            document.getElementById("apilist3-4").append(divs);
-            document.getElementById("apilist3-4").append(divs);
+apifetchRecentlyAddeded();
 
-
-            
-        })
-    }catch(error){
-        console.log(error);
-    }
- }
-apifetch5();
-
-async function apifetch6(){
-    console.log("inside test");
-    const API_KEY = 'd808cc664ed4f079c68e9cd427d4f86a';
-    const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkODA4Y2M2NjRlZDRmMDc5YzY4ZTljZDQyN2Q0Zjg2YSIsInN1YiI6IjY1ODE0YjZlMjI2YzU2MDdmZTllZjkwYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.e9jwZv6dTRR_gOLQGXJlmMTAA69zTAThi1_sbyPVOgs';
-    const apiUrl = 'https://api.themoviedb.org/3/trending/movie/day?language=en-US';
-    const options = {
-        method: 'GET',
-        headers: {
-            'Authorization': ACCESS_TOKEN,
-            'accept': 'application/json'
-        }
-    }
-
-    try{
-        const response = await fetch(apiUrl,options);
-        const result = await response.json();
-        console.log(result.results);
-        const apilist = result.results;
-        let image_url = "https://image.tmdb.org/t/p/w185";
-        apilist.map((item)=>{
-            console.log(item);   
-            const title = item.title;
-            const rating = item.vote_average;
-            const poster = image_url+item.poster_path;
-            console.log(title,rating);
-            const card = `
-                            
-                            <img src="${poster}" alt="">
-                            <div class="card-text">
-                                <label><img src="../../assets/img/star.png">${rating}<img class="starred-icon" src="../../assets/img/starred.png"></label>
-                                <h3>${title}</h3>
-                                <button><span>+</span> Watchlist</button>
-                            </div>
-                       `;
-            let divs = document.createElement('div');
-            divs.setAttribute("class","card");
-            divs.innerHTML = card;
-            
-          
-            document.getElementById("apilist1-4").append(divs);
-            document.getElementById("apilist2-4").append(divs);
-            document.getElementById("apilist3-4").append(divs);
-            document.getElementById("apilist4-4").append(divs);
-
-
-
-            
-        })
-    }catch(error){
-        console.log(error);
-    }
- }
-apifetch6();
