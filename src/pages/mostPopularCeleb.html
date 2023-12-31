@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Most Popular Celebs</title>
-    <link rel="stylesheet" href="/src/css/mostPopularCeleb.css">
-    <link rel="stylesheet" href="/src/css/navbar.css">
-    <link rel="stylesheet" href="/src/css/footer.css">
-
+    <link rel="stylesheet" href="../css/mostPopularCeleb.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <script type="module">
+        export{};
+    </script>
 </head>
 <body>
     <div id="navbar-container"></div>
@@ -19,78 +21,21 @@
                 <p> As determined by IMDb users</p>
                 <hr>
                 <div id="shareText">Share</div> 
-                <img src="/assets/img/vector-share-icon.jpg" alt="" id="shareIcon">
+                <img src="../../assets/img/vector-share-icon.jpg" alt="" id="shareIcon">
             </div>
-
+            
+            <div class="contentButtons">
+                <div class="compactView" >|||</div><div class="detailedView" >!!!</div>
+                
+            </div>
 
             <div id="bigBox">
-                <div class="celebrityBox">
-                <div class="celebrityImage"><img src="/assets/img/celeb-1.png" alt="" class="celebIcon"></div>
-                <div class="firstLine">1( <img src="/assets/img/greenUpArrow.png" alt="" class="greenUpArrow"> 4941)</div>
-                <div class="secondLine">Andre Braugher</div>
-                <div class="thirdLine"> Actor . Producer . Director</div>
-                <div class="fourthLine"><a href="">Homicide: Life on the Street (1993–1998)</a></div>
-                <div class="plusIconDiv"> <img src="/assets/img/plusIcon.png" alt="" class="plusIcon"></div>
-                </div>
-
-                <div class="celebrityBox">
-                    <div class="celebrityImage"><img src="/assets/img/celeb-2.png" alt="" class="celebIcon"></div>
-                    <div class="firstLine">2( <img src="/assets/img/greenUpArrow.png" alt="" class="greenUpArrow"> 7)</div>
-                    <div class="secondLine">Julia Roberts</div>
-                    <div class="thirdLine"> Actor . Producer . Soundtrack</div>
-                    <div class="fourthLine"><a href="">Pretty Woman(1990)</a></div>
-                    <div class="plusIconDiv"> <img src="/assets/img/plusIcon.png" alt="" class="plusIcon"></div>
-                </div>
-
-                <div class="celebrityBox">
-                    <div class="celebrityImage"><img src="/assets/img/celeb-3.png" alt="" class="celebIcon"></div>
-                    <div class="firstLine">3( <img src="/assets/img/greenUpArrow.png" alt="" class="greenUpArrow"> 61)</div>
-                    <div class="secondLine">Myha'la</div>
-                    <div class="thirdLine"> Actress  </div>
-                    <div class="fourthLine"><a href="">Industry (2020-2022)</a></div>
-                    <div class="plusIconDiv"> <img src="/assets/img/plusIcon.png" alt="" class="plusIcon"></div>
-                </div>
-
-                <div class="celebrityBox">
-                    <div class="celebrityImage"><img src="/assets/img/celeb-4.png" alt="" class="celebIcon"></div>
-                    <div class="firstLine">4( <img src="/assets/img/greenUpArrow.png" alt="" class="greenUpArrow"> 466)</div>
-                    <div class="secondLine">Serinda Swan</div>
-                    <div class="thirdLine"> Actress . Producer . Director </div>
-                    <div class="fourthLine"><a href="">Coroner (2019-2022)</a></div>
-                    <div class="plusIconDiv"> <img src="/assets/img/plusIcon.png" alt="" class="plusIcon"></div>
-                </div>
-
-                <div class="celebrityBox">
-                    <div class="celebrityImage"><img src="/assets/img/celeb-5.png" alt="" class="celebIcon"></div>
-                    <div class="firstLine">5( <img src="/assets/img/greenUpArrow.png" alt="" class="greenUpArrow"> 6)</div>
-                    <div class="secondLine">Shelley Hennig</div>
-                    <div class="thirdLine"> Actress  </div>
-                    <div class="fourthLine"><a href="">Unfriended (2014)</a></div>
-                    <div class="plusIconDiv"> <img src="/assets/img/plusIcon.png" alt="" class="plusIcon"></div>
-                </div>
-
-                <div class="celebrityBox">
-                    <div class="celebrityImage"><img src="/assets/img/celeb-6.png" alt="" class="celebIcon"></div>
-                    <div class="firstLine">6( <img src="/assets/img/greenUpArrow.png" alt="" class="greenUpArrow"> 63)</div>
-                    <div class="secondLine">Charlie Evans</div>
-                    <div class="thirdLine"> Actor . Soundtrack  </div>
-                    <div class="fourthLine"><a href="">Leave the World Behind(2023) </a></div>
-                    <div class="plusIconDiv"> <img src="/assets/img/plusIcon.png" alt="" class="plusIcon"></div>
-                </div>
-                
-
-                <div class="celebrityBox" id="lastCelebrityBox">
-                    <div class="celebrityImage"><img src="/assets/img/celeb-7.png" alt="" class="celebIcon"></div>
-                    <div class="firstLine">7( <img src="/assets/img/greenUpArrow.png" alt="" class="greenUpArrow">7)</div>
-                    <div class="secondLine">Alan Richson</div>
-                    <div class="thirdLine"> Actor . Producer . Director  </div>
-                    <div class="fourthLine"><a href="">Teenage Mutant Ninja Turtles(2014) </a></div>
-                    <div class="plusIconDiv"> <img src="/assets/img/plusIcon.png" alt="" class="plusIcon"></div>
-                </div>
-                
-
+               
+               
                 
             </div>
+
+            
 
             <div id="rightContainer">
                 <div id="rightHeading"> More to explore </div>
@@ -117,5 +62,17 @@
     <div id="footer-container"></div>
     <script src="../scripts/includeNavbar&Footer.js"></script>
     <script src="../scripts/navbarMenu.js"></script>
+    <script type="module">
+        import {celebrity} from "../scripts/mostPopularCeleb.js";
+        celebrity(false,0);
+        
+         document.getElementsByClassName("compactView")[0].addEventListener("click",function(){
+            document.getElementById("bigBox").innerText="";
+            celebrity(false,0)});
+        document.getElementsByClassName("detailedView")[0].addEventListener("click",function(){
+            document.getElementById("bigBox").innerText="";
+            celebrity(true,0)});
+        
+    </script>
 </body>
 </html>

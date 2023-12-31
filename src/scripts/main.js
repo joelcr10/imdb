@@ -1,91 +1,70 @@
 
-const testApi = async () =>{
-    console.log("inside test api");
-    const url = 'https://imdb188.p.rapidapi.com/api/v1/getFanFavorites?country=US';
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': '68fcb202f9msh7cd96d8060edf68p1caac9jsn2e0d2adc412e',
-            'X-RapidAPI-Host': 'imdb188.p.rapidapi.com'
-        }
-    };
-
-    try {
-        const response = await fetch(url, options);
-        const result = await response.json();
-        console.log(result.data.list);
-
-        const responseList = result.data.list;
-        responseList.map((item)=>{
-            // console.log(item);
-            // console.log(item.titleText.text);
-            let title = item.titleText.text;
-            let poster = item.primaryImage.imageUrl;
-            let rating = item.ratingsSummary.aggregateRating;
-            console.log(title,rating,poster);
-            const card = `
-                            <img src="${poster}" alt="">
-                            <div class="card-text">
-                                <label><img src="../../assets/img/star.png">${rating}<img class="starred-icon" src="../../assets/img/starred.png"></label>
-                                <h3>${title}</h3>
-                                <button><span>+</span> Watchlist</button>
-                            </div>
-                        `;
-            let div = document.createElement('div');
-            div.setAttribute("class","card");
-            div.innerHTML = card;
-            document.getElementById("fan-favourites").append(div);
-        })
-    } catch (error) {
-        console.error(error);
-    }
-}
+import { apiFetch } from "./apiFetch.js";
 
 
-const weekly = async () =>{
-    console.log("inside weekly");
-    const url = 'https://imdb8.p.rapidapi.com/title/get-most-popular-movies?homeCountry=US&currentCountry=US&purchaseCountry=US';
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': 'e3c1c41e2amshad1d9b66640f728p163e50jsn66be4c08e6a5',
-            'X-RapidAPI-Host': 'imdb8.p.rapidapi.com'
-        }
-    };
-
-    try {
-        const response = await fetch(url, options);
-        const result = await response.json();
-        console.log(result[0]);
-    } catch (error) {
-        console.error(error);
-    }
-}
 
 
-const popularMoviesSection = async () =>{
-    console.log("inside omdb3");
-    const API_KEY = '8b701ace30227088c2f1ef89b747c764';
-    const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`;
-    const options = {
-        method: 'GET',
-        headers: {
-            'Authorization': API_KEY,    
-            'accept': 'application/json'
-        }
-    };
-    const response = await fetch(apiUrl,options);
-    const result = await response.json();
-    let image_url = "https://image.tmdb.org/t/p/w185"
+// const popularMoviesSection = async () =>{
+   
+//     const API_KEY = '8b701ace30227088c2f1ef89b747c764';
+//     const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`;
+//     const options = {
+//         method: 'GET',
+//         headers: {
+//             'Authorization': API_KEY,    
+//             'accept': 'application/json'
+//         }
+//     };
+//     const response = await fetch(apiUrl,options);
+//     const result = await response.json();
+//     let image_url = "https://image.tmdb.org/t/p/w185"
     
 
-    let resultList = result.results;
+//     let resultList = result.results;
+//     resultList.map((item) =>{
+//         let title = item.title;
+//         let poster = image_url+item.poster_path;
+//         let rating = item.vote_average;
+        
+//         const card = `
+//                         <img src="${poster}" alt="">
+//                         <div class="card-text">
+//                             <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
+//                             <h3>${title}</h3>
+//                             <button><span>+</span> Watchlist</button>
+//                             <div class="card-trailer-container">
+//                                 <div class="card-trailer">
+//                                     <img src="../../assets/img/play-icon.png">
+//                                     <label>Trailer</label>
+//                                 </div>
+//                                 <img src="../../assets/img/info.png" class="info-icon">
+//                             </div>
+//                         </div>
+//                     `;
+//         let div = document.createElement('div');
+//         div.setAttribute("class","card");
+//         div.innerHTML = card;
+//         document.getElementById("popular-movies").append(div);
+//     })
+// }
+
+const popularMoviesSection = async () =>{
+   
+    
+    const apiUrl = `https://api.themoviedb.org/3/movie/popular`;
+    
+    const resultList = await apiFetch(apiUrl);
+
+    let image_url = "https://image.tmdb.org/t/p/original";
+    
     resultList.map((item) =>{
         let title = item.title;
         let poster = image_url+item.poster_path;
         let rating = item.vote_average;
-        console.log(rating);
+        let id = item.id;
+        
         const card = `
+                    <a href="movieDetails.html?id=${id}">
                         <img src="${poster}" alt="">
                         <div class="card-text">
                             <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
@@ -99,6 +78,7 @@ const popularMoviesSection = async () =>{
                                 <img src="../../assets/img/info.png" class="info-icon">
                             </div>
                         </div>
+                    </a>
                     `;
         let div = document.createElement('div');
         div.setAttribute("class","card");
@@ -108,29 +88,18 @@ const popularMoviesSection = async () =>{
 }
 
 const topRatedSection = async () =>{
-    console.log("inside tmdb function");
-    const API_KEY = 'Bearer 8b701ace30227088c2f1ef89b747c764';
-    const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YjcwMWFjZTMwMjI3MDg4YzJmMWVmODliNzQ3Yzc2NCIsInN1YiI6IjY1NzY4MGMzZWM4YTQzMDBhYTZjMmMyNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.167UEzpKnunnh1afpyWcQ0V3hUiVprn3mXD02DDd7cA';
-    // const apiUrl = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1';
+    
     const apiUrl = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=vote_average.desc&without_genres=99,10755&vote_count.gte=200';
-    const options = {
-        method: 'GET',
-        headers: {
-            'Authorization': ACCESS_TOKEN,    
-            'accept': 'application/json'
-        }
-    };
-    try{
-        const response = await fetch(apiUrl,options);
-        const result = await response.json();
-        let image_url = "https://image.tmdb.org/t/p/w185"
+    
+    let image_url = "https://image.tmdb.org/t/p/original"
         
-        let resultList = result.results;
+        let resultList = await apiFetch(apiUrl);
         resultList.map((item) =>{
             let title = item.title;
             let poster = image_url+item.poster_path;
             let rating = item.vote_average;
-            const card = `
+            let id = item.id;
+            const card = `<a href="movieDetails.html?id=${id}">
                             <img src="${poster}" alt="">
                             <div class="card-text">
                                 <label><img src="../../assets/img/star.png">${rating}<img class="starred-icon" src="../../assets/img/starred.png"></label>
@@ -144,48 +113,74 @@ const topRatedSection = async () =>{
                                     <img src="../../assets/img/info.png" class="info-icon">
                                 </div>
                             </div>
+                            </a>
                         `;
             let div = document.createElement('div');
             div.setAttribute("class","card");
             div.innerHTML = card;
             document.getElementById("top-rated").append(div);
         })
-    }catch(error){
-        console.log(error);
-    }
+    
+    
+}
+
+
+const popularTvSection = async () =>{
+    
+    const apiUrl = 'https://api.themoviedb.org/3/tv/popular';
+    
+    let image_url = "https://image.tmdb.org/t/p/original";
+        
+        let resultList = await apiFetch(apiUrl);
+        resultList.map((item) =>{
+            let title = item.original_name;
+            let poster = image_url+item.poster_path;
+            let rating = item.vote_average;
+            let id = item.id;
+            const card = `<a href="tvDetails.html?id=${id}">
+                            <img src="${poster}" alt="">
+                            <div class="card-text">
+                                <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
+                                <h3>${title}</h3>
+                                <button><span>+</span> Watchlist</button>
+                                <div class="card-trailer-container">
+                                    <div class="card-trailer">
+                                        <img src="../../assets/img/play-icon.png">
+                                        <label>Trailer</label>
+                                    </div>
+                                    <img src="../../assets/img/info.png" class="info-icon">
+                                </div>
+                            </div>
+                            </a>
+                        `;
+            let div = document.createElement('div');
+            div.setAttribute("class","card");
+            div.innerHTML = card;
+            document.getElementById("popular-tv").append(div);
+        })
+    
     
 }
 
 const upcomingMoviesSection = async () =>{
    
-    const API_KEY = 'Bearer 8b701ace30227088c2f1ef89b747c764'; 
-    const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YjcwMWFjZTMwMjI3MDg4YzJmMWVmODliNzQ3Yzc2NCIsInN1YiI6IjY1NzY4MGMzZWM4YTQzMDBhYTZjMmMyNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.167UEzpKnunnh1afpyWcQ0V3hUiVprn3mXD02DDd7cA';
     let minDate = "2023-12-20";
     let maxDate = "2024-01-10";
     const apiUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&release_date.gte=${minDate}&release_date.lte=${maxDate}`;
-    const options = {
-        method: 'GET',
-        headers: {
-            'Authorization': ACCESS_TOKEN,    
-            'accept': 'application/json'
-        }
-    };
-    try{
-        const response = await fetch(apiUrl,options);
-        const result = await response.json();
-        let image_url = "https://image.tmdb.org/t/p/w185"
+   
+    let image_url = "https://image.tmdb.org/t/p/original"
         
-        let resultList = result.results;
+    let resultList =  await apiFetch(apiUrl);
         
-        resultList.map((item) =>{
-            let title = item.title;
-            let poster = image_url+item.poster_path;
-            let rating = item.vote_average;
+    resultList.map((item) =>{
+        let title = item.title;
+        let poster = image_url+item.poster_path;
+        let rating = item.vote_average;
             
-            const card = `
-                            <img src="${poster}" alt="">
-                            <div class="card-text">
-                                <label><img src="../../assets/img/star.png">${rating}<img class="starred-icon" src="../../assets/img/starred.png"></label>
+        const card = `
+                        <img src="${poster}" alt="">
+                        <div class="card-text">
+                            <label><img src="../../assets/img/star.png">${rating}<img class="starred-icon" src="../../assets/img/starred.png"></label>
                                 <h3>${title}</h3>
                                 <button>Watch options</button>
                                 <div class="card-trailer-container">
@@ -202,9 +197,7 @@ const upcomingMoviesSection = async () =>{
             div.innerHTML = card;
             document.getElementById("upcoming-movies").append(div);
         })
-    }catch(error){
-        console.log(error);
-    }
+    
     
 }
 
@@ -226,7 +219,7 @@ const trendingCelebSection = async () =>{
     try{
         const response = await fetch(apiUrl,options);
         const result = await response.json();
-        let image_url = "https://image.tmdb.org/t/p/w185"
+        let image_url = "https://image.tmdb.org/t/p/original"
         
         let resultList = result.results;
        
@@ -256,4 +249,18 @@ popularMoviesSection();
 topRatedSection();
 upcomingMoviesSection();
 trendingCelebSection();
+popularTvSection();
+
+async function testData(){
+    const data = await apiFetch();
+    
+    data.map((item)=>{
+        console.log(item);
+    })
+
+    
+}
+
+
+testData();
 
