@@ -32,6 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
         // Additional validation logic can be added here
 
         // If all validations pass, you can submit the form to the server
-        alert('Sign up successful!'); // Replace this with your form submission logic
+        alert('Sign up successful!'); 
     }
 });
