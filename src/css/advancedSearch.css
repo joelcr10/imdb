@@ -2,11 +2,12 @@
 body{
     font-family: 'Roboto', sans-serif;
     margin: 0;
-    background-color: rgb(247, 241, 240);
+    background-color: black;
 }
 
 #mainHeading{
     text-align: center;
+    color: aliceblue;
 }
 
 #searchBoxDiv{
@@ -19,53 +20,78 @@ body{
   height: 30px;
   background-color: aliceblue;
   
+  
+  
+}
+#bigBox {
+  
+  padding: 20px;
 }
 
+.smallBox {
+ position: relative;
+ height: 300px;
+ border: 1px solid yellow;
+ margin: 20px;
+}
 
+.poster {
+  width: 200px; 
+  height: 250px; 
+  margin: 20px;
+  border: 1px solid orange;
+}
 
-#bigBox {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 20px;
-  }
-  
-  .smallBox {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 20px;
-    margin-bottom: 20px;
-    background-color: aliceblue;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .poster {
-    width: 150px;
-    height: 200px;
-    margin-right: 20px;
-  }
-  
-  .title {
-    width: calc(100% - 170px); /* Adjust as needed */
-     margin-left: 300px;
-     margin-top: -50px;
-   
-  }
-  
-  .overview {
-    width: calc(100% - 300px); /* Adjust as needed */
-    margin-left: 300px;
-  }
-  
-  .releaseDate,
-  .popularity,
-  .voteCount {
-    width: calc(100% - 170px); /* Adjust as needed */
-     margin-top: 10px;
-    margin-left: 300px;
-  }
-    
-     
+.title{
+  position: absolute;
+  top: 5%;
+  left: 25%;
+  font-size: 30px;
+}
+.overview{
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  margin-top: 10px;
+}
+.releaseDate{
+  position: absolute;
+  top: 55%;
+  left: 25%;
+}
+.popularity{
+  position: absolute;
+  top: 65%;
+  left: 25%;
+}
+.voteCount{
+  position: absolute;
+  top: 75%;
+  left: 25%;
+}
+
+.text {
+  /* color: rgba(206, 255, 47, 0.634); */
+  color: aliceblue;
+}
+
+.poster img{
+  width: 200px;
+  height: 250px;
+
+}
+#errorBox{
+  color: rgba(255, 0, 0, 0.576);
+  text-align: center;
+}
+#searchFilterDiv{
+  align-items: center;
+  position: absolute;
+  top: 280px;
+  left: 415px;
+  color: aliceblue;
+}
+#searchFilter{
+  height: 34px;
+  border: none;
+}
