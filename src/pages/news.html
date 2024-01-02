@@ -18,7 +18,7 @@
     
     <div class="mainContainer">
 
-        <div class="article">
+        <!-- <div class="article">
             <div class="firstBox" >
                 <div class="firstNews">
                 
@@ -214,7 +214,7 @@
             
         </div>  
 
-       
+        -->
     
     
     
@@ -222,17 +222,23 @@
          <hr> <h2>More To Explore </h2>
        </div>
     </div>
+ 
+    <div id="bigBox">
+ 
+        
 
+    </div>
     
   
     
     
     <div id="footer-container"></div>
     <script type="module">
-         import {expandArticle,glowOptions,stopGlow,openSelectBox} from "../scripts/news.js"
-        
+         import {expandArticle,glowOptions,stopGlow,openSelectBox,getNews} from "../scripts/news.js"
+         getNews();
+         await new Promise(resolve => setTimeout(resolve, 2000));
         let articles = document.getElementsByClassName('article');
-       console.log("vannu");
+       console.log(articles.length);
         
         for(let index =0; index < articles.length; index++){
 

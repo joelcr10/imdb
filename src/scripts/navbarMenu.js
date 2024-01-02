@@ -12,3 +12,4 @@ const closeNavbarMenu = () =>{
     menu.style.display = "none";
 }
 
+
