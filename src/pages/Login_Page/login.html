@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>IMDb Sign in</title>
+</head>
+<body>
+    <div class="container">
+        <form id="loginForm">
+            <h2>Sign in</h2>
+            <label for="username">Email or mobile phone number</label>
+            <input type="text" id="username" name="username" required>
+            <p class="forgot-password"><a href="forgotpassword.html">Forgot your Password?</a></p>
+
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Sign in</button>
+            <div class="breaker">
+                <h5 class="newtoimdb" aria-level="5">New to IMDb?</h5>
+            </div>
+         
+        </form>
+        <a class="signup-button" href="../Sign_Up_Page/signup.html">Create your IMDb account</a>
+
+    </div>
+    <script src="login.js"></script>
+    <script type="module">
+        import { signIn } from "../../scripts/firebase.js";
+        document.getElementById("loginForm").onsubmit = function(){
+            signIn();
+        }
+    </script>
+</body>
+</html>

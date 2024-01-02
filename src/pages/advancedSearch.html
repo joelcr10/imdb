@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/src/css/navbar.css">
+    <link rel="stylesheet" href="/src/css/footer.css">
+    <link rel="stylesheet" href="/src/css/advancedSearch.css">
+    <script type="module">
+         export{}
+    </script>
+</head>
+<body>
+    <div id="navbar-container"></div>
+      
+    <div id="mainHeading">
+        <h1>Advanced Search</h1>
+        <h3>Discover and sort IMDb profiles with our robust name search. <br> Whether you're seeking Female Canadian Oscar winners or any other criteria, we've got you covered. <br>search anything you want it's all here.</h3>
+    </div>   
+    <div id="searchFilterDiv">
+        <select name="filter" id="searchFilter" >
+            <option value="" selected>filter</option>
+            <option value="person">People</option>
+            <option value="movie">Movies</option>
+            <option value="tv">TV shows</option>
+        </select>
+    </div>
+    <div id="searchBoxDiv" >
+        <input type="text" placeholder="search here" id="searchBox">
+        <button id="searchButton">Search</button>
+    </div>
+    <div id="errorBox"></div>
+    <div id="bigBox">
+    
+       
+    </div>
+
+
+    <div id="footer-container"></div>
+    <script src="../scripts/includeNavbar&Footer.js"></script>
+    <script src="../scripts/navbarMenu.js"></script>
+   
+
+
+<script type="module">
+    import { multiSearch } from "../scripts/advancedSearch.js";
+  
+    const searchBox = document.getElementById("searchBox");
+    const searchFilter = document.getElementById("searchFilter");
+    const bigBox = document.getElementById("bigBox");
+  
+    function performSearch() {
+      const searchIt = searchBox.value.trim();
+  
+      // Input validation: Check if the search term is not empty
+      if (searchIt === "") {
+        document.getElementById("bigBox").innerHTML = "";
+        let message = "Please enter a search term."
+        let div = document.createElement("div");
+        div.textContent = message;
+        document.getElementById("errorBox").innerHTML = "";
+        document.getElementById("errorBox").append(div);
+        return;
+
+      }
+  
+      const type = searchFilter.value;
+  
+      // Clear previous results
+      bigBox.innerHTML = "";
+  
+      // Trigger the search
+      multiSearch(searchIt, type);
+    }
+  
+    // Event listener for the "Enter" key
+    searchBox.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        performSearch();
+      }
+    });
+  
+    // Event listener for the "Search" button
+    document.getElementById("searchButton").addEventListener("click", function () {
+      performSearch();
+    });
+  </script>
+   
+</body>
+</html>

@@ -8,11 +8,102 @@
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/topSection.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <body>
     <div id="landing-page">
         <div id="navbar-container"></div>
 
+
+        <div class="home-top-section-container">
+            <div class="top-section-left-container">
+                <div class="swiper mySwiper">
+                    <div class="left-highlight-container swiper-wrapper">
+                        <div class="swiper-slide">
+        
+                            <img class="main-hightlight-image" src="../../assets/img/janhvi-kapoor.webp" alt="">
+        
+                            <img class="main-highlight-thumbnail" src="../../assets/img/buring-questions.jpg" alt="">
+                            <div class="main-highlight-text-container">
+                                <img src="../../assets/img/round-play-icon.png" alt="">
+                                <div class="highlight-text">
+                                    <h1>Who is Jhanvi Kapoor's Biggest Inspiration ?</h1>
+                                    <label for="">Watch the interview to find out</label>
+                                </div>
+                            </div>
+        
+                            <div class="highlight-overlay"></div>
+                        </div>
+    
+                        <div class="swiper-slide">
+                            <img class="main-hightlight-image" src="../../assets/img/sid.jfif" alt="">
+        
+                            <img class="main-highlight-thumbnail" src="../../assets/img/buring-questions.jpg" alt="">
+                            <div class="main-highlight-text-container">
+                                <img src="../../assets/img/round-play-icon.png" alt="">
+                                <div class="highlight-text">
+                                    <h1>Siddhart talks about his 2023 Favourites</h1>
+                                    <label for="">Watch the interview to find out</label>
+                                </div>
+                            </div>
+        
+                            <div class="highlight-overlay"></div>
+    
+                        </div>
+                        
+                        <div class="swiper-slide">
+                            <img class="main-hightlight-image" src="../../assets/img/leo2.jpg" alt="">
+        
+                            <img class="main-highlight-thumbnail" src="../../assets/img/jawan.jpg" alt="">
+                            <div class="main-highlight-text-container">
+                                <img src="../../assets/img/round-play-icon.png" alt="">
+                                <div class="highlight-text">
+                                    <h1>'Jawan,''Leo' Among Top 2023 Indian Theatrical Movies</h1>
+                                    <label for="">Did Your Favourite Make The List</label>
+                                </div>
+                            </div>
+        
+                            <div class="highlight-overlay"></div>
+    
+                        </div>
+    
+                        <div class="swiper-slide">
+                            <img class="main-hightlight-image" src="../../assets/img/farzi.jpg" alt="">
+        
+                            <img class="main-highlight-thumbnail" src="../../assets/img/farzi-poster.jfif" alt="">
+                            <div class="main-highlight-text-container">
+                                <img src="../../assets/img/round-play-icon.png" alt="">
+                                <div class="highlight-text">
+                                    <h1>"Farzi","Khorra" & More Top 2023 Indian Web Series of 2023</h1>
+                                    <label for="">Fans Just Couldn't Stop Talking About Them.</label>
+                                </div>
+                            </div>
+        
+                            <div class="highlight-overlay"></div>
+    
+                        </div>
+                    </div>
+                    <div class="highlight-navigation-button">
+                            <div class="swiper-button-next" onclick="homeNextCard()"></div>
+                            <div class="swiper-button-prev" onclick="homePreviousCard()"></div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="top-section-right-container">
+                    <h1>Up next</h1>
+                    <div class="next-video-container" id="next-video-container">
+                    
+                        
+                    </div>
+                    
+                </div>
+            </div>
+    
+            
+        </div>
     
         
         <div class="popular-movies-container home-section-container">
@@ -23,6 +114,14 @@
             </div>
             <div id="popular-movies" class="card-slider"></div>
         </div>
+
+        <div class="top-rated-container home-section-container">
+            <div class="home-section-headers">
+                <h2><div class="header-left"></div>Popular TV <img src="../../assets/img/right-arrow.png" alt=""></h2>
+            </div>
+            <div id="popular-tv" class="card-slider"></div>
+        </div>
+        
 
         <div class="top-rated-container home-section-container">
                 <div class="home-section-headers">
@@ -146,9 +245,36 @@
         <div id="footer-container"></div>
     </div>
 
-    <script src="../scripts/main.js"></script>
-    <script src="../scripts/includeNavbar&Footer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
+
+
+
+    <script src="../scripts/main.js" type="module"></script>
+    <script src="../scripts/includeNavbar&Footer.js" type="module"></script>
     <script src="../scripts/navbarMenu.js"></script>
-    <script src="../scripts/api.js"></script>
+    <!-- <script src="../scripts/api.js"></script> -->
+    <script src="../scripts/homeVideoHighlights.js"></script>
+    <script src="../scripts/firebase.js" type="module"></script>
+    
+    <!-- Swiper JS -->
+    
+    
 </body>
 </html>

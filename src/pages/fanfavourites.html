@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap CSS CDN -->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/navbar.css">
@@ -19,12 +19,11 @@
         <h1>What To Watch - IMDb</h1>
     </div>
 
-
-    <ul class="what-to-watch-tab" role="tablist">
-        <li class="" role="tab" tabindex="0" aria-selected="true">
+<ul class="what-to-watch-tab" role="tablist">
+        <li class=" active-tab" role="tab" tabindex="0" aria-selected="true">
             <a href="watchguide.html" >WATCH GUIDE</a>
         </li>
-        <li class="active-tab" role="tab" tabindex="0" aria-selected="false">
+        <li class="" role="tab" tabindex="0" aria-selected="false">
             <a href="fanfavourites.html" >FAN FAVOURITES</a>
         </li>
         <li class="" role="tab" tabindex="0" aria-selected="false">
@@ -40,14 +39,13 @@
     </ul>
 
     <div class="maincontainer">
-        <div class="fanfavourites">
-            <h2><div class="header-line"></div>Fan Favourites</h2>
-            <div class="container">
-                <div class="row">
-                    <div id="firstlist"></div>
-                </div>
+        <div class="popular-movies-container home-section-container">
+            <h1 class="home-header">What to watch</h1>
+            <div class="home-section-headers">
+                <h2><div class="header-left"></div>Popular Movies <img src="../../assets/img/right-arrow.png" alt=""></h2>
+                <label for="">This weeks most popular movies</label>
             </div>
-        
+            <div id="popular-movies" class="card-slider"></div>
         </div>
         <div class="buttons">
             <p>Browse these IMDb collections to find the perfect next movie or TV show to watch</p>
@@ -61,12 +59,13 @@
                 <a href="mostpopular.html"><button class="b4">Most Popular</button></a>
                 
             </div>
-            
         </div>
-        
-        <div class="recomendations">
-            <h2><div class="header-line"></div>Recomendations</h2>
-            <div id="cardbody"></div>
+        <div class="popular-movies-container home-section-container">
+            <h1 class="home-header">Recomendations</h1>
+            <div class="home-section-headers">
+                <h2><div class="header-left"></div>Recomendations<img src="../../assets/img/right-arrow.png" alt=""></h2>
+            </div>
+            <div id="popular-movies" class="card-slider"></div>
         </div>
         <div class="recentlyviewed">
             <h2>Recently Viewed</h2>
