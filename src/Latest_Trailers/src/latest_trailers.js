@@ -50,7 +50,7 @@ async function apifetchTrendingTrailers(){
                             
                             <img src="${poster}" alt="">
                             <div class="card-text">
-                                <label><img src="../../assets/img/star.png">${rating}<img class="starred-icon" src="../../assets/img/starred.png"></label>
+                                <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
                                 <h3>${title}</h3>
                                 <button><span>+</span> Watchlist</button>
                             </div>
@@ -102,7 +102,7 @@ async function apifetchMostAnticipated(){
                             
                             <img src="${poster}" alt="">
                             <div class="card-text">
-                                <label><img src="../../assets/img/star.png">${rating}<img class="starred-icon" src="../../assets/img/starred.png"></label>
+                                <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
                                 <h3>${title}</h3>
                                 <button><span>+</span> Watchlist</button>
                             </div>

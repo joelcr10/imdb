@@ -30,6 +30,7 @@
             border-right: none;
             font-weight: bold;
             font-size: small;
+            margin-left: 20px;
             
             
         }
@@ -47,8 +48,8 @@
             margin-left: 130px;
         }
 
-        .tab{
-            margin-left: 130px;
+        .tabs{
+            margin-left: 110px;
         }
 
         .tab-content{

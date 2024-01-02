@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // Additional validation logic can be added here
 
         // If all validations pass, you can submit the form to the server
-        alert('Password reset link sent to ' + email); // Replace this with your password reset logic
+        alert('Password reset link sent to ' + email); 
     }
+
+    
 });

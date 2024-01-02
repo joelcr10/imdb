@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celebrity Page</title>
+    <link rel="stylesheet" href="celebrity_individualpage.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="profile-image">
+                <img src="celebrity_image.jpg" alt="Celebrity Name">
+            </div>
+            <div class="profile-info">
+                <h1>Celebrity Name</h1>
+                <p>Born: January 1, 1980</p>
+            </div>
+        </header>
+
+        <nav class="nav">
+            <ul>
+                <li><a href="#" onclick="switchTab('movies')">Movies/TV Shows</a></li>
+                <li><a href="#" onclick="switchTab('filmography')">Filmography</a></li>
+            </ul>
+        </nav>
+
+        <section class="main-content" id="movies-tab">
+            <!-- Movies/TV Shows Section -->
+            <div class="movies-tv-shows">
+                <h2>Movies/TV Shows</h2>
+                <div class="movies-tv-shows-cards">
+                    <!-- Movie/TV Show Cards will go here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="main-content" id="filmography-tab" style="display: none;">
+            <!-- Filmography Section -->
+            <div class="filmography">
+                <h2>Filmography</h2>
+                <div class="filmography-cards">
+                    <!-- Filmography Cards will go here -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="celebrity_individualpage.js"></script>
+</body>
+</html>
