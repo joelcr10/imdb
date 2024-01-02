@@ -49,7 +49,7 @@ const userOrGuest = async () =>{
       document.getElementById("nav-profile").style.display = "none";   // hide the profile section if the user hasn't logged in
       }
     else{
-      document.getElementById("nav-profile").style.display = "block";
+      document.getElementById("nav-profile").style.display = "flex";
 
       document.getElementById("guest-user").style.display = "none";  
 

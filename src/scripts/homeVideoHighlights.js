@@ -1,7 +1,7 @@
         
     let nextVideoList = [
                 `
-                    <img src="../../assets/img/buring-questions.jpg" alt="">
+                    <img src="../../assets/img/buring-questions.jpg" class="highlight-video-thumbnail" alt="">
                     <div class="video-text">
                         <label><img src="../../assets/img/round-play-icon.png" alt=""> 1:48</label>
                         <h3>Siddhart talks about his 2023 Favourites</h3>
@@ -10,7 +10,7 @@
                 `,
 
                 `
-                    <img src="../../assets/img/jawan.jpg" alt="">
+                    <img src="../../assets/img/jawan-poster.jfif" alt="" class="highlight-video-thumbnail">
                     <div class="video-text">
                         <label><img src="../../assets/img/round-play-icon.png" alt=""> 1:48</label>
                         <h3>'Jawan,''Leo' Among Top 2023 Indian Theatrical Movies</h3>
@@ -19,7 +19,7 @@
                 `,
 
                 `
-                    <img src="../../assets/img/farzi-poster.jfif" alt="">
+                    <img src="../../assets/img/farzi-poster.jfif" alt="" class="highlight-video-thumbnail">
                     <div class="video-text">
                         <label><img src="../../assets/img/round-play-icon.png" alt=""> 1:48</label>
                         <h3>"Farzi","Khorra" & More Top 2023 Indian Series of 2023</h3>
@@ -28,7 +28,7 @@
                 `,
 
                 `
-                    <img src="../../assets/img/buring-questions.jpg" alt="">
+                    <img src="../../assets/img/buring-questions.jpg" alt="" class="highlight-video-thumbnail">
                     <div class="video-text">
                         <label><img src="../../assets/img/round-play-icon.png" alt=""> 1:48</label>
                         <h3>Who is Jhanvi Kapoor's Biggest Inspiration?</h3>
