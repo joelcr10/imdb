@@ -237,13 +237,15 @@ body{
 .home-section-container{
     margin-left: 50px;
     margin-top: 80px;
+    margin-bottom: 50px;
 }
 
 .card-slider{
     display: flex;
     gap: 20px;
-    overflow-x: scroll;
-    scroll-behavior: smooth;
+    flex-wrap: wrap;
+    /* overflow-x: scroll;
+    scroll-behavior: smooth; */
     margin-top: 20px;
 }
 
@@ -381,12 +383,13 @@ body{
     /* background-color: aqua; */
 }
 
-.home-section-headers{
-    /* background-color: aqua; */
+.streamlabel{
+    margin-left: 80px;
 }
+
 .home-section-headers h2{
     /* background-color: blue; */
-    margin: 0;
+    margin-left: 80px;
     padding: 0;
     display: flex;
     align-items: center;
@@ -582,4 +585,80 @@ body{
     justify-content: center ;
     border-radius: 5px;
     padding: 15px 20px;
+}
+
+
+.firstbuttons{
+    margin-left: 50px;
+  }
+  
+  .secondbuttons{
+    margin-left: 50px;
+  }
+  
+  p{
+    margin-left: 50px;
+  }
+  
+  .recentlyviewed{
+    margin-left: 50px;
+  }
+
+
+   /* Style the tabs */
+   .tab {
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: black;
+    display: inline-block;
+    margin-right: 5px;
+    
+    
+}
+
+/* Style the active tab */
+.active {
+    background-color: rgb(29, 29, 29);
+    border-bottom-width: 2px;
+    border-bottom-style:solid;
+    border-bottom-color: yellow;
+
+}
+
+.tab{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-weight: bold;
+    font-size: small;
+    margin-left: 20px;
+    
+    
+}
+
+.tab:hover{
+    background-color: rgb(29, 29, 29);
+}
+
+/* .right-arrow{
+    height: 20px;
+    margin-top: 2px;
+} */
+
+.heading-1{
+    margin-left: 130px;
+}
+
+.tabs{
+    margin-left: 110px;
+}
+
+.tab-content{
+    margin-left: 130px;
+}
+
+
+.home-header{
+    margin-left: 80PX;
 }
