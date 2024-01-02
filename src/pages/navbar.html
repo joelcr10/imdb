@@ -14,18 +14,24 @@
                 <option value="TV Shows">TV</option>
                 <option value="Celecs">Celebrities</option>
             </select>
-            <input type="text" placeholder="Search IMDb">
+            <input type="text" placeholder="Search IMDb" id="imdb-search" oninput="testing()">
             <img src="../../assets/img/search.png" alt="search-icon">
         </div>
         <div class="watchlist-container nav-container">
             <img src="../../assets/img/watchlist.png">
-            <label for="">Watchlist</label>
+            <label for="">Watchlist</label> 
         </div>
         <div class="profile-container nav-container">
-            <img src="../../assets/img/profile.png" class="profile-icon" alt="">
-            <label for="">Joel</label>
-            <img src="../../assets/img/dropdown.png" alt="">
+            <div id="guest-user">
+                <a href="./Login_Page/login.html">Sign In</a>
+            </div>
+            <div id="nav-profile">
+                <img src="../../assets/img/profile.png" class="profile-icon" alt="">
+                <label for="" id="nav-username"></label>
+                <img src="../../assets/img/dropdown.png" alt="">
+            </div>
         </div>
+        <button id="signout-btn">signOut</button>
     </nav>
 
     <div class="nav-sections" id="nav-sections">
@@ -97,4 +103,4 @@
         </div>
     </div>
 
-    <script src="../scripts/navbarMenu.js"></script>
+    <script src="../scripts/navbarMenu.js"></script>    

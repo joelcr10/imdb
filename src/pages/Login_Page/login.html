@@ -25,10 +25,18 @@
                 <hr class="firsthr">
                 <h5 class="newtoimdb" aria-level="5">New to IMDb?</h5><hr class="secondhr">
             </div>
-            <button class="signup-button" onclick="window.location.href='/src/pages/Sign_Up_Page/signup.html'">Create your IMDb account</button>
-
+         
         </form>
+        <a class="signup-button" href="../Sign_Up_Page/signup.html">Create your IMDb account</a>
+
     </div>
     <script src="login.js"></script>
+    <script type="module">
+        import { signIn } from "../../scripts/firebase.js";
+        
+        document.getElementById("loginForm").onsubmit = function(){
+            signIn();
+        }
+    </script>
 </body>
 </html>
