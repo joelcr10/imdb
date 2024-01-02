@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../Latest_Trailers/Latest_trailers.css">
+
+    <title>Watch New Movie & TV Trailers</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="main-container">
+
+    <div id="navbar-container"></div>
+        <h1 class="heading-1">Watch New Movie & TV Trailers</h1>
+        <!-- Tab buttons -->
+        <div class="tabs">
+            <div class="tab" onclick="openTab('tab1')">TRENDING TRAILERS</div>
+            <div class="tab" onclick="openTab('tab2')">MOST ANTICIPATED</div>
+            <div class="tab" onclick="openTab('tab3')">MOST POPULAR</div>
+            <div class="tab" onclick="openTab('tab4')">RECENTLY ADDED</div>
+        </div>
+
+        <!-- Tab content -->
+        <div id="tab1" class="tab-content">
+            <div class="apifetch-container">
+
+                <div id="apifetchTrendingTrailers" class="card-slider">
+
+                </div>
+               
+
+            </div>
+            <div class="recentely-viewed">
+                <h2>Recently Viewed</h2>
+                <label for="">You have no recently viewed pages</label>
+            </div>
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <div class="apifetch-container">
+
+                <div id="apifetchMostAnticipated" class="card-slider"></div>
+                
+
+            </div>
+            <div class="recentely-viewed">
+                <h2>Recently Viewed</h2>
+                <label for="">You have no recently viewed pages</label>
+            </div>
+        </div>
+
+        <div id="tab3" class="tab-content">
+            <div class="apifetch-container">
+
+                <div id="apifetchMostPopular" class="card-slider"></div>
+               
+
+            </div>
+            <div class="recentely-viewed">
+                <h2>Recently Viewed</h2>
+                <label for="">You have no recently viewed pages</label>
+            </div>
+        </div>
+
+        <div id="tab4" class="tab-content">
+            <div class="apifetch-container">
+
+                <div id="recently-added" class="card-slider"></div>
+                
+            </div>
+            <div class="recentely-viewed">
+                <h2>Recently Viewed</h2>
+                <label for="">You have no recently viewed pages</label>
+            </div>
+        </div>
+    </div>
+    <script src="../Latest_Trailers/src/latest_trailers.js"></script>
+    <script src="../scripts/includeNavbar&Footer.js"></script>
+
+    <div id="footer-container"></div>
+
+</body>
+</html>
