@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMDb: Ratings, Reviews and Where to watch the best movies & Tv shows</title>
+    <link rel="icon" href="../../assets/img/imdb-logo.png">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="./topSection.css">
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+</head>
+<body>
+    <div id="landing-page">
+        <div id="navbar-container"></div>
+
+
+        <div class="home-top-section-container">
+            <div class="top-section-left-container">
+                <div class="swiper mySwiper">
+                    <div class="left-highlight-container swiper-wrapper">
+                        <div class="swiper-slide">
+        
+                            <img class="main-hightlight-image" src="../../assets/img/janhvi-kapoor.webp" alt="">
+        
+                            <img class="main-highlight-thumbnail" src="../../assets/img/buring-questions.jpg" alt="">
+                            <div class="main-highlight-text-container">
+                                <img src="../../assets/img/round-play-icon.png" alt="">
+                                <div class="highlight-text">
+                                    <h1>Who is Jhanvi Kapoor's Biggest Inspiration ?</h1>
+                                    <label for="">Watch the interview to find out</label>
+                                </div>
+                            </div>
+        
+                            <div class="highlight-overlay"></div>
+                        </div>
+    
+                        <div class="swiper-slide">
+                            <img class="main-hightlight-image" src="../../assets/img/sid.jfif" alt="">
+        
+                            <img class="main-highlight-thumbnail" src="../../assets/img/buring-questions.jpg" alt="">
+                            <div class="main-highlight-text-container">
+                                <img src="../../assets/img/round-play-icon.png" alt="">
+                                <div class="highlight-text">
+                                    <h1>Siddhart talks about his 2023 Favourites</h1>
+                                    <label for="">Watch the interview to find out</label>
+                                </div>
+                            </div>
+        
+                            <div class="highlight-overlay"></div>
+    
+                        </div>
+                        
+                        <div class="swiper-slide">
+                            <img class="main-hightlight-image" src="../../assets/img/jaw.avif" alt="">
+        
+                            <img class="main-highlight-thumbnail" src="../../assets/img/jawan-poster.jfif" alt="">
+                            <div class="main-highlight-text-container">
+                                <img src="../../assets/img/round-play-icon.png" alt="">
+                                <div class="highlight-text">
+                                    <h1>'Jawan,''Leo' Among Top 2023 Indian Theatrical Movies</h1>
+                                    <label for="">Did Your Favourite Make The List</label>
+                                </div>
+                            </div>
+        
+                            <div class="highlight-overlay"></div>
+    
+                        </div>
+    
+                        <div class="swiper-slide">
+                            <img class="main-hightlight-image" src="../../assets/img/farzi.jpg" alt="">
+        
+                            <img class="main-highlight-thumbnail" src="../../assets/img/farzi-poster.jfif" alt="">
+                            <div class="main-highlight-text-container">
+                                <img src="../../assets/img/round-play-icon.png" alt="">
+                                <div class="highlight-text">
+                                    <h1>"Farzi","Khorra" & More Top 2023 Indian Web Series of 2023</h1>
+                                    <label for="">Fans Just Couldn't Stop Talking About Them.</label>
+                                </div>
+                            </div>
+        
+                            <div class="highlight-overlay"></div>
+    
+                        </div>
+                    </div>
+                    <div class="highlight-navigation-button">
+                            <div class="swiper-button-next" onclick="homeNextCard()"></div>
+                            <div class="swiper-button-prev" onclick="homePreviousCard()"></div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="top-section-right-container">
+                    <h1>Up next</h1>
+                    <div class="next-video-container" id="next-video-container">
+                    
+                        
+                    </div>
+                    
+                </div>
+            </div>
+    
+            
+        </div>
+    
+        
+        <div class="popular-movies-container home-section-container">
+            <h1 class="home-header">What to watch</h1>
+            <div class="home-section-headers">
+                <h2><div class="header-left"></div>Popular Movies <img src="../../assets/img/right-arrow.png" alt=""></h2>
+                <label for="">This weeks most popular movies</label>
+            </div>
+            <div id="popular-movies" class="card-slider"></div>
+        </div>
+
+        <div class="top-rated-container home-section-container">
+            <div class="home-section-headers">
+                <h2><div class="header-left"></div>Popular TV <img src="../../assets/img/right-arrow.png" alt=""></h2>
+            </div>
+            <div id="popular-tv" class="card-slider"></div>
+        </div>
+        
+
+        <div class="top-rated-container home-section-container">
+                <div class="home-section-headers">
+                    <h2><div class="header-left"></div>Top Rated <img src="../../assets/img/right-arrow.png" alt=""></h2>
+                </div>
+                <div id="top-rated" class="card-slider"></div>
+        </div>
+
+        <div class="watchlist-container home-section-container">
+            <div class="home-section-headers">
+                <h2><div class="header-left"></div>From your watchlist <img src="../../assets/img/right-arrow.png" alt=""></h2>
+                <div class="watchlist-home">
+                    <img src="../../assets/img/bookmark.png" alt="">
+                    <p>Your watchlist is empty</p>
+                    <label>Save shows and movies to keep track of what you want to watch</label>
+                    <button>Browse popular movies</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="upcoming-movies-container home-section-container">
+            <div class="home-section-headers">
+                <h2><div class="header-left"></div>Upcoming Movies <img src="../../assets/img/right-arrow.png" alt=""></h2>
+            </div>
+            <div id="upcoming-movies" class="card-slider"></div>
+        </div>
+
+
+        <div class="trending-celeb-container home-section-container">
+            <div class="home-section-headers">
+                <h2><div class="header-left"></div>Trending Celebrities <img src="../../assets/img/right-arrow.png" alt=""></h2>
+            <!-- <label>People Born on December 18</label> -->
+            </div>
+
+            <div id="trending-celeb" class="card-slider"></div>
+        </div>
+
+
+        <div class="What-to-watch-contianer home-section-container">
+            <h1 class="home-header">What to watch</h1>
+            <div class="home-section-headers">
+                <h2><div class="header-left"></div>More to watch</h2>
+                <label>IMDb helps you select the perfect next show or movie to watch.</label>
+            </div>
+
+            <div class="watch-container">
+                <a href=""><button>Watch Guide</button></a>
+                <a href=""><button>Most Popular</button></a>
+            </div>
+        </div>
+
+        <div class="What-to-watch-contianer home-section-container">
+            <h1 class="home-header">Explore Movies & TV shows</h1>
+            <div class="home-section-headers">
+                <h2><div class="header-left"></div>Top box office(US)<img src="../../assets/img/right-arrow.png" alt=""></h2>
+                <label>Weekend of December 15-17.</label>
+            </div>
+            <div class="box-office-container">
+                <div class="box-office-left-container">
+                    <div class="box-office">
+                        <label for="">1</label>
+                        <div class="box-office-line"></div>
+                        <img src="../../assets/img/bookmark.png" alt="">
+                        <div class="box-office-text">
+                            <h3>Wonka</h3>
+                            <label for="">$39M</label>
+                        </div>
+                    </div>
+                    <div class="box-office box-office-gradient">
+                        <label for="">2</label>
+                        <div class="box-office-line"></div>
+                        <img src="../../assets/img/bookmark.png" alt="">
+                        <div class="box-office-text">
+                            <h3>The Hunger Games: The Ballards of Songbirds & Snakes</h3>
+                            <label for="">$5.8M</label>
+                        </div>
+                    </div>
+                    <div class="box-office">
+                        <label for="">3</label>
+                        <div class="box-office-line"></div>
+                        <img src="../../assets/img/bookmark.png" alt="">
+                        <div class="box-office-text">
+                            <h3>The Boy and the Heron</h3>
+                            <label for="">$5.5M</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-office-right-container">
+                    <div class="box-office box-office-gradient">
+                        <label for="">4</label>
+                        <div class="box-office-line"></div>
+                        <img src="../../assets/img/bookmark.png" alt="">
+                        <div class="box-office-text">
+                            <h3>Godzilla Minus One</h3>
+                            <label for="">$39M</label>
+                        </div>
+                    </div>
+                    <div class="box-office">
+                        <label for="">5</label>
+                        <div class="box-office-line"></div>
+                        <img src="../../assets/img/bookmark.png" alt="">
+                        <div class="box-office-text">
+                            <h3>Trolls band together</h3>
+                            <label for="">$3.9M</label>
+                        </div>
+                    </div>
+                    <div class="box-office box-office-gradient">
+                        <label for="">6</label>
+                        <div class="box-office-line"></div>
+                        <img src="../../assets/img/bookmark.png" alt="">
+                        <div class="box-office-text">
+                            <h3>Wish</h3>
+                            <label for="">$3.2M</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="footer-container"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
+
+
+    
+
+    <script src="./main.js" type="module"></script>
+    <script src="../scripts/includeNavbar&Footer.js" type="module"></script>
+    <script src="../scripts/navbarMenu.js"></script>
+    <script src="./homeVideoHighlights.js"></script>
+    <script src="../scripts/firebase.js" type="module"></script>
+    
+    
+    
+</body>
+</html>

@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+body{
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: black;
+}
+
+#mainHeading{
+    text-align: center;
+    color: aliceblue;
+}
+
+#searchBoxDiv{
+    text-align: center;
+}
+
+#searchBox{
+  width: 200px;
+  margin: 50px;
+  height: 30px;
+  background-color: aliceblue;
+  
+  
+  
+}
+#bigBox {
+  
+  padding: 20px;
+}
+
+.smallBox {
+ position: relative;
+ height: 300px;
+ border: 1px solid yellow;
+ margin: 20px;
+}
+
+.poster {
+  width: 200px; 
+  height: 250px; 
+  margin: 20px;
+  border: 1px solid orange;
+}
+
+.title{
+  position: absolute;
+  top: 5%;
+  left: 25%;
+  font-size: 30px;
+}
+.overview{
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  margin-top: 10px;
+}
+.releaseDate{
+  position: absolute;
+  top: 55%;
+  left: 25%;
+}
+.popularity{
+  position: absolute;
+  top: 65%;
+  left: 25%;
+}
+.voteCount{
+  position: absolute;
+  top: 75%;
+  left: 25%;
+}
+
+.text {
+  /* color: rgba(206, 255, 47, 0.634); */
+  color: aliceblue;
+}
+
+.poster img{
+  width: 200px;
+  height: 250px;
+
+}
+#errorBox{
+  color: rgba(255, 0, 0, 0.576);
+  text-align: center;
+}
+#searchFilterDiv{
+  align-items: center;
+  position: absolute;
+  top: 280px;
+  left: 415px;
+  color: aliceblue;
+}
+#searchFilter{
+  height: 34px;
+  border: none;
+}

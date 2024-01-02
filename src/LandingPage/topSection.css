@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+
+
+
+.home-top-section-container{
+    display: flex;
+    background-color: rgb(14, 192, 236);
+    /* height: 00px; */
+    width: 90%;
+    margin: auto;
+    height: 520px;
+    margin-top: 40px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.top-section-left-container{
+    flex: 2;
+    max-width: 830px;
+    background-color: blue;
+    /* height: 550px; */
+}
+
+
+
+.left-highlight-container{
+    /* background-color: blue; */
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.left-highlight-container .main-hightlight-image{
+    /* position: absolute; */
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+}
+
+.main-highlight-thumbnail{
+    position: absolute;
+    z-index: 3;
+    max-height: 240px;
+    max-width:160px;
+    min-height: 240px;
+    bottom: 0;
+    left: 20px;
+
+}
+
+.highlight-overlay{
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    z-index: 2;
+    /* background-color: black; */
+    bottom: 0;
+    background-image: linear-gradient(to top, rgb(0, 0, 0),rgba(0, 0, 0, 0.900),rgba(0, 0, 0, 0));
+}
+
+.main-highlight-text-container{
+    position: absolute;
+    display: flex;
+    /* background-color: rgba(34, 34, 161, 0.884); */
+    bottom: 0;
+    right: 6%;
+    width: 70%;
+    height: 100px;
+    z-index: 3;
+    text-align: left;
+
+}   
+
+.main-highlight-text-container img{
+    width: 70px;
+    height: 70px;
+
+}
+
+.main-highlight-text-container h1{
+    font-weight: 400;
+   font-size: 30px;
+    margin: 0;
+    line-height: 35px;
+    color: white;
+    
+}
+
+.highlight-text{
+    margin-left: 20px;
+
+}
+
+.highlight-text label{
+    font-size: 20px;
+    color: grey;
+}
+
+.top-section-right-container{
+    flex: 1;
+    background-color: black ;
+    padding-left: 10px;
+}
+
+.top-section-right-container h1{
+    color: rgb(192, 160, 16);
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.top-section-video{
+    display: flex;
+    margin-top: 15px;
+}
+
+/* .top-section-video img{
+    height: 130px;
+    width: 100px;
+} */
+
+.highlight-video-thumbnail{
+    min-height: 130px;
+    min-width: 100px;
+    max-width: 100px;
+    max-height: 130px;
+    background-color: aqua;
+}
+
+
+.next-video-container{
+    /* padding: 20px; */
+    width: 370px;
+    padding-left: 15px;
+    padding-top: 1px;
+    background-image: linear-gradient(to bottom,rgba(41, 41, 41, 0.434),rgba(0, 128, 0, 0));
+}
+
+.video-text{
+    padding: 0px 14px;
+    padding-right: 15px;
+    /* background-color: blue; */
+
+}
+
+.video-text h3{
+    margin: 0;
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: 400;
+    line-height: 18px;
+    font-size: 16px;
+    
+}
+
+.top-section-video .video-text label{
+    display: flex;
+    align-items: center;
+    color: grey;
+    font-size: 14px;
+}
+
+.top-section-video .video-text img{
+    height: 40px;
+    /* max-width: 10px; */
+    width: 40px;
+    margin-right: 10px;
+}
+
+
+.top-section-browse-trailer{
+    
+}
+
+
+.swiper {
+    width: 100%;
+    height: 100%;
+    /* width: 200px; */
+    /* flex-shrink: 100 !important; */
+    /* flex: 1; */
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    width: fit-content;
+  }
+
+  .swiper-slide img {
+    /* display: block;
+    width: 100%;
+    height: 100%; */
+    /* object-fit: cover; */
+  }
+
+  .swiper {
+    margin-left: auto;
+    margin-right: auto;
+    flex: 2;
+  }
+  .mySwiper{
+      /* width: 100px !important; */
+  }
+
+  .highlight-navigation-button{
+      position: absolute;
+      top: 35%;
+      width: 102%;
+      left: -8px;
+      background-color: blue;
+  }
+
+  .highlight-navigation-button div{
+      /* background-color: rgba(255, 0, 0, 0.363); */
+      padding: 10px;
+      color: white;
+      border: 1px solid white;
+      border-radius: 5px;
+      font-weight: 900;
+      
+  }
+
+  .highlight-navigation-button div:hover{
+    color: rgb(252, 227, 5);
+  }
