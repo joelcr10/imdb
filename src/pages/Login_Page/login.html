@@ -12,15 +12,18 @@
             <h2>Sign in</h2>
             <label for="username">Email or mobile phone number</label>
             <input type="text" id="username" name="username" required>
-            <p class="forgot-password"><a href="forgotpassword.html">Forgot your Password?</a></p>
+            
 
             
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-
+            <div class="password-div">
+                <p ><a href="forgotpassword.html">Forgot your Password?</a></p>
+                <input type="password" id="password" name="password" required>
+            </div>
             <button type="submit">Sign in</button>
-            <div class="breaker">
-                <h5 class="newtoimdb" aria-level="5">New to IMDb?</h5>
+            <div class="breaker"> 
+                <hr class="firsthr">
+                <h5 class="newtoimdb" aria-level="5">New to IMDb?</h5><hr class="secondhr">
             </div>
          
         </form>
@@ -30,6 +33,7 @@
     <script src="login.js"></script>
     <script type="module">
         import { signIn } from "../../scripts/firebase.js";
+        
         document.getElementById("loginForm").onsubmit = function(){
             signIn();
         }
