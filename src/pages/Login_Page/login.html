@@ -12,18 +12,20 @@
             <h2>Sign in</h2>
             <label for="username">Email or mobile phone number</label>
             <input type="text" id="username" name="username" required>
-            <p class="forgot-password"><a href="forgotpassword.html">Forgot your Password?</a></p>
+            
 
             
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-
+            <div class="password-div">
+                <p ><a href="forgotpassword.html">Forgot your Password?</a></p>
+                <input type="password" id="password" name="password" required>
+            </div>
             <button type="submit">Sign in</button>
             <div class="breaker"> 
                 <hr class="firsthr">
                 <h5 class="newtoimdb" aria-level="5">New to IMDb?</h5><hr class="secondhr">
             </div>
-            <button class="signup-button" onclick="window.location.href='../Sign_Up_Page./signup.html'">Create your IMDb account</button>
+            <button class="signup-button" onclick="window.location.href='/src/pages/Sign_Up_Page/signup.html'">Create your IMDb account</button>
 
         </form>
     </div>

@@ -115,18 +115,31 @@ h2{
 
 .firsthr{
     position: absolute;
-    top: 300px;
+    top: 280px;
     left: 7%;
     height: 1px;
     width: 100px;
-    background-color: gray;
+    background-color: rgb(234, 234, 234);
 }
 
 .secondhr{
     position: absolute;
-    top: 300px;
+    top: 280px;
     left: 64%;
     height: 1px;
     width: 100px;
-    background-color: gray;
+    background-color: rgb(234, 234, 234);
+}
+
+.password-div{
+    position: relative;
+}
+
+.password-div a{
+    top: -20px;
+    position: absolute;
+}
+
+#password{
+    width: 280px;
 }
