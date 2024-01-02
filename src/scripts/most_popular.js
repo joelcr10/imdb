@@ -1,25 +1,9 @@
 
-const backToTopButton = document.getElementById("back-to-top-btn");
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 
-window.onscroll = function () {
-    scrollFunction();
-};
 
-const scrollFunction = () => {
-    if (document.documentElement.scrollTop > 600) {
-        backToTopButton.style.display = "block";
-    } else {
-        backToTopButton.style.display = "none";
-    }
-}
-
-
-const scrollToTop = () => {
-    document.documentElement.scrollTop = 0;
-}
 
 
 
@@ -218,7 +202,7 @@ const mostPopularMovies = async () => {
                         <a class="dynamicRating "><i id="ratingStar" class="bi bi-star-fill"></i>${movie.rating} </a>         
                             
                         <div class="info">
-                          <i class="bi bi-info-circle"></i>
+                          <i class="bi bi-info-circle" onclick="showMovieDetails('${movie.title}', '${movie.releaseDate}', '${movie.genre.join(', ')}')"></i>
                         </div>
                         <hr class="horizontal">
                     `;
@@ -242,24 +226,31 @@ mostPopularMovies();
 
 
 
-
-const togglePopup = () => {
+const showMovieDetails = (title, releaseDate, genre) => {
     const popupBox = document.getElementById('popupBox');
+    popupBox.innerHTML = `
+        <p>Title: ${title}</p>
+        <p>Release Date: ${releaseDate}</p>
+        <p>Genre: ${genre}</p>
+        <!-- Add more details as needed -->
+    `;
     popupBox.style.display = "block";
-}
+};
 
-const copyLink = () => {
-    const pageUrl = window.location.href;
-    navigator.clipboard.writeText(pageUrl)
-}
+
+
+const toggleePopup = () => {
+    const popupBox = document.getElementById('popupBox');
+    popupBox.style.display = popupBox.style.display === "block" ? "none" : "block";
+};
 
 // Close the popup if the user clicks outside of it
 window.onclick = function (event) {
-    console.log(event.target);
-    if (!event.target.matches('#shareButton')) {
+    console.log(event);
+    if (!event.target.matches('#info') && !event.target.matches('.info')) {
         const popupBox = document.getElementById('popupBox');
         if (popupBox.style.display === 'block') {
             popupBox.style.display = 'none';
         }
     }
-}
+};
