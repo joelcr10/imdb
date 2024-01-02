@@ -1,0 +1,127 @@
+
+.sub-conatiner{
+    display: flex;
+}
+.movie-per-date{
+    flex: 2;
+}
+.sideSection {
+    flex: 1;
+    padding: 4%;
+   
+    
+}
+.sideSection h2{
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    padding-bottom: 3%;
+}
+
+.sideSection h4{
+    padding-bottom: 7%;
+}
+.most-popular h1{
+    display: flex;
+    align-items: center;
+    font-size: 2.4rem;
+    font-weight: 500;
+    
+
+}
+.most-popular h2{
+    font-size: 1.5rem;
+    
+}
+.most-popular p{
+    padding-bottom: 5%;
+    color: gray;
+}
+
+.header-left{
+    height: 40px;
+    width: 5px;
+    background-color: var(--theme);
+    border-radius: 10px;
+    margin-right: 10px;
+}
+.explore-links a {
+    /* Your styles for links within h4 */
+    display: flex;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    display: block;
+    font-size: 1.3rem;
+
+    margin-bottom: 5px;
+    font-weight: 700;
+ 
+   
+    /* Add any additional styles you want for the links */
+}
+
+.explore-links i{
+
+    font-size: 1.5rem;
+}
+
+
+
+.explore-links p{
+ padding-bottom: 3%;
+}
+
+.explore-links a i {
+    margin-left: auto; /* Move the icon to the right */
+    transition: color .2s ease; /* Smooth transition for color change */
+}
+
+
+
+
+
+.explore-links a:hover i {
+    color: gold; /* Change icon color on hover */
+}
+
+.heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+.share-container {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+#shareButton  {
+    cursor: pointer;
+    position: relative;
+    
+}
+
+
+#shareButton:hover {
+   color:goldenrod;
+ 
+}
+
+.popup-box {
+    display: none;
+    position: absolute;
+    background-color: #0c0c0c;
+    border-radius: 6px;
+    padding: 10px;
+  
+}
+
+.popup-box a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    display: block;
+    padding: 5px;
+    font-size: .8rem;
+}
