@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/navbar.css">
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../Latest_Trailers/Latest_trailers.css">
+    <link rel="stylesheet" href="../LandingPage/index.css">
+    <link rel="stylesheet" href="./Latest_trailers.css">
 
     <title>Watch New Movie & TV Trailers</title>
     <style>
@@ -19,10 +19,12 @@
     <div id="navbar-container"></div>
         <h1 class="heading-1">Watch New Movie & TV Trailers</h1>
         <!-- Tab buttons -->
-        <div class="tab" onclick="openTab('tab1')">TRENDING TRAILERS</div>
-        <div class="tab" onclick="openTab('tab2')">MOST ANTICIPATED</div>
-        <div class="tab" onclick="openTab('tab3')">MOST POPULAR</div>
-        <div class="tab" onclick="openTab('tab4')">RECENTLY ADDED</div>
+        <div class="tabs">
+            <div class="tab" onclick="openTab('tab1')">TRENDING TRAILERS</div>
+            <div class="tab" onclick="openTab('tab2')">MOST ANTICIPATED</div>
+            <div class="tab" onclick="openTab('tab3')">MOST POPULAR</div>
+            <div class="tab" onclick="openTab('tab4')">RECENTLY ADDED</div>
+        </div>
 
         <!-- Tab content -->
         <div id="tab1" class="tab-content">
@@ -78,10 +80,14 @@
             </div>
         </div>
     </div>
-    <script src="../Latest_Trailers/src/latest_trailers.js"></script>
-    <script src="../scripts/includeNavbar&Footer.js"></script>
+   
+
 
     <div id="footer-container"></div>
 
+
+    <script src="latest_trailers.js"></script>
+    <script src="../scripts/includeNavbar&Footer.js" type="module"></script>
+    <script src="../scripts/navbarMenu.js"></script>
 </body>
 </html>
