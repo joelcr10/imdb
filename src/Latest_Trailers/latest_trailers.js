@@ -1,3 +1,7 @@
+window.onload = function() {
+    openTab('tab1');
+};
+
 function openTab(tabName) {
     // Hide all tab content
     var tabContent = document.getElementsByClassName('tab-content');
@@ -48,11 +52,17 @@ async function apifetchTrendingTrailers(){
             // console.log(title,rating);
             const card = `
                             
-                            <img src="${poster}" alt="">
-                            <div class="card-text">
-                                <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
-                                <h3>${title}</h3>
-                                <button><span>+</span> Watchlist</button>
+                           <div class="image-container">
+                                <label>
+                                    <img class="poster" src="${poster}" alt="">
+                                    <i id="playbutton" class="bi bi-play-circle" style="font-size: 3em;"></i>
+                                </label>
+                                                   
+                                <div class="card-text">
+                                    <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
+                                    <h3>${title}</h3>
+                                    <button><span>+</span> Watchlist</button>
+                                </div>
                             </div>
                        `;
             let divs = document.createElement('div');
@@ -99,24 +109,23 @@ async function apifetchMostAnticipated(){
             const poster = image_url+item.poster_path;
             // console.log(title,rating);
             const card = `
-                            
-                            <img src="${poster}" alt="">
-                            <div class="card-text">
-                                <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
-                                <h3>${title}</h3>
-                                <button><span>+</span> Watchlist</button>
+                            <div class="image-container">
+                                <label>
+                                    <img class="poster" src="${poster}" alt="">
+                                    <i id="playbutton" class="bi bi-play-circle" style="font-size: 3em;"></i>
+                                </label>                            
+                                <div class="card-text">
+                                    <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
+                                    <h3>${title}</h3>
+                                    <button><span>+</span> Watchlist</button>
+                                </div>
                             </div>
-                       `;
+                        `;
             let divs = document.createElement('div');
             divs.setAttribute("class","card");
             divs.innerHTML = card;
             
             document.getElementById("apifetchMostAnticipated").append(divs);
-            
-
-
-            
-
             
         })
     }catch(error){
@@ -151,25 +160,25 @@ async function apifetchMostPopular(){
             const poster = image_url+item.poster_path;
             // console.log(title,rating); 
             const card = `
-                            
-                            <img src="${poster}" alt="">
-                            <div class="card-text">
-                                <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
-                                <h3>${title}</h3>
-                                <button><span>+</span> Watchlist</button>
+                            <div class="image-container">
+                                <label>
+                                    <img class="poster" src="${poster}" alt="">
+                                    <i id="playbutton" class="bi bi-play-circle" style="font-size: 3em;"></i>
+                                </label>  
+                                <div class="card-text">
+                                    <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
+                                    <h3>${title}</h3>
+                                    <button><span>+</span> Watchlist</button>
+                                </div>
                             </div>
-                       `;
+                         `;
             let divs = document.createElement('div');
             divs.setAttribute("class","card");
             divs.innerHTML = card;
             
             
             document.getElementById("apifetchMostPopular").append(divs);
-           
-
-
-            
-            
+               
         })
     }catch(error){
         console.log(error);
@@ -204,13 +213,18 @@ async function apifetchMostPopular(){
             const poster = image_url + item.poster_path;
             console.log("recently",title, rating);
             const card = `
-                            <img src="${poster}" alt="">
-                            <div class="card-text">
-                                <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
-                                <h3>${title}</h3>
-                                <button><span>+</span> Watchlist</button>
+                            <div class="image-container">
+                                <label>
+                                    <img class="poster" src="${poster}" alt="">
+                                    <i id="playbutton" class="bi bi-play-circle" style="font-size: 3em;"></i>
+                                </label>
+                                <div class="card-text">
+                                    <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
+                                    <h3>${title}</h3>
+                                    <button><span>+</span> Watchlist</button>
+                                </div>
                             </div>
-                       `;
+                        `;
             let divs = document.createElement('div');
             divs.setAttribute("class", "card");
             divs.innerHTML = card;
