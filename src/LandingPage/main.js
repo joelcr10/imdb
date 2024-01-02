@@ -194,6 +194,44 @@ const trendingCelebSection = async () =>{
     
 }
 
+const topBoxOfice = async () =>{
+    // const apiUrl = `https://api.themoviedb.org/3/movie/popular`;
+    const min_date = "2023-12-20";
+    const max_date = "2024-01-03";
+    const apiUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&release_date.gte=${min_date}&release_date.lte=${max_date}`;
+    
+    const result = await apiFetch(apiUrl);
+    const resultList = result.results;
+    
+    for(let i=0;i<6;i++){
+        const title = resultList[i].title;
+        const boxOfficeMovieId =  "bo-movie-"+(i+1);
+        const boxOfficeCollectionId = "bo-collection-"+(i+1);
+        const movieId = resultList[i].id;
+        document.getElementById(boxOfficeMovieId).innerText = title;
+
+        const boxOfficeApi = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
+        const res = await apiFetch(boxOfficeApi);
+        console.log(res);
+        let revenue = res.revenue;
+        if(revenue==0){
+            revenue = 10000000;
+        }
+        document.getElementById(boxOfficeCollectionId).innerText = "$"+revenue/1000000+"M";
+        
+    }
+}
+
+const checkWatchList = () =>{
+    if(localStorage.getItem("userId")==null){
+        document.getElementById("display-watchlist").style.display = "none";
+        document.getElementById("watchlist-home").style.display = "flex";
+    }else{
+        document.getElementById("display-watchlist").style.display = "block";
+        document.getElementById("watchlist-home").style.display = "none";
+    }
+}
+
 
 
 popularMoviesSection();
@@ -201,6 +239,8 @@ topRatedSection();
 upcomingMoviesSection();
 trendingCelebSection();
 popularTvSection();
+topBoxOfice();
+checkWatchList();
 
 
 

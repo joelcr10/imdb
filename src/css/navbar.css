@@ -82,7 +82,7 @@
 }
 
 #nav-profile{
-   
+   position: relative;
     width: 6.5rem;
     max-width: 7rem;
     height: 90%;
@@ -104,6 +104,32 @@
 
 .menu-container label,.watchlist-container label{
     margin-left: 10px;
+}
+
+#nav-profile-options{
+    background-color: blue;
+    position: absolute;
+    top: 52px;
+    width: 180px;
+    right: -10px;
+    display: none;
+}
+
+#nav-profile-options ul{
+    padding: 0;
+    margin: 0;
+}
+
+#nav-profile-options li{
+    list-style-type: none;
+    /* text-align: left; */
+    padding: 12px 20px;
+    height: 30px;
+    background-color: rgb(32, 32, 32);
+}
+
+#nav-profile-options li:hover{
+    background-color: rgb(51, 51, 51);
 }
 
 
@@ -243,3 +269,6 @@
         display: none;
     }
 }
+
+
+
