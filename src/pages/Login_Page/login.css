@@ -15,6 +15,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px; /* Set a fixed width for the container */
+    position: relative;
 }
 
 form {
@@ -102,7 +103,9 @@ h2{
     font-weight: 400;
     display: inline-block;
     font-size: 12px;
+    
 }
+
 
 .breaker{
     margin: 0px 0px 0px;
@@ -110,3 +113,33 @@ h2{
     text-align: center;
 }
 
+.firsthr{
+    position: absolute;
+    top: 280px;
+    left: 7%;
+    height: 1px;
+    width: 100px;
+    background-color: rgb(234, 234, 234);
+}
+
+.secondhr{
+    position: absolute;
+    top: 280px;
+    left: 64%;
+    height: 1px;
+    width: 100px;
+    background-color: rgb(234, 234, 234);
+}
+
+.password-div{
+    position: relative;
+}
+
+.password-div a{
+    top: -20px;
+    position: absolute;
+}
+
+#password{
+    width: 280px;
+}
