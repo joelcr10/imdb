@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/movieDetails.css">
+    <link rel="stylesheet" href="./tvDetails.css">
 
 
 </head>
@@ -18,7 +18,7 @@
         <div class="title-line">
             <div class="title-container">
                 <h1 id="movie-title"></h1>
-                <label><span id="release-year"></span>&nbsp;<div class="dot"></div>&nbsp; PG-13&nbsp;<div class="dot"></div>&nbsp;<span id="movie-duration"></span></label>
+                <label><span id="release-year"></span>&nbsp;<div class="dot"></div>&nbsp; PG-13&nbsp;<div class="dot"></div>&nbsp;<span id="tv-season"></span></label>
             </div>
             <div class="rating-container">
                 <div class="imdb-rating">
@@ -75,7 +75,7 @@
                 </div>
                 <div class="info-line">
                     <b>Writers</b>
-                    <span id="writers-name">David Leslie Johnson-McGoldrick</span>
+                    <span id="writers-name"></span>
                     <!-- <span>James Wan</span> -->
                 </div>
                 <div class="info-line">
@@ -190,14 +190,14 @@
                     </div>
                     <div class="info-line">
                         <b>Official Site</b>
-                        <span><a href="" id="official-movie-site"></a></span>
+                        <span><a href="" id="official-movie-site" style="text-decoration: none;">Official Site</a></span>
                     </div>
                     <div class="info-line">
                         <b>Language</b>
                         <span id="movie-language"></span>
                     </div>
                     <div class="info-line">
-                        <b>Box Office</b>
+                        <b>Number of Episodes</b>
                         <span id="movie-budget"></span>
                     </div>
                 </div>
@@ -220,8 +220,8 @@
 
 
     <div id="footer-container"></div>
-    <script src="../scripts/includeNavbar&Footer.js"></script>
+    <script src="../scripts/includeNavbar&Footer.js" type="module"></script>
     <script src="../scripts/navbarMenu.js"></script>
-    <script src="../scripts/movieDetails.js" type="module"></script>
+    <script src="./tvDetails.js" type="module"></script>
 </body>
 </html>

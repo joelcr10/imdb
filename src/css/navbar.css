@@ -82,14 +82,14 @@
 }
 
 #nav-profile{
-    display: flex;
-    flex-direction: row;
-    /* width: 6rem; */
-    background-color: blue;
+   
+    width: 6.5rem;
+    max-width: 7rem;
     height: 90%;
     align-items: center;
-    /* justify-content: space-around; */
-    display: none;
+    justify-content: space-around;
+    display: flex;
+    
 }
 
 .profile-container #guest-user a{
