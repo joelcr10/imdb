@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/navbar.css">
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/WhatToWatch.css">
+    <link rel="stylesheet" href="../LandingPage/index.css">
+    <link rel="stylesheet" href="./whatToWatch.css">
 
 </head>
 <body>
@@ -17,7 +17,7 @@
     </div>
 
 
-    <div id="navbar-container"></div>
+    
     <ul class="what-to-watch-tab" role="tablist">
         <li class="" role="tab" tabindex="0" aria-selected="true">
             <a href="watchguide.html" >WATCH GUIDE</a>
@@ -36,10 +36,13 @@
         </li>
         <li role="presentation" data-currenttab="watch-guides" class="ipc-tabs__indicator" style="width: 139.363px; left: 0px;"></li>
     </ul>
+    <div id="cardbody"></div>
 
     <div id="footer-container"></div>
-  <script src="../scripts/includeNavbar&Footer.js"></script>
+  <script src="../scripts/includeNavbar&Footer.js" type="module"></script>
   <script src="../scripts/navbarMenu.js"></script>
+  <script src="../LandingPage/main.js" type="module"></script>
+  <script src="./whatToWatch.js"></script>
     
 </body>
 </html>

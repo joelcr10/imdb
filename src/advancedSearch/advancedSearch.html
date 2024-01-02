@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="/src/css/navbar.css">
     <link rel="stylesheet" href="/src/css/footer.css">
-    <link rel="stylesheet" href="/src/css/advancedSearch.css">
+    <link rel="stylesheet" href="./advancedSearch.css">
     <script type="module">
          export{}
     </script>
@@ -38,13 +38,15 @@
 
 
     <div id="footer-container"></div>
-    <script src="../scripts/includeNavbar&Footer.js"></script>
+
+    
+    <script src="../scripts/includeNavbar&Footer.js" type="module"></script>
     <script src="../scripts/navbarMenu.js"></script>
    
 
 
 <script type="module">
-    import { multiSearch } from "../scripts/advancedSearch.js";
+    import { multiSearch } from "/src/advancedSearch/advancedSearch.js";
   
     const searchBox = document.getElementById("searchBox");
     const searchFilter = document.getElementById("searchFilter");

@@ -1,9 +1,10 @@
 
-import { apiFetch } from "./apiFetch.js";
+import { apiFetch } from "../scripts/apiFetch.js";
 
 
 const popularMoviesSection = async () =>{
    
+    console.log("inside popular section");
     
     const apiUrl = `https://api.themoviedb.org/3/movie/popular`;
     
@@ -18,7 +19,7 @@ const popularMoviesSection = async () =>{
         let id = item.id;
         
         const card = `
-                    <a href="movieDetails.html?id=${id}">
+                    <a href="../MovieDetails/movieDetails.html?id=${id}">
                         <img src="${poster}" alt="">
                         <div class="card-text">
                             <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
@@ -54,7 +55,7 @@ const topRatedSection = async () =>{
             let poster = image_url+item.poster_path;
             let rating = item.vote_average;
             let id = item.id;
-            const card = `<a href="movieDetails.html?id=${id}">
+            const card = `<a href="../MovieDetails/movieDetails.html?id=${id}">
                             <img src="${poster}" alt="">
                             <div class="card-text">
                                 <label><img src="../../assets/img/star.png">${rating}<img class="starred-icon" src="../../assets/img/starred.png"></label>
@@ -93,7 +94,7 @@ const popularTvSection = async () =>{
             let poster = image_url+item.poster_path;
             let rating = item.vote_average;
             let id = item.id;
-            const card = `<a href="tvDetails.html?id=${id}">
+            const card = `<a href="../TvDetails/tvDetails.html?id=${id}">
                             <img src="${poster}" alt="">
                             <div class="card-text">
                                 <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
@@ -119,8 +120,8 @@ const popularTvSection = async () =>{
 }
 
 const upcomingMoviesSection = async () =>{
-   
-    let minDate = "2023-12-20";
+   console.log("iinside upcoming movies");
+    let minDate = "2024-01-01";
     let maxDate = "2024-01-10";
     const apiUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&release_date.gte=${minDate}&release_date.lte=${maxDate}`;
    
@@ -133,8 +134,8 @@ const upcomingMoviesSection = async () =>{
         let title = item.title;
         let poster = image_url+item.poster_path;
         let rating = item.vote_average;
-            
-        const card = `
+        let id = item.id;
+        const card = `<a href="../MovieDetails/movieDetails.html?id=${id}">
                         <img src="${poster}" alt="">
                         <div class="card-text">
                             <label><img src="../../assets/img/star.png">${rating}<img class="starred-icon" src="../../assets/img/starred.png"></label>
@@ -148,6 +149,7 @@ const upcomingMoviesSection = async () =>{
                                 <img src="../../assets/img/info.png" class="info-icon">
                             </div>
                             </div>
+                        </a>
                         `;
             let div = document.createElement('div');
             div.setAttribute("class","card");

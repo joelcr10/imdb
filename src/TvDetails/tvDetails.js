@@ -1,4 +1,4 @@
-import { apiFetch } from "./apiFetch.js";
+import { apiFetch } from "../scripts/apiFetch.js";
 
 let movieId = "";
 
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
   const movieDetailsApi = async(movieId) =>{
-    const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
+    const apiUrl = `https://api.themoviedb.org/3/tv/${movieId}?language=en-US`;
     console.log(apiUrl);
     // const apiUrl = 'https://api.themoviedb.org/3/movie/572802?language=en-US';
     const API_KEY = 'Bearer 8b701ace30227088c2f1ef89b747c764';
@@ -44,36 +44,38 @@ document.addEventListener("DOMContentLoaded", function() {
       const response = await fetch(apiUrl,options);
       const result = await response.json();
       let image_url = "https://image.tmdb.org/t/p/original";
-    
+      
       console.log("movie",result);
-      const movieTitle = result.title;
+      
+      const movieTitle = result.name;
       const movieOverview = result.overview;
-      const releaseYear = result.release_date.slice(0,4);
+      const releaseYear = result.first_air_date.slice(0,4);
       const movieRating = result.vote_average.toFixed(1);
       const moviePopularity = result.popularity;
       const movieTagline = result.tagline;
       const movieWebsite = result.homepage;
       const genreList = result.genres;
       const poster = image_url+result.poster_path;
-      const movieBudget = result.budget;
-      const movieRuntime = result.runtime;
-      const movieReleaseDate = result.release_date;
+      const movieBudget = result.number_of_episodes;
+      const movieRuntime = result.number_of_seasons;
+      const movieReleaseDate = result.first_air_date;
       const countryOrigin = result.production_countries[0].name;
       const movieLanguage = result.spoken_languages[0].name;
       
+      
 
       document.getElementById("movie-title").innerText = movieTitle;
-      document.getElementById("movie-duration").innerHTML = movieRuntime;
+      document.getElementById("tv-season").innerHTML = movieRuntime+" Season";
       document.getElementById("release-year").innerText = releaseYear;
       document.getElementById("imdb-rating").innerText = movieRating;
       document.getElementById("movie-popularity").innerText = moviePopularity.toFixed(0);   
       document.getElementById("movie-poster").setAttribute("src",poster);
-      document.getElementById("official-movie-site").innerText = movieWebsite;
+      // document.getElementById("official-movie-site").innerText = movieWebsite;
       document.getElementById("official-movie-site").setAttribute("href",movieWebsite);
       document.getElementById("official-movie-site").setAttribute("target","_blank");
       
       document.getElementById("movie-language").innerText = movieLanguage;
-      document.getElementById('movie-budget').innerText = "$"+movieBudget;
+      document.getElementById('movie-budget').innerText = movieBudget;
       for(let i=0;i<genreList.length;i++){
         
         let label = document.createElement('label');
@@ -98,9 +100,6 @@ document.addEventListener("DOMContentLoaded", function() {
       document.getElementById("countryOrigin").innerText = countryOrigin;
       // console.log(movieTitle,releaseYear,movieOverview,movieRating);
 
-      
-
-
     }catch(error){
       console.log(error);
       
@@ -110,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const movieCastApi = async (movieId) =>{
     
-    const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`;
+    const apiUrl = `https://api.themoviedb.org/3/tv/${movieId}/credits?language=en-US`;
     console.log(apiUrl);
     // const apiUrl = 'https://api.themoviedb.org/3/movie/572802?language=en-US';
     const API_KEY = 'Bearer 8b701ace30227088c2f1ef89b747c764';
@@ -127,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function() {
     try{
       const response = await fetch(apiUrl,options);
       const result = await response.json();
-      // console.log(result.crew);
+      console.log(result);
 
       const castList = result.cast;
 
@@ -177,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const movieImagesApi = async (movieId) =>{
     console.log("inside movie images");
-    const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}/images`;
+    const apiUrl = `https://api.themoviedb.org/3/tv/${movieId}/images`;
     console.log(apiUrl);
     // const apiUrl = 'https://api.themoviedb.org/3/movie/572802?language=en-US';
     const API_KEY = 'Bearer 8b701ace30227088c2f1ef89b747c764';
@@ -215,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const movieVideosApi = async (movieId) =>{
     console.log("inside movie videos");
-    const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`;
+    const apiUrl = `https://api.themoviedb.org/3/tv/${movieId}/videos?language=en-US`;
 
     // const apiUrl = 'https://api.themoviedb.org/3/movie/572802?language=en-US';
     const API_KEY = 'Bearer 8b701ace30227088c2f1ef89b747c764';
@@ -234,16 +233,11 @@ document.addEventListener("DOMContentLoaded", function() {
       const result = await response.json();
       console.log(result.results);
       const movieVideos = result.results;
-      const movieTrailer = movieVideos.filter( movie => {
-                          const name =  movie.name;
-                          if(name.includes("Trailer")){
-                            return true;
-                          }
-      });
-      console.log(movieTrailer);
+      // const movieTrailer = movieVideos.filter( movie => movie.name=="Official Trailer");
+      // console.log(movieTrailer);
       let youtubeUrl = "https://www.youtube.com/embed/";
-      console.log(youtubeUrl+movieTrailer[0].key);
-      document.getElementById("trailer-video").setAttribute("src",youtubeUrl+movieTrailer[0].key+"?autoplay=1");
+      console.log(youtubeUrl+movieVideos[movieVideos.length-1].key);
+      document.getElementById("trailer-video").setAttribute("src",youtubeUrl+movieVideos[movieVideos.length-1].key+"?autoplay=1");
 
       for(let i=0; i<movieVideos.length;i++){
         let iframe = document.createElement('iframe');
@@ -262,7 +256,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const similarMoviesApi = async (movieId) =>{
     console.log("inside similar movies");
-    const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}/similar?language=en-US&page=1`;
+    const apiUrl = `https://api.themoviedb.org/3/tv/${movieId}/similar?language=en-US&page=1`;
    
     // const apiUrl = 'https://api.themoviedb.org/3/movie/572802?language=en-US';
     const API_KEY = 'Bearer 8b701ace30227088c2f1ef89b747c764';
@@ -288,13 +282,13 @@ document.addEventListener("DOMContentLoaded", function() {
       const resultList = result.results;
 
       resultList.map((item) =>{
-        let title = item.title;
+        let title = item.original_name;
         let poster = image_url+item.poster_path;
         let rating = item.vote_average;
         let id = item.id;
         console.log(title,rating,poster);
         const card = `
-                    <a href="movieDetails.html?id=${id}">
+                    <a href="tvDetails.html?id=${id}">
                         <img src="${poster}" alt="">
                         <div class="card-text">
                             <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>

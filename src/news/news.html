@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Celebrity News-IMDB</title>
-    <link rel="stylesheet" href="/src/css/news.css">
+    <link rel="stylesheet" href="/src/news/news.css">
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/footer.css">
     <script type="module">
@@ -234,7 +234,7 @@
     
     <div id="footer-container"></div>
     <script type="module">
-         import {expandArticle,glowOptions,stopGlow,openSelectBox,getNews} from "../scripts/news.js"
+         import {expandArticle,glowOptions,stopGlow,openSelectBox,getNews} from "/src/news/news.js"
          getNews();
          await new Promise(resolve => setTimeout(resolve, 2000));
         let articles = document.getElementsByClassName('article');

@@ -68,6 +68,8 @@ const auth = getAuth();
           username: username,
         });
         window.location.href = "../Login_Page/login.html";
+        // window.location.href = "D:/IMDB-Clone/src/Login_Page/login.html";
+        
         alert("Signup successfull");
         
       })
@@ -97,7 +99,7 @@ const auth = getAuth();
 
         localStorage.setItem("userId",userCredential.user.uid);
         localStorage.setItem("userEmail",userCredential.user.email);
-        window.location.href = "../index.html";
+        window.location.href = "../LandingPage/index.html"; 
       })
       .catch((error) => {
         const errorCode = error.code;
