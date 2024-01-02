@@ -81,13 +81,25 @@
     display: none;
 }
 
-.profile-container{
-    width: 6rem;
-    justify-content: space-around;
+#nav-profile{
+    display: flex;
+    flex-direction: row;
+    /* width: 6rem; */
+    background-color: blue;
+    height: 90%;
+    align-items: center;
+    /* justify-content: space-around; */
+    display: none;
 }
 
-.profile-container .profile-icon{
-    filter: invert(100);
+.profile-container #guest-user a{
+    text-decoration: none;
+    font-weight: 600;
+    color: rgb(12, 109, 255);
+}
+
+.profile-container #nav-profile .profile-icon{
+    filter: invert(1);
 }
 
 .menu-container label,.watchlist-container label{

@@ -17,9 +17,9 @@ export const apiFetch = async (apiUrl) =>{
         const response = await fetch(apiUrl,options);
         const result = await response.json();
 
-        console.log("result",result);
+        // console.log("result",result);
 
-        return result.results;
+        return result;
 
     }catch(err){
         console.log(err);
