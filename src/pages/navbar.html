@@ -7,16 +7,18 @@
             <img src="../../assets/img/icons8-menu-96.png" alt="hamburger-menu">
             <label for="">Menu</label>
         </div>
-        <div class="search-container nav-container">
-            <select name="" id="">
+
+        <div class="search-container nav-container" id="searchContainer">
+            <select name="" id="searchFilter">
                 <option value="All">All</option>
                 <option value="Movies">Movies</option>
                 <option value="TV Shows">TV</option>
                 <option value="Celecs">Celebrities</option>
             </select>
-            <input type="text" placeholder="Search IMDb" id="imdb-search" oninput="testing()">
+            <input type="text" placeholder="Search IMDb" id="search" onkeydown="testing()">
             <img src="../../assets/img/search.png" alt="search-icon">
         </div>
+
         <div class="watchlist-container nav-container">
             <img src="../../assets/img/watchlist.png">
             <label for="">Watchlist</label> 
@@ -103,4 +105,5 @@
         </div>
     </div>
 
-    <script src="../scripts/navbarMenu.js"></script>    
+    <script src="../scripts/navbarMenu.js"></script>
+   
