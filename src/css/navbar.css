@@ -137,7 +137,10 @@
     background-color: rgb(51, 51, 51);
 }
 
-
+#nav-profile-options li a{
+    text-decoration: none;
+    color: white;
+}
 
 /* ////////////////////sections///////////////////// */
 

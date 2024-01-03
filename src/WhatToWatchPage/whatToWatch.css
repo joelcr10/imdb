@@ -662,3 +662,8 @@ body{
 .home-header{
     margin-left: 80PX;
 }
+
+
+#tab2, #tab3, #tab4, #tab5{
+    display: none;
+}
