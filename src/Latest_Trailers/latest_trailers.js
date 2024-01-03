@@ -174,6 +174,7 @@ async function apifetchMostPopular(){
                                     <img class="poster" src="${poster}" alt="">
                                     <i id="playbutton" class="bi bi-play-circle" style="font-size: 3em;"></i>
                                 </label>  
+                                
                                 <a href="../MovieDetails/movieDetails.html?id=${id}">
                                 <div class="card-text">
                                     <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
