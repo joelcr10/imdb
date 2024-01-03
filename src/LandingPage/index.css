@@ -365,3 +365,15 @@ body{
     border-radius: 5px;
     padding: 15px 20px;
 }
+
+
+
+#display-watchlist{
+    /* background-color: blue; */
+    display: none;
+    text-align: center;
+}
+
+#watchlist-home{
+    display: none;
+}
