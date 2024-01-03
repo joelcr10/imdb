@@ -1,14 +1,15 @@
-//let randomPage = getRandomNumber(1,15);
+let randomPage = getRandomNumber(1,15);
+let output = 0;
 
  
 const ACCESS_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZTc0OGYxMWVlY2YwYTNjOWE4ODM0NDhiZTUxNmI4MyIsInN1YiI6IjY1ODE2NzBmODc1ZDFhMDdkZmFlZTgyZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EvpMF4IBQ8n8RIPmnupE3K1p0sXyDo-VqS0BbbmJqUM'; // Replace with your actual TMDb access token
 let image_url = "https://image.tmdb.org/t/p/w185";
 
-export const celebrity = async (detailsVeno,firstLineNumber) => {
+export const celebrity = async (needDetails,firstLineNumber) => {
   for (let page = 1; page <= 5; page++) {
     try {
       
-      const response = await fetch(`https://api.themoviedb.org/3/person/popular?language=en-US&page=${page}`, {
+      const response = await fetch(`https://api.themoviedb.org/3/person/popular?language=en-US&page=${randomPage}`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${ACCESS_TOKEN}`,
@@ -48,7 +49,7 @@ export const celebrity = async (detailsVeno,firstLineNumber) => {
         let id = item.id;
         let details = '';
 
-        if (detailsVeno) {
+        if (needDetails) {
           details = await detailedView(id);
         }
         details = details.split('.').slice(0, 2).join('.');
@@ -71,6 +72,12 @@ export const celebrity = async (detailsVeno,firstLineNumber) => {
         div.setAttribute("class", "celebrityBox");
         div.innerHTML = card;
         document.getElementById("bigBox").append(div);
+        if(output<100){
+          output++;
+        }
+        else{
+          break;
+        }
       }
     } catch (error) {
       console.error('Fetch error:', error);
