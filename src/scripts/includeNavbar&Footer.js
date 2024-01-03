@@ -43,7 +43,7 @@ const includeNavbar = async () =>{
 const userOrGuest = async () =>{
   console.log("testing localstorage",localStorage.getItem("userId"));
 
-    if(localStorage.getItem("userId")=="null"){
+    if(localStorage.getItem("userId")==null){
       console.log("is it getting inside");
       document.getElementById("guest-user").style.display = "block"; //if the localStorage is null then display sign in 
       document.getElementById("nav-profile").style.display = "none";   // hide the profile section if the user hasn't logged in
@@ -87,6 +87,10 @@ const includeFooter = async () =>{
 export const signOut = () =>{
   console.log("inside sign out");
   localStorage.setItem("userId",null);
+  localStorage.removeItem("userId");
+  localStorage.removeItem("userEmail");
+  
+
   location.reload();
 }
 
