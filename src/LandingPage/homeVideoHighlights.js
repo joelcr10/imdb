@@ -28,11 +28,11 @@
                 `,
 
                 `
-                    <img src="../../assets/img/buring-questions.jpg" alt="" class="highlight-video-thumbnail">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTdmZDNhNjgtMjk4NS00YzQzLTliM2UtMDEzZDY2MDZmMTcwXkEyXkFqcGdeQXVyMTA4MzgzNDM3._V1_.jpg" alt="" class="highlight-video-thumbnail">
                     <div class="video-text">
                         <label><img src="../../assets/img/round-play-icon.png" alt=""> 1:48</label>
-                        <h3>Who is Jhanvi Kapoor's Biggest Inspiration?</h3>
-                        <label for="">Watch the interview to find out</label>
+                        <h3>'Rebel Moon: Part Two - The Scargiver'</h3>
+                        <label for="">The Battle Continues</label>
                     </div>
                 `
 

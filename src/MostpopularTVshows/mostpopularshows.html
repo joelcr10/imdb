@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="../css/top250shows.css"> -->
+    <!-- <link rel="stylesheet" href="../css/index.css"> -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/navbar.css">-->
+    <link rel="stylesheet" href="mostpopularshows.css">
+    <title>Top Rated Movies</title>
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <div class="main">
+        <section class="mainbackground">
+            <div class="chart-parent">
+                <div class="heading">
+                    <div class="heading2">
+                        <div class="chart-head">
+                            <div class="title-base">
+                                <hgroup>
+                                    <h3 class="text_title">IMDb Charts</h3>
+                                </hgroup>
+                            </div>
+                            <div class="title-balance">
+                                <span aria-hidden="true" class="share-btn">Share</span>
+                                    <i class='bx bxs-share-alt'></i>
+
+                            </div>
+                           
+                        </div>
+                        
+                        <div class="title-main">
+                            <div class="main-titlehead">
+                                <div class="yellow-bar"></div>
+                                <div class="title-top250">
+                                    <hgroup>
+                                        <h1 >
+                                            Most Popular TV shows
+                                        </h1>
+                                    </hgroup>
+                                    <div class="tile2-top250">Top 250 as rated by IMDb user</div>
+                                 </div>
+                               
+                            </div>
+                            <div class="title-description">
+                                Top 250 rated as IMDb Users
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ipc-grid">
+                    <div class="main-grid">
+                        <span class="title-layout">250 Title</span>
+                        <div class="chart-layout-view">
+                            <div class="chart-layout-view-options">
+                                <i id="detail-btn"class='bx bx-list-ul' ></i>
+                                <i id="grid-btn"class='bx bxs-grid' ></i>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="top-shows-main">
+                    <div class="top-shows-layout">
+                            <div id="topshows-container">
+                                <!-- <div class="cards"></div> -->
+                            </div>
+             
+
+                     </div>
+                    <div class="top-shows-side">
+                        <div class="explore-main">
+                        <div class="yellow-bar"></div>
+                        <h2 class="explore-mainhead">MORE TO EXPLORE</h3>
+                        </div>
+                            <p><b>Charts</b></p>
+                            <b>Top Box Office (US)<i class='bx bx-chevron-right'></i></b><br>
+                            From the past weekend<br>
+                        <b>Most Popular Movies<i class='bx bx-chevron-right'></i></b><br>
+                            As determined by IMDb users<br>
+                            <b>IMDb Top 250 Movies<i class='bx bx-chevron-right'></i></b><br>
+                            As rated by regular IMDb voters.<br>
+                        <b>Top Rated English Movies<i class='bx bx-chevron-right'></i></b><br>
+English-language movies as rated by IMDb users<br>
+<b>Most Popular TV Shows<i class='bx bx-chevron-right'></i></b><br>
+As determined by IMDb users<br>
+<b>Lowest Rated Movies<i class='bx bx-chevron-right'></i></b><br>
+Bottom 100 as voted by IMDb users<br>
+<b>Most Popular Celebs<i class='bx bx-chevron-right'></i></b><br>
+As determined by IMDb users<br>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+   
+
+
+
+    //<button onclick="showDetails('Title')">Details</button>
+    <div id="footer-container"></div>
+    <script src="../scripts/navbarMenu.js"></script>
+    <script src="../scripts/includeNavbar&Footer.js"></script>
+
+    <script src="mostpopularshows.js"></script>
+   <!-- <script type="module">
+        import {displayData_gridview,displayData_detailedview} from 'top250shows.js';
+        
+       document.getElementById('grid-view').addEventListener('click',() =>{
+        displayData_gridview();
+        
+       });
+       document.getElementById('list-view').addEventListener('click',() =>{
+        displayData_detailedview();
+       });
+    </script>  -->
+    
+</body>
+</html>

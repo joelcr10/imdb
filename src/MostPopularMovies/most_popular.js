@@ -1,25 +1,9 @@
-
-const backToTopButton = document.getElementById("back-to-top-btn");
+import { apiFetch } from '../scripts/apiFetch.js';
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 
-window.onscroll = function () {
-    scrollFunction();
-};
 
-const scrollFunction = () => {
-    if (document.documentElement.scrollTop > 600) {
-        backToTopButton.style.display = "block";
-    } else {
-        backToTopButton.style.display = "none";
-    }
-}
-
-
-const scrollToTop = () => {
-    document.documentElement.scrollTop = 0;
-}
 
 
 
@@ -96,7 +80,7 @@ const scrollToTop = () => {
 const returnGenre = (genreIds, genreList) => {
     const genresList = [];
     genreIds.map(genreId => {
-        for (i = 0; i < genreList.genres.length; i++) {
+        for (let i = 0; i < genreList.genres.length; i++) {
             if (genreId == genreList.genres[i].id) {
                 genresList.push(genreList.genres[i].name);
             }
@@ -108,18 +92,7 @@ const returnGenre = (genreIds, genreList) => {
 
 
 
-const options = {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZDM1MDM2ODE4NjMzMDI1Yjc3ZTQzN2Q2ZThiOTk2NCIsInN1YiI6IjY1ODFkODQ1YmYwZjYzMDg5MzYyYjg5NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.sT5e5quy6JNqGpb4QC2D008yWeeV9goKw0jwdPwFY6I'
-    }
-  };
-  
-  fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
-    .then(response => response.json())
-    .then(response => console.log(response))
-    .catch(err => console.error(err));
+
 
 
 
@@ -127,31 +100,20 @@ const options = {
 
 const mostPopularMovies = async () => {
 
-    const API_KEY = 'Bearer dd35036818633025b77e437d6e8b9964';
-    // const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZDM1MDM2ODE4NjMzMDI1Yjc3ZTQzN2Q2ZThiOTk2NCIsInN1YiI6IjY1ODFkODQ1YmFkYzU5MDA0ZTk2MjQ5ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.fM6ZYtkrY69OP_UBJSoTzru4mll9nT5HFAZdICnqYsU';
-    const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZDM1MDM2ODE4NjMzMDI1Yjc3ZTQzN2Q2ZThiOTk2NCIsInN1YiI6IjY1ODFkODQ1YmYwZjYzMDg5MzYyYjg5NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.sT5e5quy6JNqGpb4QC2D008yWeeV9goKw0jwdPwFY6I';
     const apiUrl = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1';
     const genre_url = `https://api.themoviedb.org/3/genre/movie/list?language=en`;
-    const options = {
-        method: 'GET',
-        headers: {
-            'Authorization': ACCESS_TOKEN,
-            'accept': 'application/json'
-        }
-    };
+   
     try {
-        const response = await fetch(apiUrl, options);
-        const result = await response.json();
-        const genre = await fetch(genre_url, options);
-        const genreList = await genre.json();
+      
+        const result = await apiFetch(apiUrl);
+
+       
+        const genreList = await apiFetch(genre_url);
         let image_url = "https://image.tmdb.org/t/p/w185"
 
-        // console.log(result);
-        // console.log(genreList);
-        // console.log(genreList.genres[0].id)
-        // console.log(genreList.genres.length);
+        
         let resultList = result.results;
-        // console.log(resultList);
+       
 
 
         let moviesByMonth = {};
@@ -218,7 +180,8 @@ const mostPopularMovies = async () => {
                         <a class="dynamicRating "><i id="ratingStar" class="bi bi-star-fill"></i>${movie.rating} </a>         
                             
                         <div class="info">
-                          <i class="bi bi-info-circle"></i>
+                          <i class="bi bi-info-circle" onclick="showMovieDetails('${movie.title}', '${movie.releaseDate}', '${movie.genre.join(', ')}')"></i>
+                          <div class="moviePopup" id="moviePopup"></div>
                         </div>
                         <hr class="horizontal">
                     `;
@@ -242,24 +205,30 @@ mostPopularMovies();
 
 
 
-
-const togglePopup = () => {
-    const popupBox = document.getElementById('popupBox');
+const showMovieDetails = (title, releaseDate, genre) => {
+    const popupBox = document.getElementById('moviePopup');
+    popupBox.innerHTML = `
+        <p>Title: ${title}</p>
+        <p>Release Date: ${releaseDate}</p>
+        <p>Genre: ${genre}</p>
+       
+    `;
     popupBox.style.display = "block";
-}
+};
 
-const copyLink = () => {
-    const pageUrl = window.location.href;
-    navigator.clipboard.writeText(pageUrl)
-}
 
-// Close the popup if the user clicks outside of it
-window.onclick = function (event) {
-    console.log(event.target);
-    if (!event.target.matches('#shareButton')) {
-        const popupBox = document.getElementById('popupBox');
+
+document.addEventListener('click', function (event) {
+    const popupBox = document.getElementById('moviePopup');
+    
+    // Check if the clicked element is not the info icon or inside the popup
+    if (!event.target.closest('.bi-info-circle') && !event.target.closest('#moviePopup')) {
         if (popupBox.style.display === 'block') {
             popupBox.style.display = 'none';
         }
     }
-}
+});
+
+
+
+
