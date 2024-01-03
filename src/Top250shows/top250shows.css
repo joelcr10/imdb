@@ -1,0 +1,196 @@
+:root {
+    --bg-color: rgb(27, 27, 27);
+    --grey-hover: rgb(46, 46, 46);
+    --black: black;
+    --theme: orange;
+    --white: white;
+  }
+#topshows-container .card_image{
+    height: 300px;
+    width:200px;
+  }
+  #topshows-container .gridview-headtext{
+    display: flex;
+  }
+  #topshows-container .gridview_star,
+  .gridview-ratingstar{
+    height: 20px;
+    width:20px;
+    flex: 1;;
+  }
+  #topshows-container .gridview-ratingtext{
+    flex: 1;;
+  }
+  #topshows-container .gridview-detailbtn{
+    background-color:rgb(165, 163, 163);
+    color: rgb(98, 98, 190);
+     border-radius: 5px;
+     border-color: var(--white);
+     width: 200px;
+     height: 35px;
+     font-size: 15px;
+     text-align: center;
+     font-weight: bold;
+     margin-left: -10px;
+     margin-top: 20px;
+     
+    
+  }
+  #topshows-container .gridview-title{
+    min-height: 70px;
+    max-width:100px;
+  }
+  
+i{
+  color:gray;
+  background-color: var(--white);
+  font-size: 27px;
+  margin-top: 5px;
+  
+}
+.main{
+  background-color: var(--white);
+  color: var(--black);
+}
+.chart-head{
+  display: flex;
+}
+.title-base{
+  flex: 8;
+}
+.title-balance{
+  flex: 1;
+}
+.main-titlehead{
+  display: flex;
+  
+}
+.title-top250{
+  flex: 300;
+  margin-top: -25px;
+  font-size: 20px;
+}
+.yellow-bar{
+  flex: 1;
+  background-color:orange;
+  height: 40px;
+  border-radius: 5px;
+  rotate: 90%;
+}
+.title-description{
+  color: gray;
+}
+
+#topshows-container{
+  display: flex;
+  gap: 20px;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  width: 80%;
+  /* background-color: aqua; */
+  
+}
+
+#topshows-container::-webkit-scrollbar{
+  display: none;
+}
+
+
+#topshows-container .card{
+    /* background-color: red; */
+    /* max-width: 185px; */
+    box-shadow: 0px 2px 1px grey;
+    /* min-width: 200px; */
+    height: auto;
+    background-color: var(--white);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width:200px; /* Adjust as needed, consider margin or padding */
+    margin-bottom: 20px; /* Adjust as needed */
+    box-sizing: border-box;
+    
+    
+}
+
+#topshows-container .card-text label{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: start;
+  align-items: start;
+}
+
+
+#topshows-detailed .thumbnail-container {
+  display: flex;
+  width: 600px;
+  margin-top: 20px;
+   /* Align items to the start of the container (top) */
+}
+
+#topshows-detailed 
+  .thumbnail {
+    flex: 1;
+  width: 500px; /* Adjust the width as needed */
+  height: 300px; /* Maintain the aspect ratio */
+  margin-right: 10px;
+  display: 1; /* Add some spacing between the image and text */
+}
+#topshows-detailed .thumbnail-container .episode-info {
+  /* background-color: red; */
+  width: 100%;
+  flex: 2;
+  /* width: 300px;
+  flex: 4; */
+   /* Allow the episode-info div to grow and take available space */
+}
+#topshows-detailed .star_detailed{
+  height: 20px;
+  width:20px;
+}
+#topshows-detailed .starred-icon{
+  height: 20px;
+  width:20px;
+}
+#topshows-detailed .episode-info p{
+  white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+}
+#topshows-detailed .overview{
+    text-overflow: ellipsis;
+}
+.episode-info label{
+  width: 300px;
+}
+.main-grid{
+  display: flex;
+}
+.title-layout{
+  flex:10 ;
+}
+.chart-layout-view{
+  flex: 10;
+}
+.top-shows-main{
+  display: flex;
+}
+.top-shows-layout{
+  flex:6;
+}
+.top-shows-side{
+  flex:3;
+}
+.explore-main{
+  display: flex;
+}
+.yellow-bar{
+  flex:1;
+  margin-top: 20px;
+}
+.explore-mainhead{
+  flex: 50;
+  
+}
