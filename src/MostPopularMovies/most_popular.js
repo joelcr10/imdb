@@ -113,6 +113,7 @@ const mostPopularMovies = async () => {
 
         
         let resultList = result.results;
+        console.log(resultList);
        
 
 
@@ -137,7 +138,8 @@ const mostPopularMovies = async () => {
                 rating: parseFloat(item.vote_average).toFixed(2),
                 releaseDate: item.release_date,
                 genre: returnGenre(item.genre_ids, genreList),
-                popularity : item.popularity
+                popularity : item.popularity,
+                id: item.id,
             });
 
         });
@@ -173,6 +175,12 @@ const mostPopularMovies = async () => {
                 // Append each movie to the card
                 const movieDetails = document.createElement('div');
                 movieDetails.classList.add('movie-details');
+
+                movieDetails.onclick = function() {
+                    
+                    window.location.href = `../MovieDetails/movieDetails.html?id=${movie.id}`;
+                };
+
                 movieDetails.innerHTML = `
                         <img  class="popularimg " src="${movie.poster}" alt="movie-poster">
                         <a class="movie-title ">${movie.title}</a><br>
