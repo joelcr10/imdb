@@ -1,7 +1,7 @@
 const watchList = [];
 console.log(!watchList);
 
-const addToWatchlist = (item) => {
+ const addToWatchlist = (item) => {
     const title = item.dataset.title;
     const poster = item.dataset.poster;
     const genre = item.dataset.genre;
