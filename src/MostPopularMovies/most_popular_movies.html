@@ -8,6 +8,8 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"> -->
+
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="../ReleaseCalender/release-calender.css" />
     <link rel="stylesheet" href="../css/navbar.css" />
@@ -33,22 +35,37 @@
                     <h1>
                         <div class="header-left"></div>
                         Most Popular Movies
-                        
+
                     </h1>
                     <div class="share-container">
-                        <a>Share  &nbsp;&nbsp;<i class="bi bi-share-fill"  id="shareButton"  onclick="togglePopup()"></i></a>
+                        <a>Share &nbsp;&nbsp;<i class="bi bi-share-fill" id="shareButton"
+                                onclick="togglePopup()"></i></a>
                         <div class="popup-box" id="popupBox">
                             <a href="#" onclick="copyLink()">Copy Link</a>
                         </div>
                     </div>
 
                 </div>
-                
-                
-                
+
+
+
                 <p>As determined by IMDb users</p>
 
             </div>
+           
+
+            <div class="popup-content">
+                <div class="moviePopup" id="moviePopup">
+                    <span class="close-btn" onclick="closeMoviePopup()">&times;</span>
+                    <div class="overlay"></div>
+                 
+                </div>
+            </div>
+            
+          
+            
+
+
 
         </div>
 
@@ -62,23 +79,23 @@
                     <div class="header-left"></div>
                     More To Explore
                 </h2>
-                
+
                 <h4>Charts</h4>
 
                 <div class="explore-links">
-                    <a href="#">Top Box Office    <i class="bi bi-chevron-right"></i></a>
+                    <a href="#">Top Box Office <i class="bi bi-chevron-right"></i></a>
                     <p>From the past weekend</p>
-                    <a href="#">IMDb Top 250 Movies    <i class="bi bi-chevron-right"></i></a>
+                    <a href="#">IMDb Top 250 Movies <i class="bi bi-chevron-right"></i></a>
                     <p>As rated by regular IMDb voters</p>
-                    <a href="#">Top Rated English Movies    <i class="bi bi-chevron-right"></i></a>
+                    <a href="#">Top Rated English Movies <i class="bi bi-chevron-right"></i></a>
                     <p>English-language movies as rated by IMDb users</p>
-                    <a href="#">Most Popular TV Shows    <i class="bi bi-chevron-right"></i></a>
+                    <a href="#">Most Popular TV Shows <i class="bi bi-chevron-right"></i></a>
                     <p>As determined by IMDb users</p>
-                    <a href="#">Top 250 TV Shows    <i class="bi bi-chevron-right"></i></a>
+                    <a href="#">Top 250 TV Shows <i class="bi bi-chevron-right"></i></a>
                     <p>Top 250 as rated by IMDb Users</p>
-                    <a href="#">Lowest Rated Movies    <i class="bi bi-chevron-right"></i></a>
+                    <a href="#">Lowest Rated Movies <i class="bi bi-chevron-right"></i></a>
                     <p>Bottom 100 as voted by IMDb users</p>
-                    <a href="#">Most Popular Celebs    <i class="bi bi-chevron-right"></i></a>
+                    <a href="#">Most Popular Celebs <i class="bi bi-chevron-right"></i></a>
                     <p>As determined by IMDb users</p>
                 </div>
 
@@ -447,6 +464,8 @@
 
             </div>
         </div> -->
+
+
         <div class="backtotop">
             <button id="back-to-top-btn" onclick="scrollToTop()"><i class="bi bi-chevron-up"></i> Back to Top</button>
 
@@ -455,19 +474,13 @@
     </div>
 
     <div id="footer-container"></div>
-<<<<<<< HEAD:src/pages/most_popular_movies.html
-    <script src="../scripts/most_popular.js"></script>
+    <script src="./most_popular.js" type="module"></script>
     <script src="../scripts/includeNavbar&Footer.js" type="module"></script>
-    <script src="../scripts/navbarMenu.js" ></script>
-    <script src="../scripts/backToTopButton.js" ></script>
-    <script src="../scripts/shareButton.js" ></script>
-  
-=======
-    <script src="./most_popular.js"></script>
-    <script src="../scripts/includeNavbar&Footer.js"></script>
     <script src="../scripts/navbarMenu.js"></script>
->>>>>>> 56db8e7a2c1650199b673e0e28a86fb80355d4cc:src/MostPopularMovies/most_popular_movies.html
-    <!-- <script src="../scripts/tv.js"></script> -->
+    <script src="../scripts/backToTopButton.js"></script>
+    <script src="../scripts/shareButton.js"></script>
+
+
 
 </body>
 
