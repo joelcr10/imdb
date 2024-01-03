@@ -21,19 +21,28 @@
 
         <div class="watchlist-container nav-container">
             <img src="../../assets/img/watchlist.png">
-            <label for="">Watchlist</label> 
+            <a href="../YourWatchList/YourWatchList.html">Watchlist</a> 
         </div>
         <div class="profile-container nav-container">
             <div id="guest-user">
                 <a href="../Login_Page/login.html">Sign In</a>
             </div>
-            <div id="nav-profile">
+            <div id="nav-profile" onclick="toggleProfileOptions()">
                 <img src="../../assets/img/profile.png" class="profile-icon" alt="">
                 <label for="" id="nav-username"></label>
                 <img src="../../assets/img/dropdown.png" alt="">
+                <div id="nav-profile-options">
+                    <ul>
+                        <li>Your Activity</li>
+                        <li><a href="../YourWatchList/YourWatchList.html">Your Watchlist</a></li>
+                        <li>Your Rating</li>
+                        <li id="signout-btn">Sign Out</li>
+                    </ul>
+                </div>
             </div>
+            
         </div>
-        <button id="signout-btn">signOut</button>
+        <!-- <button id="signout-btn">signOut</button> -->
     </nav>
 
     <div class="nav-sections" id="nav-sections">
@@ -50,7 +59,7 @@
                     <h1>Movies</h1>
                     <a href="../ReleaseCalender/release_calender.html">Release Calender</a>
                     <a href="">Top 250 Movies</a>
-                    <a href="">Most Popular Movies</a>
+                    <a href="../MostPopularMovies/most_popular_movies.html">Most Popular Movies</a>
                     <a href="">Browse Movies by Genre</a>
                     <a href="">Top Box Office</a>
                     <a href="">Showtimes & Tickets</a>
@@ -69,15 +78,15 @@
 
                         <h1>Tv Shows</h1>
                         <a href="../WhatsOnTv/whatontv.html">What's on TV streaming</a>
-                        <a href="">Top 250 TV Shows</a>
+                        <a href="../Top250shows/top250shows.html">Top 250 TV Shows</a>
                         <a href="">Most Popular TV shows</a>
                     </div>
                     <div class="watch-section individual-section">
                         <img src="../../assets/img/watch-icon.png" alt="">
 
                         <h1>Watch</h1>
-                        <a href="../WhatToWatchPage/watchguide.html">What to watch</a>
-                        <a href="">Latest Trailer</a>
+                        <a href="../WhatToWatchPage/WhatToWatch.html">What to watch</a>
+                        <a href="../Latest_Trailers/latest_trailers.html">Latest Trailer</a>
                         <a href="">IMDb Originals</a>
                         <a href=""></a>
                     </div>

@@ -7,6 +7,9 @@ body {
     justify-content: center;
     height: 100vh;
     background-color: #f4f4f4;
+    background-image: url("../../assets/img/movie-collage.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .container {
@@ -43,7 +46,7 @@ input:focus{
 }
 
 button {
-    background-color: rgb(233, 215, 82);
+    background-color: #F5C518;
     color: black;
     padding: 10px;
     height: 30px;
@@ -53,7 +56,7 @@ button {
 }
 
 button:hover {
-    background-color: rgb(238, 193, 80);
+    background-color: rgb(250, 182, 10);
 }
 
 /* Media query for responsiveness */
@@ -67,7 +70,7 @@ h2{
     font-weight: normal;
 }
 
-.container a {
+.password-div a {
     margin-left: 162px;
     margin-bottom: 0px;
     font-size: small;
@@ -81,7 +84,9 @@ h2{
 }
 
 .signup-button {
-    background-color: transparent;
+    /* margin-left: 20px;
+    width: 100%;
+    background-color: blue;
     color: #000;
     height: 30px;
     justify-content: center;
@@ -90,6 +95,17 @@ h2{
     border: 2px solid rgb(219, 219, 219);
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
+    margin: auto; */
+    background-color: white;
+    border: 0.1px solid rgba(0, 0, 0, 0.24);
+    padding: 5px;
+    border-radius: 8px;
+    display: block;
+    width: 95%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    color: black;
 }
 
 .signup-button:hover {
@@ -142,4 +158,9 @@ h2{
 
 #password{
     width: 280px;
+}
+
+
+#loginform{
+    background-color: blue;
 }
