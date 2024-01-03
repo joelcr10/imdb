@@ -44,7 +44,7 @@ async function apifetchWatchGuide(){
         const result = await response.json();
         // console.log(result.results);
         const apilist = result.results;
-        let image_url = "https://image.tmdb.org/t/p/w185";
+        let image_url = "https://image.tmdb.org/t/p/original";
         apilist.map((item) => {
             const title = item.title;
             const rating = item.vote_average;
@@ -103,7 +103,7 @@ async function apifetchFanFavourites(){
         const result = await response.json();
         // console.log(result.results);
         const apilist = result.results;
-        let image_url = "https://image.tmdb.org/t/p/w185";
+        let image_url = "https://image.tmdb.org/t/p/original";
         apilist.map((item)=>{
             // console.log(item);   
             const title = item.title;
@@ -162,7 +162,7 @@ async function apifetchTopPicks(){
         const result = await response.json();
         // console.log(result.results);
         const apilist = result.results;
-        let image_url = "https://image.tmdb.org/t/p/w185";
+        let image_url = "https://image.tmdb.org/t/p/original";
         apilist.map((item)=>{
             // console.log(item);   
             const title = item.title;
