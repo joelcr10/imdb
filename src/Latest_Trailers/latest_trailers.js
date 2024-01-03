@@ -1,9 +1,8 @@
-window.onload = function() {
-    openTab('tab1');
-};
 
-function openTab(tabName) {
+
+function openTab(tabId) {
     // Hide all tab content
+    console.log("inside open tab");
     var tabContent = document.getElementsByClassName('tab-content');
     for (var i = 0; i < tabContent.length; i++) {
         tabContent[i].style.display = 'none';
@@ -16,7 +15,7 @@ function openTab(tabName) {
     }
 
     // Show the selected tab content and mark the tab as active
-    document.getElementById(tabName).style.display = 'block';
+    document.getElementById(tabId).style.display = 'block';
     event.currentTarget.classList.add('active');
 }
 
@@ -43,7 +42,7 @@ async function apifetchTrendingTrailers(){
         const result = await response.json();
         // console.log(result.results);
         const apilist = result.results;
-        let image_url = "https://image.tmdb.org/t/p/w185";
+        let image_url = "https://image.tmdb.org/t/p/original";
         apilist.map((item)=>{
             // console.log(item);   
             const title = item.title;
@@ -54,8 +53,10 @@ async function apifetchTrendingTrailers(){
                             
                            <div class="image-container">
                                 <label>
+
                                     <img class="poster" src="${poster}" alt="">
                                     <i id="playbutton" class="bi bi-play-circle" style="font-size: 3em;"></i>
+
                                 </label>
                                                    
                                 <div class="card-text">
@@ -101,7 +102,7 @@ async function apifetchMostAnticipated(){
         const result = await response.json();
         // console.log(result.results);
         const apilist = result.results;
-        let image_url = "https://image.tmdb.org/t/p/w185";
+        let image_url = "https://image.tmdb.org/t/p/original";
         apilist.map((item)=>{
             // console.log(item);   
             const title = item.title;
@@ -152,7 +153,7 @@ async function apifetchMostPopular(){
         const result = await response.json();
         // console.log(result.results);
         const apilist = result.results;
-        let image_url = "https://image.tmdb.org/t/p/w185";
+        let image_url = "https://image.tmdb.org/t/p/original";
         apilist.map((item)=>{
             // console.log(item);   
             const title = item.title;
@@ -238,4 +239,8 @@ async function apifetchMostPopular(){
 }
 
 apifetchRecentlyAddeded();
-
+openTab('tab1');
+window.onload = function() {
+    console.log("Opening tab:");
+    openTab('tab1');
+};

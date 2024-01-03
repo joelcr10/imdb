@@ -177,4 +177,20 @@
         }
         
         
+        #playbutton{
+            left: 0px;
+            position: absolute;
+            bottom: 150px;
+            color: white;
+            bottom: 15px;
+        }
+
+        #playbutton:hover{
+            color: rgb(220, 150, 0);
+        }
+
+        label{
+            position: relative;
+        }
+
         
