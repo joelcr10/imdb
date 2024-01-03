@@ -1,4 +1,6 @@
-
+window.onload = function() {
+    openTab('tab1');
+};
 
 
 function openTab(tabName) {
@@ -47,6 +49,7 @@ async function apifetchWatchGuide(){
             const title = item.title;
             const rating = item.vote_average;
             const poster = image_url + item.poster_path;
+            const id = item.id;
 
             // Updated card variable to include the play icon
             const card = `
@@ -57,11 +60,13 @@ async function apifetchWatchGuide(){
                                 </label>
                                
                                 
+                                <a href="../MovieDetails/movieDetails.html?id=${id}">
                                 <div class="card-text">
                                     <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
                                     <h3>${title}</h3>
                                     <button><span>+</span> Watchlist</button>
                                 </div>
+                                </a>
                             </div>
                         `;
 
@@ -83,7 +88,8 @@ async function apifetchFanFavourites(){
     console.log("inside test");
     const API_KEY = 'd808cc664ed4f079c68e9cd427d4f86a';
     const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkODA4Y2M2NjRlZDRmMDc5YzY4ZTljZDQyN2Q0Zjg2YSIsInN1YiI6IjY1ODE0YjZlMjI2YzU2MDdmZTllZjkwYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.e9jwZv6dTRR_gOLQGXJlmMTAA69zTAThi1_sbyPVOgs';
-    const apiUrl = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
+    // const apiUrl = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
+    const apiUrl = `https://api.themoviedb.org/3/movie/popular`;
     const options = {
         method: 'GET',
         headers: {
@@ -103,17 +109,21 @@ async function apifetchFanFavourites(){
             const title = item.title;
             const rating = item.vote_average;
             const poster = image_url+item.poster_path;
+            const id = item.id;
             // console.log(title,rating);
             const card = `
                             <div class="image-container">
                                 <label>
                                     <img class="poster" src="${poster}" alt="">
-                                </label>                            
+                                </label>   
+
+                                <a href="../MovieDetails/movieDetails.html?id=${id}">
                                 <div class="card-text">
                                     <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
                                     <h3>${title}</h3>
                                     <button><span>+</span> Watchlist</button>
                                 </div>
+                                </a>
                             </div>
                        `;
             let divs = document.createElement('div');
@@ -158,17 +168,21 @@ async function apifetchTopPicks(){
             const title = item.title;
             const rating = item.vote_average;
             const poster = image_url+item.poster_path;
+            const id = item.id;
             // console.log(title,rating); 
             const card = `
                             <div class="image-container">
                                 <label>
                                     <img class="poster" src="${poster}" alt="">
                                 </label>  
+
+                                <a href="../MovieDetails/movieDetails.html?id=${id}">
                                 <div class="card-text">
                                     <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
                                     <h3>${title}</h3>
                                     <button><span>+</span> Watchlist</button>
                                 </div>
+                                </a>
                             </div>
                        `;
             let divs = document.createElement('div');
@@ -210,17 +224,21 @@ async function apifetchTopPicks(){
             const title = item.title;
             const rating = item.vote_average; // Round to 1 decimal point
             const poster = image_url + item.poster_path;
+            const id = item.id;
             console.log("recently",title, rating);
             const card = `
                         <div class="image-container">
                             <label>
                                 <img class="poster" src="${poster}" alt="">
                             </label>
-                             <div class="card-text">
+
+                            <a href="../MovieDetails/movieDetails.html?id=${id}">
+                            <div class="card-text">
                                 <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
                                 <h3>${title}</h3>
                                 <button><span>+</span> Watchlist</button>
                             </div>
+                            </a>
                         </div>
                        `;
             let divs = document.createElement('div');
@@ -235,12 +253,12 @@ async function apifetchTopPicks(){
 
 }
 
-apifetchFromYourWatchlist();
+// apifetchFromYourWatchlist();
 
 async function apifetchMostPopular() {
     console.log("inside test");
     const API_KEY = 'd808cc664ed4f079c68e9cd427d4f86a';
-    const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkODA4Y2M2NjRlZDRmMDc5YzY4ZTljZDQyN2Q4Zjg2YSIsInN1YiI6IjY1ODE0YjZlMjI2YzU2MDdmZTllZjkwYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.e9jwZv6dTRR_gOLQGXJlmMTAA69zTAThi1_sbyPVOgs';
+    const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkODA4Y2M2NjRlZDRmMDc5YzY4ZTljZDQyN2Q0Zjg2YSIsInN1YiI6IjY1ODE0YjZlMjI2YzU2MDdmZTllZjkwYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.e9jwZv6dTRR_gOLQGXJlmMTAA69zTAThi1_sbyPVOgs';
     const apiUrl = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1';
     const options = {
         method: 'GET',
@@ -254,25 +272,31 @@ async function apifetchMostPopular() {
         const response = await fetch(apiUrl, options);
         const result = await response.json();
         // console.log(result.results);
+        console.log("most pop",result);
         const apilist = result.results;
-        console.log("inside recently adedd");
+        console.log("inside recently adedd most popular");
+        console.log("apilist",apilist);
         let image_url = "https://image.tmdb.org/t/p/original";
         apilist.map((item) => {
             // console.log(item);
             const title = item.title;
             const rating = item.vote_average; // Round to 1 decimal point
             const poster = image_url + item.poster_path;
+            const id = item.id;
             console.log("recently",title, rating);
             const card = `
                         <div class="image-container">
                             <label>
                                 <img class="poster" src="${poster}" alt="">
                             </label>
-                             <div class="card-text">
+
+                            <a href="../MovieDetails/movieDetails.html?id=${id}">
+                            <div class="card-text">
                                 <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
                                 <h3>${title}</h3>
                                 <button><span>+</span> Watchlist</button>
                             </div>
+                            </a>
                         </div>
                        `;
             let divs = document.createElement('div');
@@ -314,17 +338,21 @@ async function apirecentlyviewed() {
             const title = item.title;
             const rating = item.vote_average; // Round to 1 decimal point
             const poster = image_url + item.poster_path;
+            const id = item.id;
             console.log("recently",title, rating);
             const card = `
                         <div class="image-container">
                             <label>
                                 <img class="poster" src="${poster}" alt="">
                             </label>
-                             <div class="card-text">
+                            
+                            <a href="../MovieDetails/movieDetails.html?id=${id}">
+                            <div class="card-text">
                                 <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
                                 <h3>${title}</h3>
                                 <button><span>+</span> Watchlist</button>
                             </div>
+                            </a>
                         </div>
                        `;
             let divs = document.createElement('div');
@@ -339,7 +367,7 @@ async function apirecentlyviewed() {
 
 }
 
-apirecentlyviewed();
+// apirecentlyviewed();
 
 
 
