@@ -20,7 +20,6 @@ const addToWatchlist = (item) => {
         console.log(`${title} is already in Watchlist`);
     }
 
-    // console.log(watchList - container);
 
 };
 
@@ -37,7 +36,7 @@ document.getElementById('movie-per-date').addEventListener('click', function (ev
 
 
 const watchListDisplay = () => {
-    console.log("Hwki")
+
     document.getElementById("watchlist-container").innerHTML = "";
 
 
@@ -55,10 +54,6 @@ const watchListDisplay = () => {
     } else {
         watchList.forEach(movie => {
             console.log(movie);
-
-
-
-
 
             const section = document.createElement('div');
             // section.innerHTML = `<h2 style="padding-top:3%;padding-bottom:1%;font-size: 1.6rem">${month_year}</h2>`;
@@ -80,7 +75,8 @@ const watchListDisplay = () => {
                          <a class="dynamicGenre">${movie.genre} </a>         
 
                     <div class="watchlist" id="watchlistButton" data-title="${movie.title}" data-poster="${movie.poster}" data-genre="${movie.genre}" onclick="addToWatchlist(this)"">
-                        <i class="bi bi-bookmark-plus-fill " ></i>
+                        
+                    <i class="bi bi-file-x" id="removeWatchList" data-title="${movie.title}" data-poster="${movie.poster}" data-genre="${movie.genre}" onclick="watchListRemove(this)" ></i>
                     </div>
                     <hr>
                 `;
@@ -99,3 +95,29 @@ const watchListDisplay = () => {
 
 
 watchListDisplay();
+
+const watchListRemove = (item) => {
+    console.log(item);
+    const title = item.dataset.title;
+
+    watchList.forEach((movie, index) => {
+        console.log(movie.title);
+        if (movie.title === title) {
+            watchList.splice(index, 1);
+        }
+    });
+}
+
+
+document.getElementById('watchlist-container').addEventListener('click', function (event) {
+    console.log(event.target);
+    if (event.target.matches('#removeWatchList')) {
+        console.log("hi");
+        watchListRemove(event.target);
+        watchListDisplay();
+
+
+    }
+
+
+});
