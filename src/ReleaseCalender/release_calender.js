@@ -1,31 +1,19 @@
 
-const backToTopButton = document.getElementById("back-to-top-btn");
+import { apiFetch } from '../scripts/apiFetch.js';
+
+
+
+
 
 const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 
-window.onscroll = function () {
-    scrollFunction();
-};
-
-function scrollFunction() {
-    if (document.documentElement.scrollTop > 600) {
-        backToTopButton.style.display = "block";
-    } else {
-        backToTopButton.style.display = "none";
-    }
-}
-
-
-function scrollToTop() {
-    document.documentElement.scrollTop = 0;
-}
 
 
 const returnGenre = (genreIds, genreList) => {
     const genresList = [];
     genreIds.map(genreId => {
-        for (i = 0; i < genreList.genres.length; i++) {
+        for (let i = 0; i < genreList.genres.length; i++) {
             if (genreId == genreList.genres[i].id) {
                 genresList.push(genreList.genres[i].name);
             }
@@ -38,24 +26,25 @@ const returnGenre = (genreIds, genreList) => {
 
 
 const upcomingMoviesSection = async () =>{
-    const API_KEY = 'Bearer dd35036818633025b77e437d6e8b9964';
-    const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZDM1MDM2ODE4NjMzMDI1Yjc3ZTQzN2Q2ZThiOTk2NCIsInN1YiI6IjY1ODFkODQ1YmYwZjYzMDg5MzYyYjg5NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.sT5e5quy6JNqGpb4QC2D008yWeeV9goKw0jwdPwFY6I'
+    // const API_KEY = 'Bearer dd35036818633025b77e437d6e8b9964';
+    // const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZDM1MDM2ODE4NjMzMDI1Yjc3ZTQzN2Q2ZThiOTk2NCIsInN1YiI6IjY1ODFkODQ1YmYwZjYzMDg5MzYyYjg5NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.sT5e5quy6JNqGpb4QC2D008yWeeV9goKw0jwdPwFY6I'
     let minDate = "2023-12-20";
     let maxDate = "2024-01-10";
     const apiUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&release_date.gte=${minDate}&release_date.lte=${maxDate}`;
     const genre_url = `https://api.themoviedb.org/3/genre/movie/list?language=en`;
-    const options = {
-        method: 'GET',
-        headers: {
-            'Authorization': ACCESS_TOKEN,
-            'accept': 'application/json'
-        }
-    };
+    // const options = {
+    //     method: 'GET',
+    //     headers: {
+    //         'Authorization': ACCESS_TOKEN,
+    //         'accept': 'application/json'
+    //     }
+    // };
     try {
-        const response = await fetch(apiUrl, options);
-        const result = await response.json();
-        const genre = await fetch(genre_url, options);
-        const genreList = await genre.json();
+        // const response = await fetch(apiUrl, options);
+        const result = await apiFetch(apiUrl);
+        console.log(result);
+        // const genre = await fetch(genre_url, options);
+        const genreList = await apiFetch(genre_url);
         let image_url = "https://image.tmdb.org/t/p/w185"
 
         let resultList = result.results;
