@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="whatToWatch.css">
+
+
+    <title>What To Watch - IMDb</title>
+
+</head>
+<body>
+    
+    <div id="navbar-container"></div>
+
+    <div class="popular-movies-container home-section-container">
+        <h1 class="home-header">What to watch</h1>
+        <div class="home-section-headers">
+            <h2 class="firsth2"><div class="header-left"></div>Streaming Guides<img src="../../assets/img/right-arrow.png" alt=""></h2>
+            <label class="streamlabel" for="">Everything coming to Prime Video, Netflix, Disney Plus, and more</label>
+        </div>
+    </div>
+    
+    
+        <!-- Tab buttons -->
+        <div class="tabs">
+            <div class="tab" onclick="openTab('tab1')">WATCH GUIDE</div>
+            <div class="tab" onclick="openTab('tab2')">FAN FAVOURITES</div>
+            <div class="tab" onclick="openTab('tab3')">TOP PICKS</div>
+            <div class="tab" onclick="openTab('tab4')">FROM YOUR WATCHLIST</div>
+            <div class="tab" onclick="openTab('tab5')">MOST POPULAR</div>
+        </div>
+
+        <!-- Tab content -->
+        <div id="tab1" class="tab-content">
+            <div class="apifetch-container">
+
+                <div id="apifetchWatchGuide" class="card-slider"> </div>
+               
+
+            </div>
+
+            <div class="buttons">
+                <p class="button-p">Browse these IMDb collections to find the perfect next movie or TV show to watch</p>
+                <div class="firstbuttons">
+                        <button class="b1" onclick="openTab('tab2')">Fan Favourites</button>
+                        <button class="b2" onclick="openTab('tab3')">Top Picks</button>
+                </div>
+                <div class="secondbuttons">
+                        <button class="b3" onclick="openTab('tab4')">From Your Watchlist</button>
+                        <button class="b4" onclick="openTab('tab5')">Most Popular</button>
+                </div>
+                
+            </div>
+            <br>
+            <div id="apirecentlyviewed" class="recentely-viewed">
+                <h2>Recently Viewed</h2>
+                <label for="">You have no recently viewed pages</label>
+            </div>
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <div class="apifetch-container">
+
+                <div id="apifetchFanFavourites" class="card-slider"></div>
+                
+
+            </div>
+            <div class="buttons">
+                <p>Browse these IMDb collections to find the perfect next movie or TV show to watch</p>
+                <div class="firstbuttons">
+                    <button class="b1" onclick="openTab('tab1')">Watch Guides</button>
+                    <button class="b2" onclick="openTab('tab3')">Top Picks</button>
+                </div>
+                <div class="secondbuttons">
+                    <button class="b3" onclick="openTab('tab4')">From Your Watchlist</button>
+                    <button class="b4" onclick="openTab('tab5')">Most Popular</button>
+                    
+                </div>
+            </div>
+            <div id="apirecentlyviewed" class="recentely-viewed">
+                <h2>Recently Viewed</h2>
+                <label for="">You have no recently viewed pages</label>
+            </div>
+        </div>
+
+        <div id="tab3" class="tab-content">
+            <div class="apifetch-container">
+
+                <div id="apifetchTopPicks" class="card-slider"></div>
+               
+
+            </div>
+            <div class="buttons">
+                <p>Browse these IMDb collections to find the perfect next movie or TV show to watch</p>
+                <div class="firstbuttons">
+                    <button class="b1" onclick="openTab('tab1')">Watch Guides</button>
+                    <button class="b2" onclick="openTab('tab2')">Fan Favourites</button>
+                </div>
+                <div class="secondbuttons">
+                    <button class="b3" onclick="openTab('tab4')">From Your Watchlist</button>
+                    <button class="b4" onclick="openTab('tab5')">Most Popular</button>
+                    
+                </div>
+            </div>
+            <div id="apirecentlyviewed" class="recentely-viewed">
+                <h2>Recently Viewed</h2>
+                <label for="">You have no recently viewed pages</label>
+            </div>
+        </div>
+
+        <div id="tab4" class="tab-content">
+            <div class="apifetch-container">
+
+                <div id="apifetchFromYourWatchlist" class="card-slider"></div>
+                
+            </div>
+            <div class="buttons">
+                <p>Browse these IMDb collections to find the perfect next movie or TV show to watch</p>
+                <div class="firstbuttons">
+                    <button class="b1" onclick="openTab('tab1')">Watch Guides</button>
+                    <button class="b2" onclick="openTab('tab2')">Fan Favourites</button>
+                    
+                </div>
+                <div class="secondbuttons">
+                    <button class="b3" onclick="openTab('tab3')">Top Picks</button>
+                    <button class="b4" onclick="openTab('tab5')">Most Popular</button>
+                    
+                </div>
+                
+            </div>
+            <br>
+
+            <div id="apirecentlyviewed" class="recentely-viewed">
+                <h2>Recently Viewed</h2>
+                <label for="">You have no recently viewed pages</label>
+            </div>
+        </div>
+
+        <div id="tab5" class="tab-content">
+            <div class="apifetch-container">
+
+                <div id="apifetchMostPopular" class="card-slider"></div>
+                
+            </div>
+            <div class="buttons">
+                <p>Browse these IMDb collections to find the perfect next movie or TV show to watch</p>
+                <div class="firstbuttons">
+                    <button class="b1" onclick="openTab('tab1')">Watch Guides</button>
+                    <button class="b2" onclick="openTab('tab2')">Fan Favourites</button>
+                    
+                </div>
+                <div class="secondbuttons">
+                    <button class="b3" onclick="openTab('tab3')">Top Picks</button>
+                    <button class="b4" onclick="openTab('tab4')">From Your Watchlist</button>
+                    
+                </div>
+                
+            </div>
+            <br>
+            <div id="apirecentlyviewed" class="recentely-viewed">
+                <h2>Recently Viewed</h2>
+                <label for="">You have no recently viewed pages</label>
+            </div>
+        </div>
+    
+    <script src="whatToWatch.js"></script>
+    <script src="../LandingPage/main.js" type="module"></script>
+    <script src="../scripts/navbarMenu.js"></script>
+    <script src="../scripts/includeNavbar&Footer.js" type="module"></script>
+
+    <div id="footer-container"></div>
+
+</body>
+</html>

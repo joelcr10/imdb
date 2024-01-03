@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Most Popular Celebs</title>
+    <link rel="stylesheet" href="mostPopularCeleb.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <script type="module">
+        export{};
+    </script>
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <div id="mainContainer">
+            <div id="heading">
+                <h2>IMDb Charts</h2>
+                <h1>Most Popular Celebs</h1>
+                <p> As determined by IMDb users</p>
+                <hr>
+                <div id="shareText">Share</div> 
+                <img src="../../assets/img/vector-share-icon.jpg" alt="" id="shareIcon">
+            </div>
+            
+            <div class="contentButtons">
+                <div class="compactView" >|||</div><div class="detailedView" >!!!</div>
+                
+            </div>
+
+            <div id="bigBox">
+               
+               
+                
+            </div>
+
+            
+
+            <div id="rightContainer">
+                <div id="rightHeading"> More to explore </div>
+                    <hr>
+                    <div id="rightSubHeading"> Charts</div>  
+                    <h2>Top Box Office(US) ></h2>  
+                    <p>From the past weekend</p>
+                    <h2>Most Popular Movies ></h2>
+                    <p>As determined by IMDb users </p>
+                    <h2>IMDb top 250 Movies ></h2>
+                    <p>As rated by regular IMDb voters </p>
+                    <h2>Top Rated English Movies ></h2>
+                    <p>English language movies as rated by IMDb users </p>
+                    <h2>Most Popular TV shows ></h2>
+                    <p>As determined by IMDb users</p>
+                    <h2>Top 250 TV Shows ></h2>
+                    <p>Top 250 as rated by IMDb users</p>
+                    <h2>Lowest Rated Movies ></h2>
+                    <p>Bottom 100 as voted by IMDb users</p>
+            </div>
+    </div>
+
+
+    <div id="footer-container"></div>
+    <script src="../scripts/includeNavbar&Footer.js"type="module"></script>
+    <script src="../scripts/navbarMenu.js"></script>
+    <script type="module">
+        import {celebrity} from "/src/Celebs/mostPopularCeleb.js";
+        celebrity(false,0);
+        
+         document.getElementsByClassName("compactView")[0].addEventListener("click",function(){
+            document.getElementById("bigBox").innerText="";
+            celebrity(false,0)});
+        document.getElementsByClassName("detailedView")[0].addEventListener("click",function(){
+            document.getElementById("bigBox").innerText="";
+            celebrity(true,0)});
+        
+    </script>
+</body>
+</html>

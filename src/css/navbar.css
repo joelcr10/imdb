@@ -81,13 +81,25 @@
     display: none;
 }
 
-.profile-container{
-    width: 6rem;
+#nav-profile{
+   
+    width: 6.5rem;
+    max-width: 7rem;
+    height: 90%;
+    align-items: center;
     justify-content: space-around;
+    display: flex;
+    
 }
 
-.profile-container .profile-icon{
-    filter: invert(100);
+.profile-container #guest-user a{
+    text-decoration: none;
+    font-weight: 600;
+    color: rgb(12, 109, 255);
+}
+
+.profile-container #nav-profile .profile-icon{
+    filter: invert(1);
 }
 
 .menu-container label,.watchlist-container label{
@@ -159,6 +171,7 @@
 .individual-section h1{
     margin: 0;
     font-size: 25px;
+    color: var(--white);
 }
 
 .individual-section a{

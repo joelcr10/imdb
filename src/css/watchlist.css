@@ -1,0 +1,15 @@
+body{
+    background-color: rgb(214, 214, 214);
+}
+
+.main-container{
+ 
+
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: white;
+}
+
+.private {
+    color: grey;
+}

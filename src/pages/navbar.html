@@ -1,31 +1,39 @@
 
     <nav id="navbar">
         <div class="logo-container nav-container">
-            <a href="./index.html"><img src="../../assets/img/imdb-logo.png" id="imdb-icon" alt="imdb-logo"></a>
+            <a href="../LandingPage/index.html"><img src="../../assets/img/imdb-logo.png" id="imdb-icon" alt="imdb-logo"></a>
         </div>
         <div class="menu-container nav-container" onclick="openNavbarMenu()">
             <img src="../../assets/img/icons8-menu-96.png" alt="hamburger-menu">
             <label for="">Menu</label>
         </div>
-        <div class="search-container nav-container">
-            <select name="" id="">
+
+        <div class="search-container nav-container" id="searchContainer">
+            <select name="" id="searchFilter">
                 <option value="All">All</option>
                 <option value="Movies">Movies</option>
                 <option value="TV Shows">TV</option>
                 <option value="Celecs">Celebrities</option>
             </select>
-            <input type="text" placeholder="Search IMDb">
+            <input type="text" placeholder="Search IMDb" id="search" onkeydown="testing()">
             <img src="../../assets/img/search.png" alt="search-icon">
         </div>
+
         <div class="watchlist-container nav-container">
             <img src="../../assets/img/watchlist.png">
-            <label for="">Watchlist</label>
+            <label for="">Watchlist</label> 
         </div>
         <div class="profile-container nav-container">
-            <img src="../../assets/img/profile.png" class="profile-icon" alt="">
-            <label for="">Joel</label>
-            <img src="../../assets/img/dropdown.png" alt="">
+            <div id="guest-user">
+                <a href="../Login_Page/login.html">Sign In</a>
+            </div>
+            <div id="nav-profile">
+                <img src="../../assets/img/profile.png" class="profile-icon" alt="">
+                <label for="" id="nav-username"></label>
+                <img src="../../assets/img/dropdown.png" alt="">
+            </div>
         </div>
+        <button id="signout-btn">signOut</button>
     </nav>
 
     <div class="nav-sections" id="nav-sections">
@@ -40,7 +48,7 @@
                 <div class="movies-section individual-section">
                     <img src="../../assets/img/movies-icon.png" alt="">
                     <h1>Movies</h1>
-                    <a href="./release_calender.html">Release Calender</a>
+                    <a href="../ReleaseCalender/release_calender.html">Release Calender</a>
                     <a href="">Top 250 Movies</a>
                     <a href="">Most Popular Movies</a>
                     <a href="">Browse Movies by Genre</a>
@@ -49,9 +57,9 @@
                     <div class="celebs-section individual-section bottom-section">
                         <img src="../../assets/img/celebs-icon.png" alt="">
                         <h1>Celebs</h1>
-                        <a href="">Born Today</a>
-                        <a href="">Most Popular Celebs</a>
-                        <a href="">Celebrity News</a>
+                        <a href="../advancedSearch/advancedSearch.html">Advanced Search</a>
+                        <a href="../Celebs/mostPopularCeleb.html">Most Popular Celebs</a>
+                        <a href="../news/news.html">Celebrity News</a>
                         
                     </div>
                 </div>
@@ -60,7 +68,7 @@
                         <img src="../../assets/img/tv-icon.png" alt="">
 
                         <h1>Tv Shows</h1>
-                        <a href="">What's on TV streaming</a>
+                        <a href="../WhatsOnTv/whatontv.html">What's on TV streaming</a>
                         <a href="">Top 250 TV Shows</a>
                         <a href="">Most Popular TV shows</a>
                     </div>
@@ -68,7 +76,7 @@
                         <img src="../../assets/img/watch-icon.png" alt="">
 
                         <h1>Watch</h1>
-                        <a href="">What to watch</a>
+                        <a href="../WhatToWatchPage/watchguide.html">What to watch</a>
                         <a href="">Latest Trailer</a>
                         <a href="">IMDb Originals</a>
                         <a href=""></a>
@@ -98,3 +106,4 @@
     </div>
 
     <script src="../scripts/navbarMenu.js"></script>
+   
