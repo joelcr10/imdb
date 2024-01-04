@@ -1,28 +1,19 @@
-let randomPage = getRandomNumber(1,15);
-let output = 0;
+import { apiFetch } from "../scripts/apiFetch.js";
 
- 
-const ACCESS_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZTc0OGYxMWVlY2YwYTNjOWE4ODM0NDhiZTUxNmI4MyIsInN1YiI6IjY1ODE2NzBmODc1ZDFhMDdkZmFlZTgyZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EvpMF4IBQ8n8RIPmnupE3K1p0sXyDo-VqS0BbbmJqUM'; // Replace with your actual TMDb access token
+//let randomPage = getRandomNumber(1,15);
+
 let image_url = "https://image.tmdb.org/t/p/w185";
 
 export const celebrity = async (needDetails,firstLineNumber) => {
   for (let page = 1; page <= 5; page++) {
-    try {
+    console.log("first fetch started");
+  
       
-      const response = await fetch(`https://api.themoviedb.org/3/person/popular?language=en-US&page=${randomPage}`, {
-        method: 'GET',
-        headers: {
-          'Authorization': `Bearer ${ACCESS_TOKEN}`,
-          'Accept': 'application/json',
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
+      const data = await apiFetch(`https://api.themoviedb.org/3/person/popular?language=en-US&page=${page}`);
+       
 
       
-      const data = await response.json();
+     
       console.log(data);
 
       let resultList = data.results;
@@ -42,7 +33,9 @@ export const celebrity = async (needDetails,firstLineNumber) => {
 
         let name = item.original_name;
         let department = item.known_for_department;
-        let firstLineRandomNumber = getRandomNumber(500, 5000);
+        let firstLineRandomNumber = Math.floor(item.popularity * 10);
+
+
         let scr = image_url + item.profile_path;
         ++firstLineNumber;
 
@@ -51,8 +44,9 @@ export const celebrity = async (needDetails,firstLineNumber) => {
 
         if (needDetails) {
           details = await detailedView(id);
+          details = details.split('.').slice(0, 2).join('.')+ ('.');
         }
-        details = details.split('.').slice(0, 2).join('.');
+        
         
 
         const card = `
@@ -72,44 +66,23 @@ export const celebrity = async (needDetails,firstLineNumber) => {
         div.setAttribute("class", "celebrityBox");
         div.innerHTML = card;
         document.getElementById("bigBox").append(div);
-        if(output<100){
-          output++;
-        }
-        else{
-          break;
-        }
+        
       }
-    } catch (error) {
-      console.error('Fetch error:', error);
-      // Handle errors here
     }
   }
-  randomPage++;
-};
+    
 
 const detailedView = async (id) => {
-  try {
-    const response = await fetch(`https://api.themoviedb.org/3/person/${id}?language=en-US`, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${ACCESS_TOKEN}`,
-        'Accept': 'application/json',
-      },
-    });
+  
+    const response = await apiFetch(`https://api.themoviedb.org/3/person/${id}?language=en-US`);      
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
 
-    const data = await response.json();
-    console.log(data);
+   
+    console.log(response);
 
-    return data.biography;
-  } catch (error) {
-    console.error('Fetch error:', error);
-    // Handle errors here
-  }
-};
+    return response.biography;
+ 
+}
 
 function getRandomNumber(min, max) {
   const randomDecimal = Math.random();
