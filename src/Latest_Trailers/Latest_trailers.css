@@ -20,7 +20,7 @@
             background-color: rgb(29, 29, 29);
             border-bottom-width: 2px;
             border-bottom-style:solid;
-            border-bottom-color: yellow;
+            border-bottom-color: rgb(244, 174, 12);
 
         }
 
@@ -46,6 +46,7 @@
 
         .heading-1{
             margin-left: 130px;
+            color: rgb(218, 160, 0);
         }
 
         .tabs{
