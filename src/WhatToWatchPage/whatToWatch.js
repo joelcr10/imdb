@@ -1,4 +1,6 @@
+import { addRating } from "../UserRating/userratingDB.js";
 import { apiFetch } from "../scripts/apiFetch.js";
+// import {addRating} from '../UserRating/userratingDB.js';
 
 ////////////////////////////////////////////   WATCH GUIDE   ///////////////////////////////////////////////// 
 
@@ -21,6 +23,7 @@ async function apifetchWatchGuide(){
             const poster = image_url + item.poster_path;
             const id = item.id;
 
+
             // Updated card variable to include the play icon
             const card = `
                             <div class="image-container">
@@ -36,7 +39,7 @@ async function apifetchWatchGuide(){
                                 <label>
                                 
                                 <img src="../../assets/img/star.png">${rating.toFixed(1)}
-                                <img class="starred-icon" src="../../assets/img/starred.png" onclick="openRatingModal('${title}')">
+                                <img class="starred-icon" src="../../assets/img/starred.png" onclick="openRatingModal('${title}', '${id}')">
 
                                 </label>
                                 <a href="../MovieDetails/movieDetails.html?id=${id}"> 
