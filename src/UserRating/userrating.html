@@ -10,27 +10,14 @@
 <body>
 
     <!-- The rating icon that triggers the modal -->
-    <div class="rating-icon" onclick="openRatingModal()">Give your rating: &#9733;</div>
+    <div class="rating-icon" onclick="openRatingModal()">RATE THIS: &#9733;</div>
 
     <!-- Modal -->
     <div id="ratingModal" class="modal">
-        <div class="modal-content">
-            <!-- Star rating system and other modal content -->
-            <p>Rate this:</p>
-            <div class="stars" data-rating="0">
-                <!-- Five stars with data-value attribute representing their rating value -->
-                <span class="star" data-value="1" onclick="selectStar(1)">&#9733;</span>
-                <span class="star" data-value="2" onclick="selectStar(2)">&#9733;</span>
-                <span class="star" data-value="3" onclick="selectStar(3)">&#9733;</span>
-                <span class="star" data-value="4" onclick="selectStar(4)">&#9733;</span>
-                <span class="star" data-value="5" onclick="selectStar(5)">&#9733;</span>
-            </div>
-            <p id="selectedRating">Your Rating: 0</p>
-            <button onclick="closeRatingModal()">Submit Rating</button>
-        </div>
+        
     </div>
 
-   <script src="userrating.js"></script>
+    <script src="userrating.js"></script>
+
 </body>
 </html>
-

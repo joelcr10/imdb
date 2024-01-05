@@ -33,7 +33,12 @@ async function apifetchWatchGuide(){
                                 
                                 <div class="card-text">
                                 
-                                <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
+                                <label>
+                                
+                                <img src="../../assets/img/star.png">${rating.toFixed(1)}
+                                <img class="starred-icon" src="../../assets/img/starred.png" onclick="openRatingModal('${title}')">
+
+                                </label>
                                 <a href="../MovieDetails/movieDetails.html?id=${id}"> 
                                     <h3>${title}</h3>
                                 </a>
