@@ -117,14 +117,11 @@ const upcomingMoviesSection = async () => {
 
                 movieDetails.classList.add('movie-details');
 
-                movieDetails.onclick = function() {
-                    
-                    window.location.href = `../MovieDetails/movieDetails.html?id=${movie.id}`;
-                };
+                
 
                 movieDetails.innerHTML = `
                     
-
+                    <a href ="../MovieDetails/movieDetails.html?id=${movie.id}">
                         <img class="movie-poster" src="${movie.poster}" alt="movie-poster">
                         <a class="movie-title">${movie.title}</a><br>
     
@@ -134,6 +131,7 @@ const upcomingMoviesSection = async () => {
                             <i class="bi bi-bookmark-plus-fill " ></i>
                         </div>
                         <hr>
+                    </a>
                     
                     `;
                 card.appendChild(movieDetails);

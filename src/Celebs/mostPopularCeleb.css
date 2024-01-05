@@ -23,6 +23,7 @@ body{
     margin-left: 30px;
     position: relative;
     margin-top: 50px;
+    z-index: -10;
 }
 #heading hr{
     width: 35px;
@@ -87,7 +88,7 @@ body{
     height:70px;
     border-radius: 100%;
     position: absolute;
-    top: 15%;
+    top: 20px;
     left: 15px;
 }
 .greenUpArrow{
@@ -136,10 +137,11 @@ body{
 }
 #mainContainer{
     position: relative;
+    z-index: -1;
 }
 #rightContainer{
     position: absolute;
-    top: 1%;
+    top: 210px;
     right: 2%;
     
 }
