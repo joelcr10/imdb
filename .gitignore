@@ -6,3 +6,7 @@
 
 # Ignore a specific directory
 /node_modules
+
+#Ignore creddential files
+config.js
+.env

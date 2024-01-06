@@ -230,6 +230,14 @@
     margin-top: 50px;
 }
 
+#profile-icon{
+    border-radius: 50%;
+    border: 2px solid var(--theme);
+    background-color: var(--theme);
+
+
+}
+
 @media screen and (max-width: 950px) {
     .watchlist-container{
         display: none;

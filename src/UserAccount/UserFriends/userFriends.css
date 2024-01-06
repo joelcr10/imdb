@@ -1,0 +1,82 @@
+
+
+
+#search-results{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+
+#friend-modal-container{
+    background-color: rgba(0, 0, 255, 0.123);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.friend-modal-box{
+    background-color: black;
+    padding: 40px;
+}
+
+.user-details-container{
+    display: flex;
+    gap: 20px;
+}
+
+.user-details-container h1{
+    margin: 0;
+    padding: 0;
+}
+
+.user-details-container img{
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+
+#add-friend-btn, #remove-friend-btn{
+    display: none;
+}
+
+
+.friend-request-container{
+    background-color: grey;
+    display: flex;
+    height: 50px;
+    width: 50%;
+}
+
+
+.request-user-details{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 255, 0.247);
+    width: 100%;
+    padding: 0px 20px;
+    align-items: center;
+}
+
+.user-details{
+    display: flex;
+    flex-direction: column;
+}
+
+.request-buttons{
+    display: flex;
+    gap: 20px;
+}
+
+
+
+
+
+
+
+
