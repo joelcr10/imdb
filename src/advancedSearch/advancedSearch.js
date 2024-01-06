@@ -24,11 +24,13 @@ export const multiSearch = (searchIt, type, page = 1,output =0) => {
       let resultList;
       if (data.results.length === 0) {
         let message = "Sorry no information available!";
+
         let div = document.createElement("div");
         div.textContent = message;
         document.getElementById("errorBox").innerHTML = "";
         document.getElementById("errorBox").append(div);
       }
+      
         console.log("before filtering " + data.results.length);
       if (type !== "") {
         const filteredResults = data.results.filter(item => item.media_type === type);

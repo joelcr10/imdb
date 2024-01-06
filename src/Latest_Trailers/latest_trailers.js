@@ -1,45 +1,17 @@
+import { apiFetch } from "../scripts/apiFetch.js";
 
-
-function openTab(tabId) {
-    // Hide all tab content
-    console.log("inside open tab");
-    var tabContent = document.getElementsByClassName('tab-content');
-    for (var i = 0; i < tabContent.length; i++) {
-        tabContent[i].style.display = 'none';
-    }
-
-    // Remove 'active' class from all tabs
-    var tabs = document.getElementsByClassName('tab');
-    for (var i = 0; i < tabs.length; i++) {
-        tabs[i].classList.remove('active');
-    }
-
-    // Show the selected tab content and mark the tab as active
-    document.getElementById(tabId).style.display = 'block';
-    event.currentTarget.classList.add('active');
-}
-
-
-
-///////////////////////////////////////   API FETCH   ///////////////////////////////////////////////// 
+///////////////////////////////////////             TRENDING TRAILERS           ///////////////////////////////////////////////// 
 
 
 async function apifetchTrendingTrailers(){
-    console.log("inside test");
-    const API_KEY = 'd808cc664ed4f079c68e9cd427d4f86a';
-    const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkODA4Y2M2NjRlZDRmMDc5YzY4ZTljZDQyN2Q0Zjg2YSIsInN1YiI6IjY1ODE0YjZlMjI2YzU2MDdmZTllZjkwYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.e9jwZv6dTRR_gOLQGXJlmMTAA69zTAThi1_sbyPVOgs';
-    const apiUrl = 'https://api.themoviedb.org/3/trending/movie/day?language=en-US';
-    const options = {
-        method: 'GET',
-        headers: {
-            'Authorization': ACCESS_TOKEN,
-            'accept': 'application/json'
-        }
-    }
+    // console.log("inside test");
 
+    const apiUrl = 'https://api.themoviedb.org/3/trending/movie/day?language=en-US';
+    
     try{
-        const response = await fetch(apiUrl,options);
-        const result = await response.json();
+       
+        const result = await apiFetch(apiUrl);
+
         // console.log(result.results);
         const apilist = result.results;
         let image_url = "https://image.tmdb.org/t/p/original";
@@ -54,10 +26,10 @@ async function apifetchTrendingTrailers(){
                             
                            <div class="image-container">
                                 <label>
-
-                                    <img class="poster" src="${poster}" alt="">
-                                    <i id="playbutton" class="bi bi-play-circle" style="font-size: 3em;"></i>
-
+                                    <a href="../MovieDetails/movieDetails.html?id=${id}">
+                                        <img class="poster" src="${poster}" alt="">
+                                        <i id="playbutton" class="bi bi-play-circle" style="font-size: 3em;"></i>
+                                    </a>
                                 </label>
                                                    
                                 <a href="../MovieDetails/movieDetails.html?id=${id}">
@@ -86,23 +58,17 @@ async function apifetchTrendingTrailers(){
  }
  apifetchTrendingTrailers();
 
+/////////////////////////////////////////           MOST ANTICIPATED             ///////////////////////////////////////
+
 
 async function apifetchMostAnticipated(){
-    console.log("inside test");
-    const API_KEY = 'd808cc664ed4f079c68e9cd427d4f86a';
-    const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkODA4Y2M2NjRlZDRmMDc5YzY4ZTljZDQyN2Q0Zjg2YSIsInN1YiI6IjY1ODE0YjZlMjI2YzU2MDdmZTllZjkwYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.e9jwZv6dTRR_gOLQGXJlmMTAA69zTAThi1_sbyPVOgs';
+    // console.log("inside test");
     const apiUrl = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
-    const options = {
-        method: 'GET',
-        headers: {
-            'Authorization': ACCESS_TOKEN,
-            'accept': 'application/json'
-        }
-    }
 
     try{
-        const response = await fetch(apiUrl,options);
-        const result = await response.json();
+
+        const result = await apiFetch(apiUrl);
+
         // console.log(result.results);
         const apilist = result.results;
         let image_url = "https://image.tmdb.org/t/p/original";
@@ -115,11 +81,15 @@ async function apifetchMostAnticipated(){
 
             // console.log(title,rating);
             const card = `
-                            <div class="image-container">
+                            
+                           <div class="image-container">
                                 <label>
-                                    <img class="poster" src="${poster}" alt="">
-                                    <i id="playbutton" class="bi bi-play-circle" style="font-size: 3em;"></i>
-                                </label>                            
+                                    <a href="../MovieDetails/movieDetails.html?id=${id}">
+                                        <img class="poster" src="${poster}" alt="">
+                                        <i id="playbutton" class="bi bi-play-circle" style="font-size: 3em;"></i>
+                                    </a>
+                                </label>
+                                                   
                                 <a href="../MovieDetails/movieDetails.html?id=${id}">
                                 <div class="card-text">
                                     <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
@@ -128,7 +98,7 @@ async function apifetchMostAnticipated(){
                                 </div>
                                 </a>
                             </div>
-                        `;
+                       `;
             let divs = document.createElement('div');
             divs.setAttribute("class","card");
             divs.innerHTML = card;
@@ -142,22 +112,18 @@ async function apifetchMostAnticipated(){
  }
  apifetchMostAnticipated();
 
+
+//////////////////////////////////////////          MOST POPULAR            /////////////////////////////////////////////////
+
+
 async function apifetchMostPopular(){
-    console.log("inside test");
-    const API_KEY = 'd808cc664ed4f079c68e9cd427d4f86a';
-    const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkODA4Y2M2NjRlZDRmMDc5YzY4ZTljZDQyN2Q0Zjg2YSIsInN1YiI6IjY1ODE0YjZlMjI2YzU2MDdmZTllZjkwYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.e9jwZv6dTRR_gOLQGXJlmMTAA69zTAThi1_sbyPVOgs';
+    // console.log("inside test");
     const apiUrl = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1';
-    const options = {
-        method: 'GET',
-        headers: {
-            'Authorization': ACCESS_TOKEN,
-            'accept': 'application/json'
-        }
-    }
 
     try{
-        const response = await fetch(apiUrl,options);
-        const result = await response.json();
+
+        const result = await apiFetch(apiUrl);
+
         // console.log(result.results);
         const apilist = result.results;
         let image_url = "https://image.tmdb.org/t/p/original";
@@ -169,12 +135,15 @@ async function apifetchMostPopular(){
             const id = item.id;
             // console.log(title,rating); 
             const card = `
-                            <div class="image-container">
+                            
+                           <div class="image-container">
                                 <label>
-                                    <img class="poster" src="${poster}" alt="">
-                                    <i id="playbutton" class="bi bi-play-circle" style="font-size: 3em;"></i>
-                                </label>  
-                                
+                                    <a href="../MovieDetails/movieDetails.html?id=${id}">
+                                        <img class="poster" src="${poster}" alt="">
+                                        <i id="playbutton" class="bi bi-play-circle" style="font-size: 3em;"></i>
+                                    </a>
+                                </label>
+                                                   
                                 <a href="../MovieDetails/movieDetails.html?id=${id}">
                                 <div class="card-text">
                                     <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
@@ -183,7 +152,7 @@ async function apifetchMostPopular(){
                                 </div>
                                 </a>
                             </div>
-                         `;
+                       `;
             let divs = document.createElement('div');
             divs.setAttribute("class","card");
             divs.innerHTML = card;
@@ -198,22 +167,20 @@ async function apifetchMostPopular(){
  }
  apifetchMostPopular();
 
+
+////////////////////////////////////////////////        RECENTLY ADDED         //////////////////////////////////////////////////
+
+
+
  async function apifetchRecentlyAddeded() {
-    console.log("inside test");
-    const API_KEY = 'd808cc664ed4f079c68e9cd427d4f86a';
-    const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkODA4Y2M2NjRlZDRmMDc5YzY4ZTljZDQyN2Q4Zjg2YSIsInN1YiI6IjY1ODE0YjZlMjI2YzU2MDdmZTllZjkwYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.e9jwZv6dTRR_gOLQGXJlmMTAA69zTAThi1_sbyPVOgs';
+    // console.log("inside test");
     const apiUrl = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1';
-    const options = {
-        method: 'GET',
-        headers: {
-            'Authorization': ACCESS_TOKEN,
-            'accept': 'application/json'
-        }
-    }
+    
 
     try {
-        const response = await fetch(apiUrl, options);
-        const result = await response.json();
+
+        const result = await apiFetch(apiUrl);
+
         // console.log(result.results);
         const apilist = result.results;
         console.log("inside recently adedd");
@@ -226,11 +193,15 @@ async function apifetchMostPopular(){
             const id = item.id;
             console.log("recently",title, rating);
             const card = `
-                            <div class="image-container">
+                            
+                           <div class="image-container">
                                 <label>
-                                    <img class="poster" src="${poster}" alt="">
-                                    <i id="playbutton" class="bi bi-play-circle" style="font-size: 3em;"></i>
+                                    <a href="../MovieDetails/movieDetails.html?id=${id}">
+                                        <img class="poster" src="${poster}" alt="">
+                                        <i id="playbutton" class="bi bi-play-circle" style="font-size: 3em;"></i>
+                                    </a>
                                 </label>
+                                                   
                                 <a href="../MovieDetails/movieDetails.html?id=${id}">
                                 <div class="card-text">
                                     <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
@@ -239,7 +210,7 @@ async function apifetchMostPopular(){
                                 </div>
                                 </a>
                             </div>
-                        `;
+                       `;
             let divs = document.createElement('div');
             divs.setAttribute("class", "card");
             divs.innerHTML = card;
@@ -253,8 +224,3 @@ async function apifetchMostPopular(){
 }
 
 apifetchRecentlyAddeded();
-openTab('tab1');
-window.onload = function() {
-    console.log("Opening tab:");
-    openTab('tab1');
-};

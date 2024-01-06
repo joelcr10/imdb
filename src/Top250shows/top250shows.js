@@ -11,58 +11,58 @@ const showDetails = async (title, release_year,overview) => {
 };
 
 
-const topshows = async () =>{
-    console.log("inside omdb3");
-    const API_KEY = '8b701ace30227088c2f1ef89b747c764';
-    const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`;
-    const options = {
-        method: 'GET',
-        headers: {
-            'Authorization': API_KEY,    
-            'accept': 'application/json'
-        }
-    };
-    const response = await fetch(apiUrl,options);
-    const result = await response.json();
-    let image_url = "https://image.tmdb.org/t/p/original"
+// const topshows = async () =>{
+//     console.log("inside omdb3");
+//     const API_KEY = '8b701ace30227088c2f1ef89b747c764';
+//     const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`;
+//     const options = {
+//         method: 'GET',
+//         headers: {
+//             'Authorization': API_KEY,    
+//             'accept': 'application/json'
+//         }
+//     };
+//     const response = await fetch(apiUrl,options);
+//     const result = await response.json();
+//     let image_url = "https://image.tmdb.org/t/p/original"
     
 
-    let resultList = result.results;
-    resultList.map((item) =>{
-        let title = item.title;
-        let poster = image_url+item.poster_path;
-        let rating = item.vote_average;
-        let date=item.release_date;
-        let overview=item.overview;
-        let release_year=date.split('-')[0];
-        let random_eps=Math.floor(Math.random() * (20 - 5 + 1)) + 5;;
-        let random_no=Math.floor(Math.random() * (5000000 - 100000 + 1)) + 100000;
-        let formatted_random_no= random_no >= 1000000 ? (random_no / 1000000).toFixed(1) + 'M' : (random_no / 1000).toFixed(1) + 'K';
+//     let resultList = result.results;
+//     resultList.map((item) =>{
+//         let title = item.title;
+//         let poster = image_url+item.poster_path;
+//         let rating = item.vote_average;
+//         let date=item.release_date;
+//         let overview=item.overview;
+//         let release_year=date.split('-')[0];
+//         let random_eps=Math.floor(Math.random() * (20 - 5 + 1)) + 5;;
+//         let random_no=Math.floor(Math.random() * (5000000 - 100000 + 1)) + 100000;
+//         let formatted_random_no= random_no >= 1000000 ? (random_no / 1000000).toFixed(1) + 'M' : (random_no / 1000).toFixed(1) + 'K';
 
-        //console.log(rating);
-        console.log(item);
+//         //console.log(rating);
+//         console.log(item);
 
-        const card = `
-                        <img src="${poster}" alt="">
-                        <div class="card-text">
-                            <label><div class="gridview_image"><img src="../../assets/img/star.png">${rating.toFixed(1)}(${formatted_random_no})</div>
-                            <div style="display: flex; align-items: center;">
-                            <img class="starred-icon" src="../../assets/img/starred.png" style="margin-right: 5px;">
-                            <span style="color: blue;">RATE</span>
-                        </div></label>
-                            <h3>${title}</h3>
-                            <label>${release_year}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp ${random_eps} eps</label>
-                            <button onclick="showDetails('${title}', '${release_year}','${overview}')">Details</button>
-                        </div>
-                    `;
+//         const card = `
+//                         <img src="${poster}" alt="">
+//                         <div class="card-text">
+//                             <label><div class="gridview_image"><img src="../../assets/img/star.png">${rating.toFixed(1)}(${formatted_random_no})</div>
+//                             <div style="display: flex; align-items: center;">
+//                             <img class="starred-icon" src="../../assets/img/starred.png" style="margin-right: 5px;">
+//                             <span style="color: blue;">RATE</span>
+//                         </div></label>
+//                             <h3>${title}</h3>
+//                             <label>${release_year}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp ${random_eps} eps</label>
+//                             <button onclick="showDetails('${title}', '${release_year}','${overview}')">Details</button>
+//                         </div>
+//                     `;
                     
-        let div = document.createElement('div');
-        div.setAttribute("class","card");
-        div.innerHTML = card;
-        document.getElementById("topshows-container").append(div);
-    })
+//         let div = document.createElement('div');
+//         div.setAttribute("class","card");
+//         div.innerHTML = card;
+//         document.getElementById("topshows-container").append(div);
+//     })
    
-}
+// }
 
 //topshows();
 const fetchData = async () => {
@@ -101,8 +101,8 @@ const populateGridView = (data) => {
         let rating = item.vote_average;
         let date=item.first_air_date;
         let overview=item.overview;
-        // let release_year=date.split('-')[0];
-        let release_year=date;
+        let release_year=date.split('-')[0];
+        //let release_year=date;
         let random_eps=Math.floor(Math.random() * (20 - 5 + 1)) + 5;;
         let random_no=Math.floor(Math.random() * (5000000 - 100000 + 1)) + 100000;
         let formatted_random_no= random_no >= 1000000 ? (random_no / 1000000).toFixed(1) + 'M' : (random_no / 1000).toFixed(1) + 'K';
@@ -120,6 +120,7 @@ const populateGridView = (data) => {
             </label>
             <h3 class="gridview-title">${title}</h3>
             <label>${release_year}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${random_eps} eps</label>
+            
             <button class="gridview-detailbtn" onclick="showDetails('${title}', '${release_year}','${overview}')">Details</button>
         </div>
     </div>
@@ -174,11 +175,14 @@ const populateDetailedView = (data) => {
     populateGridView(data);
    // populateDetailedView(data);
 };
-displayData_gridview();
-// export const displayData_detailedview = async () => {
-//     const data = await fetchData();
-//     //populateGridView(data);
+//displayData_gridview();
+//  const displayData_detailedview = async () => {
+//    const data = await fetchData();
+     
 //     populateDetailedView(data);
-// };
+//  };
 
 // Call the function to display data in both grid view and detailed view
+//populateDetailedView(data);
+displayData_gridview();
+
