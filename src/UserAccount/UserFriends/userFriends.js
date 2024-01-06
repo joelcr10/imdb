@@ -148,33 +148,40 @@ export const displayFriendRequests = async () =>{
     const userDoc = docSnap.data();
     let friendRequest = userDoc.friendRequest;
     console.log(friendRequest);
-    for(let i=0; i<friendRequest.length;i++){
-        const docRef = await firestoreDoc(db,"users",friendRequest[i]);
-        const docSnap = await getDoc(docRef);
-        const userDoc = docSnap.data();
-        const username = userDoc.username;
-
-        const content = `<div class="friend-request-container" data-value='${friendRequest[i]}'>
-                            <img src="${userDoc.profile}" alt="">
-                            <div class="request-user-details">
-                                <div class="user-details">
-                                    <label for="">${username}</label>
-                                    
-                                </div>
-                                <div class="request-buttons">
-                                    <span class="request-close-btn">&times;</span>
-                                    <span class="request-add-btn">&#x2713;</span>
-                                </div>
-                            </div>
-                        </div>`;
+    if(friendRequest.length==0){
         
-        const div = document.createElement('div');
-        div.innerHTML = content;
-        document.getElementById("friend-requests").append(div);
-        console.log("added list of friend requests");
-
-        
+        document.getElementById("friend-request-prompt").innerText = "No new Request";
+    
+    }else{
+        for(let i=0; i<friendRequest.length;i++){
+            const docRef = await firestoreDoc(db,"users",friendRequest[i]);
+            const docSnap = await getDoc(docRef);
+            const userDoc = docSnap.data();
+            const username = userDoc.username;
+    
+            const content = `<div class="friend-request-container" data-value='${friendRequest[i]}'>
+                                <img src="${userDoc.profile}" alt="">
+                                <div class="request-user-details">
+                                    <div class="user-details">
+                                        <label for="">${username}</label>
+                                        
+                                    </div>
+                                    <div class="request-buttons">
+                                        <span class="request-close-btn">&times;</span>
+                                        <span class="request-add-btn">&#x2713;</span>
+                                    </div>
+                                </div>
+                            </div>`;
+            
+            const div = document.createElement('div');
+            div.innerHTML = content;
+            document.getElementById("friend-requests").append(div);
+            console.log("added list of friend requests");
+    
+            
+        }
     }
+    
 }
 
 
