@@ -231,6 +231,7 @@
     margin-top: 50px;
 }
 
+
 #watchlistCounter{
     margin: 3%;
     font-size: .8rem;
@@ -367,6 +368,133 @@
     z-index: 5;
 }
 
+
+
+/* navSearch css */
+.search-container{
+    position: relative;
+}
+#searchResult{
+   
+    background-color: aliceblue;
+    position: absolute;
+    top: 37px;
+    left: 92px;
+    z-index: 2;
+
+}
+ .littleBox{
+    background-color: aliceblue;
+    position: relative;
+    /* border: 1px solid black; */
+    width: 700px;
+    height: 70px;
+    margin: 5px;
+
+ }
+ 
+ .imageBox {
+    /* background-color: red; */
+    border: 1px solid orange;
+    width: 50px;
+    height: 60px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+ }
+
+ .imageBox img{
+    height: 100%;
+    width: 100%;
+    
+ }
+
+ .titleBox{
+    font-size: 20px;
+    position: absolute;
+    width: 630px;
+    height: 50px;
+    top: 15px;
+    left: 65px;
+    color: black;
+ }
+
+#navErrorBox{
+    padding-left: 100px;
+    font-size: 20px;
+  
+    color: red;
+    width:630px;
+    height: 50px;
+    position: absolute;
+    top: 36px;
+    left: 95px;
+    z-index: 5;
+}
+
+
+
+/* navSearch css */
+.search-container{
+    position: relative;
+}
+#searchResult{
+   
+    background-color: aliceblue;
+    position: absolute;
+    top: 37px;
+    left: 92px;
+    z-index: 2;
+
+}
+ .littleBox{
+    background-color: aliceblue;
+    position: relative;
+    /* border: 1px solid black; */
+    width: 700px;
+    height: 70px;
+    margin: 5px;
+
+ }
+ 
+ .imageBox {
+    /* background-color: red; */
+    border: 1px solid orange;
+    width: 50px;
+    height: 60px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+ }
+
+ .imageBox img{
+    height: 100%;
+    width: 100%;
+    
+ }
+
+ .titleBox{
+    font-size: 20px;
+    position: absolute;
+    width: 630px;
+    height: 50px;
+    top: 15px;
+    left: 65px;
+    color: black;
+ }
+
+#navErrorBox{
+    padding-left: 100px;
+    font-size: 20px;
+  
+    color: red;
+    width:630px;
+    height: 50px;
+    position: absolute;
+    top: 36px;
+    left: 95px;
+    z-index: 5;
+}
 
 
   

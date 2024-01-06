@@ -122,15 +122,21 @@ const upcomingMoviesSection = async () => {
 
                 movieDetails.classList.add('movie-details');
 
+
                 movieDetails.style.minHeight = '6rem';
+>>>>>>>>> Temporary merge branch 2
 
                 // movieDetails.onclick = function() {
+
+                
+
 
                 //     window.location.href = `../MovieDetails/movieDetails.html?id=${movie.id}`;
                 // };
                 // <a href = "../MovieDetails/movieDetails.html?id=${movie.id}" style="min-height:6rem;";
                 movieDetails.innerHTML = `
                     
+
                         
                         <div class="movie-contents" >
                             
