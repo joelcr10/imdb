@@ -40,6 +40,15 @@ export const getNews = () => {
             let author = item.author;
             let content = item.content.split(".");
             let description = item.description ;
+
+            for (let i = 0; i < content.length; i++) {
+              let startIndex = content[i].indexOf("[");
+              let endIndex = content[i].indexOf("]");
+          
+              // Remove the content within the square brackets for each element
+              content[i] = content[i].slice(0, startIndex) + content[i].slice(endIndex + 1);
+          }
+          
             let title= item.title;
             let source = item.source.name;
             let articleUrl = item.url;

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Movie Lists</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .list-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        #listsSelect {
+            display: none;
+            font-size: 18px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>My Movie Lists</h1>
+
+    <div id="listsContainer">
+        <!-- Icon for accessing existing lists -->
+        <div class="list-icon" onclick="toggleListsSelect()">📋</div>
+
+        <!-- Select box to choose from existing lists -->
+        <select id="listsSelect" onchange="selectList(this)">
+            <option value="" selected disabled>Select a List</option>
+            <!-- Add options dynamically based on your existing lists -->
+            <option value="List1">List 1</option>
+            <option value="List2">List 2</option>
+            <!-- Add more options as needed -->
+        </select>
+    </div>
+
+    <script>
+        function toggleListsSelect() {
+            const listsSelect = document.getElementById('listsSelect');
+            listsSelect.style.display = (listsSelect.style.display === 'none' || listsSelect.style.display === '') ? 'block' : 'none';
+        }
+
+        function selectList(selectedList) {
+            const selectedListValue = selectedList.value;
+            // Add your logic to handle the selected list
+            console.log(`Selected List: ${selectedListValue}`);
+            // You can use the selectedListValue to perform further actions based on the chosen list
+
+            // Hide the select box after selecting a list
+            document.getElementById('listsSelect').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>

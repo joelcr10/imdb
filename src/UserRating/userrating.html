@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="userrating.css">
+    <title>User Rating Pop-up</title>
+    
+
+</head>
+<body>
+
+    <!-- The rating icon that triggers the modal -->
+    <div class="rating-icon" onclick="openRatingModal()">RATE THIS: &#9733;</div>
+
+    <!-- Modal -->
+    <div id="ratingModal" class="modal">
+        
+    </div>
+
+    
+    <script src="userrating.js" ></script>
+    <script src="userratingDB.js" type="module"></script>
+    <!-- <script src="../scripts/firebase.js"></script> -->
+    <script type="module">
+        import {addRating} from './userratingDB.js';
+       
+
+            // Event listener for the submit button
+                document.getElementById('ratingModal').addEventListener('click', function (event) {
+                console.log(event);
+
+            // Check if the clicked element has the 'star' class
+            if (event.target.classList.contains('submit')) {
+                    console.log("Rating value:", selectedRatingValue);
+                    console.log("Rating id:", movieid);
+
+                    // Pass the rating value to your addRating function
+                    let fetchedId = addRating(movieid,selectedRatingValue);
+                    console.log("fetched rating:",fetchedId);
+                }
+        });
+
+    </script>
+
+
+
+</body>
+</html>

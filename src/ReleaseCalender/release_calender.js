@@ -4,7 +4,6 @@ import { apiFetch } from '../scripts/apiFetch.js';
 
 
 
-
 const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 
@@ -25,25 +24,17 @@ const returnGenre = (genreIds, genreList) => {
 
 
 
-const upcomingMoviesSection = async () =>{
-    // const API_KEY = 'Bearer dd35036818633025b77e437d6e8b9964';
-    // const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZDM1MDM2ODE4NjMzMDI1Yjc3ZTQzN2Q2ZThiOTk2NCIsInN1YiI6IjY1ODFkODQ1YmYwZjYzMDg5MzYyYjg5NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.sT5e5quy6JNqGpb4QC2D008yWeeV9goKw0jwdPwFY6I'
+const upcomingMoviesSection = async () => {
     let minDate = "2023-12-20";
     let maxDate = "2024-01-10";
     const apiUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&release_date.gte=${minDate}&release_date.lte=${maxDate}`;
     const genre_url = `https://api.themoviedb.org/3/genre/movie/list?language=en`;
-    // const options = {
-    //     method: 'GET',
-    //     headers: {
-    //         'Authorization': ACCESS_TOKEN,
-    //         'accept': 'application/json'
-    //     }
-    // };
+
     try {
-        // const response = await fetch(apiUrl, options);
+
         const result = await apiFetch(apiUrl);
         console.log(result);
-        // const genre = await fetch(genre_url, options);
+
         const genreList = await apiFetch(genre_url);
         let image_url = "https://image.tmdb.org/t/p/w185"
 
@@ -59,11 +50,11 @@ const upcomingMoviesSection = async () =>{
             console.log(item.release_date);
             const yearMonthKey = item.release_date.substring(0, 7);
             console.log(yearMonthKey);
-            if(!releasedatesArray.includes(yearMonthKey)){
+            if (!releasedatesArray.includes(yearMonthKey)) {
                 releasedatesArray.push(yearMonthKey); //contains the release dates only
 
             }
-            
+
 
             if (!moviesByMonth[yearMonthKey]) {
                 moviesByMonth[yearMonthKey] = [];  // creates an empty array for the release dates
@@ -75,19 +66,20 @@ const upcomingMoviesSection = async () =>{
                 poster: image_url + item.poster_path,
                 rating: item.vote_average,
                 releaseDate: item.release_date,
-                genre: returnGenre(item.genre_ids, genreList)
+                genre: returnGenre(item.genre_ids, genreList),
+                id: item.id
             });
 
         });
         console.log(moviesByMonth)
-       
+
 
         // Sort movies within each month in descending order based on release date
         const sortedDates = releasedatesArray.sort((a, b) => new Date(b) - new Date(a));
 
 
 
-        
+
 
         console.log(sortedDates);
 
@@ -116,13 +108,20 @@ const upcomingMoviesSection = async () =>{
             const card = document.createElement('div');
             card.classList.add('card');
             card.id = 'movie-card';
+            
 
             item.map(movie => {
 
                 // Append each movie to the card
                 const movieDetails = document.createElement('div');
+
                 movieDetails.classList.add('movie-details');
+
+                
+
                 movieDetails.innerHTML = `
+                    
+                    <a href ="../MovieDetails/movieDetails.html?id=${movie.id}">
                         <img class="movie-poster" src="${movie.poster}" alt="movie-poster">
                         <a class="movie-title">${movie.title}</a><br>
     
@@ -132,6 +131,8 @@ const upcomingMoviesSection = async () =>{
                             <i class="bi bi-bookmark-plus-fill " ></i>
                         </div>
                         <hr>
+                    </a>
+                    
                     `;
                 card.appendChild(movieDetails);
             });
@@ -188,7 +189,7 @@ const upcomingTVSection = async () => {
         resultList.forEach((item) => {
             console.log(item.first_air_date)
             const yearMonthKey = item.first_air_date.substring(0, 7);
-            if(!releasedatesArray.includes(yearMonthKey)){
+            if (!releasedatesArray.includes(yearMonthKey)) {
                 releasedatesArray.push(yearMonthKey); //contains the release dates only
 
             }
@@ -202,16 +203,17 @@ const upcomingTVSection = async () => {
             tvByMonth[yearMonthKey].push({     // details of each movies is pushed to the created movie array
                 title: item.original_name,
                 poster: image_url + item.poster_path,
-                rating: item.vote_average,  
+                rating: item.vote_average,
                 releaseDate: item.first_air_date,
-                genre: returnGenre(item.genre_ids, genreList)
+                genre: returnGenre(item.genre_ids, genreList),
+                id: item.id
             });
 
         });
 
 
         // Sort movies within each month in descending order based on release date
-        const sortedDates = releasedatesArray.sort((a, b) => new Date(b) - new Date(a)); 
+        const sortedDates = releasedatesArray.sort((a, b) => new Date(b) - new Date(a));
 
         const tvListSorted = []; //creates a empty array to push the moies in correct upcomming order
 
@@ -238,6 +240,11 @@ const upcomingTVSection = async () => {
                 // Append each movie to the card
                 const movieDetails = document.createElement('div');
                 movieDetails.classList.add('movie-details');
+                movieDetails.onclick = function() {
+                    
+                    window.location.href = `../TvDetails/tvDetails.html?id=${tv.id}`;
+                };
+
                 movieDetails.innerHTML = `
                         <img class="movie-poster" src="${tv.poster}" alt="movie-poster">
                         <a class="movie-title">${tv.title}</a><br>

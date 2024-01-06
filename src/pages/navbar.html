@@ -10,13 +10,16 @@
 
         <div class="search-container nav-container" id="searchContainer">
             <select name="" id="searchFilter">
-                <option value="All">All</option>
-                <option value="Movies">Movies</option>
-                <option value="TV Shows">TV</option>
-                <option value="Celecs">Celebrities</option>
+                <option value="">All</option>
+                <option value="movie">Movies</option>
+                <option value="tv">TV</option>
+                <option value="person">Celebrities</option>
             </select>
-            <input type="text" placeholder="Search IMDb" id="search" onkeydown="testing()">
-            <img src="../../assets/img/search.png" alt="search-icon">
+            <input type="text" id="searchnow" placeholder="Search IMDb" >
+            <div id="searchResult">
+                
+            </div>
+            <div id="navErrorBox"></div>
         </div>
 
         <div class="watchlist-container nav-container">
@@ -116,4 +119,5 @@
     </div>
 
     <script src="../scripts/navbarMenu.js"></script>
+    
    
