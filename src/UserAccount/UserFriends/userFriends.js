@@ -35,17 +35,24 @@ export const searchUsername = async () =>{
     
     document.getElementById("search-results").innerHTML = "";
     //creating the results
-    for(let i=0;i<tempDocList.length;i++){
-        if(tempDocList[i].id!=localStorage.getItem("userId")){
-            let span = document.createElement("span");
-            span.innerText = tempDocList[i].name;
-            span.onclick = function(){
-                openModal(tempDocList[i]);
+    if(tempDocList.length==0){
+        let span = document.createElement("span");
+        span.innerText = "No Such username exists";
+        document.getElementById("search-results").append(span);
+    }else{
+        for(let i=0;i<tempDocList.length;i++){
+            if(tempDocList[i].id!=localStorage.getItem("userId")){
+                let span = document.createElement("span");
+                span.innerText = tempDocList[i].name;
+                span.onclick = function(){
+                    openModal(tempDocList[i]);
+                }
+                console.log(tempDocList[i]);
+                document.getElementById("search-results").append(span);
             }
-            console.log(tempDocList[i]);
-            document.getElementById("search-results").append(span);
         }
     }
+    
 
 }
 
@@ -152,7 +159,7 @@ export const displayFriendRequests = async () =>{
                             <div class="request-user-details">
                                 <div class="user-details">
                                     <label for="">${username}</label>
-                                    <label for="">email</label>
+                                    
                                 </div>
                                 <div class="request-buttons">
                                     <span class="request-close-btn">&times;</span>
@@ -278,11 +285,11 @@ export const displayFriends = async() =>{
                                 <div class="user-details">
                                     <a href="./friendAccount.html?userId=${friendList[i]}">
                                         <label for="">${username}</label>
-                                        <label for="">email</label>
+                                        
                                     </a>
                                 </div>
                                 <div class="request-buttons">
-                                    <button class="remove-friend-from-list" data-value="${friendList[i]}">Remove Friend</button>
+                                    <button class="remove-friend-from-list" data-value="${friendList[i]}">Remove</button>
                                 </div>
                             </div>
                         </div>`;
