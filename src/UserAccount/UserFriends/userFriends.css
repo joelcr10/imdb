@@ -21,20 +21,43 @@
 
 
 #friend-modal-container{
-    background-color: rgba(0, 0, 255, 0.123);
+    background-color: rgba(0, 0, 255, 0);
     height: 100%;
-    width: 100%;
+    width: 70%;
     position: absolute;
     top: 0;
     display: none;
     justify-content: center;
     align-items: center;
+    
 }
 
 .friend-modal-box{
     background-color: black;
     padding: 40px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.322);
 }
+
+
+#close-modal{
+    font-size: 30px;
+}
+
+#close-modal:hover{
+    cursor: pointer;
+    color: var(--theme);
+}
+
+#add-friend-btn{
+    border: 0px;
+    width: 100%;
+    margin-top: 20px;
+    height: 40px;
+    background-color: var(--theme);
+    font-weight: 700;
+    border-radius: 5px;
+}
+
 
 .user-details-container{
     display: flex;
