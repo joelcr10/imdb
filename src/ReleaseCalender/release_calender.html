@@ -12,10 +12,15 @@
     <link rel="stylesheet" href="./release-calender.css" />
     <link rel="stylesheet" href="../css/navbar.css" />
     <link rel="stylesheet" href="../css/footer.css" />
+    <link rel="stylesheet" href="../pages/counter.css" />
     <!-- Option 1: Include in HTML -->
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
+
+
+    <!-- <script src="../YourWatchList/watchlist.js" type="module"></script> -->
+    <!-- <script src="./release_calender.js" type="module"></script> -->
     <title>Release Calender</title>
 </head>
 
@@ -95,7 +100,7 @@
 
         <div class="top">
             <div class="upcomming-releases">
-                <h1>Upcomming releases</h1>
+                <h1>Upcoming releases</h1>
                 <div class="selected-country">
                     <p></p>
                 </div>
@@ -586,8 +591,8 @@
 
             </div>
         </div> -->
-        
-        
+
+
         <div class="backtotop">
             <button id="back-to-top-btn" onclick="scrollToTop()"><i class="bi bi-chevron-up"></i> Back to Top</button>
 
@@ -596,11 +601,41 @@
     </div>
 
     <div id="footer-container"></div>
+
+
     <script src="./release_calender.js" type="module"></script>
+
+    <script type="module">
+        import { watchlistCounter, toggleWatchlist } from "../YourWatchList/watchlist.js";
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            watchlistCounter();
+        });
+
+        document.getElementById('movie-per-date').addEventListener('click', function (event) {
+            // Check if the clicked element has the class 'watchlist'
+            console.log(event.target);
+            if (event.target.matches('#watchlistButton')) {
+
+                // Call addToWatchlist from watchlist.js with the clicked element
+                // addToWatchlist(event.target)
+                console.log("inside the then ");
+                // toggleWatchListIcon(event.target);
+                toggleWatchlist(event.target);
+                // watchlistCounter();
+
+            }
+
+
+
+        });
+    </script>
+
     <script src="../scripts/includeNavbar&Footer.js" type="module"></script>
     <script src="../scripts/navbarMenu.js"></script>
     <script src="../scripts/tv.js"></script>
-    
+
 
 </body>
 
