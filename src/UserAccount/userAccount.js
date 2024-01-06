@@ -1,6 +1,6 @@
 import { removeFriend,searchUsername, closeModal, displayFriendRequests, cancelRequest, acceptRequest, removeFriendRequest, displayFriends } from "./UserFriends/userFriends.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-
+import { getWatchlist } from "./userWatchlist/userWatchlist.js";
 import { getFirestore, updateDoc , doc as firestoreDoc ,collection, setDoc, getDocs, getDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 import { firebaseCredentials } from "../../../config.js";
 
@@ -15,6 +15,8 @@ const switchTab = async (tabName) =>{
     if(tabName=="WatchList"){
         const path = "./userWatchlist/userWatchlist.html";
         content = await fetchContent(path);
+        document.getElementById("user-list-container").append(content);
+        await getWatchlist();
 
     }else if(tabName=="Completed"){
         const path = "./CompletedList/completedList.html";
