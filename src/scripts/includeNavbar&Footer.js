@@ -1,6 +1,9 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore, collection, getDoc, doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 import { getAuth,createUserWithEmailAndPassword,  signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js'
+
+import { watchlistCounter } from "../YourWatchList/watchlist.js";
+
 // import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -100,6 +103,7 @@ window.onload =async function() {
     await includeNavbar();
     await includeFooter();
     await userOrGuest();
+    await watchlistCounter();
     document.getElementById("signout-btn").onclick = function(){
       signOut();
     }

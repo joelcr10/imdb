@@ -230,6 +230,22 @@
     margin-top: 50px;
 }
 
+#watchlistCounter{
+    margin: 3%;
+    font-size: .8rem;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    color: black;
+    font-weight: 500;
+    background-color: yellow;
+    padding-left: 3%;
+    padding-right: 3%;
+    min-width: 1.4rem;
+    min-height: .1rem;
+    border-radius: 50px;
+    text-align: center;
+}
+
 @media screen and (max-width: 950px) {
     .watchlist-container{
         display: none;

@@ -1,6 +1,10 @@
 
 import { apiFetch } from '../scripts/apiFetch.js';
 
+// import { addToWatchlist } from '../YourWatchList/watchlist.js';
+
+
+
 
 
 
@@ -108,7 +112,8 @@ const upcomingMoviesSection = async () => {
             const card = document.createElement('div');
             card.classList.add('card');
             card.id = 'movie-card';
-            
+
+
 
             item.map(movie => {
 
@@ -117,24 +122,32 @@ const upcomingMoviesSection = async () => {
 
                 movieDetails.classList.add('movie-details');
 
-                movieDetails.onclick = function() {
-                    
-                    window.location.href = `../MovieDetails/movieDetails.html?id=${movie.id}`;
-                };
+                movieDetails.style.minHeight = '6rem';
 
+                // movieDetails.onclick = function() {
+
+                //     window.location.href = `../MovieDetails/movieDetails.html?id=${movie.id}`;
+                // };
+                // <a href = "../MovieDetails/movieDetails.html?id=${movie.id}" style="min-height:6rem;";
                 movieDetails.innerHTML = `
                     
+                        
+                        <div class="movie-contents" >
+                            
+                                <div class="movie-content-poster">
+                                    <img class="movie-poster" src="${movie.poster}" alt="movie-poster" >
+                                </div>
+                                <div class="movie-content-title-genre">
+                                    <a class="movie-title" href='../MovieDetails/movieDetails.html?id=${movie.id}' >${movie.title} </a><br>
+                                    <a class="dynamicGenre">${movie.genre} </a>       
+                                </div>  
+                            
+                        </div>
 
-                        <img class="movie-poster" src="${movie.poster}" alt="movie-poster">
-                        <a class="movie-title">${movie.title}</a><br>
-    
-                             <a class="dynamicGenre">${movie.genre} </a>         
-    
-                        <div class="watchlist" id="watchlistButton" data-title="${movie.title}" data-poster="${movie.poster}" data-genre="${movie.genre}" onclick="addToWatchlist(this)"">
-                            <i class="bi bi-bookmark-plus-fill " ></i>
+                        <div class="watchlist" id="watchlistButton-container" data-title="${movie.title}" data-poster="${movie.poster}" data-genre="${movie.genre}" data-id="${movie.id}" >
+                                <i class="bi bi-bookmark-plus-fill "  id="watchlistButton" data-title="${movie.title}" data-poster="${movie.poster}" data-genre="${movie.genre}" data-id="${movie.id}" ></i>
                         </div>
                         <hr>
-                    
                     `;
                 card.appendChild(movieDetails);
             });
@@ -164,18 +177,14 @@ const upcomingTVSection = async () => {
     const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZDM1MDM2ODE4NjMzMDI1Yjc3ZTQzN2Q2ZThiOTk2NCIsInN1YiI6IjY1ODFkODQ1YmYwZjYzMDg5MzYyYjg5NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.sT5e5quy6JNqGpb4QC2D008yWeeV9goKw0jwdPwFY6I'
     const tvApi = 'https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc'
     const tv_genre_api = 'https://api.themoviedb.org/3/genre/tv/list?language=en'
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: ACCESS_TOKEN
-        }
-    };
+
     try {
-        const response = await fetch(tvApi, options);
-        const result = await response.json();
-        const genre = await fetch(tv_genre_api, options);
-        const genreList = await genre.json();
+        // const response = await fetch(tvApi, options);
+        // const result = await response.json();
+        const result = await apiFetch(tvApi);
+        // const genre = await fetch(tv_genre_api, options);
+        // const genreList = await genre.json();
+        const genreList = await apiFetch(tv_genre_api);
         let image_url = "https://image.tmdb.org/t/p/w185"
 
         // console.log(genreList);
@@ -242,21 +251,27 @@ const upcomingTVSection = async () => {
                 // Append each movie to the card
                 const movieDetails = document.createElement('div');
                 movieDetails.classList.add('movie-details');
-                movieDetails.onclick = function() {
-                    
-                    window.location.href = `../TvDetails/tvDetails.html?id=${tv.id}`;
-                };
+                // movieDetails.onclick = function () {
+
+                //     window.location.href = `../TvDetails/tvDetails.html?id=${tv.id}`;
+                // };
 
                 movieDetails.innerHTML = `
-                        <img class="movie-poster" src="${tv.poster}" alt="movie-poster">
-                        <a class="movie-title">${tv.title}</a><br>
+                <div class="movie-contents" >
+                    <div class="movie-content-poster">
+                        <img class="movie-poster" src="${tv.poster}" alt="movie-poster" >
+                    </div>
+                    <div class="movie-content-title-genre">
+                        <a class="movie-title" href="../TvDetails/tvDetails.html?id=${tv.id}" >${tv.title}</a><br>
+                        <a class="dynamicGenre">${tv.genre} </a>       
+                    </div>  
 
-                             <a class="dynamicGenre">${tv.genre} </a>         
 
-                        <div class="watchlist">
-                            <i class="bi bi-bookmark-plus-fill" ></i>
-                        </div>
-                        <hr>
+                </div>
+            <div class="watchlist" id="watchlistButtonlll" data-title="${tv.title}" data-poster="${tv.poster}" data-genre="${tv.genre}" data-id="${tv.id}" >
+                    <i class="bi bi-bookmark-plus-fill "  id="watchlistButton" data-title="${tv.title}" data-poster="${tv.poster}" data-genre="${tv.genre}" data-id="${tv.id}" ></i>
+            </div>
+            <hr>
                     `;
                 card.appendChild(movieDetails);
             });
@@ -288,3 +303,31 @@ document.getElementById('tv').addEventListener('click', function (event) {
     document.getElementById("movie-per-date").innerHTML = "";
     upcomingTVSection();
 });
+
+
+
+// document.getElementById("movie-per-date").addEventListener("click", function (event) {
+//     const watchlistButton = event.target.closest("#watchlistButton");
+
+//     if (watchlistButton) {
+//         // Toggle the "selected" class when the icon is clicked
+//         watchlistButton.classList.toggle("selected");
+
+//         // Get the unique identifier for the movie or TV show (e.g., data-id)
+//         const id = watchlistButton.dataset.id;
+
+//         // Check if the item is in the watchlist (using local storage)
+//         const isInWatchlist = localStorage.getItem(`watchlist_${id}`);
+
+//         // Toggle the watchlist status in local storage
+//         if (isInWatchlist) {
+//             localStorage.removeItem(`watchlist_${id}`);
+//         } else {
+//             localStorage.setItem(`watchlist_${id}`, true);
+//         }
+
+//         // Prevent the default behavior of the icon click
+//         event.preventDefault();
+//     }
+// });
+
