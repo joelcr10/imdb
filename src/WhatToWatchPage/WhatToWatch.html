@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="whatToWatch.css">
+    <link rel="stylesheet" href="../UserRating/userrating.css">
 
 
     <title>What To Watch - IMDb</title>
@@ -15,7 +16,7 @@
 <body>
     
     <div id="navbar-container"></div>
-
+    <div id="ratingModal" class="modal"></div>
     <div class="popular-movies-container home-section-container">
         <h1 class="home-header">What to watch</h1>
         <div class="home-section-headers">
@@ -167,12 +168,38 @@
             </div>
         </div>
     
-    <script src="whatToWatch.js"></script>
+
+    <div id="footer-container"></div>
+
+
+    <script type="module">
+        import {addRating} from '../UserRating/userratingDB.js';
+       
+        
+            // Event listener for the submit button
+            document.getElementById('ratingModal').addEventListener('click', function (event) {
+             console.log(event);
+
+            // Check if the clicked element has the 'star' class
+            if (event.target.classList.contains('submit')) {
+                    console.log("Rating value:", selectedRatingValue);
+                    console.log("Rating id:", movieid);
+
+                    // Pass the rating value to your addRating function
+                    let fetchedId = addRating(movieid,selectedRatingValue);
+                    console.log("fetched rating:",fetchedId);
+                }
+        });
+
+    </script>
+
+    <script src="whatToWatch.js" type="module"></script>
     <script src="../LandingPage/main.js" type="module"></script>
     <script src="../scripts/navbarMenu.js"></script>
     <script src="../scripts/includeNavbar&Footer.js" type="module"></script>
-
-    <div id="footer-container"></div>
+    <script src="./openTab.js"></script>
+    <script src="../UserRating/userrating.js" ></script>
+    <!-- <script src="../UserRating/userratingDB.js" type="module"></script> -->
 
 </body>
 </html>
