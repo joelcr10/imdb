@@ -6,11 +6,9 @@ import { watchlistCounter } from "../YourWatchList/watchlist.js";
 
 import {apiFetch} from "../scripts/apiFetch.js"
 import { firebaseCredentials } from "../../config.js";
-=========
 
-import { watchlistCounter } from "../YourWatchList/watchlist.js";
 
->>>>>>>>> Temporary merge branch 2
+
 // import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries

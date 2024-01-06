@@ -124,7 +124,7 @@ const upcomingMoviesSection = async () => {
 
 
                 movieDetails.style.minHeight = '6rem';
->>>>>>>>> Temporary merge branch 2
+
 
                 // movieDetails.onclick = function() {
 
