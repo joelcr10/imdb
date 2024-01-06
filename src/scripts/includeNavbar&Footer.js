@@ -2,7 +2,12 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import { getFirestore, collection, getDoc, doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 import { getAuth,createUserWithEmailAndPassword,  signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js'
 
+
 import { watchlistCounter } from "../YourWatchList/watchlist.js";
+
+
+import {apiFetch} from "../scripts/apiFetch.js"
+import { firebaseCredentials } from "../../config.js";
 
 // import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -10,22 +15,8 @@ import { watchlistCounter } from "../YourWatchList/watchlist.js";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyCrKosfpufYIc3yaL-pgrlcwhWqpfN2Rlg",
-  authDomain: "imdb-63ec7.firebaseapp.com",
-  projectId: "imdb-63ec7",
-  storageBucket: "imdb-63ec7.appspot.com",
-  messagingSenderId: "1089587640183",
-  appId: "1:1089587640183:web:12166709de392731e91372",
-  measurementId: "G-TR217WFC7K"
-};
-
-// Initialize Firebase
+const firebaseConfig = firebaseCredentials;
 const app = initializeApp(firebaseConfig);
-
-
-// const auth = app.auth();
-
 const db = getFirestore(app);
 
 
@@ -44,10 +35,9 @@ const includeNavbar = async () =>{
 
 
 const userOrGuest = async () =>{
-  console.log("testing localstorage",localStorage.getItem("userId"));
 
     if(localStorage.getItem("userId")==null){
-      console.log("is it getting inside");
+      
       document.getElementById("guest-user").style.display = "block"; //if the localStorage is null then display sign in 
       document.getElementById("nav-profile").style.display = "none";   // hide the profile section if the user hasn't logged in
       }
@@ -65,6 +55,7 @@ const userOrGuest = async () =>{
         const userDoc = docSnap.data();
         console.log(userDoc.username);
         document.getElementById("nav-username").innerText = userDoc.username;
+        document.getElementById("profile-icon").setAttribute("src",userDoc.profile);
 
       } else {
         // docSnap.data() will be undefined in this case
@@ -107,4 +98,152 @@ window.onload =async function() {
     document.getElementById("signout-btn").onclick = function(){
       signOut();
     }
-  };
+      search();
+    
+      };
+
+
+//navbar search functionality
+
+let image_url = "https://image.tmdb.org/t/p/original";
+let output =0;
+const search = () => {
+    let searchInput = document.getElementById("searchnow");
+    let searchFilterInput = document.getElementById("searchFilter");
+  
+
+    // Use a named function for the event handler to improve readability
+    const handleSearch = async () => {
+      document.getElementById("searchResult").innerHTML = "";
+      if(document.getElementById("errorBox") !=null){
+        document.getElementById("errorBox").innerHTML = "";
+      }
+      
+        if (searchInput.value !== "") {
+            await fetchResults(searchInput.value, searchFilterInput.value);
+        }
+    };
+
+    searchInput.addEventListener('keydown', function (event) {
+        if (event.key === "Enter") {
+          output = 0;
+            handleSearch();
+        }
+    });
+
+    searchInput.addEventListener("input", function () {
+      document.getElementById("navErrorBox").innerHTML = "";
+      output = 0;
+          handleSearch();
+  });
+
+   
+    //   document.getElementById("search-container").addEventListener("mouseleave",function(){
+    //     document.getElementById("searchResult").innerHTML = "";
+    //   })
+    
+
+    // document.getElementById("searchResult").removeEventListener("mouseleave",function(){
+    //   document.getElementById("searchResult").innerHTML = "";});
+  
+};
+
+const createResultCard = (item) => {
+  const poster = item.profile_path ? image_url + item.profile_path : image_url + item.poster_path;
+  const title = item.title || item.name;
+  console.log(item);
+
+  const littleBox = document.createElement("div");
+  littleBox.classList.add("littleBox");
+
+  const card = `<a href="../MovieDetails/movieDetails.html?id=${item.id}">
+                  <div class="imageBox"> <img src="${poster}" alt=""  ></div>
+                  <div class="titleBox">${title}</div>
+                </a>
+              `;
+
+  littleBox.innerHTML = card;
+  return littleBox;
+};
+
+
+const createResultCardForTv = (item) => {
+  const poster = item.profile_path ? image_url + item.profile_path : image_url + item.poster_path;
+  const title = item.title || item.name;
+  console.log(item);
+
+  const littleBox = document.createElement("div");
+  littleBox.classList.add("littleBox");
+
+  const card = `<a href="../TvDetails/tvDetails.html?id=${item.id}">
+                  <div class="imageBox"> <img src="${poster}" alt=""  ></div>
+                  <div class="titleBox">${title}</div>
+                </a>
+              `;
+
+  littleBox.innerHTML = card;
+  return littleBox;
+};
+
+const appendResultCard = (littleBox) => {
+  if(output < 4){
+    
+    document.getElementById("searchResult").appendChild(littleBox);
+  output++;
+  }
+  
+};
+ 
+let page = 1;
+const fetchResults = async (searchItem, type) => {
+  
+ 
+          const apiUrl = `https://api.themoviedb.org/3/search/multi?query=${searchItem}&include_adult=false&language=en-US&page=${page}`;
+
+          let result = await apiFetch(apiUrl);
+           let
+            resultList = result.results;
+
+          console.log(resultList);
+          if (resultList.length === 0) {
+            let message = "Sorry no information available!";
+    
+            let div = document.createElement("div");
+            div.textContent = message;
+            document.getElementById("navErrorBox").innerHTML = "";
+            document.getElementById("navErrorBox").append(div);
+          }
+          
+            console.log("before filtering " + resultList.length);
+          if (type !== "") {
+            const filteredResults =resultList.filter(item => item.media_type === type);
+            resultList = filteredResults;
+          }
+          console.log("after filtering " + resultList.length);
+          for(const item of resultList){
+
+           let littleBox;
+            switch(item.media_type)
+            { 
+              case "movie" :  littleBox = createResultCard(item);
+                              appendResultCard(littleBox);
+                              break;
+              case "tv"    : littleBox = createResultCardForTv(item);
+                             appendResultCard(littleBox);
+                             break;
+              default      :  littleBox = createResultCard(item);
+                              appendResultCard(littleBox);
+                              break;    
+            }
+             
+          
+           
+        
+          
+      }
+    }
+    
+
+
+
+
