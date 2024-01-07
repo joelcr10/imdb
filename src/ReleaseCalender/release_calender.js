@@ -312,28 +312,4 @@ document.getElementById('tv').addEventListener('click', function (event) {
 
 
 
-// document.getElementById("movie-per-date").addEventListener("click", function (event) {
-//     const watchlistButton = event.target.closest("#watchlistButton");
-
-//     if (watchlistButton) {
-//         // Toggle the "selected" class when the icon is clicked
-//         watchlistButton.classList.toggle("selected");
-
-//         // Get the unique identifier for the movie or TV show (e.g., data-id)
-//         const id = watchlistButton.dataset.id;
-
-//         // Check if the item is in the watchlist (using local storage)
-//         const isInWatchlist = localStorage.getItem(`watchlist_${id}`);
-
-//         // Toggle the watchlist status in local storage
-//         if (isInWatchlist) {
-//             localStorage.removeItem(`watchlist_${id}`);
-//         } else {
-//             localStorage.setItem(`watchlist_${id}`, true);
-//         }
-
-//         // Prevent the default behavior of the icon click
-//         event.preventDefault();
-//     }
-// });
 
