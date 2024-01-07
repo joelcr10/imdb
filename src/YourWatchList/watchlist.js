@@ -35,10 +35,15 @@ const watchList = [];
 
 
 // Assuming you have the user's ID after authentication
+
+
 const userId = localStorage.getItem('userId'); // Replace this with the actual user ID
 console.log(userId);
 
-const watchListCollection = collection(db, 'users', userId, 'watchlist');
+//  const watchListCollection = collection(db, 'users', userId, 'watchlist');
+
+
+
 
 
 export const addToWatchlist = async (item) => {
@@ -114,6 +119,7 @@ export const watchListDisplay = async () => {
     try {
 
         // Assuming watchListCollection is a valid Firestore collection reference
+        const watchListCollection = collection(db, 'users', userId, 'watchlist');
         const querySnapshot = await getDocs(watchListCollection);
         const watchlistCounter = document.getElementById('watchlistCounter');
         // Clear the watchList array before updating it

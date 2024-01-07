@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,12 @@
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="./movieDetails.css">
+    <link rel="stylesheet" href="../review/review.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 
 </head>
+
 <body>
     <div id="navbar-container"></div>
 
@@ -18,7 +22,8 @@
         <div class="title-line">
             <div class="title-container">
                 <h1 id="movie-title"></h1>
-                <label><span id="release-year"></span>&nbsp;<div class="dot"></div>&nbsp; PG-13&nbsp;<div class="dot"></div>&nbsp;<span id="movie-duration"></span></label>
+                <label><span id="release-year"></span>&nbsp;<div class="dot"></div>&nbsp; PG-13&nbsp;<div class="dot">
+                    </div>&nbsp;<span id="movie-duration"></span></label>
             </div>
             <div class="rating-container">
                 <div class="imdb-rating">
@@ -37,7 +42,7 @@
                         <img src="../../assets/img/popularity-arrow.png" alt="">
                         <div class="rating-count">
                             <h3><b id="movie-popularity">40</b></h3>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -62,7 +67,7 @@
         </div>
         <div class="movie-info-container">
             <div class="info-left-side">
-                <div class="summary-container" >
+                <div class="summary-container">
                     <p id="summary-container">
                         <!-- the movie summary will come here -->
                     </p>
@@ -103,7 +108,7 @@
                 <div class="header-line">
                     <div class="yellow-line"></div>
                     <h1>Photos</h1>
-                    <img src="../../assets/img/right-arrow.png">  
+                    <img src="../../assets/img/right-arrow.png">
                 </div>
                 <div class="movie-details-card-slider" id="photos-container">
                     <!-- put photos here -->
@@ -113,7 +118,7 @@
                 <div class="header-line">
                     <div class="yellow-line"></div>
                     <h1>Videos</h1>
-                    <img src="../../assets/img/right-arrow.png">  
+                    <img src="../../assets/img/right-arrow.png">
                 </div>
                 <div class="movie-details-card-slider" id="videos-slider">
                     <!-- <iframe class="vid"  src="https://www.youtube.com/embed/zyp2j9hnn1I?autoplay=0" frameborder="0" allowfullscreen allow="autoplay">
@@ -130,10 +135,10 @@
                 <div class="header-line">
                     <div class="yellow-line"></div>
                     <h1>Top Cast</h1>
-                    <img src="../../assets/img/right-arrow.png">  
+                    <img src="../../assets/img/right-arrow.png">
                 </div>
                 <div class="cast-container" id="cast-container">
-                   <!-- Add cast card here -->
+                    <!-- Add cast card here -->
                 </div>
                 <div id="top-cast-bts">
                     <div class="info-line">
@@ -186,7 +191,8 @@
                     </div>
                     <div class="info-line">
                         <b>Country of Origin</b>
-                        <span id="countryOrigin">United States &nbsp; <div class="dot"></div> &nbsp; Canada &nbsp; <div class="dot"></div> &nbsp;United Kingdom</span>
+                        <span id="countryOrigin">United States &nbsp; <div class="dot"></div> &nbsp; Canada &nbsp; <div
+                                class="dot"></div> &nbsp;United Kingdom</span>
                     </div>
                     <div class="info-line">
                         <b>Official Site</b>
@@ -200,6 +206,21 @@
                         <b>Box Office</b>
                         <span id="movie-budget"></span>
                     </div>
+                </div>
+            </div>
+            <div class="reviews">
+                <div class="header-line">
+                    <div class="yellow-line"></div>
+                    <h1>Reviews</h1>
+                </div>
+                <div class="review-details">
+                    <input id="review-msg" type="text"></input>
+                    <i class="bi bi-pencil-square" id="review-submit"></i>
+                    
+                    <div class="review-display" id="review-display">
+
+                    </div>
+
                 </div>
             </div>
 
@@ -223,5 +244,7 @@
     <script src="../scripts/includeNavbar&Footer.js" type="module"></script>
     <script src="../scripts/navbarMenu.js"></script>
     <script src="./movieDetails.js" type="module"></script>
+    <script src="../review/review.js" type="module"></script>
 </body>
+
 </html>
