@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore, updateDoc , doc as firestoreDoc ,collection, setDoc, getDocs, getDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 import { firebaseCredentials } from "../../../config.js";
+// import loadingAnimation from "../../scripts/loadingAnimation.js";
 
 const firebaseConfig = firebaseCredentials;
 const app = initializeApp(firebaseConfig);
@@ -77,14 +78,14 @@ export const openModal = async (user) =>{
     console.log("testing buttons",userDoc);
     if(pendingRequest.includes(user.id)){
         document.getElementById("add-friend-btn").style.display = "none";
-        document.getElementById("remove-friend-btn").style.display = "none";
+        // document.getElementById("remove-friend-btn").style.display = "none";
     }
     else if(friendList.includes(user.id)){
         document.getElementById("add-friend-btn").style.display = "none";
-        document.getElementById("remove-friend-btn").style.display = "none";
+        // document.getElementById("remove-friend-btn").style.display = "none";
     }else{
         document.getElementById("add-friend-btn").style.display = "block";
-        document.getElementById("remove-friend-btn").style.display = "none";
+        // document.getElementById("remove-friend-btn").style.display = "none";
     }
 }
 

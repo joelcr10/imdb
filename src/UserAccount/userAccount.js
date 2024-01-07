@@ -3,12 +3,11 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import { getWatchlist } from "./userWatchlist/userWatchlist.js";
 import { getFirestore, updateDoc , doc as firestoreDoc ,collection, setDoc, getDocs, getDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 import { firebaseCredentials } from "../../../config.js";
+import loadingAnimation from "../scripts/loadingAnimation.js";
 
 const firebaseConfig = firebaseCredentials;
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
-
 
 const switchTab = async (tabName) =>{
     let content = "";
@@ -16,7 +15,8 @@ const switchTab = async (tabName) =>{
         const path = "./userWatchlist/userWatchlist.html";
         content = await fetchContent(path);
         document.getElementById("user-list-container").append(content);
-        await getWatchlist();
+        loadingAnimation(getWatchlist);
+        // await getWatchlist();
 
     }else if(tabName=="Completed"){
         const path = "./CompletedList/completedList.html";
@@ -33,7 +33,8 @@ const switchTab = async (tabName) =>{
           closeModal();
         }
 
-        await displayFriendRequests();
+        loadingAnimation(displayFriendRequests);
+
         // Get all elements with class "myButton"
         var buttons = document.querySelectorAll('.request-add-btn');
 
@@ -66,7 +67,8 @@ const switchTab = async (tabName) =>{
           });
         });
 
-        await displayFriends();
+        // await displayFriends();  
+        loadingAnimation(displayFriends);
         //add remove button feature
 
         const display = document.getElementById("friends-container").children;
@@ -98,13 +100,38 @@ const switchTab = async (tabName) =>{
 const fetchContent = async(path) =>{
     const content = await fetch(path);
     const data = await content.text();
-   
     let div = document.createElement('div');
     div.innerHTML = data;
-
     return div;
-
 }
+
+
+// window.addEventListener('load', function() {
+//   setTimeout(function() {
+//     // Hide the loader
+//     document.querySelector('.loader').style.display = 'none';
+//     // Show the content
+//     // document.getElementById('content').style.display = 'block';
+//     console.log("loading is working");
+//     fetchContent("./CompletedList/completedList.html");
+//   }, 2000); // Adjust the delay time as needed (in milliseconds)
+// });
+
+
+// const loadingAnimation = (loadContent) =>{
+//   setTimeout(async function() {
+//     // Hide the loader
+//     document.querySelector('.loader').style.display = 'none';
+//     // Show the content
+//     // document.getElementById('content').style.display = 'block';
+//     console.log("loading is working");
+//     await loadContent();
+//   }, 2000);
+// }
+
+
+
+
 
 const addTabs = (tabs) =>{
   // Add click event listeners to each tab

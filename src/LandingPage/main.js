@@ -1,11 +1,15 @@
-
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, doc, setDoc, getDocs, collection } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+import { firebaseCredentials } from "../../config.js";
 import { apiFetch } from "../scripts/apiFetch.js";
+
+const firebaseConfig = firebaseCredentials; //fetching the firebase credentials
+const app = initializeApp(firebaseConfig); // initialization of firebase;
+const db = getFirestore(app); //getting the reference of firestore database
 
 
 const popularMoviesSection = async () =>{
-   
     console.log("inside popular section");
-    
     const apiUrl = `https://api.themoviedb.org/3/movie/popular`;
     
     const result = await apiFetch(apiUrl);
@@ -222,12 +226,43 @@ const topBoxOfice = async () =>{
     }
 }
 
+
+const displayWatchlist = async () =>{
+    const docList = await getDocs(collection(db,"users",localStorage.getItem("userId"),"watchlist"));
+
+    if(docList.empty){
+        document.getElementById("watchlist-prompt").innerText = "Nothing added to watchlist";
+    }else{
+        console.log("yes this is");
+        docList.forEach((doc) => {
+                let item = doc.data();
+                console.log(item);
+                let id = item.id;
+                let title = item.title;
+                let poster = item.poster;
+                const card = `
+                            <a href="../MovieDetails/movieDetails.html?id=${id}">
+                                <img src="${poster}" alt="">
+                                <div class="card-text">
+                                    <h3>${title}</h3>
+                                </div>
+                            </a>
+                        `;
+                    let div = document.createElement('div');
+                    div.setAttribute("class","card");
+                    div.innerHTML = card;
+                    document.getElementById("display-watchlist").append(div);
+          });
+    }
+}
+
 const checkWatchList = () =>{
     if(localStorage.getItem("userId")==null){
         document.getElementById("display-watchlist").style.display = "none";
         document.getElementById("watchlist-home").style.display = "flex";
     }else{
-        document.getElementById("display-watchlist").style.display = "block";
+        document.getElementById("display-watchlist").style.display = "flex";
+        displayWatchlist();
         document.getElementById("watchlist-home").style.display = "none";
     }
 }
