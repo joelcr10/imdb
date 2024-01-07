@@ -2,12 +2,14 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import { getFirestore, collection, getDoc, doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 import { getAuth,createUserWithEmailAndPassword,  signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js'
 
-
 import { watchlistCounter } from "../YourWatchList/watchlist.js";
-
 
 import {apiFetch} from "../scripts/apiFetch.js"
 import { firebaseCredentials } from "../../config.js";
+
+
+
+
 
 
 const firebaseConfig = firebaseCredentials;

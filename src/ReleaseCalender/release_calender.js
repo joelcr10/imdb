@@ -125,6 +125,7 @@ const upcomingMoviesSection = async () => {
 
                 movieDetails.style.minHeight = '6rem';
 
+
                 // movieDetails.onclick = function() {
 
                 
@@ -153,20 +154,6 @@ const upcomingMoviesSection = async () => {
                                 <i class="bi bi-bookmark-plus-fill "  id="watchlistButton" data-title="${movie.title}" data-poster="${movie.poster}" data-genre="${movie.genre}" data-id="${movie.id}" ></i>
                         </div>
                         <hr>
-
-                    <a href ="../MovieDetails/movieDetails.html?id=${movie.id}">
-                        <img class="movie-poster" src="${movie.poster}" alt="movie-poster">
-                        <a class="movie-title">${movie.title}</a><br>
-    
-                             <a class="dynamicGenre">${movie.genre} </a>         
-    
-                        <div class="watchlist" id="watchlistButton" data-title="${movie.title}" data-poster="${movie.poster}" data-genre="${movie.genre}" onclick="addToWatchlist(this)"">
-                            <i class="bi bi-bookmark-plus-fill " ></i>
-                        </div>
-                        <hr>
-                    </a>
-                    
-
                     `;
                 card.appendChild(movieDetails);
             });
@@ -325,28 +312,4 @@ document.getElementById('tv').addEventListener('click', function (event) {
 
 
 
-// document.getElementById("movie-per-date").addEventListener("click", function (event) {
-//     const watchlistButton = event.target.closest("#watchlistButton");
-
-//     if (watchlistButton) {
-//         // Toggle the "selected" class when the icon is clicked
-//         watchlistButton.classList.toggle("selected");
-
-//         // Get the unique identifier for the movie or TV show (e.g., data-id)
-//         const id = watchlistButton.dataset.id;
-
-//         // Check if the item is in the watchlist (using local storage)
-//         const isInWatchlist = localStorage.getItem(`watchlist_${id}`);
-
-//         // Toggle the watchlist status in local storage
-//         if (isInWatchlist) {
-//             localStorage.removeItem(`watchlist_${id}`);
-//         } else {
-//             localStorage.setItem(`watchlist_${id}`, true);
-//         }
-
-//         // Prevent the default behavior of the icon click
-//         event.preventDefault();
-//     }
-// });
 

@@ -247,11 +247,11 @@
     border-radius: 50px;
     text-align: center;
 }
+
 #profile-icon{
     border-radius: 50%;
     border: 2px solid var(--theme);
     background-color: var(--theme);
-
 
 
 }
