@@ -391,3 +391,7 @@ body{
 #watchlist-home{
     display: none;
 }
+
+#watchlisted{
+    background-color: rgba(0, 128, 0, 0.493);
+}

@@ -2,25 +2,46 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import { getFirestore, doc, setDoc, getDocs, collection } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 import { firebaseCredentials } from "../../config.js";
 import { apiFetch } from "../scripts/apiFetch.js";
-
+import loadingAnimation from "../scripts/loadingAnimation.js";
 const firebaseConfig = firebaseCredentials; //fetching the firebase credentials
 const app = initializeApp(firebaseConfig); // initialization of firebase;
 const db = getFirestore(app); //getting the reference of firestore database
 
+const getUserWatchlist = async () =>{
+    let watchlistMovieId = []
+    const docList = await getDocs(collection(db,"users",localStorage.getItem("userId"),"watchlist"));
+    docList.forEach((doc) => {
+        let item = doc.data();
+        let id = item.id;
+        watchlistMovieId.push(id);
+    });
+
+    return watchlistMovieId;
+}
 
 const popularMoviesSection = async () =>{
+    // loadingAnimation();
     console.log("inside popular section");
     const apiUrl = `https://api.themoviedb.org/3/movie/popular`;
     
     const result = await apiFetch(apiUrl);
     const resultList = result.results;
     let image_url = "https://image.tmdb.org/t/p/original";
+
+    let watchlistMovieId = await getUserWatchlist();
+    console.log("WL",watchlistMovieId);
     
     resultList.map((item) =>{
         let title = item.title;
         let poster = image_url+item.poster_path;
         let rating = item.vote_average;
         let id = item.id;
+        let cardButton = "";
+        if(watchlistMovieId.includes(id.toString())){
+            cardButton = `<button id="watchlisted"><span></span>Watchlisted</button>`
+        }else{
+            cardButton = `<button><span>+</span> Watchlist</button>`
+        }
         
         const card = `
                     <a href="../MovieDetails/movieDetails.html?id=${id}">
@@ -28,7 +49,7 @@ const popularMoviesSection = async () =>{
                         <div class="card-text">
                             <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
                             <h3>${title}</h3>
-                            <button><span>+</span> Watchlist</button>
+                            ${cardButton}
                             <div class="card-trailer-container">
                                 <div class="card-trailer">
                                     <img src="../../assets/img/play-icon.png">
@@ -51,8 +72,11 @@ const topRatedSection = async () =>{
     const apiUrl = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=vote_average.desc&without_genres=99,10755&vote_count.gte=200';
     
     let image_url = "https://image.tmdb.org/t/p/original"
+
         
     const result = await apiFetch(apiUrl);
+
+    // loadingAnimation();
     const resultList = result.results;
         resultList.map((item) =>{
             let title = item.title;
@@ -268,9 +292,10 @@ const checkWatchList = () =>{
 }
 
 
-
-popularMoviesSection();
+loadingAnimation(popularMoviesSection);
+// popularMoviesSection();
 topRatedSection();
+// loadingAnimation(topRatedSection);
 upcomingMoviesSection();
 trendingCelebSection();
 popularTvSection();
