@@ -1,19 +1,32 @@
 import { apiFetch } from "../scripts/apiFetch.js";
+import { getFirestore, collection, getDoc, doc, setDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+import { app } from "../scripts/includeNavbar&Footer.js"
 
 let movieId = "";
+let recentmovie_list = JSON.parse(sessionStorage.getItem("Recent Movies")) || [];
+
 
 document.addEventListener("DOMContentLoaded", function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    movieId = urlParams.get('id');
-    
-    if (movieId) {
-        console.log(movieId);
-        // fetchMovieDetails(movieId);
-        fetchAllApi(movieId);
-    } else {
-      console.error('Movie ID not provided in URL');
+  console.log("DOM LOADED")
+  const urlParams = new URLSearchParams(window.location.search);
+  movieId = urlParams.get('id');
+
+  if (movieId) {
+    console.log(movieId);
+    // fetchMovieDetails(movieId);
+    fetchAllApi(movieId);
+    // userMovies(movieId);
+    if(!recentmovie_list.includes(movieId)){
+    recentmovie_list.push(movieId);
     }
-  });
+    console.log(recentmovie_list);
+
+    // Store the updated array in sessionStorage
+    sessionStorage.setItem("Recent Movies", JSON.stringify(recentmovie_list));
+  } else {
+    console.error('Movie ID not provided in URL');
+  }
+});
 
 
   const fetchAllApi = async (movieId) =>{

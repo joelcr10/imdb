@@ -12,7 +12,6 @@ export const apiFetch = async (apiUrl) =>{
             'accept': 'application/json'
         }
     };
-
     try{
         const response = await fetch(apiUrl,options);
         const result = await response.json();

@@ -41,7 +41,11 @@
     height: 70px;
 
 }
-
+#imdb_pro_icon{
+    width: 70px;
+    height: 40px;
+    background-color: black;
+}
 .search-container{
     width: 60%;
 }

@@ -8,7 +8,7 @@ import { getAuth,createUserWithEmailAndPassword,  signInWithEmailAndPassword } f
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyCrKosfpufYIc3yaL-pgrlcwhWqpfN2Rlg",
   authDomain: "imdb-63ec7.firebaseapp.com",
   projectId: "imdb-63ec7",
@@ -66,6 +66,7 @@ const auth = getAuth();
 
         await setDoc(doc(db, "users", userCredential.user.uid ), {
           username: username,
+          recentlyViewed: [],
         });
         window.location.href = "../Login_Page/login.html";
         // window.location.href = "D:/IMDB-Clone/src/Login_Page/login.html";

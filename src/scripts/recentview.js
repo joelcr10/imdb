@@ -1,58 +1,89 @@
 import { apiFetch } from "../scripts/apiFetch.js";
 
-let movieId = "";
-document.addEventListener("DOMContentLoaded", function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    movieId = urlParams.get('id');
+const movieImagesApi = async (trail_recentmovie) => {
+  console.log("inside get movie api");
+  console.log("testing",trail_recentmovie);
+  let image_url = "https://image.tmdb.org/t/p/original"
+ 
+    const apiUrl = `https://api.themoviedb.org/3/movie/${trail_recentmovie}?language=en-US`;
+    const response = await apiFetch(apiUrl);
+    console.log(response);
+    const data = await response;
+    console.log(data)
+    let title = data.original_title;
+    console.log(title);
+    let poster = image_url+data.backdrop_path;
+    let rating = data.vote_average;
+    const card=`
+      <div class="card">
+      <img class="card_image" src="${poster}" alt="">
+      <h4>${title}<h4>
+      </div>
+    `;
+    let div= document.createElement('div');
+    div.innerHTML=card;
+    document.getElementById("recent-movies").append(div)
+};
+
+
+
+
+const get_recentmovie_id=async()=>{
+  
+  let trail_recentmovie=JSON.parse(sessionStorage.getItem('Recent Movies'));
+  console.log(trail_recentmovie);
+  for(let i=0;i<trail_recentmovie.length;i++){
+    console.log(trail_recentmovie[i]);
+    movieImagesApi(trail_recentmovie[i]);
     
-    if (movieId) {
-        console.log(movieId);
-        // fetchMovieDetails(movieId);
-        fetchAllApi(movieId);
-    } else {
-      console.error('Movie ID not provided in URL');
-    }
-  });
-  const fetchAllApi = async (movieId) =>{
-    await movieDetailsApi(movieId);
-    
-    await movieImagesApi(movieId);
-   
+  }
+};
+get_recentmovie_id();
+
+
+
+
+
+
+
+
+
+
+
+// const movieImagesApi= async(trail_recentmovie)=>{
+//   console.log("inside get movie api");
+//   console.log(trail_recentmovie);
+
+//   const apiUrl = `https://api.themoviedb.org/3/movie/${trail_recentmovie}?language=en-US`;
+//   
+//   console.log(data);
+//   const viewContainer = document.getElementById('recent-movies');
+  
+//   let image_url = "https://image.tmdb.org/t/p/original"
+  
+//     let title = data.original_title;
+//     let poster = image_url+data.backdrop_path;
+//     let rating = data.vote_average;
+//     const card=`
+//       <div class="card">
+//       <img class="card_image" src="${poster}" alt="">
+//       <h4>${title}<h4>
+//       </div>
+//     `;
+//     viewContainer.innerHTML += card;
+  
+// }
+const include_recentview=async()=>{
+  console.log("inside recent view");
+  await fetch("../pages/recentviewed.html")
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById('recently-viewed').innerHTML = data;
+  })
+  .catch( error =>{
+      console.error("error fetching footer: ",error);
+  })
 }
 
-  const movieImagesApi = async (movieId) =>{
-    console.log("inside movie images");
-    const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}/images`;
-    console.log(apiUrl);
-    // const apiUrl = 'https://api.themoviedb.org/3/movie/572802?language=en-US';
-    const API_KEY = 'Bearer 8b701ace30227088c2f1ef89b747c764';
-    const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YjcwMWFjZTMwMjI3MDg4YzJmMWVmODliNzQ3Yzc2NCIsInN1YiI6IjY1NzY4MGMzZWM4YTQzMDBhYTZjMmMyNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.167UEzpKnunnh1afpyWcQ0V3hUiVprn3mXD02DDd7cA';
 
-    const options = {
-        method: 'GET',
-        headers: {
-            'Authorization': ACCESS_TOKEN,    
-            'accept': 'application/json'
-        }
-    };
-
-    try{
-      const response = await fetch(apiUrl,options);
-      const result = await response.json();
-      console.log(result.backdrops);
-      const posterList = result.backdrops;
-      // console.log(posterList);
-      let image_url = "https://image.tmdb.org/t/p/original";
-
-      for(let i=0;i<posterList.length && i<10;i++){
-          const photos = image_url+ posterList[i].file_path;
-          console.log(photos);
-          let img = document.createElement('img');
-          img.setAttribute("src",photos);
-          document.getElementById("photos-container").append(img);
-
-      }
-    }catch(error){
-      console.log(error);
-    }
-  }
+include_recentview();

@@ -70,6 +70,18 @@ body {
     height: 400px;
 
 }
+#image-1 .card_image{
+  width:270px;
+   height: 400px;
+}
+#image_2 .card_image_2{
+  width:270px;
+   height: 400px;
+}
+#image_3 .card_image_3{
+  width:270px;
+   height: 400px;
+}
 .picks {
   background-color: var(--white);
   display: flex;
