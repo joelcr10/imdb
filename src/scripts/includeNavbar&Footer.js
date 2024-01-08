@@ -91,6 +91,7 @@ window.onload =async function() {
     document.getElementById("signout-btn").onclick = function(){
       signOut();
     }
+    //navbar search
       search();
     
       };
@@ -109,6 +110,7 @@ const search = () => {
     const handleSearch = async () => {
       document.getElementById("searchResult").innerHTML = "";
       if(document.getElementById("errorBox") !=null){
+        document.getElementById("navErrorBox").style.visibility="hidden";
         document.getElementById("errorBox").innerHTML = "";
       }
       
@@ -125,20 +127,14 @@ const search = () => {
     });
 
     searchInput.addEventListener("input", function () {
+      document.getElementById("navErrorBox").style.visibility="hidden";
       document.getElementById("navErrorBox").innerHTML = "";
       output = 0;
           handleSearch();
   });
 
    
-    //   document.getElementById("search-container").addEventListener("mouseleave",function(){
-    //     document.getElementById("searchResult").innerHTML = "";
-    //   })
     
-
-    // document.getElementById("searchResult").removeEventListener("mouseleave",function(){
-    //   document.getElementById("searchResult").innerHTML = "";});
-  
 };
 
 const createResultCard = (item) => {
@@ -178,6 +174,25 @@ const createResultCardForTv = (item) => {
   return littleBox;
 };
 
+
+const createResultCardForPerson = (item) => {
+  const poster = item.profile_path ? image_url + item.profile_path : image_url + item.poster_path;
+  const title = item.title || item.name;
+  console.log(item);
+
+  const littleBox = document.createElement("div");
+  littleBox.classList.add("littleBox");
+
+  const card = `<a href="../CelebDetails/celebDetails.html?id=${item.id}">
+                  <div class="imageBox"> <img src="${poster}" alt=""  ></div>
+                  <div class="titleBox">${title}</div>
+                </a>
+              `;
+
+  littleBox.innerHTML = card;
+  return littleBox;
+};
+
 const appendResultCard = (littleBox) => {
   if(output < 4){
     
@@ -203,9 +218,12 @@ const fetchResults = async (searchItem, type) => {
     
             let div = document.createElement("div");
             div.textContent = message;
+            document.getElementById("searchResult").style.visiblity = "hidden";
             document.getElementById("navErrorBox").innerHTML = "";
+            document.getElementById("navErrorBox").style.visibility="visible";
             document.getElementById("navErrorBox").append(div);
           }
+        
           
             console.log("before filtering " + resultList.length);
           if (type !== "") {
@@ -224,15 +242,15 @@ const fetchResults = async (searchItem, type) => {
               case "tv"    : littleBox = createResultCardForTv(item);
                              appendResultCard(littleBox);
                              break;
+              case "person": littleBox = createResultCardForPerson(item);
+                             appendResultCard(littleBox);
+                             break;        
               default      :  littleBox = createResultCard(item);
                               appendResultCard(littleBox);
                               break;    
             }
              
-          
            
-        
-          
       }
     }
     
