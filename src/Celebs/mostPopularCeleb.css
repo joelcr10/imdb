@@ -2,6 +2,7 @@
 body{
     font-family: 'Roboto', sans-serif;
     margin: 0;
+    
 }
 
 #heading h2,h1{
@@ -80,6 +81,9 @@ body{
 .celebrityBox{
     position: relative;
 }
+.celebrityBox a{
+    color: black;
+}
 #lastCelebrityBox{
     border-bottom: none;
 }
@@ -105,6 +109,7 @@ body{
     font-weight: 900;
     width: 30%;
 }
+
 .secondLine:hover{
     opacity: 50%;
 }
@@ -137,7 +142,7 @@ body{
 }
 #mainContainer{
     position: relative;
-    z-index: -1;
+    z-index: 1;
 }
 #rightContainer{
     position: absolute;
@@ -186,6 +191,7 @@ body{
    
   }
   .compactView, .detailedView{
+    
     display: inline-block;
     rotate: 90deg;
     margin: 30px;

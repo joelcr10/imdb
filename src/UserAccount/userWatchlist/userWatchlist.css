@@ -1,0 +1,20 @@
+.watchlist-card{
+    /* background-color: white; */
+    max-width: 185px;
+    
+}
+
+.watchlist-card a{
+    text-decoration: none;
+}
+
+.watchlist-card .card-text{
+    color: white;
+    
+}
+
+#watchlist-container{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}

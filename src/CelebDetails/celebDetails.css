@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+body{
+    margin: 0px;
+    
+}
+:root {
+    --theme: #F5C518;
+    --grey: rgba(128, 128, 128, 0.247);
+    --black: black;
+    --white: white;
+}
+
+#topSection {
+    background-color: black;
+    position: relative;
+    width: 100%;
+    height:600px;
+    color: var(--white);
+}
+
+#celebName, #knownFor, #celebPoster, #description, #dateOfBirth, #popularity, #placeOfBirth {
+    margin: 20px;
+    
+}
+
+#celebName {
+    font-size: 2.5rem;
+    width: 500px;
+    height: 100px;
+    position: absolute;
+    top: 30px;
+    left: 100px;
+}
+
+#knownFor {
+    font-size: 2.5rem;
+    width: 200px;
+    height: 50px;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+
+#celebPoster {
+    width: 300px;
+    height: 400px;
+    position: absolute;
+    top: 170px;
+    left: 0;
+    /* border: 1px solid orange; */
+}
+
+#description {
+    width: 1020px;
+    height: 360px;
+    padding: 20px;
+    position: absolute;
+    top: 170px;
+    left: 300px;
+    /* border: 1px solid gold; */
+}
+
+#dateOfBirth, #popularity, #placeOfBirth {
+    font-size: 2.5rem;
+    width: 300px;
+    height: 80px;
+    margin: 20px;
+}
+
+#dateOfBirth {
+    padding: 30px;
+    position: absolute;
+    top: 0;
+    right: 500px;
+}
+
+#popularity {
+    padding: 30px;
+    position: absolute;
+    top: 0;
+    left: 1200px;
+    overflow: hidden;
+}
+
+#placeOfBirth {
+    padding: 30px;
+    font-size: 2rem;
+    width: 300px;
+    height: 80px;
+    position: absolute;
+    top: 0;
+    right: 140px;
+}
+
+.middleSection{
+    background-color: black;
+}
+
+.movieSection{
+    padding: 20px;
+    /* border: 1px solid gold; */
+    /* margin: 20px; */
+    height: 430px;
+    background-color: black;
+    position: relative;
+}
+.poster{
+    margin-top: 20px;
+  width: 300px;
+  height: 400px;
+  background-color: red;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  margin-left: 20px;
+}
+.movieName{
+    font-size: 50px;
+    color: var(--white);
+    background-color: black;
+    position: absolute;
+    top: 10px;
+    left: 400px;
+    width: 350px;
+    height: 50px;
+}
+.overView{
+    
+    font-family:"Roboto",sans-serif;
+    margin: 20px;
+    color: var(--white);
+    background-color: black;
+    position: absolute;
+    top: 120px;
+    left: 320px;
+    width: 500px;
+    height: 200px;
+}
+.release{
+    font-size: 50px;
+    color: var(--white);
+    background-color:black;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    top: 330px;
+    left: 400px;
+    width: 400px;
+    height: 50px;
+}
+
+.backdrop{
+   margin-top: 20px;
+    width: 500px;
+    height: 400px;
+    background-color: red;
+    position: absolute;
+    top: 0px;
+    right: 20px;
+   
+}

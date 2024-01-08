@@ -47,6 +47,9 @@ hr{
  font-size: 20px;
  font-weight: 900;
 }
+.firstTitle a{
+    color: black;
+}
 .firstTitle:hover{
  text-decoration: underline;
 }
@@ -123,6 +126,7 @@ a:hover{
 .articleOptions{
 
  width: 150px;
+ height: 150px;
 position: absolute;
 top: 40%;
 right: 2%;
@@ -132,14 +136,21 @@ padding: 10px;
 
 .articleOptions a{
     color:black;
-    margin: 20px;
+   
     border-bottom: black;
     background-color: whitesmoke;
     padding: 1px;
     height:max-content;
    
-
 }
+.permalink{
+    margin: 20px;
+    padding: 20px;
+  }
+  .reportThis{
+      margin: 20px;
+      padding: 20px;
+  }
 .mainContainer{
     position: relative;
 }
@@ -160,10 +171,3 @@ padding: 10px;
     margin-left: -20px;
 }
 
-.verticalOptions{
-    margin: 10px;
-    padding: 10px;
-    
-    
-
-}
