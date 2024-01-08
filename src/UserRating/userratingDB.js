@@ -31,7 +31,7 @@ console.log(data);
 
 let passId;
 
-export const addRating = async(movieId,value) =>{
+const addRating = async(movieId,value) =>{
     console.log("Inside addRating");
     console.log(value);
     console.log(movieId);
@@ -50,6 +50,9 @@ export const addRating = async(movieId,value) =>{
          return test[passId];
         
 }
+
+
+export default addRating;
 
 
 
