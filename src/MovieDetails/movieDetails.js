@@ -1,5 +1,5 @@
 import { apiFetch } from "../scripts/apiFetch.js";
-import {openRatingModal,selectStar, hoverStar,resetStarColors,closeRatingModal,selectedRatingValue} from "../MovieDetails/userrating.js";
+import {openRatingModal,selectStar, hoverStar,resetStarColors,closeRatingModal,selectedRatingValue,displayUserRating} from "../MovieDetails/userrating.js";
 // import {} from "../UserRating/userratingDB.js";
 
 export let movieId = "";
@@ -50,11 +50,15 @@ const fetchAllApi = async (movieId) => {
     
     }
 
-    let rateButton = document.getElementById("rateButton");
-    rateButton.onclick = function(){
+    let closeButton = document.getElementById("close");
+    closeButton.onclick = function(){
       closeRatingModal();
     }
 
+    let rateButton = document.getElementById("rateButton");
+    rateButton.onclick = function(){
+      displayUserRating();
+    }
   }
   
 };

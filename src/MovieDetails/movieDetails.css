@@ -450,19 +450,34 @@ body {
 }
 
 .rating-icon {
-  font-size: 24px;
+  font-size:xxx-large;
   color: rgb(6, 123, 177);
   cursor: pointer;
+  position: relative;
+  left: 40px;
 }
 
 .rating-text {
   color: rgb(197, 197, 197);
   font-size: medium;
   font-weight: bolder;
+  position: relative;
+  right:60px;
+  top: -38px;
 }
 
 .your-rating {
   position: relative;
   right: 10px;
   bottom: 9px;
+  /* margin-left: 20px; */
+  top: 1px;
+  /* margin-right: 20px; */
+
+}
+
+#userRating{
+  position: relative;
+  top: -35px;
+  right: -85px;
 }
