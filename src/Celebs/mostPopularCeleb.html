@@ -63,12 +63,21 @@
     <script src="../scripts/includeNavbar&Footer.js"type="module"></script>
     <script src="../scripts/navbarMenu.js"></script>
     <script type="module">
-        import {celebrity} from "/src/Celebs/mostPopularCeleb.js";
-        celebrity(false,0);
         
+        import {celebrity} from "../Celebs/mostPopularCeleb.js";
+        celebrity(false,0);
+        console.log("inside celeb script");
+            
          document.getElementsByClassName("compactView")[0].addEventListener("click",function(){
             document.getElementById("bigBox").innerText="";
             celebrity(false,0)});
+        // document.getElementsByClassName("compactView")[0].style.cursor = "pointer";
+        // document.getElementsByClassName("detailedView")[0].style.cursor = "pointer";
+
+        document.getElementsByClassName("compactView")[0].style.cursor = "pointer";
+        document.getElementsByClassName("detailedView")[0].style.cursor = "pointer";
+
+
         document.getElementsByClassName("detailedView")[0].addEventListener("click",function(){
             document.getElementById("bigBox").innerText="";
             celebrity(true,0)});

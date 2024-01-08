@@ -138,3 +138,6 @@ hr{
     font-weight: 400;
     font-size: large;
   }
+  .error-input {
+    border: 2px solid red;
+  }

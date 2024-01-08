@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+:root{
+    --theme: #F5C518;
+    --grey: rgba(128, 128, 128, 0.247);
+    --black: black;
+    --white: white;
+}
+
+
+body{
+    margin: 0;
+    background-color: var(--black);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* account top section */
+.account-top-section{
+    background-color: var(--theme);
+    display: flex;
+    align-items: center;
+    padding: 40px 100px;
+    gap: 40px;
+}
+
+.account-top-section img{
+    border: 3px solid black;
+    border-radius: 50%;
+    background-color: white;
+    height: 100px;
+}
+
+
+/* user options */
+.user-options{
+    /* background-color: grey; */
+    padding-left: 80px;
+}
+
+.user-options ul{
+    margin: 0;
+    display: flex;
+    gap: 0px;
+    list-style-type: none;
+}
+
+.tab{
+    /* border-bottom: 4px solid var(--theme); */
+    padding: 10px;
+}
+
+.tab:hover{
+    background-color: var(--grey);
+    cursor: pointer;
+}
+
+.active{
+    border-bottom: 4px solid var(--theme);
+}
+
+#user-list-container{
+    /* background-color: blue; */
+    padding: 40px;
+}
+
+
+
+
+

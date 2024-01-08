@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .full-page {
+            width: 100%;
+            height: 100vh;
+            background-color: #fff;
+            position: fixed;
+            top: -100vh;
+            left: 0;
+            transition: top 0.5s ease-in-out;
+        }
+
+        button {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            font-size: 18px;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <title>Show Full Page</title>
+</head>
+
+<body>
+    
+    <button onclick="showFullPage()">Show Full Page</button>
+    
+    <div class="full-page" id="fullPage">
+        <!-- Content for the full page -->
+        <h1>Full Page</h1>
+        <p>This is the full page revealed with a sliding effect.</p>
+    </div>
+
+    
+
+    <script>
+        function showFullPage() {
+            document.getElementById('fullPage').style.top = '0';
+        }
+    </script>
+</body>
+
+</html>

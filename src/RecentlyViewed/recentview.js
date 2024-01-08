@@ -16,8 +16,9 @@ const movieImagesApi = async (trail_recentmovie) => {
     let rating = data.vote_average;
     const card=`
       <div class="card">
+      
       <img class="card_image" src="${poster}" alt="">
-      <h4>${title}<h4>
+      <h4 class="card_title">${title}<h4>
       </div>
     `;
     let div= document.createElement('div');

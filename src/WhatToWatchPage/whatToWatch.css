@@ -667,3 +667,7 @@ body{
 #tab2, #tab3, #tab4, #tab5{
     display: none;
 }
+
+#recent-view-container{
+    margin-left: 100px;
+}

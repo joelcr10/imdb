@@ -2,12 +2,12 @@
 body{
     font-family: 'Roboto', sans-serif;
     margin: 0;
-    background-color: black;
+    background-color: white;
 }
 
 #mainHeading{
     text-align: center;
-    color: aliceblue;
+    color:black;
 }
 
 #searchBoxDiv{
@@ -18,7 +18,7 @@ body{
   width: 200px;
   margin: 50px;
   height: 30px;
-  background-color: aliceblue;
+  background-color: white;
   
   
   
@@ -31,7 +31,7 @@ body{
 .smallBox {
  position: relative;
  height: 300px;
- border: 1px solid yellow;
+ border: 1px solid blue;
  margin: 20px;
 }
 
@@ -71,8 +71,8 @@ body{
 }
 
 .text {
-  /* color: rgba(206, 255, 47, 0.634); */
-  color: aliceblue;
+  
+  color: black;
 }
 
 .poster img{
@@ -85,11 +85,12 @@ body{
   text-align: center;
 }
 #searchFilterDiv{
-  align-items: center;
+  /* align-items: center; */
   position: absolute;
-  top: 280px;
-  left: 415px;
+  top: 277.5px;
+  left: 484.6px;
   color: aliceblue;
+  border: 1px ;
 }
 #searchFilter{
   height: 34px;

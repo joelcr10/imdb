@@ -1,54 +1,19 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, collection, getDocs, doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
-import { getAuth,createUserWithEmailAndPassword,  signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js'
-// import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getFirestore, doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+import { getAuth,createUserWithEmailAndPassword,  signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+import { firebaseCredentials } from "../../config.js";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-export const firebaseConfig = {
-  apiKey: "AIzaSyCrKosfpufYIc3yaL-pgrlcwhWqpfN2Rlg",
-  authDomain: "imdb-63ec7.firebaseapp.com",
-  projectId: "imdb-63ec7",
-  storageBucket: "imdb-63ec7.appspot.com",
-  messagingSenderId: "1089587640183",
-  appId: "1:1089587640183:web:12166709de392731e91372",
-  measurementId: "G-TR217WFC7K"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-// firebase.initializeApp(firebaseConfig);
-console.log(firebaseConfig)
+const firebaseConfig = firebaseCredentials;
 
 
-// const auth = app.auth();
-
-const db = getFirestore(app);
-
-// const db = firebase.firestore();
+const app = initializeApp(firebaseConfig); // initialization of firebase;
 
 
-
-async function getCities(db) {
-  console.log("inside db");
-  const citiesCol = collection(db, 'test');
-  const citySnapshot = await getDocs(citiesCol);
-  const cityList = citySnapshot.docs.map(doc => doc.data());
-  console.log(cityList);
-
-  // const docRef = ;
-
-  // const tryTest = await db.collection('test');
-  
-}
-
-getCities(db);
+const db = getFirestore(app); //getting the reference of firestore database
 
 
-const auth = getAuth();
+const auth = getAuth(); //initializing firebase auth
 
 
 
@@ -63,10 +28,14 @@ const auth = getAuth();
 
       createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
-
+        
         await setDoc(doc(db, "users", userCredential.user.uid ), {
           username: username,
-          recentlyViewed: [],
+          profile: "https://robohash.org/"+email+"?set=set5",
+          pendingRequest: [],
+          friendRequest: [],
+          friendList: [],
+          email: email
         });
         window.location.href = "../Login_Page/login.html";
         // window.location.href = "D:/IMDB-Clone/src/Login_Page/login.html";

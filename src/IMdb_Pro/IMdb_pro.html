@@ -47,22 +47,30 @@
                                <button class="premium-btn" type="button" onclick="openPayment()">START PREMIUM MEMBERSHIP</button>
               
                 <div class="popup-container" id="popup">
-                    <span class="close-btn" onclick="closePopup()">&times;</span>
+                    <!-- <span class="close-btn" onclick="closePopup()">&times;</span>
                     <h3>ENTER IMDB CREDENTIALS</h3>
                     <label for="username" class="username-input">IMDB  UserName</label><br>
-                    <input type="text" id="username" name="username" required placeholder="UserName ">
+                    <input type="text" id="username" name="username" required placeholder="UserName " oninput="checkUserName()">
+                    <br>
+                    <label for="phonenumber" class="phonenumber-input">IMDB Password</label><br>
+                    <input type="text" id="phonenumber" name="phonenumber" required placeholder="Password ">
+                    <br><br><br> -->
+                    <form id="getpayment">
+                        <span class="close-btn" onclick="closePopup()">&times;</span>
+                    <h3>ENTER IMDB CREDENTIALS</h3>
+                    <label for="username" class="username-input">IMDB  UserName</label><br>
+                    <input type="text" id="username" name="username" required placeholder="UserName " oninput="checkUserName()">
                     <br>
                     <label for="phonenumber" class="phonenumber-input">IMDB Password</label><br>
                     <input type="text" id="phonenumber" name="phonenumber" required placeholder="Password ">
                     <br><br><br>
-                    <form id="getpayment">
                         <script src="https://checkout.razorpay.com/v1/payment-button.js" 
                         data-payment_button_id="pl_NLiu9E6KQUN1KN"
                         
                          async> 
                           
                         </script>
-                         </form>
+                    </form>
                     
                   </div>
                   <div class="overlay" id="overlay" onclick="closePopup()"></div>

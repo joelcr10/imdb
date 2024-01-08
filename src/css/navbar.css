@@ -81,9 +81,10 @@
     /* padding-right: 5px; */
 }
 
-.search-container img{
+/* .search-container img{
     display: none;
-}
+} */
+
 
 #nav-profile{
    position: relative;
@@ -234,6 +235,31 @@
     margin-top: 50px;
 }
 
+
+#watchlistCounter{
+    margin: 3%;
+    font-size: .8rem;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    color: black;
+    font-weight: 500;
+    background-color: yellow;
+    padding-left: 3%;
+    padding-right: 3%;
+    min-width: 1.4rem;
+    min-height: .1rem;
+    border-radius: 50px;
+    text-align: center;
+}
+
+#profile-icon{
+    border-radius: 50%;
+    border: 2px solid var(--theme);
+    background-color: var(--theme);
+
+
+}
+
 @media screen and (max-width: 950px) {
     .watchlist-container{
         display: none;
@@ -242,9 +268,9 @@
 
 
 @media screen and (max-width: 700px){
-    .menu-container label{
-        /* display: none; */
-    }
+    /* .menu-container label{
+        display: none;
+    } */
 }
 
 @media screen and (max-width: 530px){
@@ -283,4 +309,194 @@
 }
 
 
+
+/* navSearch css */
+.search-container{
+    position: relative;
+}
+#searchResult{
+   
+    background-color: aliceblue;
+    position: absolute;
+    top: 37px;
+    left: 92px;
+    z-index: 2;
+
+}
+ .littleBox{
+    background-color: aliceblue;
+    position: relative;
+    /* border: 1px solid black; */
+    width: 700px;
+    height: 70px;
+    margin: 5px;
+
+ }
+ 
+ .imageBox {
+    /* background-color: red; */
+    border: 1px solid orange;
+    width: 50px;
+    height: 60px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+ }
+
+ .imageBox img{
+    height: 100%;
+    width: 100%;
+    
+ }
+
+ .titleBox{
+    font-size: 20px;
+    position: absolute;
+    width: 630px;
+    height: 50px;
+    top: 15px;
+    left: 65px;
+    color: black;
+ }
+
+#navErrorBox{
+    padding-left: 100px;
+    font-size: 20px;
+  
+    color: red;
+    width:630px;
+    height: 50px;
+    position: absolute;
+    top: 36px;
+    left: 95px;
+    z-index: 5;
+}
+
+
+
+/* navSearch css */
+.search-container{
+    position: relative;
+}
+#searchResult{
+   
+    background-color: aliceblue;
+    position: absolute;
+    top: 37px;
+    left: 92px;
+    z-index: 2;
+
+}
+ .littleBox{
+    background-color: aliceblue;
+    position: relative;
+    /* border: 1px solid black; */
+    width: 700px;
+    height: 70px;
+    margin: 5px;
+
+ }
+ 
+ .imageBox {
+    /* background-color: red; */
+    border: 1px solid orange;
+    width: 50px;
+    height: 60px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+ }
+
+ .imageBox img{
+    height: 100%;
+    width: 100%;
+    
+ }
+
+ .titleBox{
+    font-size: 20px;
+    position: absolute;
+    width: 630px;
+    height: 50px;
+    top: 15px;
+    left: 65px;
+    color: black;
+ }
+
+#navErrorBox{
+    padding-left: 100px;
+    font-size: 20px;
+  
+    color: red;
+    width:630px;
+    height: 50px;
+    position: absolute;
+    top: 36px;
+    left: 95px;
+    z-index: 5;
+}
+
+
+
+/* navSearch css */
+.search-container{
+    position: relative;
+}
+#searchResult{
+   
+    background-color: aliceblue;
+    position: absolute;
+    top: 37px;
+    left: 92px;
+    z-index: 2;
+
+}
+ .littleBox{
+    background-color: aliceblue;
+    position: relative;
+    /* border: 1px solid black; */
+    width: 700px;
+    height: 70px;
+    margin: 5px;
+
+ }
+ 
+ .imageBox {
+    /* background-color: red; */
+    border: 1px solid orange;
+    width: 50px;
+    height: 60px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+ }
+
+ .imageBox img{
+    height: 100%;
+    width: 100%;
+    
+ }
+
+ .titleBox{
+    font-size: 20px;
+    position: absolute;
+    width: 630px;
+    height: 50px;
+    top: 15px;
+    left: 65px;
+    color: black;
+ }
+
+#navErrorBox{
+    padding-left: 100px;
+    font-size: 20px;
+  
+    color: red;
+    width:630px;
+    height: 50px;
+    position: absolute;
+    top: 36px;
+    left: 95px;
+    z-index: 5;
+}
 
