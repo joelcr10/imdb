@@ -495,3 +495,27 @@ body {
 #journalButton:hover{
   background-color: #f8b344;
 }
+
+.popup-box-dot {
+  display: none;
+  position: absolute;
+  background-color: #f5f5f5;
+  box-shadow: 0px 0px 5px rgb(221, 221, 221);
+  margin-left: -8rem;
+  margin-top: 1rem;
+  /* border-radius: 6px; */
+  /* padding: 10px; */
+
+}
+
+.popup-box-dot a {
+  color: rgb(29, 29, 29);
+  font-weight: 500;
+  text-decoration: none;
+  display: block;
+  padding: 15px;
+  font-size: .8rem;
+}
+.popup-box-dot a:hover{
+  background-color: #dadada;
+}

@@ -496,3 +496,7 @@
     z-index: 5;
 }
 
+#imdb_pro_icon{
+    max-height: 45px !important;
+    width:100px;
+ }

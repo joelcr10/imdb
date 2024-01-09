@@ -1,41 +1,17 @@
 
 import { apiFetch } from '../scripts/apiFetch.js';
-import {watchlistIconToggle} from '../YourWatchList/watchlist.js'
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
 import { getFirestore, collection, getDocs, doc, setDoc, addDoc, query, where, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+import {firebaseCredentials} from '../../config.js';
 
-// import { returnGenre } from './returnGenre.ts';
-
-// import { addToWatchlist } from '../YourWatchList/watchlist.js';
-const firebaseConfig = {
-    apiKey: "AIzaSyCrKosfpufYIc3yaL-pgrlcwhWqpfN2Rlg",
-    authDomain: "imdb-63ec7.firebaseapp.com",
-    projectId: "imdb-63ec7",
-    storageBucket: "imdb-63ec7.appspot.com",
-    messagingSenderId: "1089587640183",
-    appId: "1:1089587640183:web:12166709de392731e91372",
-    measurementId: "G-TR217WFC7K"
-};
-
+const firebaseConfig = firebaseCredentials;
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-console.log(firebaseConfig)
-
-
-// const auth = app.auth();
-
 const db = getFirestore(app);
-console.log(db);
-
-
-
 
 
 const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-
 
 
 const returnGenre = (genreIds, genreList) => {
@@ -159,11 +135,8 @@ const upcomingMoviesSection = async () => {
 
             item.map(async(movie) => {
 
-                // watchlistIconToggle(movie.id);
                 let icon;
                 let watchlistMovieId = await getUserWatchlist();
-                console.log(watchlistMovieId);
-                console.log(movie.id);
 
                 if (watchlistMovieId.includes(movie.id.toString())) {
                     console.log("yes in");
@@ -176,25 +149,10 @@ const upcomingMoviesSection = async () => {
 
                 // Append each movie to the card
                 const movieDetails = document.createElement('div');
-
                 movieDetails.classList.add('movie-details');
-
-
                 movieDetails.style.minHeight = '6rem';
-
-
-                // movieDetails.onclick = function() {
-
-                
-
-
-                //     window.location.href = `../MovieDetails/movieDetails.html?id=${movie.id}`;
-                // };
-                // <a href = "../MovieDetails/movieDetails.html?id=${movie.id}" style="min-height:6rem;";
                 movieDetails.innerHTML = `
-                    
-
-                        
+                                  
                         <div class="movie-contents" >
                             
                                 <div class="movie-content-poster">
@@ -236,26 +194,16 @@ upcomingMoviesSection();
 
 const upcomingTVSection = async () => {
 
-    const API_KEY = 'Bearer dd35036818633025b77e437d6e8b9964';
-    const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZDM1MDM2ODE4NjMzMDI1Yjc3ZTQzN2Q2ZThiOTk2NCIsInN1YiI6IjY1ODFkODQ1YmYwZjYzMDg5MzYyYjg5NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.sT5e5quy6JNqGpb4QC2D008yWeeV9goKw0jwdPwFY6I'
     const tvApi = 'https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc'
     const tv_genre_api = 'https://api.themoviedb.org/3/genre/tv/list?language=en'
 
     try {
-        // const response = await fetch(tvApi, options);
-        // const result = await response.json();
+
         const result = await apiFetch(tvApi);
-        // const genre = await fetch(tv_genre_api, options);
-        // const genreList = await genre.json();
         const genreList = await apiFetch(tv_genre_api);
         let image_url = "https://image.tmdb.org/t/p/w185"
 
-        // console.log(genreList);
-        // console.log(result.results);
-
         let resultList = result.results;
-
-
         let tvByMonth = {};
         let releasedatesArray = [];
 
@@ -334,21 +282,21 @@ const upcomingTVSection = async () => {
                 // };
 
                 movieDetails.innerHTML = `
-                <div class="movie-contents" >
-                    <div class="movie-content-poster">
-                        <img class="movie-poster" src="${tv.poster}" alt="movie-poster" >
-                    </div>
-                    <div class="movie-content-title-genre">
-                        <a class="movie-title" href="../TvDetails/tvDetails.html?id=${tv.id}" >${tv.title}</a><br>
-                        <a class="dynamicGenre">${tv.genre} </a>       
-                    </div>  
+                        <div class="movie-contents" >
+                            <div class="movie-content-poster">
+                                <img class="movie-poster" src="${tv.poster}" alt="movie-poster" >
+                            </div>
+                            <div class="movie-content-title-genre">
+                                <a class="movie-title" href="../TvDetails/tvDetails.html?id=${tv.id}" >${tv.title}</a><br>
+                                <a class="dynamicGenre">${tv.genre} </a>       
+                            </div>  
 
 
-                </div>
-            <div class="watchlist" id="watchlistButtonlll" data-title="${tv.title}" data-poster="${tv.poster}" data-genre="${tv.genre}" data-id="${tv.id}" >
-                    ${icon}
-            </div>
-            <hr>
+                        </div>
+                        <div class="watchlist" id="watchlistButtonlll" data-title="${tv.title}" data-poster="${tv.poster}" data-genre="${tv.genre}" data-id="${tv.id}" >
+                            ${icon}
+                        </div>
+                        <hr>
                     `;
                 card.appendChild(movieDetails);
             });
@@ -366,19 +314,6 @@ const upcomingTVSection = async () => {
     }
 }
 
-
-// const togglepopup = () => {
-//     const popup = document.getElementById("popup-container");
-
-//     if (popup.style.display === 'none') {
-//         popup.style.display = 'block';
-//     } else {
-//         popup.style.display = 'none';
-//     }
-
-
-// }
-
 document.getElementById('movie').addEventListener('click', function (event) {
     event.preventDefault(); // Prevent the default behavior of the anchor tag
     document.getElementById("movie-per-date").innerHTML = "";
@@ -392,31 +327,5 @@ document.getElementById('tv').addEventListener('click', function (event) {
 });
 
 
-
-
-// document.getElementById('popup-container').addEventListener('click', function (event) {
-//     console.log(event.target);
-//     if (event.target.matches('#open-popup')) {
-        
-//         togglepopup();
-//     }
-//     if (event.target.matches('.close')) {
-//         togglepopup();
-//     }
-
-
-// })
-
-document.getElementById('movie-per-date').addEventListener('click', async function (event) {
-    console.log(event.target);
-    if (event.target.matches('#watchlistButton')) {
-        console.log("asdfghjklsdfghjklsdfghjkl");
-        // document.getElementById('movie-per-date').innerHTML='';
-
-        // // Refresh the content
-        //  upcomingMoviesSection();
-        //  upcomingTVSection();
-    }
-});
 
 
