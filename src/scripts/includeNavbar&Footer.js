@@ -222,13 +222,14 @@ const fetchResults = async (searchItem, type) => {
           console.log(resultList);
           if (resultList.length === 0) {
             let message = "Sorry no information available!";
-    
+            
             let div = document.createElement("div");
             div.textContent = message;
             document.getElementById("searchResult").style.visiblity = "hidden";
             document.getElementById("navErrorBox").innerHTML = "";
             document.getElementById("navErrorBox").style.visibility="visible";
             document.getElementById("navErrorBox").append(div);
+            document.getElementById("searchResult").style.visiblity = "hidden";
           }
         
           
