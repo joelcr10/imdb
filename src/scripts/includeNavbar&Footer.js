@@ -13,6 +13,11 @@ import { firebaseCredentials } from "../../config.js";
 
 const firebaseConfig = firebaseCredentials;
 const app = initializeApp(firebaseConfig);
+
+export {app};
+
+// const auth = app.auth();
+
 const db = getFirestore(app);
 
 

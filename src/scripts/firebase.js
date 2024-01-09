@@ -35,7 +35,8 @@ const auth = getAuth(); //initializing firebase auth
           pendingRequest: [],
           friendRequest: [],
           friendList: [],
-          email: email
+          email: email,
+          imdb_pro:0
         });
         window.location.href = "../Login_Page/login.html";
         // window.location.href = "D:/IMDB-Clone/src/Login_Page/login.html";

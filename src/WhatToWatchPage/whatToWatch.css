@@ -632,3 +632,7 @@ p {
 #tab5 {
   display: none;
 }
+
+#recent-view-container{
+    margin-left: 100px;
+}

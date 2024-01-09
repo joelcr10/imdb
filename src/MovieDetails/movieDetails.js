@@ -2,22 +2,30 @@ import { apiFetch } from "../scripts/apiFetch.js";
 import {openRatingModal,selectStar, hoverStar,resetStarColors,closeRatingModal,selectedRatingValue,displayUserRating} from "../MovieDetails/userrating.js";
 // import {} from "../UserRating/userratingDB.js";
 
-export let movieId = "";
+let movieId = "";
 export var movieNameGlobal = "";
 export var movieImage = "";
-export var userSelectedRating =selectedRatingValue;
-document.addEventListener("DOMContentLoaded", function () {
-  const urlParams = new URLSearchParams(window.location.search);
-  movieId = urlParams.get("id");
+let recentmovie_list = JSON.parse(sessionStorage.getItem("Recent Movies")) || [];
 
-  if (movieId) {
-    console.log(movieId);
-    // fetchMovieDetails(movieId);
-    fetchAllApi(movieId);
-  } else {
-    console.error("Movie ID not provided in URL");
-  }
-});
+document.addEventListener("DOMContentLoaded", function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    movieId = urlParams.get('id');
+    
+    if (movieId) {
+        console.log(movieId);
+        // fetchMovieDetails(movieId);
+        fetchAllApi(movieId);
+        if(!recentmovie_list.includes(movieId)){
+          recentmovie_list.push(movieId);
+          }
+          console.log(recentmovie_list);
+      
+          // Store the updated array in sessionStorage
+          sessionStorage.setItem("Recent Movies", JSON.stringify(recentmovie_list));
+    } else {
+      console.error('Movie ID not provided in URL');
+    }
+  });
 
 const fetchAllApi = async (movieId) => {
   await movieDetailsApi(movieId);
