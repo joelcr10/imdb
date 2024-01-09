@@ -30,6 +30,7 @@ const getUserRatings = async () =>{
 
 const popularMoviesSection = async () =>{
     // loadingAnimation();
+    console.log("inside popular movies");
     const apiUrl = `https://api.themoviedb.org/3/movie/popular`;
     
     const result = await apiFetch(apiUrl);
@@ -48,19 +49,22 @@ const popularMoviesSection = async () =>{
         let id = item.id;
         let cardButton = "";
         let rateStarImage = "";
-
+        console.log("pop",item.title);
         if(watchlistMovieId.includes(id.toString())){
             cardButton = `<button id="watchlisted"><span></span>Watchlisted</button>`
         }else{
             cardButton = `<button><span>+</span> Watchlist</button>`
         }
-
-        if(id in userRatingList){
+        console.log("testing pop");
+        if( id in userRatingList){
             
             rateStarImage = `<img class="starred-icon" src="../../assets/img/ratingStar.png" onclick="openRatingModal('${title}', '${id}')">`;
         }else{
             rateStarImage = `<img class="starred-icon" src="../../assets/img/starred.png" onclick="openRatingModal('${title}', '${id}')">`
         }
+
+        console.log("testing popular");
+
         
         const card = `
                     <a href="../MovieDetails/movieDetails.html?id=${id}">
