@@ -19,9 +19,7 @@ const getUserWatchlist = async () =>{
     return watchlistMovieId;
 }
 
-const getUserRatings = async () =>{
-    console.log("user ratings");
-    
+const getUserRatings = async () =>{    
     const ratingDoc = await getDoc(doc(db,"users",localStorage.getItem("userId"),"userRatings","rating"));
     let userRatingList = ratingDoc.data();
 
@@ -38,8 +36,6 @@ const popularMoviesSection = async () =>{
 
     let watchlistMovieId = await getUserWatchlist();
     let userRatingList = await getUserRatings();
-    console.log("WL",watchlistMovieId);
-    console.log("UR",userRatingList);
     
     resultList.map((item) =>{
         let title = item.title;
@@ -183,7 +179,7 @@ const popularTvSection = async () =>{
 }
 
 const upcomingMoviesSection = async () =>{
-   console.log("iinside upcoming movies");
+   
     let minDate = "2024-01-01";
     let maxDate = "2024-01-10";
     const apiUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&release_date.gte=${minDate}&release_date.lte=${maxDate}`;
@@ -282,7 +278,7 @@ const topBoxOfice = async () =>{
 
         const boxOfficeApi = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
         const res = await apiFetch(boxOfficeApi);
-        console.log(res);
+        
         let revenue = res.revenue;
         if(revenue==0){
             revenue = 10000000;
@@ -299,10 +295,10 @@ const displayWatchlist = async () =>{
     if(docList.empty){
         document.getElementById("watchlist-prompt").innerText = "Nothing added to watchlist";
     }else{
-        console.log("yes this is");
+        
         docList.forEach((doc) => {
                 let item = doc.data();
-                console.log(item);
+              
                 let id = item.id;
                 let title = item.title;
                 let poster = item.poster;
