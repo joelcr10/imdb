@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
   movieId = urlParams.get("id");
 
   if (movieId) {
-    console.log(movieId);
+    
     // fetchMovieDetails(movieId);
     fetchAllApi(movieId);
   } else {
@@ -36,7 +36,7 @@ const fetchAllApi = async (movieId) => {
     let movieId = urlParams.get('id');
     openRatingModal(`${movieNameGlobal}`,`${movieId}`);
     let starIcon = document.getElementsByClassName("star");
-    console.log("star icon",starIcon);
+    
 
     for(let i=0;i<starIcon.length;i++){
       let dataValue = starIcon[i].getAttribute("data-value");
@@ -74,7 +74,7 @@ const fetchAllApi = async (movieId) => {
 
 const movieDetailsApi = async (movieId) => {
   const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
-  console.log(apiUrl);
+  
   // const apiUrl = 'https://api.themoviedb.org/3/movie/572802?language=en-US';
   const API_KEY = "Bearer 8b701ace30227088c2f1ef89b747c764";
   const ACCESS_TOKEN =
@@ -93,7 +93,7 @@ const movieDetailsApi = async (movieId) => {
     const result = await response.json();
     let image_url = "https://image.tmdb.org/t/p/original";
 
-    console.log("movie", result);
+    
     const movieTitle = result.title;
     movieNameGlobal = movieTitle;
     localStorage.setItem('journal-movie-title',movieNameGlobal);
@@ -159,7 +159,7 @@ const movieDetailsApi = async (movieId) => {
 
 const movieCastApi = async (movieId) => {
   const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`;
-  console.log(apiUrl);
+  
   // const apiUrl = 'https://api.themoviedb.org/3/movie/572802?language=en-US';
   const API_KEY = "Bearer 8b701ace30227088c2f1ef89b747c764";
   const ACCESS_TOKEN =
@@ -216,7 +216,7 @@ const movieCastApi = async (movieId) => {
     let writersNames = crewList.filter(
       (person) => person.known_for_department == "Writing"
     );
-    // console.log(writersNames);
+   
     document.getElementById("writers-name").innerText = writersNames[0].name;
     document.getElementById("writers-name-bts").innerText =
       writersNames[0].name;
@@ -226,9 +226,9 @@ const movieCastApi = async (movieId) => {
 };
 
 const movieImagesApi = async (movieId) => {
-  console.log("inside movie images");
+  
   const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}/images`;
-  console.log(apiUrl);
+  
   // const apiUrl = 'https://api.themoviedb.org/3/movie/572802?language=en-US';
   const API_KEY = "Bearer 8b701ace30227088c2f1ef89b747c764";
   const ACCESS_TOKEN =
@@ -245,14 +245,14 @@ const movieImagesApi = async (movieId) => {
   try {
     const response = await fetch(apiUrl, options);
     const result = await response.json();
-    console.log(result.backdrops);
+    
     const posterList = result.backdrops;
     // console.log(posterList);
     let image_url = "https://image.tmdb.org/t/p/original";
 
     for (let i = 0; i < posterList.length && i < 10; i++) {
       const photos = image_url + posterList[i].file_path;
-      console.log(photos);
+      // console.log(photos);
       let img = document.createElement("img");
       img.setAttribute("src", photos);
       document.getElementById("photos-container").append(img);
@@ -263,7 +263,7 @@ const movieImagesApi = async (movieId) => {
 };
 
 const movieVideosApi = async (movieId) => {
-  console.log("inside movie videos");
+  
   const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`;
 
   // const apiUrl = 'https://api.themoviedb.org/3/movie/572802?language=en-US';
@@ -282,7 +282,7 @@ const movieVideosApi = async (movieId) => {
   try {
     const response = await fetch(apiUrl, options);
     const result = await response.json();
-    console.log(result.results);
+    
     const movieVideos = result.results;
     const movieTrailer = movieVideos.filter((movie) => {
       const name = movie.name;
@@ -290,9 +290,9 @@ const movieVideosApi = async (movieId) => {
         return true;
       }
     });
-    console.log(movieTrailer);
+    
     let youtubeUrl = "https://www.youtube.com/embed/";
-    console.log(youtubeUrl + movieTrailer[0].key);
+    
     document
       .getElementById("trailer-video")
       .setAttribute("src", youtubeUrl + movieTrailer[0].key + "?autoplay=1");
@@ -311,7 +311,7 @@ const movieVideosApi = async (movieId) => {
 };
 
 const similarMoviesApi = async (movieId) => {
-  console.log("inside similar movies");
+ 
   const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}/similar?language=en-US&page=1`;
 
   // const apiUrl = 'https://api.themoviedb.org/3/movie/572802?language=en-US';
@@ -331,11 +331,11 @@ const similarMoviesApi = async (movieId) => {
     const response = await fetch(apiUrl, options);
     const result = await response.json();
 
-    console.log(result.results);
+   
 
     let image_url = "https://image.tmdb.org/t/p/original";
 
-    console.log("similar");
+   
     const resultList = result.results;
 
     resultList.map((item) => {
@@ -343,7 +343,7 @@ const similarMoviesApi = async (movieId) => {
       let poster = image_url + item.poster_path;
       let rating = item.vote_average;
       let id = item.id;
-      console.log(title, rating, poster);
+      
       const card = `
                     <a href="movieDetails.html?id=${id}">
                         <img src="${poster}" alt="">
@@ -369,7 +369,7 @@ const similarMoviesApi = async (movieId) => {
 
 const formatReleaseDate = (movieReleaseDate) => {
   const date = movieReleaseDate.split("-");
-  console.log(date);
+  
   let monthNumber = parseInt(date[1]);
   let monthName = "";
   switch (monthNumber) {
