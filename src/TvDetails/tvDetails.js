@@ -1,6 +1,8 @@
 import { apiFetch } from "../scripts/apiFetch.js";
 
 let movieId = "";
+var movieNameGlobal = "";
+let recentmovie_list = JSON.parse(sessionStorage.getItem("Recent Movies")) || [];
 
 document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -10,6 +12,13 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log(movieId);
         // fetchMovieDetails(movieId);
         fetchAllApi(movieId);
+        if(!recentmovie_list.includes(movieId)){
+          recentmovie_list.push(movieId);
+          }
+          console.log(recentmovie_list);
+      
+          // Store the updated array in sessionStorage
+          sessionStorage.setItem("Recent Movies", JSON.stringify(recentmovie_list));
     } else {
       console.error('Movie ID not provided in URL');
     }

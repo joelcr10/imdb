@@ -93,7 +93,7 @@ const popularTvSection = async () =>{
             
             let poster = image_url+item.poster_path;
           
-            let div = createCard(item.id,item.original_name,item.vote_average,poster,true);
+            let div = createCard(item.id,item.original_name,item.vote_average,poster,false);
             
             document.getElementById("popular-tv").append(div);
         })

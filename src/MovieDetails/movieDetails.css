@@ -157,7 +157,9 @@ body {
 
 .watchlist-right-side {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 30%;
 }
 
@@ -485,13 +487,40 @@ body {
 
 #journalButton{
   background-color: #f5c518;
-  width: 200px;
-  height: 55px;
-  border-radius: 5px;
+  width: 330px;
+  height: 40px;
+  border-radius: 8px;
+  border: 0px;
   font-size: large;
   font-weight: bolder;
+  margin: auto;
+  margin-top: 10px;
 }
 
 #journalButton:hover{
   background-color: #f8b344;
+}
+
+.popup-box-dot {
+  display: none;
+  position: absolute;
+  background-color: #f5f5f5;
+  box-shadow: 0px 0px 5px rgb(221, 221, 221);
+  margin-left: -8rem;
+  margin-top: 1rem;
+  /* border-radius: 6px; */
+  /* padding: 10px; */
+
+}
+
+.popup-box-dot a {
+  color: rgb(29, 29, 29);
+  font-weight: 500;
+  text-decoration: none;
+  display: block;
+  padding: 15px;
+  font-size: .8rem;
+}
+.popup-box-dot a:hover{
+  background-color: #dadada;
 }

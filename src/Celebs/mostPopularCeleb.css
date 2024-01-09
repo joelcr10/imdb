@@ -11,17 +11,17 @@ body{
 
 }
 #heading h2{
-    margin-left: -10px;
+    margin-left: 70px;
 }
 #heading p{
-    margin-left: -10px;
+    margin-left: 70px;
 }
 #heading h1{
     font-weight: 300;
-    
+    margin-left: 80px;
 }
 #heading{
-    margin-left: 30px;
+    margin-left: 100px;
     position: relative;
     margin-top: 50px;
     z-index: -10;
@@ -34,7 +34,7 @@ body{
     position: absolute;
     border-radius: 30%;
     top: 40%;
-    margin-left: -30px;
+    margin-left: 50px;
    
 }
 #heading p{
@@ -45,7 +45,7 @@ body{
     width: 800px;
   
     margin-bottom: 10px;
-    margin-left: 20px;
+    margin-left: 100px;
     border:1px solid rgba(128, 128, 128, 0.405);
     border-radius: 10px;
     
@@ -54,7 +54,7 @@ body{
     width:780px ;
     height: auto;
     border-bottom: 1px solid rgba(128, 128, 128, 0.308);
-   
+    /* box-shadow: -1px 1px 1px 0px; */
     margin: 10px;
 }
 
@@ -186,7 +186,7 @@ body{
 
 .contentButtons {
    
-   margin-left: 680px;
+   margin-left: 760px;
    margin-bottom: -50px;
    
   }
@@ -196,4 +196,38 @@ body{
     rotate: 90deg;
     margin: 30px;
     font-size: 30px;
+  }
+
+ 
+  #loadMoreButton{
+   
+    width: 100px;
+    padding: 10px;
+    border-radius: 1rem;
+    color: black;
+    font-size: 1rem;
+    text-align: center;
+    margin-left: 780px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 10px ;
+
+
+  }
+  #loadLessButton{
+ 
+    width: 100px;
+    padding: 10px;
+    border-radius: 1rem;
+    color: black;
+    font-size: 1rem;
+    text-align: center;
+    margin-left: 780px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 10px ;
+    margin-left: 100px;
+    margin-top: -60px;
+
+  }
+  .shareButton{
+    width: 100px;
   }

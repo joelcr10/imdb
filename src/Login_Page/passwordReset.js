@@ -1,5 +1,4 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-// import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 import { getAuth,sendPasswordResetEmail} from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 import { firebaseCredentials } from "../../config.js";
 
@@ -29,6 +28,9 @@ const resetPassword = () =>{
 document.getElementById('submit-text').addEventListener('click', function() {
     console.log("got you");
     resetPassword();
+    document.getElementById('email').value='';
+    alert("Reset Link Send");
+
 
 
 })

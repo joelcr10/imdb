@@ -14,7 +14,7 @@
   font-size: 1.2rem;
   font-weight: 700;
   min-width: 15rem;
-  max-width: 1rem; // This seems unusual, you might want to check and adjust
+  max-width: 1rem; 
 }
 
 #review-profile-image {
@@ -63,7 +63,7 @@
   animation: grow 0.5s ease-in-out forwards;
 }
 
-.close {
+#close-popup {
   position: absolute;
   top: 5px;
   right: 10px;

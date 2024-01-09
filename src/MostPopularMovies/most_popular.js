@@ -38,7 +38,6 @@ const mostPopularMovies = async (sortBy) => {
         console.log(resultList);
        
 
-
         let moviesByDate = {};
         let movesByRating = {};
         let moviesByPopularity = {};
@@ -145,10 +144,10 @@ const mostPopularMovies = async (sortBy) => {
         console.log(alphabeticAsc);
 
 
-        const popularMovieListSortedByPopularity = []; //creates a empty array to push the movies in correct upcomming order
-        const popularMovieListSortedByRating = [];
-        const popularMovieListSortedByReleasedDate = [];
-        const popularMovieListSortedByAlphabet = [];
+        const popularMovieListSortedByPopularity = [];     //creates a empty array to push the movies in sorted popularity
+        const popularMovieListSortedByRating = [];         //creates a empty array to push the movies in sorted by rating 
+        const popularMovieListSortedByReleasedDate = [];   //creates a empty array to push the movies in sorted by release date 
+        const popularMovieListSortedByAlphabet = [];       //creates a empty array to push the movies in sorted Alphabet
 
 
 
@@ -188,70 +187,6 @@ const mostPopularMovies = async (sortBy) => {
             displayMovies(popularMovieListSortedByAlphabet); 
             
         }
-
-
-
-        // const section = document.createElement('div');
-            
-        // // Create a single card for the month
-        // const card = document.createElement('div');
-        // card.classList.add('card');
-        // card.id = 'movie-card';
-
-       
-        // popularMovieListSorted.map(item => {
-
-          
-
-        //     item.map(movie => {
-        //         // console.log(movie.releaseDate);
-        //         let releaseYear = new Date(movie.releaseDate).getFullYear();
-                  
-        //         // Append each movie to the card
-        //         const movieDetails = document.createElement('div');
-        //         movieDetails.classList.add('movie-details');
-
-        //         // movieDetails.onclick = function() {
-                    
-        //         //     window.location.href = `../MovieDetails/movieDetails.html?id=${movie.id}`;
-        //         // };
-
-
-
-                
-
-        //         movieDetails.innerHTML = `   
-        //         <div class = "popular-movies-maincontainer">
-        //         <div class="popular-movies">
-        //         <img  class="popularimg " src="${movie.poster}" alt="movie-poster">
-                
-        //         <a class="movie-title " href='../MovieDetails/movieDetails.html?id=${movie.id}'>${movie.title}</a><br>
-        //         <a class="dynamicYear">${releaseYear}</a>
-        //         <a class="dynamicRating "><i id="ratingStar" class="bi bi-star-fill"></i>&nbsp;${movie.rating} </a>         
-                 
-                
-                
-        //         </div>
-        //         <div class="info">
-        //           <i class="bi bi-info-circle" onclick="showMovieDetails('${movie.title}', '${movie.releaseDate}', '${movie.genre.join(', ')}')"></i>
-                  
-        //         </div>
-        //         </div>
-        //         <hr class="horizontal">
-                    
-                        
-        //             `;
-        //         card.appendChild(movieDetails);
-        //     });
-
-        //     // Append the card to the section
-        //     section.appendChild(card);
-
-        //     // Append the section to the container
-        //     document.getElementById("movie-per-date").appendChild(section);
-        // });
-
-
 
     } catch (error) {
         console.log(error);
@@ -306,16 +241,6 @@ const displayMovies = (movieList) =>{
             // Append each movie to the card
             const movieDetails = document.createElement('div');
             movieDetails.classList.add('movie-details');
-            
-
-            // movieDetails.onclick = function() {
-                
-            //     window.location.href = `../MovieDetails/movieDetails.html?id=${movie.id}`;
-            // };
-
-
-
-            
 
             movieDetails.innerHTML = `   
             <div class = "popular-movies-maincontainer">
@@ -349,17 +274,6 @@ const displayMovies = (movieList) =>{
         document.getElementById("movie-per-date").appendChild(section);
     });
 } 
-
-// <img  class="popularimg " src="${movie.poster}" alt="movie-poster">
-// <a class="movie-title ">${movie.title}</a><br>
-// <a class="dynamicYear">${releaseYear}</a>
-// <a class="dynamicRating "><i id="ratingStar" class="bi bi-star-fill"></i>${movie.rating} </a>         
-    
-// <div class="info">
-//   <i class="bi bi-info-circle" onclick="showMovieDetails('${movie.title}', '${movie.releaseDate}', '${movie.genre.join(', ')}')"></i>
-//   <div class="moviePopup" id="moviePopup"></div>
-// </div>
-// <hr class="horizontal">
 
 document.getElementById('dropdown').addEventListener('change', function() {
     var selectedValue = this.value;

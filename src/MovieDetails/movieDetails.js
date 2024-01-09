@@ -1,26 +1,71 @@
 import { apiFetch } from "../scripts/apiFetch.js";
 import {openRatingModal,selectStar, hoverStar,resetStarColors,closeRatingModal,selectedRatingValue,displayUserRating} from "../MovieDetails/userrating.js";
 // import {} from "../UserRating/userratingDB.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, doc, setDoc, getDocs, getDoc, collection } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+import { firebaseCredentials } from "../../config.js";
 
-export let movieId = "";
+
+const firebaseConfig = firebaseCredentials; //fetching the firebase credentials
+const app = initializeApp(firebaseConfig); // initialization of firebase;
+const db = getFirestore(app); //getting the reference of firestore database
+
+
+
+
+let movieId = "";
 export var movieNameGlobal = "";
 export var movieImage = "";
-export var userSelectedRating =selectedRatingValue;
-document.addEventListener("DOMContentLoaded", function () {
-  const urlParams = new URLSearchParams(window.location.search);
-  movieId = urlParams.get("id");
+let recentmovie_list = JSON.parse(sessionStorage.getItem("Recent Movies")) || [];
 
-  if (movieId) {
+document.addEventListener("DOMContentLoaded", function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    movieId = urlParams.get('id');
     
-    // fetchMovieDetails(movieId);
-    fetchAllApi(movieId);
-  } else {
-    console.error("Movie ID not provided in URL");
+    if (movieId) {
+        console.log(movieId);
+        // fetchMovieDetails(movieId);
+        fetchAllApi(movieId);
+        if(!recentmovie_list.includes(movieId)){
+          recentmovie_list.push(movieId);
+          }
+          console.log(recentmovie_list);
+      
+          // Store the updated array in sessionStorage
+          sessionStorage.setItem("Recent Movies", JSON.stringify(recentmovie_list));
+    } else {
+      console.error('Movie ID not provided in URL');
+    }
+  });
+
+
+
+const getUserRatings = async () =>{    
+  if(localStorage.getItem("userId")==null){
+      return {};
   }
-});
+  const ratingDoc = await getDoc(doc(db,"users",localStorage.getItem("userId"),"userRatings","rating"));
+  
+  let userRatingList = ratingDoc.data();
+
+  return userRatingList;
+}
+
+var userRatingList = {} //gloabl variables to store the user ratings of user
+
+const initialDisplayRating = async (movieId) =>{
+    //check if the movie has been rated
+    if( movieId in userRatingList){  
+      let selectedRatingValue = userRatingList[movieId]; 
+      const userRating=document.getElementById("userRating");
+      userRating.innerHTML = `<b>${selectedRatingValue}</b>/10`;
+    }
+}
 
 const fetchAllApi = async (movieId) => {
+  userRatingList = await getUserRatings();
   await movieDetailsApi(movieId);
+  await initialDisplayRating(movieId);
   await movieCastApi(movieId);
   await movieImagesApi(movieId);
   await movieVideosApi(movieId);
@@ -75,22 +120,10 @@ const fetchAllApi = async (movieId) => {
 const movieDetailsApi = async (movieId) => {
   const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
   
-  // const apiUrl = 'https://api.themoviedb.org/3/movie/572802?language=en-US';
-  const API_KEY = "Bearer 8b701ace30227088c2f1ef89b747c764";
-  const ACCESS_TOKEN =
-    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YjcwMWFjZTMwMjI3MDg4YzJmMWVmODliNzQ3Yzc2NCIsInN1YiI6IjY1NzY4MGMzZWM4YTQzMDBhYTZjMmMyNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.167UEzpKnunnh1afpyWcQ0V3hUiVprn3mXD02DDd7cA";
-
-  const options = {
-    method: "GET",
-    headers: {
-      Authorization: ACCESS_TOKEN,
-      accept: "application/json",
-    },
-  };
-
   try {
-    const response = await fetch(apiUrl, options);
-    const result = await response.json();
+    
+    const result = await apiFetch(apiUrl);
+    
     let image_url = "https://image.tmdb.org/t/p/original";
 
     
@@ -160,22 +193,11 @@ const movieDetailsApi = async (movieId) => {
 const movieCastApi = async (movieId) => {
   const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`;
   
-  // const apiUrl = 'https://api.themoviedb.org/3/movie/572802?language=en-US';
-  const API_KEY = "Bearer 8b701ace30227088c2f1ef89b747c764";
-  const ACCESS_TOKEN =
-    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YjcwMWFjZTMwMjI3MDg4YzJmMWVmODliNzQ3Yzc2NCIsInN1YiI6IjY1NzY4MGMzZWM4YTQzMDBhYTZjMmMyNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.167UEzpKnunnh1afpyWcQ0V3hUiVprn3mXD02DDd7cA";
-
-  const options = {
-    method: "GET",
-    headers: {
-      Authorization: ACCESS_TOKEN,
-      accept: "application/json",
-    },
-  };
+  
 
   try {
-    const response = await fetch(apiUrl, options);
-    const result = await response.json();
+    
+    const result = await apiFetch(apiUrl);
     // console.log(result.crew);
 
     const castList = result.cast;
@@ -229,22 +251,10 @@ const movieImagesApi = async (movieId) => {
   
   const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}/images`;
   
-  // const apiUrl = 'https://api.themoviedb.org/3/movie/572802?language=en-US';
-  const API_KEY = "Bearer 8b701ace30227088c2f1ef89b747c764";
-  const ACCESS_TOKEN =
-    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YjcwMWFjZTMwMjI3MDg4YzJmMWVmODliNzQ3Yzc2NCIsInN1YiI6IjY1NzY4MGMzZWM4YTQzMDBhYTZjMmMyNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.167UEzpKnunnh1afpyWcQ0V3hUiVprn3mXD02DDd7cA";
-
-  const options = {
-    method: "GET",
-    headers: {
-      Authorization: ACCESS_TOKEN,
-      accept: "application/json",
-    },
-  };
 
   try {
-    const response = await fetch(apiUrl, options);
-    const result = await response.json();
+    
+    const result = await apiFetch(apiUrl);
     
     const posterList = result.backdrops;
     // console.log(posterList);
@@ -266,22 +276,9 @@ const movieVideosApi = async (movieId) => {
   
   const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`;
 
-  // const apiUrl = 'https://api.themoviedb.org/3/movie/572802?language=en-US';
-  const API_KEY = "Bearer 8b701ace30227088c2f1ef89b747c764";
-  const ACCESS_TOKEN =
-    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YjcwMWFjZTMwMjI3MDg4YzJmMWVmODliNzQ3Yzc2NCIsInN1YiI6IjY1NzY4MGMzZWM4YTQzMDBhYTZjMmMyNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.167UEzpKnunnh1afpyWcQ0V3hUiVprn3mXD02DDd7cA";
-
-  const options = {
-    method: "GET",
-    headers: {
-      Authorization: ACCESS_TOKEN,
-      accept: "application/json",
-    },
-  };
-
   try {
-    const response = await fetch(apiUrl, options);
-    const result = await response.json();
+   
+    const result = await apiFetch(apiUrl);
     
     const movieVideos = result.results;
     const movieTrailer = movieVideos.filter((movie) => {
@@ -314,24 +311,9 @@ const similarMoviesApi = async (movieId) => {
  
   const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}/similar?language=en-US&page=1`;
 
-  // const apiUrl = 'https://api.themoviedb.org/3/movie/572802?language=en-US';
-  const API_KEY = "Bearer 8b701ace30227088c2f1ef89b747c764";
-  const ACCESS_TOKEN =
-    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YjcwMWFjZTMwMjI3MDg4YzJmMWVmODliNzQ3Yzc2NCIsInN1YiI6IjY1NzY4MGMzZWM4YTQzMDBhYTZjMmMyNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.167UEzpKnunnh1afpyWcQ0V3hUiVprn3mXD02DDd7cA";
-
-  const options = {
-    method: "GET",
-    headers: {
-      Authorization: ACCESS_TOKEN,
-      accept: "application/json",
-    },
-  };
-
   try {
-    const response = await fetch(apiUrl, options);
-    const result = await response.json();
-
-   
+    
+    const result = await apiFetch(apiUrl);
 
     let image_url = "https://image.tmdb.org/t/p/original";
 
