@@ -157,7 +157,9 @@ body {
 
 .watchlist-right-side {
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 30%;
 }
 
@@ -485,11 +487,14 @@ body {
 
 #journalButton{
   background-color: #f5c518;
-  width: 200px;
-  height: 55px;
-  border-radius: 5px;
+  width: 330px;
+  height: 40px;
+  border-radius: 8px;
+  border: 0px;
   font-size: large;
   font-weight: bolder;
+  margin: auto;
+  margin-top: 10px;
 }
 
 #journalButton:hover{

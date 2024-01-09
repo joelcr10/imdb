@@ -7,13 +7,17 @@
 
 .home-top-section-container{
     display: flex;
-    background-color: rgb(14, 192, 236);
+    
     /* height: 00px; */
-    width: 90%;
-    margin: auto;
+    width: 95%;
+    
     height: 520px;
-    margin-top: 40px;
+    
+    
     font-family: 'Roboto', sans-serif;
+    margin: auto;
+    margin-top: 20px;
+    margin-left: 50px;
 }
 
 .top-section-left-container{
@@ -172,9 +176,7 @@
 }
 
 
-.top-section-browse-trailer{
-    
-}
+
 
 
 .swiper {
@@ -196,21 +198,14 @@
     width: fit-content;
   }
 
-  .swiper-slide img {
-    /* display: block;
-    width: 100%;
-    height: 100%; */
-    /* object-fit: cover; */
-  }
+
 
   .swiper {
     margin-left: auto;
     margin-right: auto;
     flex: 2;
   }
-  .mySwiper{
-      /* width: 100px !important; */
-  }
+
 
   .highlight-navigation-button{
       position: absolute;

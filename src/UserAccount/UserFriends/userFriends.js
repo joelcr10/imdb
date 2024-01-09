@@ -151,10 +151,11 @@ export const displayFriendRequests = async () =>{
     
     }else{
         
+        console.log(friendRequest);
         for(let i=0; i<friendRequest.length;i++){
             
             let userDoc = await getUserDoc(friendRequest[i]); //getting the doc of each friend request
-
+            console.log(userDoc);
             const username = userDoc.username;
             
             //creating card for friend

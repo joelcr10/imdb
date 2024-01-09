@@ -1,6 +1,17 @@
 import { apiFetch } from "../scripts/apiFetch.js";
 import {openRatingModal,selectStar, hoverStar,resetStarColors,closeRatingModal,selectedRatingValue,displayUserRating} from "../MovieDetails/userrating.js";
 // import {} from "../UserRating/userratingDB.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, doc, setDoc, getDocs, getDoc, collection } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+import { firebaseCredentials } from "../../config.js";
+
+
+const firebaseConfig = firebaseCredentials; //fetching the firebase credentials
+const app = initializeApp(firebaseConfig); // initialization of firebase;
+const db = getFirestore(app); //getting the reference of firestore database
+
+
+
 
 let movieId = "";
 export var movieNameGlobal = "";
@@ -27,8 +38,34 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
+
+
+const getUserRatings = async () =>{    
+  if(localStorage.getItem("userId")==null){
+      return {};
+  }
+  const ratingDoc = await getDoc(doc(db,"users",localStorage.getItem("userId"),"userRatings","rating"));
+  
+  let userRatingList = ratingDoc.data();
+
+  return userRatingList;
+}
+
+var userRatingList = {} //gloabl variables to store the user ratings of user
+
+const initialDisplayRating = async (movieId) =>{
+    //check if the movie has been rated
+    if( movieId in userRatingList){  
+      let selectedRatingValue = userRatingList[movieId]; 
+      const userRating=document.getElementById("userRating");
+      userRating.innerHTML = `<b>${selectedRatingValue}</b>/10`;
+    }
+}
+
 const fetchAllApi = async (movieId) => {
+  userRatingList = await getUserRatings();
   await movieDetailsApi(movieId);
+  await initialDisplayRating(movieId);
   await movieCastApi(movieId);
   await movieImagesApi(movieId);
   await movieVideosApi(movieId);
@@ -44,7 +81,7 @@ const fetchAllApi = async (movieId) => {
     let movieId = urlParams.get('id');
     openRatingModal(`${movieNameGlobal}`,`${movieId}`);
     let starIcon = document.getElementsByClassName("star");
-    console.log("star icon",starIcon);
+    
 
     for(let i=0;i<starIcon.length;i++){
       let dataValue = starIcon[i].getAttribute("data-value");
@@ -82,26 +119,14 @@ const fetchAllApi = async (movieId) => {
 
 const movieDetailsApi = async (movieId) => {
   const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
-  console.log(apiUrl);
-  // const apiUrl = 'https://api.themoviedb.org/3/movie/572802?language=en-US';
-  const API_KEY = "Bearer 8b701ace30227088c2f1ef89b747c764";
-  const ACCESS_TOKEN =
-    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YjcwMWFjZTMwMjI3MDg4YzJmMWVmODliNzQ3Yzc2NCIsInN1YiI6IjY1NzY4MGMzZWM4YTQzMDBhYTZjMmMyNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.167UEzpKnunnh1afpyWcQ0V3hUiVprn3mXD02DDd7cA";
-
-  const options = {
-    method: "GET",
-    headers: {
-      Authorization: ACCESS_TOKEN,
-      accept: "application/json",
-    },
-  };
-
+  
   try {
-    const response = await fetch(apiUrl, options);
-    const result = await response.json();
+    
+    const result = await apiFetch(apiUrl);
+    
     let image_url = "https://image.tmdb.org/t/p/original";
 
-    console.log("movie", result);
+    
     const movieTitle = result.title;
     movieNameGlobal = movieTitle;
     localStorage.setItem('journal-movie-title',movieNameGlobal);
@@ -167,23 +192,12 @@ const movieDetailsApi = async (movieId) => {
 
 const movieCastApi = async (movieId) => {
   const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`;
-  console.log(apiUrl);
-  // const apiUrl = 'https://api.themoviedb.org/3/movie/572802?language=en-US';
-  const API_KEY = "Bearer 8b701ace30227088c2f1ef89b747c764";
-  const ACCESS_TOKEN =
-    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YjcwMWFjZTMwMjI3MDg4YzJmMWVmODliNzQ3Yzc2NCIsInN1YiI6IjY1NzY4MGMzZWM4YTQzMDBhYTZjMmMyNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.167UEzpKnunnh1afpyWcQ0V3hUiVprn3mXD02DDd7cA";
-
-  const options = {
-    method: "GET",
-    headers: {
-      Authorization: ACCESS_TOKEN,
-      accept: "application/json",
-    },
-  };
+  
+  
 
   try {
-    const response = await fetch(apiUrl, options);
-    const result = await response.json();
+    
+    const result = await apiFetch(apiUrl);
     // console.log(result.crew);
 
     const castList = result.cast;
@@ -224,7 +238,7 @@ const movieCastApi = async (movieId) => {
     let writersNames = crewList.filter(
       (person) => person.known_for_department == "Writing"
     );
-    // console.log(writersNames);
+   
     document.getElementById("writers-name").innerText = writersNames[0].name;
     document.getElementById("writers-name-bts").innerText =
       writersNames[0].name;
@@ -234,33 +248,21 @@ const movieCastApi = async (movieId) => {
 };
 
 const movieImagesApi = async (movieId) => {
-  console.log("inside movie images");
+  
   const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}/images`;
-  console.log(apiUrl);
-  // const apiUrl = 'https://api.themoviedb.org/3/movie/572802?language=en-US';
-  const API_KEY = "Bearer 8b701ace30227088c2f1ef89b747c764";
-  const ACCESS_TOKEN =
-    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YjcwMWFjZTMwMjI3MDg4YzJmMWVmODliNzQ3Yzc2NCIsInN1YiI6IjY1NzY4MGMzZWM4YTQzMDBhYTZjMmMyNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.167UEzpKnunnh1afpyWcQ0V3hUiVprn3mXD02DDd7cA";
-
-  const options = {
-    method: "GET",
-    headers: {
-      Authorization: ACCESS_TOKEN,
-      accept: "application/json",
-    },
-  };
+  
 
   try {
-    const response = await fetch(apiUrl, options);
-    const result = await response.json();
-    console.log(result.backdrops);
+    
+    const result = await apiFetch(apiUrl);
+    
     const posterList = result.backdrops;
     // console.log(posterList);
     let image_url = "https://image.tmdb.org/t/p/original";
 
     for (let i = 0; i < posterList.length && i < 10; i++) {
       const photos = image_url + posterList[i].file_path;
-      console.log(photos);
+      // console.log(photos);
       let img = document.createElement("img");
       img.setAttribute("src", photos);
       document.getElementById("photos-container").append(img);
@@ -271,26 +273,13 @@ const movieImagesApi = async (movieId) => {
 };
 
 const movieVideosApi = async (movieId) => {
-  console.log("inside movie videos");
+  
   const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`;
 
-  // const apiUrl = 'https://api.themoviedb.org/3/movie/572802?language=en-US';
-  const API_KEY = "Bearer 8b701ace30227088c2f1ef89b747c764";
-  const ACCESS_TOKEN =
-    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YjcwMWFjZTMwMjI3MDg4YzJmMWVmODliNzQ3Yzc2NCIsInN1YiI6IjY1NzY4MGMzZWM4YTQzMDBhYTZjMmMyNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.167UEzpKnunnh1afpyWcQ0V3hUiVprn3mXD02DDd7cA";
-
-  const options = {
-    method: "GET",
-    headers: {
-      Authorization: ACCESS_TOKEN,
-      accept: "application/json",
-    },
-  };
-
   try {
-    const response = await fetch(apiUrl, options);
-    const result = await response.json();
-    console.log(result.results);
+   
+    const result = await apiFetch(apiUrl);
+    
     const movieVideos = result.results;
     const movieTrailer = movieVideos.filter((movie) => {
       const name = movie.name;
@@ -298,9 +287,9 @@ const movieVideosApi = async (movieId) => {
         return true;
       }
     });
-    console.log(movieTrailer);
+    
     let youtubeUrl = "https://www.youtube.com/embed/";
-    console.log(youtubeUrl + movieTrailer[0].key);
+    
     document
       .getElementById("trailer-video")
       .setAttribute("src", youtubeUrl + movieTrailer[0].key + "?autoplay=1");
@@ -319,31 +308,16 @@ const movieVideosApi = async (movieId) => {
 };
 
 const similarMoviesApi = async (movieId) => {
-  console.log("inside similar movies");
+ 
   const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}/similar?language=en-US&page=1`;
 
-  // const apiUrl = 'https://api.themoviedb.org/3/movie/572802?language=en-US';
-  const API_KEY = "Bearer 8b701ace30227088c2f1ef89b747c764";
-  const ACCESS_TOKEN =
-    "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4YjcwMWFjZTMwMjI3MDg4YzJmMWVmODliNzQ3Yzc2NCIsInN1YiI6IjY1NzY4MGMzZWM4YTQzMDBhYTZjMmMyNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.167UEzpKnunnh1afpyWcQ0V3hUiVprn3mXD02DDd7cA";
-
-  const options = {
-    method: "GET",
-    headers: {
-      Authorization: ACCESS_TOKEN,
-      accept: "application/json",
-    },
-  };
-
   try {
-    const response = await fetch(apiUrl, options);
-    const result = await response.json();
-
-    console.log(result.results);
+    
+    const result = await apiFetch(apiUrl);
 
     let image_url = "https://image.tmdb.org/t/p/original";
 
-    console.log("similar");
+   
     const resultList = result.results;
 
     resultList.map((item) => {
@@ -351,7 +325,7 @@ const similarMoviesApi = async (movieId) => {
       let poster = image_url + item.poster_path;
       let rating = item.vote_average;
       let id = item.id;
-      console.log(title, rating, poster);
+      
       const card = `
                     <a href="movieDetails.html?id=${id}">
                         <img src="${poster}" alt="">
@@ -377,7 +351,7 @@ const similarMoviesApi = async (movieId) => {
 
 const formatReleaseDate = (movieReleaseDate) => {
   const date = movieReleaseDate.split("-");
-  console.log(date);
+  
   let monthNumber = parseInt(date[1]);
   let monthName = "";
   switch (monthNumber) {
