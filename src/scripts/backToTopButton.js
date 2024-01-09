@@ -1,6 +1,8 @@
 
 
 const backToTopButton = document.getElementById("back-to-top-btn");
+const blockStyle = "block";
+const noneStyle = "none";
 
 window.onscroll = function () {
     scrollFunction();
@@ -8,9 +10,9 @@ window.onscroll = function () {
 
 function scrollFunction() {
     if (document.documentElement.scrollTop > 600) {
-        backToTopButton.style.display = "block";
+        backToTopButton.style.display = blockStyle;
     } else {
-        backToTopButton.style.display = "none";
+        backToTopButton.style.display = noneStyle;
     }
 }
 

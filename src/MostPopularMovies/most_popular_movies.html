@@ -12,7 +12,7 @@
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="../ReleaseCalender/release-calender.css" />
-    <link rel="stylesheet" href="../css/navbar.css" />
+    <link rel="stylesheet" href="../css/navbar-Secondary.css" />
     <link rel="stylesheet" href="../css/footer.css" />
     <link rel="stylesheet" href="./most-popular-movies.css" />
     <!-- Option 1: Include in HTML -->
@@ -52,18 +52,27 @@
                 <p>As determined by IMDb users</p>
 
             </div>
-           
+            <div class="sort-movies dropdown">
+                <label for="dropdown"class="dropdown-btn">Sort by</label>
+                <select id="dropdown" name="sort by" class="dropdown-content">
+                    <option value="Popularity">Popularity</option>
+                    <option value="Imdb Rating">Imdb Rating</option>
+                    <option value="Date of release">Date of release</option>
+                    <option value="Alphabetical">Alphabetical</option>
+                </select>
+            </div>
+
 
             <div class="popup-content">
                 <div class="moviePopup" id="moviePopup">
                     <span class="close-btn" onclick="closeMoviePopup()">&times;</span>
                     <div class="overlay"></div>
-                 
+
                 </div>
             </div>
-            
-          
-            
+
+
+
 
 
 
@@ -71,7 +80,7 @@
 
         <div class="sub-conatiner">
             <div class="movie-per-date" id="movie-per-date">
-
+                <div class="moviePopup" id="moviePopup"></div>
             </div>
 
             <div class="sideSection ">
@@ -477,7 +486,7 @@
     <script src="./most_popular.js" type="module"></script>
     <script src="../scripts/includeNavbar&Footer.js" type="module"></script>
     <script src="../scripts/navbarMenu.js"></script>
-    <script src="../scripts/backToTopButton.js"></script>
+    <script src="../scripts/backToTop.js"></script>
     <script src="../scripts/shareButton.js"></script>
 
 

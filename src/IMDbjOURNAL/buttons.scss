@@ -1,0 +1,36 @@
+// _buttons.scss
+.btn-main,
+.btn-light,
+.btn-dark {
+  display: block;
+  padding: 0.6rem 2rem;
+  margin: 1rem;
+  transition: all 0.1s;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.btn-main {
+  color: lightgoldenrodyellow;
+  background-color: $primary-color;
+}
+
+.btn-light {
+  color: $secondary-color;
+  background-color: white;
+}
+
+.btn-dark {
+  color: white;
+  background-color: $secondary-color;
+}
+
+button[class^="btn-"]:hover,
+a[class^="btn-"]:hover,
+input[class^="btn-"]:hover {
+  background-color: lightgoldenrodyellow;
+  color: $primary-color;
+  font-weight: 700;
+  transform: scale(1.08);
+}

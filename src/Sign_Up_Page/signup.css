@@ -1,58 +1,84 @@
 body {
-    font-family: Arial, sans-serif;
-    margin-top: 50px;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+  margin-top: 50px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+  background-image: url("../../assets/img/movie-collage.jpg");
+
 }
 
 .container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    width: 300px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 label {
-    margin-bottom: 8px;
-    font-weight: bolder;
-    font-size: small;
+  margin-bottom: 8px;
+  font-weight: bolder;
+  font-size: small;
 }
 
 input {
-    padding: 8px;
-    margin-bottom: 16px;
-    border: 1px solid #ccc; /* Add a border for better visibility */
-    transition: box-shadow 0.3s; /* Add a transition for a smooth effect */
+  padding: 8px;
+  /* margin-bottom: 16px; */
+  border: 1px solid #ccc; /* Add a border for better visibility */
+  transition: box-shadow 0.3s; /* Add a transition for a smooth effect */
 }
 
 input:focus {
-    box-shadow: 0 0 5px 2px #79c3f5; /* Blue shadow when the input is focused */
-    outline: none; /* Remove the default outline */
+  box-shadow: 0 0 5px 2px #79c3f5; /* Blue shadow when the input is focused */
+  outline: none; /* Remove the default outline */
 }
 
 button {
-    background-color: rgb(227, 205, 33);
-    color: black;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  background-color: rgb(227, 205, 33);
+  color: black;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 button:hover {
-    background-color: rgb(238, 193, 80);
+  background-color: rgb(238, 193, 80);
 }
-h2{
-    font-weight: lighter;
+h2 {
+  font-weight: lighter;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+}
+
+small {
+  color: #e75c3c;
+  margin-top: 5px;
+  visibility: hidden;
+}
+
+.form-control.error small {
+  visibility: visible;
+}
+
+.form-control.error input {
+  border-color: #e75c3c;
+}
+
+.form-control.success input {
+  border-color: #2ecc71;
 }
