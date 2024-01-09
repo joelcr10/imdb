@@ -1,30 +1,17 @@
 import { apiFetch } from '../scripts/apiFetch.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
 import { getFirestore, collection, getDocs, doc, setDoc, addDoc, query, where, deleteDoc, getDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+import {firebaseCredentials} from '../../config.js';
 
-// https://firebase.google.com/docs/web/setup#available-libraries
+const firebaseConfig = firebaseCredentials;
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-    apiKey: "AIzaSyCrKosfpufYIc3yaL-pgrlcwhWqpfN2Rlg",
-    authDomain: "imdb-63ec7.firebaseapp.com",
-    projectId: "imdb-63ec7",
-    storageBucket: "imdb-63ec7.appspot.com",
-    messagingSenderId: "1089587640183",
-    appId: "1:1089587640183:web:12166709de392731e91372",
-    measurementId: "G-TR217WFC7K"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);   // Initialize Firebase
 const db = getFirestore(app);
 
 let reviewMsg;
 let movieId = '';
-let username;
-let profile;
-// const reviewDisplay = document.querySelector('.review-display');
+
+
 const reviewDisplay = document.getElementById('review-display');
 
 
@@ -38,7 +25,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         
     }
 
-
     await displayReviews();
 });
 
@@ -49,10 +35,6 @@ console.log(userId);
 
 const reviewCollection = collection(db, 'reviews'); // Reference to the reviews collection
 const options = { day: 'numeric', month: 'long', year: 'numeric' };
-
-
-
-
 
 
 export const addReview = async (reviewMsg) => {
@@ -91,13 +73,14 @@ const getUsername = async (userid) => {
             return userDoc.username;
         } else {
             console.log("User document not found");
-            return null; // or handle the case when the user document is not found
+            return null; // handle the case when the user document is not found
         }
     } catch (error) {
         console.error("Error fetching user document:", error);
-        return null; // or handle the error case
+        return null; // handle the error case
     }
 };
+
 const getUserProfile = async (userid) => {
     try {
         const docSnap = await getDoc(doc(db, "users", userid));
@@ -108,20 +91,13 @@ const getUserProfile = async (userid) => {
             return userDoc.profile;
         } else {
             console.log("User document not found");
-            return null; // or handle the case when the user document is not found
+            return null; // handle the case when the user document is not found
         }
     } catch (error) {
         console.error("Error fetching user document:", error);
-        return null; // or handle the error case
+        return null; // handle the error case
     }
 };
-// Example usage:
-const usernamee = await getUsername(userId);
-console.log(usernamee);
-const profilee = await getUserProfile(userId);
-console.log(profilee);
-
-
 
 
 async function displayReviews() {
@@ -136,11 +112,6 @@ async function displayReviews() {
         const reviewResult = await apiFetch(reviewURL);
         console.log(reviewResult.results);
         reviewResultList = reviewResult.results;
-
-        // Fetch reviews from the database
-        // const docSnap = await getDoc(doc(db, "users", userId));
-        // const userDoc = docSnap.data();
-        // console.log(userDoc.username);
 
     } catch (e) {
         console.log("Error in review fetching");
@@ -172,19 +143,7 @@ async function displayReviews() {
             reviewDisplay.appendChild(reviewElement);
 
         }
-        // reviewResultList.forEach(async (doc) => {
-        //     console.log(image_url+doc.author_details.avatar_path);
-        //     reviewDetailsFromApi = {
-        //         msg: doc.content,
-        //         date: doc.updated_at
-        //     }
-
-        //     let userProfile;
-
-        //     const reviewElement = createReviewElement(reviewDetailsFromApi, doc.author, image_url+doc.author_details.avatar_path);
-        //     reviewDisplay.appendChild(reviewElement);
-        // });
-
+       
 
     } else {
         console.log(!reviewList);
@@ -232,7 +191,6 @@ async function displayReviews() {
         }
         
     }
-
     
 }
 
@@ -241,6 +199,7 @@ async function displayReviews() {
 
 
 function createReviewElement(reviewData, userName, userProfile) {
+
     const reviewElement = document.createElement('div');
     reviewElement.classList.add('review-item');
 
@@ -288,7 +247,6 @@ document.getElementById('main-review-container').addEventListener('click', funct
         console.log("inside");
         reviewMsgContent.classList.toggle('expanded');
     }
-
 
     if (event.target.matches('#open-popup')) {
 
