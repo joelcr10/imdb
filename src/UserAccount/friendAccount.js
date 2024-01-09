@@ -2,6 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
 import { getFirestore, updateDoc , doc as firestoreDoc ,collection, setDoc, getDocs, getDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 import { firebaseCredentials } from "../../../config.js";
 import { getWatchlist } from "./friendWishlist.js";
+import loadingAnimation from "../scripts/loadingAnimation.js";
 
 const firebaseConfig = firebaseCredentials;
 const app = initializeApp(firebaseConfig);
@@ -14,7 +15,7 @@ const switchTab = async (tabName) =>{
         const path = "./userWatchlist/userWatchlist.html";
         content = await fetchContent(path);
         document.getElementById("user-list-container").append(content);
-        await getWatchlist();
+        loadingAnimation(getWatchlist);
 
     }else if(tabName=="Completed"){
         const path = "./CompletedList/completedList.html";
@@ -53,6 +54,9 @@ const addTabs = (tabs) =>{
           
         });
       });
+      
+
+
   }
   
 

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="./topSection.css">
     <link rel="stylesheet" href="../UserRating/userrating.css">
+    <link rel="stylesheet" href="../css/loadingAnimation.css">
    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
@@ -23,7 +24,7 @@
             <div class="top-section-left-container">
                 <div class="swiper mySwiper">
                     <div class="left-highlight-container swiper-wrapper">
-                        <div class="swiper-slide">
+                      <div class="swiper-slide">
         
                             <img class="main-hightlight-image" src="https://images.bauerhosting.com/empire/2023/06/empaug23-newsstand-cover-crop.jpg?ar=16%3A9&fit=crop&crop=top&auto=format&w=1440&q=80.jpg" alt="">
         
@@ -114,6 +115,12 @@
                 <h2><div class="header-left"></div>Popular Movies <img src="../../assets/img/right-arrow.png" alt=""></h2>
                 <label for="">This weeks most popular movies</label>
             </div>
+
+            <!-- loading anitmation -->
+            <div class="loader-container">
+                <div class="loader"></div>
+            </div>
+            <!-- loading animation -->
             <div id="popular-movies" class="card-slider"></div>
         </div>
 
@@ -129,6 +136,7 @@
                 <div class="home-section-headers">
                     <h2><div class="header-left"></div>Top Rated <img src="../../assets/img/right-arrow.png" alt=""></h2>
                 </div>
+                
                 <div id="top-rated" class="card-slider"></div>
         </div>
 
@@ -143,10 +151,11 @@
                         <button>Sign-in</button>
                     </a>
                 </div>
-                <div id="display-watchlist">
-                    <h3>Your watchlist is empty</h3>
-                </div>
             </div>
+                <div id="display-watchlist">
+                    <h3 id="watchlist-prompt"></h3>
+                </div>
+            
         </div>
 
         <div class="upcoming-movies-container home-section-container">

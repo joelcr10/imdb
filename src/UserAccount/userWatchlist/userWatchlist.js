@@ -8,7 +8,7 @@ const db = getFirestore(app);
 
 
 export const getWatchlist = async () =>{
-    console.log("inside watchlist of user account");
+    
     const docList = await getDocs(collection(db,"users",localStorage.getItem("userId"),"watchlist"));
     let tempDocList = [];
 
@@ -17,13 +17,13 @@ export const getWatchlist = async () =>{
     }else{
         docList.forEach((doc) => {
                 let item = doc.data();
-                console.log(item);
+                
                 let id = item.id;
                 let title = item.title;
                 let poster = item.poster;
                 const card = `
                             <a href="../MovieDetails/movieDetails.html?id=${id}">
-                                <img src="${poster}" alt="">
+                                <img src="${poster}" id="watchlist-poster" alt="">
                                 <div class="card-text">
                                     
                                     

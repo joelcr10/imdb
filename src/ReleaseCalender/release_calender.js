@@ -1,8 +1,33 @@
 
 import { apiFetch } from '../scripts/apiFetch.js';
+import {watchlistIconToggle} from '../YourWatchList/watchlist.js'
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+import { getFirestore, collection, getDocs, doc, setDoc, addDoc, query, where, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+// import { returnGenre } from './returnGenre.ts';
 
 // import { addToWatchlist } from '../YourWatchList/watchlist.js';
+const firebaseConfig = {
+    apiKey: "AIzaSyCrKosfpufYIc3yaL-pgrlcwhWqpfN2Rlg",
+    authDomain: "imdb-63ec7.firebaseapp.com",
+    projectId: "imdb-63ec7",
+    storageBucket: "imdb-63ec7.appspot.com",
+    messagingSenderId: "1089587640183",
+    appId: "1:1089587640183:web:12166709de392731e91372",
+    measurementId: "G-TR217WFC7K"
+};
 
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+console.log(firebaseConfig)
+
+
+// const auth = app.auth();
+
+const db = getFirestore(app);
+console.log(db);
 
 
 
@@ -27,8 +52,22 @@ const returnGenre = (genreIds, genreList) => {
 };
 
 
+const getUserWatchlist = async () =>{
+    let watchlistMovieId = []
+    const docList = await getDocs(collection(db,"users",localStorage.getItem("userId"),"watchlist"));
+    docList.forEach((doc) => {
+        let item = doc.data();
+        let id = item.id;
+        watchlistMovieId.push(id.toString());
+    });
+    console.log(watchlistMovieId);
+    return watchlistMovieId;
+    
+}
+
 
 const upcomingMoviesSection = async () => {
+    
     let minDate = "2023-12-20";
     let maxDate = "2024-01-10";
     const apiUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&release_date.gte=${minDate}&release_date.lte=${maxDate}`;
@@ -98,6 +137,9 @@ const upcomingMoviesSection = async () => {
 
 
         movieListSorted.forEach(item => {
+            
+
+
             console.log(item);
             item.map(movieList => {
                 console.log(movieList);
@@ -115,7 +157,22 @@ const upcomingMoviesSection = async () => {
 
 
 
-            item.map(movie => {
+            item.map(async(movie) => {
+
+                // watchlistIconToggle(movie.id);
+                let icon;
+                let watchlistMovieId = await getUserWatchlist();
+                console.log(watchlistMovieId);
+                console.log(movie.id);
+
+                if (watchlistMovieId.includes(movie.id.toString())) {
+                    console.log("yes in");
+                    icon =  `<i class="bi bi-bookmark-x-fill "  id="watchlistButton" data-title="${movie.title}" data-poster="${movie.poster}" data-genre="${movie.genre}" data-id="${movie.id}" ></i>`
+
+                } else {
+                    console.log("not in");
+                    icon =  `<i class="bi bi-bookmark-plus-fill "  id="watchlistButton" data-title="${movie.title}" data-poster="${movie.poster}" data-genre="${movie.genre}" data-id="${movie.id}" ></i>`
+                }
 
                 // Append each movie to the card
                 const movieDetails = document.createElement('div');
@@ -151,7 +208,7 @@ const upcomingMoviesSection = async () => {
                         </div>
 
                         <div class="watchlist" id="watchlistButton-container" data-title="${movie.title}" data-poster="${movie.poster}" data-genre="${movie.genre}" data-id="${movie.id}" >
-                                <i class="bi bi-bookmark-plus-fill "  id="watchlistButton" data-title="${movie.title}" data-poster="${movie.poster}" data-genre="${movie.genre}" data-id="${movie.id}" ></i>
+                                ${icon}
                         </div>
                         <hr>
                     `;
@@ -252,7 +309,21 @@ const upcomingTVSection = async () => {
             card.classList.add('card');
             card.id = 'movie-card';
 
-            item.map(tv => {
+            item.map(async tv => {
+
+                let icon;
+                let watchlistMovieId = await getUserWatchlist();
+                console.log(watchlistMovieId);
+                console.log(tv.id);
+
+                if (watchlistMovieId.includes(tv.id.toString())) {
+                    console.log("yes in");
+                    icon =  `<i class="bi bi-bookmark-x-fill "  id="watchlistButton" data-title="${tv.title}" data-poster="${tv.poster}" data-genre="${tv.genre}" data-id="${tv.id}" ></i>`
+
+                } else {
+                    console.log("not in");
+                    icon =  `<i class="bi bi-bookmark-plus-fill "  id="watchlistButton" data-title="${tv.title}" data-poster="${tv.poster}" data-genre="${tv.genre}" data-id="${tv.id}" ></i>`
+                }
 
                 // Append each movie to the card
                 const movieDetails = document.createElement('div');
@@ -275,7 +346,7 @@ const upcomingTVSection = async () => {
 
                 </div>
             <div class="watchlist" id="watchlistButtonlll" data-title="${tv.title}" data-poster="${tv.poster}" data-genre="${tv.genre}" data-id="${tv.id}" >
-                    <i class="bi bi-bookmark-plus-fill "  id="watchlistButton" data-title="${tv.title}" data-poster="${tv.poster}" data-genre="${tv.genre}" data-id="${tv.id}" ></i>
+                    ${icon}
             </div>
             <hr>
                     `;
@@ -296,7 +367,17 @@ const upcomingTVSection = async () => {
 }
 
 
+// const togglepopup = () => {
+//     const popup = document.getElementById("popup-container");
 
+//     if (popup.style.display === 'none') {
+//         popup.style.display = 'block';
+//     } else {
+//         popup.style.display = 'none';
+//     }
+
+
+// }
 
 document.getElementById('movie').addEventListener('click', function (event) {
     event.preventDefault(); // Prevent the default behavior of the anchor tag
@@ -311,5 +392,31 @@ document.getElementById('tv').addEventListener('click', function (event) {
 });
 
 
+
+
+// document.getElementById('popup-container').addEventListener('click', function (event) {
+//     console.log(event.target);
+//     if (event.target.matches('#open-popup')) {
+        
+//         togglepopup();
+//     }
+//     if (event.target.matches('.close')) {
+//         togglepopup();
+//     }
+
+
+// })
+
+document.getElementById('movie-per-date').addEventListener('click', async function (event) {
+    console.log(event.target);
+    if (event.target.matches('#watchlistButton')) {
+        console.log("asdfghjklsdfghjklsdfghjkl");
+        // document.getElementById('movie-per-date').innerHTML='';
+
+        // // Refresh the content
+        //  upcomingMoviesSection();
+        //  upcomingTVSection();
+    }
+});
 
 

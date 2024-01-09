@@ -1,5 +1,3 @@
-
-
   // Dom elements
   let form = document.querySelector("form");
   let userName = document.querySelector("#username");
@@ -58,7 +56,6 @@
       setSuccessFor(confirmPassword);
     }
 
-    alert('Sign up successful!'); 
   }
 
   // If there is some error, than what we want to do with input ?

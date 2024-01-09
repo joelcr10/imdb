@@ -1,6 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, collection, getDoc, doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
-import { getAuth,createUserWithEmailAndPassword,  signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js'
+import { getFirestore, getDoc, doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
 import { watchlistCounter } from "../YourWatchList/watchlist.js";
 
@@ -9,12 +8,9 @@ import { firebaseCredentials } from "../../config.js";
 
 
 
-// import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+
 const firebaseConfig = firebaseCredentials;
 const app = initializeApp(firebaseConfig);
 
@@ -26,7 +22,7 @@ const db = getFirestore(app);
 
 
 const includeNavbar = async () =>{
-    console.log("inside navbar");
+   
     await fetch("../pages/navbar.html")
     .then(response => response.text())
     .then(data => {
@@ -56,9 +52,9 @@ const userOrGuest = async () =>{
 
       if (docSnap.exists()) {
 
-        console.log("Document data:", docSnap.data());
+        
         const userDoc = docSnap.data();
-        console.log(userDoc.username);
+     
         document.getElementById("nav-username").innerText = userDoc.username;
         document.getElementById("profile-icon").setAttribute("src",userDoc.profile);
 
@@ -71,7 +67,7 @@ const userOrGuest = async () =>{
 
 
 const includeFooter = async () =>{
-    console.log("inside footer");
+    
     await fetch("../pages/footer.html")
     .then(response => response.text())
     .then(data => {
@@ -84,7 +80,7 @@ const includeFooter = async () =>{
 
 
 export const signOut = () =>{
-  console.log("inside sign out");
+  
   localStorage.setItem("userId",null);
   localStorage.removeItem("userId");
   localStorage.removeItem("userEmail");
@@ -95,7 +91,7 @@ export const signOut = () =>{
 
 
 window.onload =async function() {
-    console.log("onload");
+    
     await includeNavbar();
     await includeFooter();
     await userOrGuest();
@@ -152,7 +148,7 @@ const search = () => {
 const createResultCard = (item) => {
   const poster = item.profile_path ? image_url + item.profile_path : image_url + item.poster_path;
   const title = item.title || item.name;
-  console.log(item);
+  
 
   const littleBox = document.createElement("div");
   littleBox.classList.add("littleBox");
@@ -171,7 +167,7 @@ const createResultCard = (item) => {
 const createResultCardForTv = (item) => {
   const poster = item.profile_path ? image_url + item.profile_path : image_url + item.poster_path;
   const title = item.title || item.name;
-  console.log(item);
+  
 
   const littleBox = document.createElement("div");
   littleBox.classList.add("littleBox");
@@ -190,7 +186,7 @@ const createResultCardForTv = (item) => {
 const createResultCardForPerson = (item) => {
   const poster = item.profile_path ? image_url + item.profile_path : image_url + item.poster_path;
   const title = item.title || item.name;
-  console.log(item);
+  
 
   const littleBox = document.createElement("div");
   littleBox.classList.add("littleBox");
@@ -224,7 +220,7 @@ const fetchResults = async (searchItem, type) => {
            let
             resultList = result.results;
 
-          console.log(resultList);
+          
           if (resultList.length === 0) {
             let message = "Sorry no information available!";
     
@@ -237,12 +233,12 @@ const fetchResults = async (searchItem, type) => {
           }
         
           
-            console.log("before filtering " + resultList.length);
+            
           if (type !== "") {
             const filteredResults =resultList.filter(item => item.media_type === type);
             resultList = filteredResults;
           }
-          console.log("after filtering " + resultList.length);
+          
           for(const item of resultList){
 
            let littleBox;
