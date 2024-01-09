@@ -1,5 +1,8 @@
 // Journal Entry Form
-
+const movieNameGlobal = localStorage.getItem("journal-movie-title");
+const moviePoster = localStorage.getItem("journal-movie-image");
+console.log(moviePoster);
+console.log(movieNameGlobal);
 // Selecting the entry form, entry results section, result item, and result row elements
 const entryForm = document.querySelector(`#entryForm`);
 const entryResultsSection = document.querySelector(`#entryResultsSection`);
@@ -12,6 +15,7 @@ const getEntryText = document.getElementsByClassName(`entry-text-box`);
 
 // Function to add an entry to the DOM
 function addEntryToDom(event) {
+  document.getElementById("journal-prompt").style.display = "none";
   event.preventDefault();
 
   // Getting the current date
@@ -25,17 +29,27 @@ function addEntryToDom(event) {
   const year = d.getFullYear();
 
   // Creating a heading element for the journal entries
-  for(let i=0;i<1;i++){
-  const heading = document.createElement(`h2`);
+  const heading = document.createElement(`h1`);
   heading.className = `heading-results`;
   heading.textContent = `Journal Entries`;
-  entryResultRow.insertAdjacentElement(`beforebegin`, heading);
-}
+
 
   // Creating a div element for the entry
   const entryDiv = document.createElement(`div`);
   entryDiv.className = `single-entry-div`;
   entryResultRow.appendChild(entryDiv);
+
+  // Creating an h2 element for the entry movie name
+  const entryImage = document.createElement(`img`);
+  entryImage.className = `single-entry-Image`;
+  entryImage.setAttribute("src",moviePoster);
+  entryDiv.appendChild(entryImage);
+
+  // Creating an h2 element for the entry movie name
+  const entryMovie = document.createElement(`h2`);
+  entryMovie.className = `single-entry-movie`;
+  entryMovie.textContent = movieNameGlobal;
+  entryDiv.appendChild(entryMovie);
 
   // Creating an h3 element for the entry title
   const entryHeading = document.createElement(`h3`);
@@ -66,6 +80,5 @@ function addEntryToDom(event) {
 // Adding an event listener to the entry form to trigger the addEntryToDom function on form submission
 let submit = document.getElementById("submit");
 entryForm.addEventListener(`submit`, addEntryToDom);
-
 
 

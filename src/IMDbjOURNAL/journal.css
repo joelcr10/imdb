@@ -17,7 +17,7 @@ body {
   color: rgb(255, 187, 0);
   margin: 0 auto;
   padding: 0;
-  max-width: 900px;
+  /* max-width: 900px; */
 }
 
 /* Global Typography */
@@ -122,7 +122,7 @@ input[class^="btn-"]:hover {
 /* Title */
 
 .entry-text-title {
-  width: 20em;
+  width: 54em;
   margin: 1em auto;
   padding: 1em;
   border-radius: 2px;
@@ -182,7 +182,7 @@ input[class^="btn-"]:hover {
 
 @media (min-width: 769px) {
   .entry-text-box {
-    width: 40em;
+    /* width: 45em; */
     height: 20em;
     margin: 1em auto;
     padding: 1em;
@@ -208,6 +208,7 @@ input[class^="btn-"]:hover {
 
 .entry-submit-btn {
   margin: 0;
+  margin-left: auto;
 }
 
 /* Journal Results Section */
@@ -227,6 +228,7 @@ input[class^="btn-"]:hover {
   align-items: center;
   flex-wrap: wrap;
   background-color: lightgoldenrodyellow;
+  position: relative;
 }
 
 .single-entry-div {
@@ -242,10 +244,50 @@ input[class^="btn-"]:hover {
 }
 
 .heading-results {
-  margin-left: 40px;
-  width: 755px;
+  margin-left: 0px;
+  width: 90%;
   text-align: center;
   text-decoration: underline;
   text-decoration-color: lightgoldenrodyellow;
   background-color: lightgoldenrodyellow;
+}
+
+/* Choose File Button Style */
+input[type="file"] {
+  display: block;
+  font-size: 1.2rem;
+  padding: 0.6rem 2rem;
+  margin: 1rem;
+  transition: all 0.1s;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  background-color: lightgoldenrodyellow;
+  color: #0a2472;
+  font-family: "Space Mono", monospace;
+}
+
+/* Hover effect for the Choose File Button */
+input[type="file"]:hover {
+  background-color: lightgoldenrodyellow;
+  color: rgb(255, 187, 0);
+  font-weight: 700;
+  transform: scale(1.08);
+}
+
+/* Style for the uploaded image */
+#uploadedImage {
+  max-width: 100%;
+  height: auto;
+  margin-top: 1em;
+}
+
+#journal-prompt{
+  position: absolute;
+  top: 120px;
+}
+
+
+.single-entry-Image{
+  height: 300px;
 }

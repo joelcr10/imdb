@@ -1,9 +1,10 @@
 import { apiFetch } from "../scripts/apiFetch.js";
-import {openRatingModal,selectStar, hoverStar,resetStarColors,closeRatingModal,selectedRatingValue} from "../MovieDetails/userrating.js";
+import {openRatingModal,selectStar, hoverStar,resetStarColors,closeRatingModal,selectedRatingValue,displayUserRating} from "../MovieDetails/userrating.js";
 // import {} from "../UserRating/userratingDB.js";
 
 export let movieId = "";
-var movieNameGlobal = "";
+export var movieNameGlobal = "";
+export var movieImage = "";
 export var userSelectedRating =selectedRatingValue;
 document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
@@ -24,6 +25,10 @@ const fetchAllApi = async (movieId) => {
   await movieImagesApi(movieId);
   await movieVideosApi(movieId);
   await similarMoviesApi(movieId);
+
+  // document.getElementById("journalButton").onclick= function(){
+  //   addEntryToDom(event);
+  // }
 
   document.getElementById("rating-icon").onclick = function(){
     var selectedRating = 0;
@@ -50,11 +55,15 @@ const fetchAllApi = async (movieId) => {
     
     }
 
-    let rateButton = document.getElementById("rateButton");
-    rateButton.onclick = function(){
+    let closeButton = document.getElementById("close");
+    closeButton.onclick = function(){
       closeRatingModal();
     }
 
+    let rateButton = document.getElementById("rateButton");
+    rateButton.onclick = function(){
+      displayUserRating();
+    }
   }
   
 };
@@ -87,6 +96,7 @@ const movieDetailsApi = async (movieId) => {
     console.log("movie", result);
     const movieTitle = result.title;
     movieNameGlobal = movieTitle;
+    localStorage.setItem('journal-movie-title',movieNameGlobal);
     const movieOverview = result.overview;
     const releaseYear = result.release_date.slice(0, 4);
     const movieRating = result.vote_average.toFixed(1);
@@ -95,6 +105,8 @@ const movieDetailsApi = async (movieId) => {
     const movieWebsite = result.homepage;
     const genreList = result.genres;
     const poster = image_url + result.poster_path;
+    movieImage = poster;
+    localStorage.setItem('journal-movie-image',movieImage);
     const movieBudget = result.budget;
     const movieRuntime = result.runtime;
     const movieReleaseDate = result.release_date;

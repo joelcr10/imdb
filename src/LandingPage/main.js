@@ -57,9 +57,9 @@ const popularMoviesSection = async () =>{
 
         if(id in userRatingList){
             
-            rateStarImage = `<img class="starred-icon" src="../../assets/img/ratingStar.png">`;
+            rateStarImage = `<img class="starred-icon" src="../../assets/img/ratingStar.png" onclick="openRatingModal('${title}', '${id}')">`;
         }else{
-            rateStarImage = `<img class="starred-icon" src="../../assets/img/starred.png">`
+            rateStarImage = `<img class="starred-icon" src="../../assets/img/starred.png" onclick="openRatingModal('${title}', '${id}')">`
         }
         
         const card = `
@@ -68,7 +68,7 @@ const popularMoviesSection = async () =>{
                     </a>
                         <div class="card-text">
                             <label><img src="../../assets/img/star.png">${rating.toFixed(1)}${rateStarImage}</label>
-                        
+                            
                             <h3>${title}</h3>
                             ${cardButton}
                             <div class="card-trailer-container">
