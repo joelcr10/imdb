@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
+    
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -14,17 +14,23 @@
 
 <body>
 
-
-    <div class="main-review-container">
-        <h2>Reviews</h2>
-        <input id="review-msg" type="text"></input>
-        <i class="bi bi-pencil-square" id="review-submit"></i>
-        <div class="review-display" id="review-display">
-
+    <div class="main-review-container" id="main-review-container">
+        <div class="d" style="display: flex;align-items: center;">
+            <h2>Reviews</h2>
+            <i class="bi bi-pencil-square" id="open-popup" ></i>
         </div>
+        
+        <div class="popup-container" id="popup-container">
+            <div class="popup">
+                <span class="close" id="close-popup">&times;</span>
+                <textarea id="review-msg" placeholder="Enter your review"></textarea>
 
-
-
+                <i class="bi bi-pencil-square" id="review-submt"></i>
+                <p id="review-submit" >Submit Review</p>
+            </div>
+        </div>
+        
+        <div class="review-display" id="review-display"></div>
     </div>
 
 

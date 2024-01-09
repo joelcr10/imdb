@@ -1,0 +1,164 @@
+.reviews {
+  margin-top: 2%;
+}
+
+#review-profile {
+  display: flex;
+  align-items: center;
+  padding-left: 2%;
+}
+
+#review-username {
+  color: rgb(70, 70, 70);
+  margin-left: 1%;
+  font-size: 1.2rem;
+  font-weight: 700;
+  min-width: 15rem;
+  max-width: 1rem;
+}
+
+#review-profile-image {
+  min-width: 2rem;
+  max-width: 2rem;
+}
+
+#review-msg {
+  min-width: 80%;
+  color: gray;
+  margin-left: 2%;
+  margin-top: -15px;
+}
+
+#review-date {
+  font-size: 0.8rem;
+}
+
+.review-item {
+  border: 1px solid rgba(128, 128, 128, 0.356);
+  margin-top: 1%;
+  margin-bottom: 1%;
+  padding-left: 1%;
+  box-shadow: 0 0 10px rgba(100, 100, 100, 0.432);
+}
+
+.popup-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(0, 0, 0);
+  padding: 70px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px gold;
+  animation: grow 0.5s ease-in-out forwards;
+}
+
+.close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 30px;
+  cursor: pointer;
+  color: red;
+}
+
+#open-popup {
+  cursor: pointer;
+  padding-left: 5%;
+  font-size: 1.7rem;
+}
+#open-popup:hover {
+  border-radius: 50%;
+  color: gold;
+}
+
+.popup-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#review-msg {
+  width: 20rem;
+  padding: 10px;
+  margin-bottom: 10px;
+  min-height: 5rem;
+}
+
+#review-msg p {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.review-msg-inside.expanded {
+  -webkit-line-clamp: 10;
+  display: block;
+}
+
+#review-msg-popup {
+  width: 20rem;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#review-submit {
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 10px;
+  background-color: gold;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.9rem;
+}
+#review-submit:hover {
+  background-color: rgb(199, 169, 0);
+}
+
+.review-head {
+  display: flex;
+  align-items: center;
+}
+
+#review-threeDot {
+  cursor: pointer;
+  color: grey;
+  padding: 10px;
+  margin-left: 60%;
+  transition: background-color 0.7s ease-in-out, color 0.7s ease-in-out forwards;
+}
+#review-threeDot:hover {
+  background-color: rgba(194, 194, 194, 0.253);
+  border-radius: 50%;
+}
+
+#pop-head {
+  color: gold;
+}
+
+@keyframes grow {
+  from {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}/*# sourceMappingURL=reviews.css.map */
