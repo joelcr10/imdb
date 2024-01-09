@@ -52,4 +52,7 @@ export const addRating = async(movieId,value) =>{
 }
 
 
+export default addRating;
+
+
 

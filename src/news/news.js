@@ -1,16 +1,18 @@
-const apiKey ="f575a715e6d64500abfa65a89012f5fd";
-let output = 0;
+import { newsApi } from "../../config.js";
 
+const apiKey =newsApi.API_KEY;
+let output = 0;
+let articleUrl = "";
 
  
 
 var url = 'https://newsapi.org/v2/everything?' +
-          'q=television&' +
+          'q=hollywood&' +
           'sortBy=popularity&' +
-          'apiKey=f575a715e6d64500abfa65a89012f5fd';
+          `apiKey=${apiKey}`;
 
 
-//var req = new Request(url);
+
 const req = new Request(url, {
     method:'GET',
     headers: {
@@ -19,6 +21,50 @@ const req = new Request(url, {
     },
   });
   
+  const createResultCard=(item)=>{
+    let imageUrl = item.urlToImage;
+    let author = item.author;
+    let content = item.content.split(".");
+    let description = item.description ;
+
+    for (let i = 0; i < content.length; i++) {
+      let startIndex = content[i].indexOf("[");
+      let endIndex = content[i].indexOf("]");
+  
+      // Remove the content within the square brackets for each element
+      content[i] = content[i].slice(0, startIndex) + content[i].slice(endIndex + 1);
+  }
+  
+    let title= item.title;
+    let source = item.source.name;
+     articleUrl = item.url;
+    let publishDate = item.publishedAt;
+
+            
+        const card =`
+        <div class="article">
+        <div class="firstBox" >
+        <div class="firstNews">
+        <img src="${imageUrl}" alt="" class="firstImage">
+        <div class="firstContent">
+        <h3 class="firstTitle"><a href="${articleUrl}"> ${title}<img src="/assets/img/linkArrow.png" alt="" class="arrowOne"> </a></h3>
+        <div class="firstArticle" ><p>${description}</p> <p> ${content} </p> <p>${description}</p> <p> ${content} </p>
+        <a href="${articleUrl}"> See full article at ${articleUrl} <img src="/assets/img/linkArrow.png" alt="" class="arrowTwo"> </a> <br>
+        </div>
+        </div>
+        </div>
+        </div> 
+        <div  class="bottomDiv"> 
+          <div class="articleOptions">
+          </div>
+          <p>${publishDate} by ${author} <br><a href="${articleUrl}">${source}</a></p>
+          <div class="horizontalButton" > ...</div>
+          <div class="verticalButton"   >...</div>
+          </div>
+        </div>  
+        `
+     return card;
+  }
 
 export const getNews = () => {
     fetch(req)
@@ -36,47 +82,8 @@ export const getNews = () => {
             if(item.urlToImage == null){
                 continue;
             }
-            let imageUrl = item.urlToImage;
-            let author = item.author;
-            let content = item.content.split(".");
-            let description = item.description ;
-
-            for (let i = 0; i < content.length; i++) {
-              let startIndex = content[i].indexOf("[");
-              let endIndex = content[i].indexOf("]");
-          
-              // Remove the content within the square brackets for each element
-              content[i] = content[i].slice(0, startIndex) + content[i].slice(endIndex + 1);
-          }
-          
-            let title= item.title;
-            let source = item.source.name;
-            let articleUrl = item.url;
-            let publishDate = item.publishedAt;
-
-            
-        const card =`
-        <div class="article">
-        <div class="firstBox" >
-        <div class="firstNews">
-        <img src="${imageUrl}" alt="" class="firstImage">
-        <div class="firstContent">
-         <h3 class="firstTitle"> ${title}<img src="/assets/img/linkArrow.png" alt="" class="arrowOne"></h3>
-         <div class="firstArticle" ><p>${description}</p> <p> ${content} </p> <p>${description}</p> <p> ${content} </p>
-         <a href="${articleUrl}"> See full article at ${articleUrl} <img src="/assets/img/linkArrow.png" alt="" class="arrowTwo"> </a> <br>
-        </div>
-        </div>
-        </div>
-        </div> 
-        <div  class="bottomDiv"> 
-           <div class="articleOptions">
-           </div>
-           <p>${publishDate} by ${author} <br><a href="${articleUrl}">${source}</a></p>
-           <div class="horizontalButton" > ...</div>
-           <div class="verticalButton"   >...</div>
-           </div>
-         </div>  
-`
+            let card = createResultCard(item);
+           
 
            let div = document.createElement("div");
            div.innerHTML = card;
@@ -99,7 +106,7 @@ export const getNews = () => {
       });
   }
 
-// getNews();
+
 
 
 
@@ -130,14 +137,16 @@ export const expandArticle = (index) =>{
      
      let length = document.getElementsByClassName("articleOptions")[index].children.length;
      if(length==0){
+
          let anchor = document.createElement('a');
          let option1= "PERMALINK "; 
          anchor.innerText = option1;
-         anchor.classList.add("verticalOptions");
+         anchor.href = `${articleUrl}`;
+         anchor.classList.add("permalink");
          let anchor2= document.createElement("a");
          let option2 = "REPORT THIS";
          anchor2.innerText = option2;
-         anchor2.classList.add("verticalOptions");
+         anchor2.classList.add("reportThis");
          
          document.getElementsByClassName("articleOptions")[index].appendChild(anchor);
          document.getElementsByClassName('articleOptions')[index].appendChild(anchor2);

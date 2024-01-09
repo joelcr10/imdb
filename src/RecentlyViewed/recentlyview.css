@@ -18,8 +18,11 @@ h3{
 }
 #recent-movies .card_image{
     margin-left:20px;
-    min-width: 200px;
-    min-height: 300px;
+    height: 290px;
+    width: 240px;
+    
+    /* min-width: 150px;
+    min-height: 250px; */
     /* padding: 0 5px 0 5px; */
 }
 #recent-movies .card_title{
@@ -35,3 +38,6 @@ h3{
     padding: 10px 0px 30px 0px;
 }
 
+#recent-movies{
+    flex-wrap: nowrap;
+}

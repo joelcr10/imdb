@@ -27,7 +27,7 @@
     align-items: center;
     justify-content: center;
     
-    
+    z-index: 10;
 }
 
 /* Styling for the content inside the modal */
@@ -85,5 +85,5 @@
 }
 
 .submit:hover{
-    background-color: rgb(79, 79, 79);
+    background-color: rgb(133, 133, 133);
 }

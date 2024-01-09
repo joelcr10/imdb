@@ -81,6 +81,9 @@ body{
 .celebrityBox{
     position: relative;
 }
+.celebrityBox a{
+    color: black;
+}
 #lastCelebrityBox{
     border-bottom: none;
 }
@@ -106,6 +109,7 @@ body{
     font-weight: 900;
     width: 30%;
 }
+
 .secondLine:hover{
     opacity: 50%;
 }
