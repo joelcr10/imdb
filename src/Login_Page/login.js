@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Additional validation logic can be added here
-
+        
         // If all validations pass, you can submit the form to the server
-        // alert('Sign in successful!'); 
+        alert('Sign in successful!'); 
     }
 });

@@ -8,6 +8,8 @@ body {
   justify-content: center;
   height: 100vh;
   background-color: #f4f4f4;
+  background-image: url("../../assets/img/movie-collage.jpg");
+
 }
 
 .container {

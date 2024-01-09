@@ -27,7 +27,8 @@ let movieid;
                                     <span class="star" id="star" data-value="10" onmouseover="hoverStar(10)" onclick="selectStar(10)" onmouseout="resetStarColors()">&#9733;</span>
                                 </div>
                                 <p id="selectedRating">Your Rating: 0</p>
-                                <button class = "submit" onclick="closeRatingModal()">Rate</button>
+                                <button class = "submit" ">Rate</button>
+                                <button class = "close" onclick="closeRatingModal()">Close</button>
                             </div>`;
 
   // Update the rating modal content
@@ -79,6 +80,8 @@ function updateSelectedRating(rating) {
   const selectedRatingText = document.getElementById("selectedRating");
   selectedRatingText.textContent = `Your Rating: ${rating}`;
 }
+
+
 
 // Function to update the color of stars based on the selected rating
 function updateStarColors(rating, isHover) {

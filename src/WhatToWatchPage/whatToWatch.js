@@ -1,4 +1,3 @@
-import { addRating } from "../UserRating/userratingDB.js";
 import { apiFetch } from "../scripts/apiFetch.js";
 
 ////////////////////////////////////////////   WATCH GUIDE   /////////////////////////////////////////////////
@@ -39,7 +38,6 @@ async function apifetchWatchGuide() {
                                   1
                                 )}
                                 <img class="starred-icon" src="../../assets/img/starred.png" onclick="openRatingModal('${title}', '${id}')">
-
                                 </label>
                                 <a href="../MovieDetails/movieDetails.html?id=${id}"> 
                                     <h3>${title}</h3>

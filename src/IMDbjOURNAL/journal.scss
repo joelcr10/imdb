@@ -1,0 +1,14 @@
+@import 'variables';
+@import 'typography';
+@import 'buttons';
+
+body {
+  font-family: $main-font;
+  line-height: 1.6;
+  background: black;
+  color: $primary-color;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 900px;
+}
+
