@@ -119,7 +119,7 @@ const createResultCardForPerson = (item) =>{
     }
 
 
-export const multiSearch = (searchIt, type, page = 1,output =0) => {
+export const multiSearch = (searchIt, type, page =1,output =0) => {
   fetch(`https://api.themoviedb.org/3/search/multi?query=${searchIt}&include_adult=false&language=en-US&page=${page}`, {
     method: 'GET',
     headers: {
@@ -177,20 +177,19 @@ export const multiSearch = (searchIt, type, page = 1,output =0) => {
         
         console.log(output);
         output++;
-        if(output >=20){
-          break;
-        }
+        
         
       } // for loop
 
       // Check if there are more pages and fetch the next page
-      if (data.page < data.total_pages && output<20 ) {
-        multiSearch(searchIt, type, page + 1,output);
-      }
+      // if (data.page < data.total_pages) {
+      //    multiSearch(searchIt, type, ++page,output);
+      // }
     })
     .catch(error => {
       console.error('Fetch error:', error.message);
       serverError();
+      
       // Check if there is a response and log additional details
       if (error.response) {
         console.log('Response status:', error.response.status);

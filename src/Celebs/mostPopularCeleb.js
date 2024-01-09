@@ -1,11 +1,10 @@
 import { apiFetch } from "../scripts/apiFetch.js";
 
 
-
 let image_url = "https://image.tmdb.org/t/p/w185";
-let firstLineNumber = 0;
+let currentPage = 1; // Track the current page
 
-const createCard = async(resultList,needDetails) =>{
+const createCard = async(resultList,needDetails,firstLineNumber=0) =>{
 
   for (const item of resultList) {
     let movie = "the chihuahua";
@@ -51,31 +50,74 @@ const createCard = async(resultList,needDetails) =>{
   }
 }
 
+const appendCard = (card) => {
+  let div = document.createElement('div');
+  div.setAttribute("class", "celebrityBox");
+  div.innerHTML = card;
+  document.getElementById("bigBox").append(div);
+};
 
-  const appendCard = (card) => {
-    let div = document.createElement('div');
-    div.setAttribute("class", "celebrityBox");
-    div.innerHTML = card;
-    document.getElementById("bigBox").append(div);
+export const celebrity = async (needDetails, firstLineNumber) => {
+  try {
+    const data = await apiFetch(`https://api.themoviedb.org/3/person/popular?language=en-US&page=${currentPage}`);
+    console.log(data);
+    let resultList = data.results;
+    firstLineNumber = (currentPage - 1) * 20;
+    createCard(resultList, needDetails, firstLineNumber);
+  } catch (error) {
+    console.error('Error fetching celebrity data:', error.message);
+    // Handle the error (e.g., show an error message to the user)
   }
-
-
-export const celebrity = async (needDetails) => {
-  for (let page = 1; page <= 5; page++) {
-    console.log("first fetch started");
-      const data = await apiFetch(`https://api.themoviedb.org/3/person/popular?language=en-US&page=${page}`);
-      console.log(data);
-      let resultList = data.results;
-      createCard(resultList,needDetails);
-    }
-  }
-    
+};
 
 const detailedView = async (id) => {
-  
-    const response = await apiFetch(`https://api.themoviedb.org/3/person/${id}?language=en-US`);      
+  try {
+    const response = await apiFetch(`https://api.themoviedb.org/3/person/${id}?language=en-US`);
     console.log(response);
     return response.biography;
- 
+  } catch (error) {
+    console.error('Error fetching detailed view:', error.message);
+    // Handle the error (e.g., show an error message to the user)
+    return '';
+  }
+};
+
+// Function to load more results (pagination)
+const loadMoreResults = async () => {
+  currentPage++;
+  try {
+    const data = await apiFetch(`https://api.themoviedb.org/3/person/popular?language=en-US&page=${currentPage}`);
+    console.log(data);
+    let resultList = data.results;
+    const firstLineNumber = (currentPage - 1) * 20;
+    document.getElementById("bigBox").innerHTML = "";
+    createCard(resultList, false, firstLineNumber); // Set needDetails to false for additional pages
+  } catch (error) {
+    console.error('Error loading more results:', error.message);
+    // Handle the error (e.g., show an error message to the user)
+  }
+};
+
+const loadLessResults = async () => {
+  if(currentPage >1){
+     currentPage--;
+  try {
+    const data = await apiFetch(`https://api.themoviedb.org/3/person/popular?language=en-US&page=${currentPage}`);
+    console.log(data);
+    let resultList = data.results;
+    
+    
+    document.getElementById("bigBox").innerHTML = "";
+    const firstLineNumber = (currentPage - 1) * 20;
+    createCard(resultList, false,firstLineNumber);
+    }catch (error) {
+      console.error('Error loading less results:', error.message);
+      // Handle the error (e.g., show an error message to the user)
+    }
+    
+  } 
 }
 
+// Attach an event listener to a "Load More" button
+document.getElementById("loadMoreButton").addEventListener("click", loadMoreResults);
+document.getElementById("loadLessButton").addEventListener("click", loadLessResults);
