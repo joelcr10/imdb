@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./userAccount.css">
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="./UserFriends/userFriends.css">
+    <link rel="stylesheet" href="./UserFriends/userFriend.css">
     <link rel="stylesheet" href="./userWatchlist/userWatchlist.css">
 </head>
 <body>
@@ -15,11 +15,18 @@
 
     <div id="snackbar"></div>
 
-    <div class="account-top-section">
+    <div class="account-top-section" id="account-top-section">
         <div class="top-section-container">
             <img id="user-profile" alt="">
             <h1 id="username"></h1>
         </div>
+
+        <select name="account-banner" id="change-background">
+            <option value="1">default</option>
+            <option value="https://images.pexels.com/photos/573130/pexels-photo-573130.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">Banner 1</option>
+            <option value="https://images.pexels.com/photos/1191710/pexels-photo-1191710.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">Banner 2</option>
+            <option value="https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">Banner 3</option>
+        </select>
     </div>
 
     <div class="user-options">
@@ -44,6 +51,7 @@
 <script src="../scripts/includeNavbar&Footer.js" type="module"></script>
 <script src="../scripts/navbarMenu.js"></script>
 <script src="./userAccount.js" type="module"></script>
+<script src="./changeBackground.js"></script>
 
 <!-- <script src="./UserFriends/userFriends.js" type="module"></script> -->
 

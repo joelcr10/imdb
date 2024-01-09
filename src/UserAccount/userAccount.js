@@ -25,7 +25,7 @@ const switchTab = async (tabName) =>{
         const path = "./userWatchlist/userWatchlist.html";
         content = await fetchContent(path);   //fetching the content from watchlist
         document.getElementById("user-list-container").append(content); //adding the content to the userAccount page
-        loadingAnimation(getWatchlist);   //loadding animation
+        await loadingAnimation(getWatchlist);   //loadding animatio
         
 
     }else if(tabName=="Completed"){ 
@@ -164,6 +164,11 @@ const addFriendDetails = async () =>{
 
 addFriendDetails();  //invoking the function to set username and profile to user account
 
+
+export const changeBackground = () =>{
+  console.log("change bg");
+}
+
 const tabs = document.querySelectorAll('.tab');  //getting all the tab elements
 addTabs(tabs);  
-  
+
