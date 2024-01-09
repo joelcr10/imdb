@@ -54,12 +54,14 @@
     /* Styling for individual stars (initially gray) */
     display: inline-block;
     font-size: 24px;
+    font-size: xxx-large;
     color: gray;
     transition: color 0.3s; /* Smooth transition for color changes */
 }
 
 .ratepara{
-    font-size: smaller;
+    font-size: larger;
+    font-weight: bolder;
     color: yellow;
     margin-left: 0px;
 }
@@ -72,6 +74,7 @@
     color: white;
     font-size:large;
     margin-left: 0px;
+    margin-top: 0px;
 }
 
 .submit{

@@ -1,9 +1,7 @@
   // Dom elements
   let form = document.querySelector("form");
-  let userName = document.querySelector("#username");
   let email = document.querySelector("#email");
   let password = document.querySelector("#password");
-  let confirmPassword = document.querySelector("#cpassword");
 
   // Event listener to submit form
   form.addEventListener("submit", (e) => {
@@ -14,17 +12,8 @@
   // What to do with inputs ?
   function handleInput() {
     // Values from dom elements ( input )
-    let userNameValue = userName.value.trim();
     let emailValue = email.value.trim();
     let passwordValue = password.value.trim();
-    let confirmPasswordValue = confirmPassword.value.trim();
-
-    //  Checking for username
-    if (userNameValue === "") {
-      setErrorFor(userName, "Username cannot be blank");
-    } else {
-      setSuccessFor(userName);
-    }
 
     // Checking for email
     if (emailValue === "") {
@@ -42,18 +31,6 @@
       setErrorFor(password, "Password length should be between 6 and 30");
     } else {
       setSuccessFor(password);
-    }
-
-    // Checking for confirm password
-    if (confirmPasswordValue === "") {
-      setErrorFor(confirmPassword, "Confirm Password cannot be blank");
-    } else if (confirmPasswordValue !== passwordValue) {
-      setErrorFor(
-        confirmPassword,
-        "Confirm password not matched with password"
-      );
-    } else {
-      setSuccessFor(confirmPassword);
     }
 
   }

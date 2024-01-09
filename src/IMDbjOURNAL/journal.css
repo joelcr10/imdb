@@ -249,3 +249,33 @@ input[class^="btn-"]:hover {
   text-decoration-color: lightgoldenrodyellow;
   background-color: lightgoldenrodyellow;
 }
+
+/* Choose File Button Style */
+input[type="file"] {
+  display: block;
+  font-size: 1.2rem;
+  padding: 0.6rem 2rem;
+  margin: 1rem;
+  transition: all 0.1s;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  background-color: lightgoldenrodyellow;
+  color: #0a2472;
+  font-family: "Space Mono", monospace;
+}
+
+/* Hover effect for the Choose File Button */
+input[type="file"]:hover {
+  background-color: lightgoldenrodyellow;
+  color: rgb(255, 187, 0);
+  font-weight: 700;
+  transform: scale(1.08);
+}
+
+/* Style for the uploaded image */
+#uploadedImage {
+  max-width: 100%;
+  height: auto;
+  margin-top: 1em;
+}

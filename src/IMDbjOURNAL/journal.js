@@ -68,4 +68,24 @@ let submit = document.getElementById("submit");
 entryForm.addEventListener(`submit`, addEntryToDom);
 
 
+// Listen for changes in the 'readUrl' input element
+document.getElementById('readUrl').addEventListener('change', function() {
+  // Check if a file has been selected
+  if (this.files[0]) {
+    // Create a new FileReader to read the selected file
+    var picture = new FileReader();
+
+    // Read the file as a data URL
+    picture.readAsDataURL(this.files[0]);
+
+    // Set up an event listener for when the file reading is complete
+    picture.addEventListener('load', function(event) {
+      // Update the 'src' attribute of the 'uploadedImage' element with the data URL
+      document.getElementById('uploadedImage').setAttribute('src', event.target.result);
+      
+      // Make the 'uploadedImage' element visible by changing its display style
+      document.getElementById('uploadedImage').style.display = 'block';
+    });
+  }
+});
 
