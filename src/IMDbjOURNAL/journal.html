@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- Main Style Sheet -->
 <link rel="stylesheet" href="journal.css" />
+<link rel="stylesheet" href="../css/footer.css">
+<link rel="stylesheet" href="../css/navbar.css">
+<link rel="stylesheet" href="../css/index.css">
+
 <!-- Font Awesome -->
 <link
       rel="stylesheet"
@@ -20,6 +24,8 @@
 <title>IMDb Journal</title>
 </head>
 <body>
+    <div id="navbar-container"></div>
+
 <header><h1 class="title">IMDb Journal</h1></header>
  
     <!-- Journal Entry Section -->
@@ -50,17 +56,23 @@
 </div>
 </section>
 
-<div id="movielist">
-
-</div>
  
     <!-- Journal Entry Results -->
 <section class="section sectionEntryResults" id="entryResultsSection">
 <div class="container">
-<div class="container-row entryResultRow"></div>
+<div class="container-row entryResultRow">
+    <h1 class="heading-results">Your Journal Entries</h1>
+    <span id="journal-prompt">(No Entries Yet) </span>
+</div>
 </div>
 </section>
+<div id="footer-container"></div>
+
  
-    <script src="journal.js"></script>
+    <script src="journal.js" type="module"></script>
+    <script src="journalDB.js" type="module"></script>
+    <script src="../LandingPage/main.js" type="module"></script>
+    <script src="../scripts/navbarMenu.js"></script>
+    <script src="../scripts/includeNavbar&Footer.js" type="module"></script>
 </body>
 </html>

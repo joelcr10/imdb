@@ -27,8 +27,9 @@ export const openRatingModal = (movieName, id) => {
                                     <span class="star" id="star" data-value="10" >&#9733;</span>
                                 </div>
                                 <p id="selectedRating">Your Rating: 0</p>
-                                <button id="rateButton" class = "submit">Rate</button>
-                            </div>`;
+                                <button id="rateButton" class = "submit" onclick="displayUserRating()">Rate</button>
+                                <button id="close" class = "close">Close</button>
+                             </div>`;
 
   // Update the rating modal content
   document.getElementById("ratingModal").innerHTML = ratingContainer;
@@ -91,4 +92,10 @@ function updateStarColors(rating, isHover) {
       star.style.color = index < rating ? "gold" : "gray";
     }
   });
+}
+
+//Function to display user rating on movie details page
+export function displayUserRating(){
+const userRating=document.getElementById("userRating");
+userRating.textContent = `${selectedRatingValue}/10`;
 }
