@@ -23,36 +23,15 @@ console.log(db);
 
 const userId = localStorage.getItem("userId");
 console.log("testing");
-const ratingCollection = await doc(db,"users",userId,'userRatings','rating');
-const ratingRef = await getDoc(ratingCollection);
-const data = ratingRef.data();
+const journalCollection = await doc(db,"users",userId,'userJournal','journalEntries');
+const journalRef = await getDoc(journalCollection);
+const data = journalRef.data();
 
 console.log(data);
 
 let passId;
 
-export const addRating = async(movieId,value) =>{
-    console.log("Inside addRating");
-    console.log(value);
-    console.log(movieId);
-    passId = movieId;
-        const dataToStore = {
-            [movieId]:value
-        };
 
-
-      // Use addDoc to store the data in the document
-         await updateDoc(ratingCollection, dataToStore);
-         let fetchedId = await getDoc(ratingCollection);
-         let test = fetchedId.data();
-         
-         console.log(test[passId]);
-         return test[passId];
-        
-}
-
-
-export default addRating;
 
 
 

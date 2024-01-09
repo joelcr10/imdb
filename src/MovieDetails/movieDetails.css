@@ -482,3 +482,16 @@ body {
   right: -85px;
   color: rgb(6, 123, 177);
 }
+
+#journalButton{
+  background-color: #f5c518;
+  width: 200px;
+  height: 55px;
+  border-radius: 5px;
+  font-size: large;
+  font-weight: bolder;
+}
+
+#journalButton:hover{
+  background-color: #f8b344;
+}
