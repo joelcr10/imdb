@@ -32,7 +32,7 @@ export const searchUsername = async () =>{
   
       });
 
-    console.log(tempDocList);
+    // console.log(tempDocList);
     
     document.getElementById("search-results").innerHTML = "";
     //creating the results
@@ -46,9 +46,10 @@ export const searchUsername = async () =>{
                 let span = document.createElement("span");
                 span.innerText = tempDocList[i].name;
                 span.onclick = function(){
+                    // console.log("testing");
                     openModal(tempDocList[i]);
                 }
-                console.log(tempDocList[i]);
+                // console.log(tempDocList[i]);
                 document.getElementById("search-results").append(span);
             }
         }
@@ -366,3 +367,5 @@ const showSnackbar = (textMessage) =>{
     // After 3 seconds, remove the show class from DIV
     setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, 3000);
 }
+
+

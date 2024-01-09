@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Most Popular Celebs</title>
+    <title>Celebrity News-IMDB</title>
+    <link rel="icon" href="../../assets/img/imdb-logo-new.png">
     <link rel="stylesheet" href="mostPopularCeleb.css">
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/footer.css">
@@ -20,7 +21,7 @@
                 <h1>Most Popular Celebs</h1>
                 <p> As determined by IMDb users</p>
                 <hr>
-                <div id="shareText">Share</div> 
+                <div id="shareText" >Share</div> 
                 <img src="../../assets/img/vector-share-icon.jpg" alt="" id="shareIcon">
             </div>
             
@@ -33,6 +34,10 @@
                
                
                 
+            </div>
+            <div class="load-btn">
+                <div id="loadMoreButton" >Next</div>
+                <div id="loadLessButton">Previous</div>
             </div>
 
             
@@ -65,12 +70,12 @@
     <script type="module">
         
         import {celebrity} from "../Celebs/mostPopularCeleb.js";
-        celebrity(false);
+        celebrity(false,0);
         console.log("inside celeb script");
             
          document.getElementsByClassName("compactView")[0].addEventListener("click",function(){
             document.getElementById("bigBox").innerText="";
-            celebrity(false)});
+            celebrity(false,0)});
         // document.getElementsByClassName("compactView")[0].style.cursor = "pointer";
         // document.getElementsByClassName("detailedView")[0].style.cursor = "pointer";
 
@@ -80,8 +85,10 @@
 
         document.getElementsByClassName("detailedView")[0].addEventListener("click",function(){
             document.getElementById("bigBox").innerText="";
-            celebrity(true)});
+            celebrity(true,0)});
         
     </script>
+   
+    
 </body>
 </html>

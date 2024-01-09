@@ -33,7 +33,10 @@
     filter: invert(100);
 }
 
-
+#footer .recently-viewed h3{
+    color: white;
+    
+}
 .footer-row{
    display: flex;
    justify-content: space-around; 

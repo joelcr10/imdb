@@ -25,15 +25,18 @@
         <div class="mainstream">
            <div class="stream-container">
                 <div class="stream1">
-                    <img src="../../assets/img/mastero2.png">
+                    <div id="image_1"></div>
+                    <!-- <img src="../../assets/img/mastero2.png"> -->
                     <p>What's New To Stream on Netflix</p>
                 </div>
                 <div class="stream2">
-                    <img class="img1" src="../../assets/img/reachersback.png">
+                    <div id="image_2"></div>
+                    <!-- <img class="img1" src="../../assets/img/reachersback.png"> -->
                     <p>What's New To Stream on Max</p>
                 </div>
                 <div class="stream3">
-                    <img class="img2" src="../../assets/img/barbie3.png">
+                    <div id="image_3"></div>
+                    <!-- <img class="img2" src="../../assets/img/barbie3.png"> -->
                     <p>What's New To Stream on Amazon</p>
                 </div>
            </div>
@@ -59,8 +62,6 @@
                     <li><div class=list-item>Superheroes</div></li>
                     <li><div class=list-item>Video Games</div></li>
                     <li><div class=list-item>What's on TV</div></li>
-                    
-                    
                 </ul>
             </div>
         </div>
@@ -80,10 +81,19 @@
                      <div class=list-item>See our picks</div>
 
             </div>
-            <div class="content-image">
+            <div class="content-image" onclick="openPopup()">
                 <img class="barbie-image" src="../../assets/img/Barbie.png">
-
+               
             </div>
+            <div class="popup-container" id="popup">
+                <span class="close-btn" onclick="togglePopup()">&times;</span>
+                <h3>BARBIE......</h3>
+                <h3>BARBIE......</h3>
+                <h3>BARBIE......</h3>
+                <h3>BARBIE......</h3>
+              </div>
+              <div class="overlay" id="overlay" onclick="togglePopup()"></div>
+           
             <div class="whitespace">
 
             </div>
@@ -299,6 +309,8 @@
 
         
         <div id="footer-container"></div>
+        <!-- <script src="whatontv.js" type="module"></script> -->
+        <script src="whaton_tv.js"></script>
         <script src="../scripts/navbarMenu.js"></script>
         <script src="../scripts/includeNavbar&Footer.js" type="module"></script>
 

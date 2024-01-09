@@ -1,165 +1,123 @@
-
-
-
-#search-results{
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(255, 255, 255);
-    color: black;
-    position: absolute;
-    width: 100%;
-    padding-left: 20px;
-    font-weight: 600;
-    /* top: 40px; */
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+#search-results {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  position: absolute;
+  width: 100%;
+  padding-left: 20px;
+  font-weight: 600;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+#search-results:hover {
+  cursor: pointer;
 }
 
-#search-results:hover{
-    cursor: pointer;
+#friend-modal-container {
+  background-color: rgba(0, 0, 255, 0);
+  height: 100%;
+  width: 70%;
+  position: absolute;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+#friend-modal-container .friend-modal-box {
+  background-color: black;
+  padding: 40px;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.322);
+  min-width: 300px;
+}
+#friend-modal-container #close-modal {
+  font-size: 30px;
+}
+#friend-modal-container #close-modal:hover {
+  cursor: pointer;
+  color: var(--theme);
+}
+#friend-modal-container #add-friend-btn {
+  border: 0px;
+  width: 100%;
+  margin-top: 20px;
+  height: 40px;
+  background-color: var(--theme);
+  font-weight: 700;
+  border-radius: 5px;
 }
 
-
-#friend-modal-container{
-    background-color: rgba(0, 0, 255, 0);
-    height: 100%;
-    width: 70%;
-    position: absolute;
-    top: 0;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    
+.user-details-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.user-details-container h1 {
+  margin: 0;
+  padding: 0;
+}
+.user-details-container img {
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid white;
+}
+.user-details-container #add-friend-btn,
+.user-details-container #remove-friend-btn {
+  display: none;
 }
 
-.friend-modal-box{
-    background-color: black;
-    padding: 40px;
-    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.322);
-    min-width: 300px;
+.friend-request-container {
+  display: flex;
+  height: 50px;
+  width: 40%;
+  margin-top: 10px;
+}
+.friend-request-container img {
+  background-color: var(--theme);
+}
+.friend-request-container .request-user-details {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(15, 15, 15);
+  width: 100%;
+  padding: 0px 20px;
+  align-items: center;
+}
+.friend-request-container .request-user-details .user-details {
+  display: flex;
+  flex-direction: column;
+}
+.friend-request-container .request-user-details .user-details a {
+  text-decoration: none;
+  color: white;
+}
+.friend-request-container .request-user-details .user-details:hover {
+  cursor: pointer;
+}
+.friend-request-container .request-user-details .request-buttons {
+  display: flex;
+  gap: 20px;
+}
+.friend-request-container .request-user-details .request-buttons .request-close-btn,
+.friend-request-container .request-user-details .request-buttons .request-add-btn {
+  font-size: 20px;
+}
+.friend-request-container .request-user-details .request-buttons .request-close-btn:hover,
+.friend-request-container .request-user-details .request-buttons .request-add-btn:hover {
+  cursor: pointer;
+  color: var(--theme);
 }
 
-
-#close-modal{
-    font-size: 30px;
+#friend-requests h1 {
+  color: var(--theme);
 }
 
-#close-modal:hover{
-    cursor: pointer;
-    color: var(--theme);
+.remove-friend-from-list {
+  background-color: var(--theme);
+  border: 0;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
-
-#add-friend-btn{
-    border: 0px;
-    width: 100%;
-    margin-top: 20px;
-    height: 40px;
-    background-color: var(--theme);
-    font-weight: 700;
-    border-radius: 5px;
-}
-
-
-.user-details-container{
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.user-details-container h1{
-    margin: 0;
-    padding: 0;
-}
-
-.user-details-container img{
-    height: 100px;
-    border-radius: 50%;
-    border: 3px solid white;
-}
-
-#add-friend-btn, #remove-friend-btn{
-    display: none;
-}
-
-
-.friend-request-container{  
-    display: flex;
-    height: 50px;
-    width: 40%;
-    margin-top: 10px;
-}
-
-.friend-request-container img{
-    
-    background-color: var(--theme);
-    
-}
-
-
-.request-user-details{
-    display: flex;
-    justify-content: space-between;
-    background-color: rgb(15, 15, 15);
-    width: 100%;
-    padding: 0px 20px;
-    align-items: center;
-    
-}
-
-.user-details{
-    display: flex;
-    flex-direction: column;
-}
-
-.user-details a{
-    text-decoration: none;
-    color: white;
-}
-
-.user-details:hover{
-    cursor: pointer;
-    
-}
-
-.request-buttons{
-    display: flex;
-    gap: 20px;
-}
-
-.request-close-btn,.request-add-btn{
-    font-size: 20px;
-}
-
-.request-close-btn:hover,.request-add-btn:hover{
-    cursor: pointer;
-    
-    color: var(--theme);
-}
-
-#friend-requests{
-    /* background-color: red; */
-}
-
-#friend-requests h1{
-    color: var(--theme);
-}
-
-
-.remove-friend-from-list{
-    background-color: var(--theme);
-    border: 0;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
-.remove-friend-from-list:hover{
-    cursor: pointer;
-}
-
-
-
-
-
-
-
-
+.remove-friend-from-list:hover {
+  cursor: pointer;
+}/*# sourceMappingURL=userFriends.css.map */

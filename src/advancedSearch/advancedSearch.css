@@ -16,12 +16,18 @@ body{
 
 #searchBox{
   width: 200px;
-  margin: 50px;
+  
   height: 30px;
   background-color: white;
+
+}
+
+#searchButton{
+  width: 100px;
+  height: 30px;
+  box-shadow: 0px 0px 0px 2px;
   
-  
-  
+ 
 }
 #bigBox {
   
@@ -30,9 +36,12 @@ body{
 
 .smallBox {
  position: relative;
+ width: 1000px;
  height: 300px;
  border: 1px solid blue;
  margin: 20px;
+ margin-left: 200px;
+ box-shadow: 2px 2px 2px 2px;
 }
 
 .poster {
@@ -85,14 +94,17 @@ body{
   text-align: center;
 }
 #searchFilterDiv{
-  /* align-items: center; */
+  
   position: absolute;
-  top: 277.5px;
-  left: 484.6px;
+  top: 226px;
+  left: 450px;
   color: aliceblue;
-  border: 1px ;
+  
+  
 }
 #searchFilter{
   height: 34px;
   border: none;
+  outline: none;
+  
 }
