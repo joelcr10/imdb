@@ -130,7 +130,7 @@ const fetchContent = async(path) =>{
 
 
 
-const addTabs = (tabs) =>{
+const addTabs = async (tabs) =>{
   // Add click event listeners to each tab
     tabs.forEach(tab => {
       tab.addEventListener('click', function() {
@@ -147,6 +147,10 @@ const addTabs = (tabs) =>{
         
       });
     });
+
+
+
+
 }
 
 const addFriendDetails = async () =>{
@@ -165,10 +169,9 @@ const addFriendDetails = async () =>{
 addFriendDetails();  //invoking the function to set username and profile to user account
 
 
-export const changeBackground = () =>{
-  console.log("change bg");
-}
-
+       
 const tabs = document.querySelectorAll('.tab');  //getting all the tab elements
 addTabs(tabs);  
+
+switchTab("WatchList");
 
