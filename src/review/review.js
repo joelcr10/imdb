@@ -294,7 +294,7 @@ document.getElementById('main-review-container').addEventListener('click', funct
 
         togglepopup();
     }
-    if (event.target.matches('.close')) {
+    if (event.target.matches('#close-popup')) {
         togglepopup();
     }
 
@@ -306,6 +306,7 @@ document.getElementById("review-submit").addEventListener('click', async functio
     reviewMsg = document.getElementById("review-msg").value;
     await addReview(reviewMsg);
     console.log("Review submitted:", reviewMsg);
+    document.getElementById("review-msg").value = "";
     await displayReviews();
 
 });
