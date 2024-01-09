@@ -1,28 +1,27 @@
 import { apiFetch } from "../scripts/apiFetch.js";
 
-///////////////////////////////////////             TRENDING TRAILERS           ///////////////////////////////////////////////// 
+///////////////////////////////////////             TRENDING TRAILERS           /////////////////////////////////////////////////
 
+async function apifetchTrendingTrailers() {
+  // console.log("inside test");
 
-async function apifetchTrendingTrailers(){
-    // console.log("inside test");
+  const apiUrl =
+    "https://api.themoviedb.org/3/trending/movie/day?language=en-US";
 
-    const apiUrl = 'https://api.themoviedb.org/3/trending/movie/day?language=en-US';
-    
-    try{
-       
-        const result = await apiFetch(apiUrl);
+  try {
+    const result = await apiFetch(apiUrl);
 
-        // console.log(result.results);
-        const apilist = result.results;
-        let image_url = "https://image.tmdb.org/t/p/original";
-        apilist.map((item)=>{
-            // console.log(item);   
-            const title = item.title;
-            const rating = item.vote_average;
-            const poster = image_url+item.poster_path;
-            const id=item.id;
-            // console.log(title,rating);
-            const card = `
+    // console.log(result.results);
+    const apilist = result.results;
+    let image_url = "https://image.tmdb.org/t/p/original";
+    apilist.map((item) => {
+      // console.log(item);
+      const title = item.title;
+      const rating = item.vote_average;
+      const poster = image_url + item.poster_path;
+      const id = item.id;
+      // console.log(title,rating);
+      const card = `
                             
                            <div class="image-container">
                                 <label>
@@ -32,55 +31,58 @@ async function apifetchTrendingTrailers(){
                                     </a>
                                 </label>
                                                    
-                                <a href="../MovieDetails/movieDetails.html?id=${id}">
+                                
                                 <div class="card-text">
-                                    <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
-                                    <h3>${title}</h3>
+                                    <label>
+                                        <a href="../MovieDetails/movieDetails.html?id=${id}">
+                                            <img src="../../assets/img/star.png">${rating.toFixed(
+                                              1
+                                            )}
+                                        </a>
+                                        <img class="starred-icon" src="../../assets/img/starred.png" onclick="openRatingModal('${title}', '${id}')">
+                                    </label>
+                                    <a href="../MovieDetails/movieDetails.html?id=${id}">
+                                        <h3>${title}</h3>
+                                    </a>
                                     <button><span>+</span> Watchlist</button>
                                 </div>
-                                </a>
+                                
                             </div>
                        `;
-            let divs = document.createElement('div');
-            divs.setAttribute("class","card");
-            divs.innerHTML = card;
-            
-                document.getElementById("apifetchTrendingTrailers").append(divs);
-                
+      let divs = document.createElement("div");
+      divs.setAttribute("class", "card");
+      divs.innerHTML = card;
 
-
-
-            
-        })
-    }catch(error){
-        console.log(error);
-    }
- }
- apifetchTrendingTrailers();
+      document.getElementById("apifetchTrendingTrailers").append(divs);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+apifetchTrendingTrailers();
 
 /////////////////////////////////////////           MOST ANTICIPATED             ///////////////////////////////////////
 
+async function apifetchMostAnticipated() {
+  // console.log("inside test");
+  const apiUrl =
+    "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
 
-async function apifetchMostAnticipated(){
-    // console.log("inside test");
-    const apiUrl = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1';
+  try {
+    const result = await apiFetch(apiUrl);
 
-    try{
+    // console.log(result.results);
+    const apilist = result.results;
+    let image_url = "https://image.tmdb.org/t/p/original";
+    apilist.map((item) => {
+      // console.log(item);
+      const title = item.title;
+      const rating = item.vote_average;
+      const poster = image_url + item.poster_path;
+      const id = item.id;
 
-        const result = await apiFetch(apiUrl);
-
-        // console.log(result.results);
-        const apilist = result.results;
-        let image_url = "https://image.tmdb.org/t/p/original";
-        apilist.map((item)=>{
-            // console.log(item);   
-            const title = item.title;
-            const rating = item.vote_average;
-            const poster = image_url+item.poster_path;
-            const id=item.id;
-
-            // console.log(title,rating);
-            const card = `
+      // console.log(title,rating);
+      const card = `
                             
                            <div class="image-container">
                                 <label>
@@ -90,51 +92,57 @@ async function apifetchMostAnticipated(){
                                     </a>
                                 </label>
                                                    
-                                <a href="../MovieDetails/movieDetails.html?id=${id}">
+                                
                                 <div class="card-text">
-                                    <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
-                                    <h3>${title}</h3>
+                                    <label>
+                                        <a href="../MovieDetails/movieDetails.html?id=${id}">
+                                            <img src="../../assets/img/star.png">${rating.toFixed(
+                                              1
+                                            )}
+                                        </a>
+                                        <img class="starred-icon" src="../../assets/img/starred.png" onclick="openRatingModal('${title}', '${id}')">
+                                    </label>
+                                    <a href="../MovieDetails/movieDetails.html?id=${id}">
+                                        <h3>${title}</h3>
+                                    </a>
                                     <button><span>+</span> Watchlist</button>
                                 </div>
-                                </a>
+                                
                             </div>
                        `;
-            let divs = document.createElement('div');
-            divs.setAttribute("class","card");
-            divs.innerHTML = card;
-            
-            document.getElementById("apifetchMostAnticipated").append(divs);
-            
-        })
-    }catch(error){
-        console.log(error);
-    }
- }
- apifetchMostAnticipated();
+      let divs = document.createElement("div");
+      divs.setAttribute("class", "card");
+      divs.innerHTML = card;
 
+      document.getElementById("apifetchMostAnticipated").append(divs);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+apifetchMostAnticipated();
 
 //////////////////////////////////////////          MOST POPULAR            /////////////////////////////////////////////////
 
+async function apifetchMostPopular() {
+  // console.log("inside test");
+  const apiUrl =
+    "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1";
 
-async function apifetchMostPopular(){
-    // console.log("inside test");
-    const apiUrl = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1';
+  try {
+    const result = await apiFetch(apiUrl);
 
-    try{
-
-        const result = await apiFetch(apiUrl);
-
-        // console.log(result.results);
-        const apilist = result.results;
-        let image_url = "https://image.tmdb.org/t/p/original";
-        apilist.map((item)=>{
-            // console.log(item);   
-            const title = item.title;
-            const rating = item.vote_average;
-            const poster = image_url+item.poster_path;
-            const id = item.id;
-            // console.log(title,rating); 
-            const card = `
+    // console.log(result.results);
+    const apilist = result.results;
+    let image_url = "https://image.tmdb.org/t/p/original";
+    apilist.map((item) => {
+      // console.log(item);
+      const title = item.title;
+      const rating = item.vote_average;
+      const poster = image_url + item.poster_path;
+      const id = item.id;
+      // console.log(title,rating);
+      const card = `
                             
                            <div class="image-container">
                                 <label>
@@ -144,55 +152,58 @@ async function apifetchMostPopular(){
                                     </a>
                                 </label>
                                                    
-                                <a href="../MovieDetails/movieDetails.html?id=${id}">
+                                
                                 <div class="card-text">
-                                    <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
-                                    <h3>${title}</h3>
+                                    <label>
+                                        <a href="../MovieDetails/movieDetails.html?id=${id}">
+                                            <img src="../../assets/img/star.png">${rating.toFixed(
+                                              1
+                                            )}
+                                        </a>
+                                        <img class="starred-icon" src="../../assets/img/starred.png" onclick="openRatingModal('${title}', '${id}')">
+                                    </label>
+                                    <a href="../MovieDetails/movieDetails.html?id=${id}">
+                                        <h3>${title}</h3>
+                                    </a>
                                     <button><span>+</span> Watchlist</button>
                                 </div>
-                                </a>
+                                
                             </div>
                        `;
-            let divs = document.createElement('div');
-            divs.setAttribute("class","card");
-            divs.innerHTML = card;
-            
-            
-            document.getElementById("apifetchMostPopular").append(divs);
-               
-        })
-    }catch(error){
-        console.log(error);
-    }
- }
- apifetchMostPopular();
+      let divs = document.createElement("div");
+      divs.setAttribute("class", "card");
+      divs.innerHTML = card;
 
+      document.getElementById("apifetchMostPopular").append(divs);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+apifetchMostPopular();
 
 ////////////////////////////////////////////////        RECENTLY ADDED         //////////////////////////////////////////////////
 
+async function apifetchRecentlyAddeded() {
+  // console.log("inside test");
+  const apiUrl =
+    "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
 
+  try {
+    const result = await apiFetch(apiUrl);
 
- async function apifetchRecentlyAddeded() {
-    // console.log("inside test");
-    const apiUrl = 'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1';
-    
-
-    try {
-
-        const result = await apiFetch(apiUrl);
-
-        // console.log(result.results);
-        const apilist = result.results;
-        console.log("inside recently adedd");
-        let image_url = "https://image.tmdb.org/t/p/original";
-        apilist.map((item) => {
-            // console.log(item);
-            const title = item.title;
-            const rating = item.vote_average; // Round to 1 decimal point
-            const poster = image_url + item.poster_path;
-            const id = item.id;
-            console.log("recently",title, rating);
-            const card = `
+    // console.log(result.results);
+    const apilist = result.results;
+    console.log("inside recently adedd");
+    let image_url = "https://image.tmdb.org/t/p/original";
+    apilist.map((item) => {
+      // console.log(item);
+      const title = item.title;
+      const rating = item.vote_average; // Round to 1 decimal point
+      const poster = image_url + item.poster_path;
+      const id = item.id;
+      console.log("recently", title, rating);
+      const card = `
                             
                            <div class="image-container">
                                 <label>
@@ -202,25 +213,33 @@ async function apifetchMostPopular(){
                                     </a>
                                 </label>
                                                    
-                                <a href="../MovieDetails/movieDetails.html?id=${id}">
+                                
                                 <div class="card-text">
-                                    <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
-                                    <h3>${title}</h3>
+                                    <label>
+                                        <a href="../MovieDetails/movieDetails.html?id=${id}">
+                                            <img src="../../assets/img/star.png">${rating.toFixed(
+                                              1
+                                            )}
+                                        </a>
+                                        <img class="starred-icon" src="../../assets/img/starred.png" onclick="openRatingModal('${title}', '${id}')">
+                                    </label>
+                                    <a href="../MovieDetails/movieDetails.html?id=${id}">
+                                        <h3>${title}</h3>
+                                    </a>
                                     <button><span>+</span> Watchlist</button>
                                 </div>
-                                </a>
+                                
                             </div>
                        `;
-            let divs = document.createElement('div');
-            divs.setAttribute("class", "card");
-            divs.innerHTML = card;
+      let divs = document.createElement("div");
+      divs.setAttribute("class", "card");
+      divs.innerHTML = card;
 
-            document.getElementById("recently-added").append(divs);
-        })
-    } catch (error) {
-        console.log(error);
-    }
-
+      document.getElementById("recently-added").append(divs);
+    });
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 apifetchRecentlyAddeded();

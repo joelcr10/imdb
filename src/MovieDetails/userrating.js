@@ -1,8 +1,8 @@
 // Function to open the rating modal
-
+// import addRating from "../UserRating/userratingDB.js";
 let movieid;
 
- function openRatingModal(movieName, id) {
+export const openRatingModal = (movieName, id) => {
   // Display the modal
   movieid = id;
   console.log("inside open rating modal", movieName);
@@ -15,19 +15,19 @@ let movieid;
                                 <h2 class="moviename">${movieName}</h2>
                                 <div class="stars" data-rating="0">
                                     <!-- Five stars with data-value attribute representing their rating value -->
-                                    <span class="star" id="star" data-value="1" onmouseover="hoverStar(1)" onclick="selectStar(1)" onmouseout="resetStarColors()">&#9733;</span>
-                                    <span class="star" id="star" data-value="2" onmouseover="hoverStar(2)" onclick="selectStar(2)" onmouseout="resetStarColors()">&#9733;</span>
-                                    <span class="star" id="star" data-value="3" onmouseover="hoverStar(3)" onclick="selectStar(3)" onmouseout="resetStarColors()">&#9733;</span>
-                                    <span class="star" id="star" data-value="4" onmouseover="hoverStar(4)" onclick="selectStar(4)" onmouseout="resetStarColors()">&#9733;</span>
-                                    <span class="star" id="star" data-value="5" onmouseover="hoverStar(5)" onclick="selectStar(5)" onmouseout="resetStarColors()">&#9733;</span>
-                                    <span class="star" id="star" data-value="6" onmouseover="hoverStar(6)" onclick="selectStar(6)" onmouseout="resetStarColors()">&#9733;</span>
-                                    <span class="star" id="star" data-value="7" onmouseover="hoverStar(7)" onclick="selectStar(7)" onmouseout="resetStarColors()">&#9733;</span>
-                                    <span class="star" id="star" data-value="8" onmouseover="hoverStar(8)" onclick="selectStar(8)" onmouseout="resetStarColors()">&#9733;</span>
-                                    <span class="star" id="star" data-value="9" onmouseover="hoverStar(9)" onclick="selectStar(9)" onmouseout="resetStarColors()">&#9733;</span>
-                                    <span class="star" id="star" data-value="10" onmouseover="hoverStar(10)" onclick="selectStar(10)" onmouseout="resetStarColors()">&#9733;</span>
+                                    <span class="star" id="star" data-value="1" >&#9733;</span>
+                                    <span class="star" id="star" data-value="2" >&#9733;</span>
+                                    <span class="star" id="star" data-value="3" >&#9733;</span>
+                                    <span class="star" id="star" data-value="4" >&#9733;</span>
+                                    <span class="star" id="star" data-value="5" >&#9733;</span>
+                                    <span class="star" id="star" data-value="6" >&#9733;</span>
+                                    <span class="star" id="star" data-value="7" >&#9733;</span>
+                                    <span class="star" id="star" data-value="8" >&#9733;</span>
+                                    <span class="star" id="star" data-value="9" >&#9733;</span>
+                                    <span class="star" id="star" data-value="10" >&#9733;</span>
                                 </div>
                                 <p id="selectedRating">Your Rating: 0</p>
-                                <button class = "submit" onclick="closeRatingModal()">Rate</button>
+                                <button id="rateButton" class = "submit">Rate</button>
                             </div>`;
 
   // Update the rating modal content
@@ -35,15 +35,16 @@ let movieid;
 }
 
 // Function to close the rating modal
-function closeRatingModal() {
+export function closeRatingModal() {
+  
   document.getElementById("ratingModal").style.display = "none";
 }
 
 // Declare a variable to store the rating value
-let selectedRatingValue = 0; // Default value
+export var selectedRatingValue = 0; // Default value
 
 // Function to handle selecting a star
-function selectStar(value) {
+export function selectStar(value) {
   const starsContainer = document.querySelector(".stars");
   const selectedRatingText = document.getElementById("selectedRating");
 
@@ -60,13 +61,13 @@ function selectStar(value) {
 }
 
 // Function to handle hovering over a star
-function hoverStar(value) {
+export function hoverStar(value) {
   // Update the star colors during hover
   updateStarColors(value, true);
 }
 
 // Function to reset star colors after hovering
-function resetStarColors() {
+export function resetStarColors() {
   const starsContainer = document.querySelector(".stars");
   const currentRating = parseInt(starsContainer.getAttribute("data-rating"));
 
@@ -75,7 +76,7 @@ function resetStarColors() {
 }
 
 // Function to update the displayed rating text
-function updateSelectedRating(rating) {
+export function updateSelectedRating(rating) {
   const selectedRatingText = document.getElementById("selectedRating");
   selectedRatingText.textContent = `Your Rating: ${rating}`;
 }

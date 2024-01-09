@@ -97,7 +97,7 @@ export const closeModal = () =>{
 
 //adding friend from the modal box
 const addFriend = async (userId) =>{
-
+    showSnackbar("Sent a Friend Request");
     try{
         let docRefs = await firestoreDoc(db,"users",userId);
         let userDoc = await getUserDoc(userId);
@@ -184,6 +184,8 @@ export const displayFriendRequests = async () =>{
 
 export const acceptRequest = async (acceptId) =>{
 
+    showSnackbar("Accepting Friend Request");
+
     //remove the current user from the friendRequest list of friend
     //add the current user to the friendList of Friend
     
@@ -236,7 +238,7 @@ export const acceptRequest = async (acceptId) =>{
 
 
 export const cancelRequest = async (cancelId) =>{
-   
+    showSnackbar("Cancel Friend Request");
     const docRef = await firestoreDoc(db,"users",cancelId);
     const docSnap = await getDoc(docRef);
     const userDoc = docSnap.data();
@@ -262,7 +264,7 @@ export const cancelRequest = async (cancelId) =>{
 
 
 export const removeFriendRequest = async (cancelId) =>{
-
+    showSnackbar("Removed Friend");
     const docRef = await firestoreDoc(db,"users",localStorage.getItem("userId"));
     const docSnap = await getDoc(docRef);
     const userDoc = docSnap.data();
@@ -316,7 +318,7 @@ export const displayFriends = async() =>{
 
 
 export const removeFriend = async(userId) =>{
-    
+    showSnackbar("Removed Friend");
     //remove the friend from the user list
     let docRef = await firestoreDoc(db,"users",localStorage.getItem("userId"));
     let docSnap = await getDoc(docRef);
@@ -351,4 +353,16 @@ const getUserDoc = async (userId) =>{
     let userSnap = await getDoc(userRef);
     let user = userSnap.data();
     return user;
+}
+
+
+const showSnackbar = (textMessage) =>{
+    var snackbar = document.getElementById("snackbar");
+
+    // Add the "show" class to DIV
+    snackbar.innerText = textMessage;
+    snackbar.className = "show";
+
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, 3000);
 }
