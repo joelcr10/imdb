@@ -1,90 +1,90 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #f4f4f4;
-    background-image: url("../../assets/img/movie-collage.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+  background-image: url("../../assets/img/movie-collage.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px; /* Set a fixed width for the container */
-    position: relative;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px; /* Set a fixed width for the container */
+  position: relative;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 label {
-    margin-bottom: 8px;
-    font-size: small;
-    font-weight: bolder;
+  margin-bottom: 8px;
+  font-size: small;
+  font-weight: bolder;
 }
 
 input {
-    padding: 8px;
-    border-radius: 3px;
-    height: 15px;
-    border:  1px solid #a6a6a6;
-    margin-bottom: 16px;
+  padding: 8px;
+  border-radius: 3px;
+  height: 15px;
+  border: 1px solid #a6a6a6;
+  margin-bottom: 16px;
 }
 
-input:focus{
-    box-shadow: 0 0 5px 2px #79c3f5; 
-    outline: none;
+input:focus {
+  box-shadow: 0 0 5px 2px #79c3f5;
+  outline: none;
 }
 
 button {
-    background-color: #F5C518;
-    color: black;
-    padding: 10px;
-    height: 30px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  background-color: #f5c518;
+  color: black;
+  padding: 10px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 button:hover {
-    background-color: rgb(250, 182, 10);
+  background-color: rgb(250, 182, 10);
 }
 
 /* Media query for responsiveness */
 @media screen and (max-width: 600px) {
-    .container {
-        width: 80%; /* Adjust the width for smaller screens */
-    }
+  .container {
+    width: 80%; /* Adjust the width for smaller screens */
+  }
 }
 
-h2{
-    font-weight: normal;
+h2 {
+  font-weight: normal;
 }
 
 .password-div a {
-    margin-left: 162px;
-    margin-bottom: 0px;
-    font-size: small;
-    text-decoration: none;
-    color: #3498db;
+  margin-left: 162px;
+  margin-bottom: 0px;
+  font-size: small;
+  text-decoration: none;
+  color: #3498db;
 }
 
-.container p{
-    margin-top: 0px;
-    margin-bottom: 0px;
+.container p {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .signup-button {
-    /* margin-left: 20px;
+  /* margin-left: 20px;
     width: 100%;
     background-color: blue;
     color: #000;
@@ -96,71 +96,67 @@ h2{
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
     margin: auto; */
-    background-color: white;
-    border: 0.1px solid rgba(0, 0, 0, 0.24);
-    padding: 5px;
-    border-radius: 8px;
-    display: block;
-    width: 95%;
-    text-align: center;
-    text-decoration: none;
-    font-size: 14px;
-    color: black;
+  background-color: white;
+  border: 0.1px solid rgba(0, 0, 0, 0.24);
+  padding: 5px;
+  border-radius: 8px;
+  display: block;
+  width: 95%;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  color: black;
 }
 
 .signup-button:hover {
-    background-color: rgb(212, 212, 212);
-    color: black;
+  background-color: rgb(212, 212, 212);
+  color: black;
 }
 
-
-.newtoimdb{
-    color: #767676;
-    font-weight: 400;
-    display: inline-block;
-    font-size: 12px;
-    
+.newtoimdb {
+  color: #767676;
+  font-weight: 400;
+  display: inline-block;
+  font-size: 12px;
 }
 
-
-.breaker{
-    margin: 0px 0px 0px;
-    padding: 1px 0px 0px;
-    text-align: center;
+.breaker {
+  margin: 0px 0px 0px;
+  padding: 1px 0px 0px;
+  text-align: center;
 }
 
-.firsthr{
-    position: absolute;
-    top: 280px;
-    left: 7%;
-    height: 1px;
-    width: 100px;
-    background-color: rgb(234, 234, 234);
+.firsthr {
+  position: absolute;
+  top: 280px;
+  left: 7%;
+  height: 1px;
+  width: 100px;
+  background-color: rgb(234, 234, 234);
 }
 
-.secondhr{
-    position: absolute;
-    top: 280px;
-    left: 64%;
-    height: 1px;
-    width: 100px;
-    background-color: rgb(234, 234, 234);
+.secondhr {
+  position: absolute;
+  top: 280px;
+  left: 64%;
+  height: 1px;
+  width: 100px;
+  background-color: rgb(234, 234, 234);
 }
 
-.password-div{
-    position: relative;
+.password-div {
+  position: relative;
 }
 
-.password-div a{
-    top: -20px;
-    position: absolute;
+.password-div a {
+  top: -20px;
+  position: absolute;
 }
 
-#password{
-    width: 280px;
+#password {
+  width: 280px;
 }
 
-
-#loginform{
-    background-color: blue;
+#loginform {
+  background-color: blue;
 }

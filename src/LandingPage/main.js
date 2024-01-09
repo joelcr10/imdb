@@ -1,30 +1,76 @@
-
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, doc, setDoc, getDocs, getDoc, collection } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+import { firebaseCredentials } from "../../config.js";
 import { apiFetch } from "../scripts/apiFetch.js";
+import loadingAnimation from "../scripts/loadingAnimation.js";
+const firebaseConfig = firebaseCredentials; //fetching the firebase credentials
+const app = initializeApp(firebaseConfig); // initialization of firebase;
+const db = getFirestore(app); //getting the reference of firestore database
 
+const getUserWatchlist = async () =>{
+    let watchlistMovieId = []
+    const docList = await getDocs(collection(db,"users",localStorage.getItem("userId"),"watchlist"));
+    docList.forEach((doc) => {
+        let item = doc.data();
+        let id = item.id;
+        watchlistMovieId.push(id);
+    });
+
+    return watchlistMovieId;
+}
+
+const getUserRatings = async () =>{
+    console.log("user ratings");
+    
+    const ratingDoc = await getDoc(doc(db,"users",localStorage.getItem("userId"),"userRatings","rating"));
+    let userRatingList = ratingDoc.data();
+
+    return userRatingList;
+}
 
 const popularMoviesSection = async () =>{
-   
-    console.log("inside popular section");
-    
+    // loadingAnimation();
     const apiUrl = `https://api.themoviedb.org/3/movie/popular`;
     
     const result = await apiFetch(apiUrl);
     const resultList = result.results;
     let image_url = "https://image.tmdb.org/t/p/original";
+
+    let watchlistMovieId = await getUserWatchlist();
+    let userRatingList = await getUserRatings();
+    console.log("WL",watchlistMovieId);
+    console.log("UR",userRatingList);
     
     resultList.map((item) =>{
         let title = item.title;
         let poster = image_url+item.poster_path;
         let rating = item.vote_average;
         let id = item.id;
+        let cardButton = "";
+        let rateStarImage = "";
+
+        if(watchlistMovieId.includes(id.toString())){
+            cardButton = `<button id="watchlisted"><span></span>Watchlisted</button>`
+        }else{
+            cardButton = `<button><span>+</span> Watchlist</button>`
+        }
+
+        if(id in userRatingList){
+            
+            rateStarImage = `<img class="starred-icon" src="../../assets/img/ratingStar.png">`;
+        }else{
+            rateStarImage = `<img class="starred-icon" src="../../assets/img/starred.png">`
+        }
         
         const card = `
                     <a href="../MovieDetails/movieDetails.html?id=${id}">
                         <img src="${poster}" alt="">
+                    </a>
                         <div class="card-text">
-                            <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
+                            <label><img src="../../assets/img/star.png">${rating.toFixed(1)}${rateStarImage}</label>
+                        
                             <h3>${title}</h3>
-                            <button><span>+</span> Watchlist</button>
+                            ${cardButton}
                             <div class="card-trailer-container">
                                 <div class="card-trailer">
                                     <img src="../../assets/img/play-icon.png">
@@ -33,7 +79,7 @@ const popularMoviesSection = async () =>{
                                 <img src="../../assets/img/info.png" class="info-icon">
                             </div>
                         </div>
-                    </a>
+                    
                     `;
         let div = document.createElement('div');
         div.setAttribute("class","card");
@@ -47,30 +93,40 @@ const topRatedSection = async () =>{
     const apiUrl = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=vote_average.desc&without_genres=99,10755&vote_count.gte=200';
     
     let image_url = "https://image.tmdb.org/t/p/original"
+
         
     const result = await apiFetch(apiUrl);
+
+    // loadingAnimation();
     const resultList = result.results;
         resultList.map((item) =>{
             let title = item.title;
             let poster = image_url+item.poster_path;
             let rating = item.vote_average;
             let id = item.id;
-            const card = `<a href="../MovieDetails/movieDetails.html?id=${id}">
-                            <img src="${poster}" alt="">
-                            <div class="card-text">
-                                <label><img src="../../assets/img/star.png">${rating}<img class="starred-icon" src="../../assets/img/starred.png"></label>
-                                <h3>${title}</h3>
-                                <button><span>+</span> Watchlist</button>
-                                <div class="card-trailer-container">
-                                    <div class="card-trailer">
-                                        <img src="../../assets/img/play-icon.png">
-                                        <label>Trailer</label>
-                                    </div>
-                                    <img src="../../assets/img/info.png" class="info-icon">
-                                </div>
-                            </div>
+            const card = `
+                            <a href="../MovieDetails/movieDetails.html?id=${id}">
+                                <img src="${poster}" alt="">
                             </a>
-                        `;
+                                <div class="card-text">
+                                    <label>
+                                        <img src="../../assets/img/star.png">${rating.toFixed(1)}
+                                        <img class="starred-icon" src="../../assets/img/starred.png" onclick="openRatingModal('${title}', '${id}')">
+                                    </label>
+                                    <a href="../MovieDetails/movieDetails.html?id=${id}">
+                                        <h3>${title}</h3>
+                                    </a>
+                                    <button><span>+</span> Watchlist</button>
+                                    <div class="card-trailer-container">
+                                        <div class="card-trailer">
+                                            <img src="../../assets/img/play-icon.png">
+                                            <label>Trailer</label>
+                                        </div>
+                                        <img src="../../assets/img/info.png" class="info-icon">
+                                    </div>
+                                </div>
+                            
+                            `;
             let div = document.createElement('div');
             div.setAttribute("class","card");
             div.innerHTML = card;
@@ -94,22 +150,29 @@ const popularTvSection = async () =>{
             let poster = image_url+item.poster_path;
             let rating = item.vote_average;
             let id = item.id;
-            const card = `<a href="../TvDetails/tvDetails.html?id=${id}">
-                            <img src="${poster}" alt="">
-                            <div class="card-text">
-                                <label><img src="../../assets/img/star.png">${rating.toFixed(1)}<img class="starred-icon" src="../../assets/img/starred.png"></label>
-                                <h3>${title}</h3>
-                                <button><span>+</span> Watchlist</button>
-                                <div class="card-trailer-container">
-                                    <div class="card-trailer">
-                                        <img src="../../assets/img/play-icon.png">
-                                        <label>Trailer</label>
-                                    </div>
-                                    <img src="../../assets/img/info.png" class="info-icon">
-                                </div>
-                            </div>
+            const card = `
+                            <a href="../MovieDetails/movieDetails.html?id=${id}">
+                                <img src="${poster}" alt="">
                             </a>
-                        `;
+                                <div class="card-text">
+                                    <label>
+                                        <img src="../../assets/img/star.png">${rating.toFixed(1)}
+                                        <img class="starred-icon" src="../../assets/img/starred.png" onclick="openRatingModal('${title}', '${id}')">
+                                    </label>
+                                    <a href="../MovieDetails/movieDetails.html?id=${id}">
+                                        <h3>${title}</h3>
+                                    </a>
+                                    <button><span>+</span> Watchlist</button>
+                                    <div class="card-trailer-container">
+                                        <div class="card-trailer">
+                                            <img src="../../assets/img/play-icon.png">
+                                            <label>Trailer</label>
+                                        </div>
+                                        <img src="../../assets/img/info.png" class="info-icon">
+                                    </div>
+                                </div>
+                            
+                            `;
             let div = document.createElement('div');
             div.setAttribute("class","card");
             div.innerHTML = card;
@@ -135,22 +198,29 @@ const upcomingMoviesSection = async () =>{
         let poster = image_url+item.poster_path;
         let rating = item.vote_average;
         let id = item.id;
-        const card = `<a href="../MovieDetails/movieDetails.html?id=${id}">
+        const card = `
+                    <a href="../MovieDetails/movieDetails.html?id=${id}">
                         <img src="${poster}" alt="">
+                    </a>
                         <div class="card-text">
-                            <label><img src="../../assets/img/star.png">${rating}<img class="starred-icon" src="../../assets/img/starred.png"></label>
+                            <label>
+                                <img src="../../assets/img/star.png">${rating.toFixed(1)}
+                                <img class="starred-icon" src="../../assets/img/starred.png" onclick="openRatingModal('${title}', '${id}')">
+                            </label>
+                            <a href="../MovieDetails/movieDetails.html?id=${id}">
                                 <h3>${title}</h3>
-                                <button>Watch options</button>
-                                <div class="card-trailer-container">
+                            </a>
+                            <button><span>+</span> Watchlist</button>
+                            <div class="card-trailer-container">
                                 <div class="card-trailer">
                                     <img src="../../assets/img/play-icon.png">
                                     <label>Trailer</label>
                                 </div>
                                 <img src="../../assets/img/info.png" class="info-icon">
                             </div>
-                            </div>
-                        </a>
-                        `;
+                        </div>
+                    
+                    `;
             let div = document.createElement('div');
             div.setAttribute("class","card");
             div.innerHTML = card;
@@ -222,20 +292,52 @@ const topBoxOfice = async () =>{
     }
 }
 
+
+const displayWatchlist = async () =>{
+    const docList = await getDocs(collection(db,"users",localStorage.getItem("userId"),"watchlist"));
+
+    if(docList.empty){
+        document.getElementById("watchlist-prompt").innerText = "Nothing added to watchlist";
+    }else{
+        console.log("yes this is");
+        docList.forEach((doc) => {
+                let item = doc.data();
+                console.log(item);
+                let id = item.id;
+                let title = item.title;
+                let poster = item.poster;
+                const card = `
+                            <a href="../MovieDetails/movieDetails.html?id=${id}">
+                                <img src="${poster}" alt="">
+                                <div class="card-text">
+                                    <h3>${title}</h3>
+                                </div>
+                            </a>
+                        `;
+                    let div = document.createElement('div');
+                    div.setAttribute("class","card");
+                    div.innerHTML = card;
+                    document.getElementById("display-watchlist").append(div);
+          });
+    }
+}
+
 const checkWatchList = () =>{
     if(localStorage.getItem("userId")==null){
         document.getElementById("display-watchlist").style.display = "none";
         document.getElementById("watchlist-home").style.display = "flex";
     }else{
-        document.getElementById("display-watchlist").style.display = "block";
+        document.getElementById("display-watchlist").style.display = "flex";
+        displayWatchlist();
         document.getElementById("watchlist-home").style.display = "none";
     }
 }
 
 
-
-popularMoviesSection();
+loadingAnimation(popularMoviesSection);
+// popularMoviesSection();
 topRatedSection();
+// loadingAnimation(topRatedSection);
 upcomingMoviesSection();
 trendingCelebSection();
 popularTvSection();

@@ -9,15 +9,17 @@
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="./topSection.css">
+    <link rel="stylesheet" href="../UserRating/userrating.css">
+    <link rel="stylesheet" href="../css/loadingAnimation.css">
    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <body>
     <div id="landing-page">
         <div id="navbar-container"></div>
-        
+        <div id="ratingModal" class="modal"></div>
 
-        
+
         <div class="home-top-section-container">
             <div class="top-section-left-container">
                 <div class="swiper mySwiper">
@@ -113,6 +115,12 @@
                 <h2><div class="header-left"></div>Popular Movies <img src="../../assets/img/right-arrow.png" alt=""></h2>
                 <label for="">This weeks most popular movies</label>
             </div>
+
+            <!-- loading anitmation -->
+            <div class="loader-container">
+                <div class="loader"></div>
+            </div>
+            <!-- loading animation -->
             <div id="popular-movies" class="card-slider"></div>
         </div>
 
@@ -128,6 +136,7 @@
                 <div class="home-section-headers">
                     <h2><div class="header-left"></div>Top Rated <img src="../../assets/img/right-arrow.png" alt=""></h2>
                 </div>
+                
                 <div id="top-rated" class="card-slider"></div>
         </div>
 
@@ -142,10 +151,11 @@
                         <button>Sign-in</button>
                     </a>
                 </div>
-                <div id="display-watchlist">
-                    <h3>Your watchlist is empty</h3>
-                </div>
             </div>
+                <div id="display-watchlist">
+                    <h3 id="watchlist-prompt"></h3>
+                </div>
+            
         </div>
 
         <div class="upcoming-movies-container home-section-container">
@@ -278,6 +288,27 @@
     <script src="../scripts/navbarMenu.js"></script>
     <script src="./homeVideoHighlights.js"></script>
     <script src="../scripts/firebase.js" type="module"></script>
+    <script src="../UserRating/userrating.js" ></script>
+    <script type="module">
+        import {addRating} from '../UserRating/userratingDB.js';
+       
+        
+            // Event listener for the submit button
+            document.getElementById('ratingModal').addEventListener('click', function (event) {
+             console.log(event);
+
+            // Check if the clicked element has the 'star' class
+            if (event.target.classList.contains('submit')) {
+                    console.log("Rating value:", selectedRatingValue);
+                    console.log("Rating id:", movieid);
+
+                    // Pass the rating value to your addRating function
+                    let fetchedId = addRating(movieid,selectedRatingValue);
+                    console.log("fetched rating:",fetchedId);
+                }
+        });
+
+    </script>
     
     
     
