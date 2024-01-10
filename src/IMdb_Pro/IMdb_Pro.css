@@ -140,9 +140,6 @@ hr{
     margin-left: 0;
     padding-left: 0;
   }
-  /* .premium-subscription-list-heading{
-    
-  } */
 
 
   button{
@@ -154,6 +151,7 @@ hr{
     width: 300px;
     font-weight: 600;
     box-shadow: 0 0 4px 0 black;
+    margin:10px;
   }
   .inner-box-basic-plan{
     align-items: center;
@@ -164,19 +162,22 @@ hr{
     min-height: 70px;
   }
   .popup-container{
-    min-height: 400px;
-    min-width: 300px;
     text-align: center;
-    padding: 100px 10px 100px 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px 0 black;
   }
   .username-input,
-  .phonenumber-input
+  .password-input
   {
     min-width: 300px;
     margin-left: -80px;
   }
   #username,
-  #phonenumber{
+  #password{
     width: 200px;
     height: 30px;
   }
@@ -199,6 +200,12 @@ hr{
     margin-top: -10px;
     object-fit: cover !important;
   
+  }
+  #popup{
+    color: black;
+    z-index:200;
+    width:300px;
+    height:300px;
   }
   #return-home{
     align-items: center;
@@ -242,4 +249,7 @@ hr{
   margin-top: 10px;
   margin-bottom: 10px;
   border-radius: 7px;
+}
+#getpayment{
+  max-height: 300px;
 }
