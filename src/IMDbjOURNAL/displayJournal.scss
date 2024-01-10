@@ -1,0 +1,13 @@
+// Import specific properties
+@import 'properties/journal-elements';
+@import 'properties/container-row-journal';
+@import 'properties/entry-result-row';
+@import 'properties/journal-date';
+@import 'properties/heading-results';
+
+// Your other global styles can go here
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}

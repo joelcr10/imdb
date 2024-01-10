@@ -9,6 +9,8 @@ export var userSelectedRating =selectedRatingValue;
 document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
   movieId = urlParams.get("id");
+  let movieeid = movieId;
+  localStorage.setItem('journal-movie-id',movieeid);
 
   if (movieId) {
     console.log(movieId);
@@ -35,6 +37,7 @@ const fetchAllApi = async (movieId) => {
     const urlParams = new URLSearchParams(window.location.search);
     let movieId = urlParams.get('id');
     openRatingModal(`${movieNameGlobal}`,`${movieId}`);
+    console.log("testing");
     let starIcon = document.getElementsByClassName("star");
     console.log("star icon",starIcon);
 
@@ -47,11 +50,11 @@ const fetchAllApi = async (movieId) => {
       starIcon[i].onclick = function(){
         selectedRating = dataValue;
         selectStar(dataValue);
-      }
+      };
 
       starIcon[i].onmouseout =function(){
         resetStarColors(dataValue);
-      }
+      };
     
     }
 
