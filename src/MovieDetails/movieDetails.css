@@ -456,16 +456,19 @@ body {
   color: rgb(6, 123, 177);
   cursor: pointer;
   position: relative;
-  left: 40px;
+  left: 0px;
+  
+  
 }
 
 .rating-text {
   color: rgb(197, 197, 197);
   font-size: medium;
   font-weight: bolder;
-  position: relative;
-  right:60px;
-  top: -38px;
+  position: absolute;
+  /* right:30px; */
+  top: 0px;
+  left: -5px;
 }
 
 .your-rating {
@@ -480,10 +483,13 @@ body {
 
 #userRating{
   position: relative;
-  top: -35px;
-  right: -85px;
+  top: -25px;
+  right: -35px;
   color: rgb(6, 123, 177);
+  
 }
+
+
 
 #journalButton{
   background-color: #f5c518;

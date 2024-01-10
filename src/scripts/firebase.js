@@ -47,6 +47,10 @@ const auth = getAuth(); //initializing firebase auth
         const ratingDoc = doc(ratingCollection,"rating");
         await setDoc(ratingDoc,{});
 
+        const journalCollection = collection(db, 'users', userCredential.user.uid, "userJournal");
+        const journalDoc = doc(journalCollection,"journalEntries");
+        await setDoc(journalDoc,{});
+
         console.log("setting userRatings");
         window.location.href = "../Login_Page/login.html"; 
         alert("Signup successfull");

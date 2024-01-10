@@ -13,7 +13,7 @@ const db = getFirestore(app); //getting the reference of firestore database
 
 
 
-let movieId = "";
+export let movieId = "";
 export var movieNameGlobal = "";
 export var movieImage = "";
 let recentmovie_list = JSON.parse(sessionStorage.getItem("Recent Movies")) || [];
@@ -21,7 +21,9 @@ let recentmovie_list = JSON.parse(sessionStorage.getItem("Recent Movies")) || []
 document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
     movieId = urlParams.get('id');
-    
+      let movieeid = movieId;
+  localStorage.setItem('journal-movie-id',movieeid);
+
     if (movieId) {
         console.log(movieId);
         // fetchMovieDetails(movieId);
@@ -80,6 +82,7 @@ const fetchAllApi = async (movieId) => {
     const urlParams = new URLSearchParams(window.location.search);
     let movieId = urlParams.get('id');
     openRatingModal(`${movieNameGlobal}`,`${movieId}`);
+    console.log("testing");
     let starIcon = document.getElementsByClassName("star");
     
 
@@ -92,11 +95,11 @@ const fetchAllApi = async (movieId) => {
       starIcon[i].onclick = function(){
         selectedRating = dataValue;
         selectStar(dataValue);
-      }
+      };
 
       starIcon[i].onmouseout =function(){
         resetStarColors(dataValue);
-      }
+      };
     
     }
 
