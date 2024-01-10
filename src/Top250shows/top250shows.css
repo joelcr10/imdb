@@ -104,15 +104,25 @@ i{
   margin-top: -35px;
   font-family: 'Poppins', sans-serif; 
 }
-
+#details{
+  border:2px solid goldenrod;
+  position: absolute;
+  top:50%;
+  right: 50%;
+  z-index: 10;
+  background:black;
+  display:none;
+  box-shadow: 0 0 10px gold;
+}
 #topshows-container{
   display: flex;
   gap: 20px;
   overflow-x: scroll;
   scroll-behavior: smooth;
   margin-top: 20px;
+  margin-left: 20px;
   flex-wrap: wrap;
-  width: 80%;
+  /* width: 80%; */
   /* background-color: aqua; */
   
 }
