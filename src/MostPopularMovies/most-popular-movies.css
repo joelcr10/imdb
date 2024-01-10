@@ -232,15 +232,9 @@
 .popular-movies {
     min-height: 7.5rem;
    
-    /* flex: 1;  */
-   
-   
 }
 
 .info{
-    /* flex: 1; */
-    /* display: flex;    */
-    
     font-size: 1.5rem;
     color: rgb(22, 22, 255);
 	cursor: pointer;

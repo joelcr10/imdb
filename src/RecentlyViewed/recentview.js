@@ -12,7 +12,7 @@ const movieImagesApi = async (trail_recentmovie) => {
     console.log(data)
     let title = data.original_title;
     console.log(title);
-    let poster = image_url+data.backdrop_path;
+    let poster = image_url+data.poster_path;
     let rating = data.vote_average;
     const card=`
       <div class="card">

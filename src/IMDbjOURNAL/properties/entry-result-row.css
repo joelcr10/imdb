@@ -1,0 +1,8 @@
+.entryResultRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: lightgoldenrodyellow;
+  position: relative;
+}/*# sourceMappingURL=entry-result-row.css.map */

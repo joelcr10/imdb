@@ -1,78 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+ 
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <!-- Main Style Sheet -->
 <link rel="stylesheet" href="journal.css" />
 <link rel="stylesheet" href="../css/footer.css">
-<link rel="stylesheet" href="../css/navbar.css">
+<link rel="stylesheet" href="../css/navbar-Secondary.css">
 <link rel="stylesheet" href="../css/index.css">
 
-<!-- Font Awesome -->
-<link
+    <!-- Font Awesome -->
+    <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
       integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q"
       crossorigin="anonymous"
     />
-<!-- Google Fonts -->
-<link
+    <!-- Google Fonts -->
+    <link
       href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
       rel="stylesheet"
     />
-<title>IMDb Journal</title>
-</head>
-<body>
+    <title>IMDb Journal</title>
+  </head>
+  <body>
     <div id="navbar-container"></div>
 
-<header><h1 class="title">IMDb Journal</h1></header>
- 
+    <header><h1 class="title">IMDb Journal</h1></header>
+
     <!-- Journal Entry Section -->
-<section class="section journal-section">
-<div class="container">
-<div class="container-row container-row-journal">
-<div class="container-item container-item-journal">
-<form id="entryForm" action="">
-<label for="entry-title" class="journal-label">Entry Title</label>
-<input
+    <section class="section journal-section">
+      <div class="container">
+        <div class="container-row container-row-journal">
+          <div class="container-item container-item-journal">
+            <form id="entryForm" action="">
+              <label for="entry-title" class="journal-label">Entry Title</label>
+              <input
                 type="text"
                 name="entry-title"
                 id="entry-title"
                 class="entry-text-title"
                 placeholder="Name of entry ✏️"
               />
-<label for="entry" class="journal-label">Today's Entry</label>
-<textarea
+              <label for="entry" class="journal-label">Today's Entry</label>
+              <textarea
                 name="daily-entry"
                 id="entry"
                 class="entry-text-box"
                 placeholder="What's on your mind today? 💭"
-></textarea>
-<button class="btn-main entry-submit-btn" id="submit" type="submit">Submit</button>
-</form>
-</div>
-</div>  
-</div>
-</section>
+              ></textarea>
+              <button
+                class="btn-main entry-submit-btn"
+                id="submit"
+                type="submit"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
 
- 
     <!-- Journal Entry Results -->
-<section class="section sectionEntryResults" id="entryResultsSection">
-<div class="container">
-<div class="container-row entryResultRow">
-    <h1 class="heading-results">Your Journal Entries</h1>
-    <span id="journal-prompt">(No Entries Yet) </span>
-</div>
-</div>
-</section>
-<div id="footer-container"></div>
+    <section class="section sectionEntryResults" id="entryResultsSection">
+      <div class="container">
+        <div class="container-row entryResultRow">
+          <h1 class="heading-results">Your Journal Entries</h1>
+          <span id="journal-prompt">(No Entries Yet) </span>
+        </div>
+      </div>
+    </section>
+    <div id="footer-container"></div>
 
- 
     <script src="journal.js" type="module"></script>
     <script src="journalDB.js" type="module"></script>
     <script src="../LandingPage/main.js" type="module"></script>
     <script src="../scripts/navbarMenu.js"></script>
     <script src="../scripts/includeNavbar&Footer.js" type="module"></script>
-</body>
+  </body>
 </html>

@@ -41,13 +41,9 @@
     height: 70px;
 
 }
-#imdb_pro_icon{
-    width: 70px;
-    height: 40px;
-    background-color: black;
-}
+
 .search-container{
-    width: 60%;
+    width: 50%;
 }
 
 .search-container input{
@@ -320,7 +316,7 @@
     background-color: aliceblue;
     position: absolute;
     top: 37px;
-    left: 92px;
+    left: 91px;
     z-index: 2;
 
 }
@@ -398,10 +394,7 @@
 
  }
 
- #imdb_pro_icon{
-    max-height: 50px !important;
-    width:100px;
- }
+
  .imageBox {
     /* background-color: red; */
     border: 1px solid orange;
@@ -452,7 +445,7 @@
     background-color: aliceblue;
     position: absolute;
     top: 37px;
-    left: 92px;
+    left: 91px;
     z-index: 2;
 
 }
@@ -460,7 +453,7 @@
     background-color: aliceblue;
     position: relative;
     /* border: 1px solid black; */
-    width: 700px;
+    width: 578px;
     height: 70px;
     margin: 5px;
 
@@ -505,4 +498,8 @@
     left: 95px;
     z-index: 5;
 }
-
+#imdb_pro_icon{
+    
+    width:100px;
+   
+ }

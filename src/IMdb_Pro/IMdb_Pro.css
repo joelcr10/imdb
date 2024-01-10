@@ -61,6 +61,10 @@ hr{
     z-index: 20;
   }
 
+  .popup-container h3{
+    color: black;
+  }
+
   /* Styling for the overlay background */
   .overlay {
     display: none;

@@ -1,30 +1,17 @@
 import { apiFetch } from '../scripts/apiFetch.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
 import { getFirestore, collection, getDocs, doc, setDoc, addDoc, query, where, deleteDoc, getDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+import { firebaseCredentials } from '../../config.js';
 
-// https://firebase.google.com/docs/web/setup#available-libraries
+const firebaseConfig = firebaseCredentials;
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-    apiKey: "AIzaSyCrKosfpufYIc3yaL-pgrlcwhWqpfN2Rlg",
-    authDomain: "imdb-63ec7.firebaseapp.com",
-    projectId: "imdb-63ec7",
-    storageBucket: "imdb-63ec7.appspot.com",
-    messagingSenderId: "1089587640183",
-    appId: "1:1089587640183:web:12166709de392731e91372",
-    measurementId: "G-TR217WFC7K"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);   // Initialize Firebase
 const db = getFirestore(app);
 
 let reviewMsg;
 let movieId = '';
-let username;
-let profile;
-// const reviewDisplay = document.querySelector('.review-display');
+
+
 const reviewDisplay = document.getElementById('review-display');
 
 
@@ -32,12 +19,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     const urlParams = new URLSearchParams(window.location.search);
     movieId = urlParams.get('id');
     console.log(movieId);
-    
+
     if (!localStorage.getItem('userId')) {
         document.getElementById('open-popup').style.display = 'none';
-        
-    }
 
+    }
 
     await displayReviews();
 });
@@ -49,10 +35,6 @@ console.log(userId);
 
 const reviewCollection = collection(db, 'reviews'); // Reference to the reviews collection
 const options = { day: 'numeric', month: 'long', year: 'numeric' };
-
-
-
-
 
 
 export const addReview = async (reviewMsg) => {
@@ -91,13 +73,14 @@ const getUsername = async (userid) => {
             return userDoc.username;
         } else {
             console.log("User document not found");
-            return null; // or handle the case when the user document is not found
+            return null; // handle the case when the user document is not found
         }
     } catch (error) {
         console.error("Error fetching user document:", error);
-        return null; // or handle the error case
+        return null; // handle the error case
     }
 };
+
 const getUserProfile = async (userid) => {
     try {
         const docSnap = await getDoc(doc(db, "users", userid));
@@ -108,20 +91,13 @@ const getUserProfile = async (userid) => {
             return userDoc.profile;
         } else {
             console.log("User document not found");
-            return null; // or handle the case when the user document is not found
+            return null; // handle the case when the user document is not found
         }
     } catch (error) {
         console.error("Error fetching user document:", error);
-        return null; // or handle the error case
+        return null; // handle the error case
     }
 };
-// Example usage:
-const usernamee = await getUsername(userId);
-console.log(usernamee);
-const profilee = await getUserProfile(userId);
-console.log(profilee);
-
-
 
 
 async function displayReviews() {
@@ -136,11 +112,6 @@ async function displayReviews() {
         const reviewResult = await apiFetch(reviewURL);
         console.log(reviewResult.results);
         reviewResultList = reviewResult.results;
-
-        // Fetch reviews from the database
-        // const docSnap = await getDoc(doc(db, "users", userId));
-        // const userDoc = docSnap.data();
-        // console.log(userDoc.username);
 
     } catch (e) {
         console.log("Error in review fetching");
@@ -172,18 +143,6 @@ async function displayReviews() {
             reviewDisplay.appendChild(reviewElement);
 
         }
-        // reviewResultList.forEach(async (doc) => {
-        //     console.log(image_url+doc.author_details.avatar_path);
-        //     reviewDetailsFromApi = {
-        //         msg: doc.content,
-        //         date: doc.updated_at
-        //     }
-
-        //     let userProfile;
-
-        //     const reviewElement = createReviewElement(reviewDetailsFromApi, doc.author, image_url+doc.author_details.avatar_path);
-        //     reviewDisplay.appendChild(reviewElement);
-        // });
 
 
     } else {
@@ -193,26 +152,27 @@ async function displayReviews() {
 
         try {
             const promises = [];
-        
+
             reviewList.forEach((doc) => {
                 const promise = (async () => {  //an immediately invoked function  
                     let userName;
                     let userProfile;
                     const reviewData = doc.data();
-        
+                    console.log(doc.id);
+
                     userName = await getUsername(reviewData.id);
                     userProfile = await getUserProfile(reviewData.id);
                     console.log(userName);
-                    const reviewElement = createReviewElement(reviewData, userName, userProfile);
+                    const reviewElement = createReviewElement(reviewData, userName, userProfile, doc.id);
                     reviewDisplay.appendChild(reviewElement);
                 })();
                 console.log(promise);
-        
+
                 promises.push(promise);
             });
-        
+
             await Promise.all(promises);
-        
+
             // Code after the forEach loop
             let reviewDetailsFromApi;
             let image_url = "https://image.tmdb.org/t/p/w185";
@@ -222,7 +182,7 @@ async function displayReviews() {
                     msg: doc.content,
                     date: new Date(doc.updated_at).toLocaleDateString('en-US', options),
                 };
-        
+
                 const reviewElement = createReviewElement(reviewDetailsFromApi, doc.author, image_url + doc.author_details.avatar_path);
                 reviewDisplay.appendChild(reviewElement);
             }
@@ -230,17 +190,15 @@ async function displayReviews() {
             console.log("Error in userName fetching");
             console.log(e);
         }
-        
+
     }
 
-    
 }
 
 
 
+function createReviewElement(reviewData, userName, userProfile, id) {
 
-
-function createReviewElement(reviewData, userName, userProfile) {
     const reviewElement = document.createElement('div');
     reviewElement.classList.add('review-item');
 
@@ -251,13 +209,21 @@ function createReviewElement(reviewData, userName, userProfile) {
             <img id="review-profile-image" src="${userProfile}"> 
             <p id="review-username">${userName}</p>
             
-            <i class="bi bi-three-dots-vertical" id="review-threeDot"></i>
+            <i class="bi bi-three-dots-vertical" id="review-threeDot" data-userId="${reviewData.id}" ></i>
+            <div class="review-dot-popup" >
+            <div class="popup-box-dot" id="popup-box-dot">
+                <a data-userId="${reviewData.id}"  data-id="${id}" id="remove-review">Remove Review</a>
+                <a id="addFlag">Add Flag</a>
+
+            </div>
+        </div>
+            
         </div>
         <div id="review-msg">
             <p id="review-date">${reviewData.date}</p>
             <p id="review-msg-inside" class="review-msg-inside">${reviewData.msg}</p>
         </div>
-      
+        
     `;
 
     return reviewElement;
@@ -279,16 +245,46 @@ const togglepopup = () => {
 
 
 
-document.getElementById('main-review-container').addEventListener('click', function (event) {
+document.getElementById('main-review-container').addEventListener('click', async function (event) {
     console.log(event.target);
     const reviewMsgContent = document.getElementById('review-msg-inside');
+    const icon = event.target;
+
+    if (event.target.matches('#review-threeDot')) {
+        const userId = localStorage.getItem("userId");
+        const reviewUserId = icon.getAttribute("data-userId");
+        console.log(`${userId} ---- ${reviewUserId}`)
+        const popupBox = icon.nextElementSibling.querySelector(".popup-box-dot");
+        const removeReviewLink = popupBox.querySelector("#remove-review");
+
+        if (userId === reviewUserId) {
+            // If the condition is true, show the "Remove Review" link
+            removeReviewLink.style.display = "block";
+            togglePopup(popupBox);
+        } else {
+            // If the condition is false, hide the "Remove Review" link
+            removeReviewLink.style.display = "none";
+            togglePopup(popupBox);
+        }
+
+
+
+    }
+    if (event.target.matches('#remove-review')) {
+        console.log("inside review remove");
+        console.log(event.target);
+        const reviewId = event.target.getAttribute("data-id");
+        console.log(reviewId);
+        removeReview(reviewId);
+        await displayReviews();
+
+    }
 
 
     if (event.target.matches('#review-msg-inside')) {
         console.log("inside");
         reviewMsgContent.classList.toggle('expanded');
     }
-
 
     if (event.target.matches('#open-popup')) {
 
@@ -311,4 +307,22 @@ document.getElementById("review-submit").addEventListener('click', async functio
 
 });
 
+
+
+const removeReview = async (id) => {
+
+    try {
+        await deleteDoc(doc(db, 'reviews', id));
+        console.log("Review removed successfully");
+
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
+
+function togglePopup(popup) {
+    popup.style.display = popup.style.display === 'none' ? 'block' : 'none';
+}
 
