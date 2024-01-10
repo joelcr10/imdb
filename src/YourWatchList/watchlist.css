@@ -25,3 +25,7 @@ body{
 #watchlistButton{
     color: rgb(230, 82, 82);
 }
+.movie-content-title-genre{
+    color: red !important;
+    margin-left: 2%;
+}

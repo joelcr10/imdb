@@ -100,12 +100,16 @@
 #shareButton  {
     cursor: pointer;
     position: relative;
+    padding: 10px;
+    transition: background-color 0.7s ease-in-out,color 0.7s ease-in-out forwards;
     
 }
 
 
 #shareButton:hover {
-   color:goldenrod;
+   /* color:goldenrod; */
+   background-color: rgba(194, 194, 194, 0.322);
+    border-radius: 10%;
  
 }
 
@@ -212,4 +216,123 @@
     color: white;
     font-size: 20px;
     font-weight: bold;
+}
+
+.movie-content-title-genre{
+    
+    margin-left: 14%;
+    
+}
+
+
+
+.popular-movies-maincontainer{
+    display: flex;
+}
+.popular-movies {
+    min-height: 7.5rem;
+   
+}
+
+.info{
+    font-size: 1.5rem;
+    color: rgb(22, 22, 255);
+	cursor: pointer;
+    
+   
+    align-self: center;
+    
+}
+.info i{
+    padding-top: .2rem;
+    padding-left: .8rem;
+    padding-right: .8rem;
+    padding-bottom: .7rem;
+    transition: background-color 0.7s ease-in-out,color 0.7s ease-in-out forwards;
+
+}
+.info i:hover {
+    
+    background-color: rgba(0, 162, 255, 0.082);
+    border-radius: 50%;
+   
+}
+
+.sort-movies{
+   display: flex;
+   margin-left: 46%;
+   margin-bottom: 2%;
+
+}
+
+#redirect{
+    
+    color: rgba(0, 0, 0, 0);
+ 
+}
+
+
+
+.sort-movies {
+    position: relative;
+    display: inline-block;
+  }
+  
+
+  #dropdown {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    color: #333;
+  }
+  
+
+  #dropdown-list {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  /* Style for each dropdown option */
+  #dropdown-list option {
+    padding: 12px 16px;
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  /* Show dropdown content on hover */
+  .sort-movies:hover #dropdown-list {
+    display: block;
+  }
+  
+.movie-info{
+    margin-left: 3%;
+    min-width: 36rem;
+    align-self: center;
+    
+
+}
+.movie-info a{
+    text-decoration: none;
+    color: grey
+}
+.popular-movie-title{
+    color: rgb(71, 71, 71) !important;
+    font-weight: 700;
+}
+.popular-movie-title:hover{
+    color:black !important;
+}
+.popular-dynamicRating {
+   margin-left: 2%;
+    justify-items: center;
 }

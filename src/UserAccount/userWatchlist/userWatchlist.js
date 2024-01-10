@@ -23,7 +23,7 @@ export const getWatchlist = async () =>{
                 let poster = item.poster;
                 const card = `
                             <a href="../MovieDetails/movieDetails.html?id=${id}">
-                                <img src="${poster}" alt="">
+                                <img src="${poster}" id="watchlist-poster" alt="">
                                 <div class="card-text">
                                     
                                     

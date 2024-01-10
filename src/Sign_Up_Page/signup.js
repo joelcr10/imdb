@@ -1,3 +1,5 @@
+  import { signUp } from "../scripts/firebase.js";
+  
   // Dom elements
   let form = document.querySelector("form");
   let userName = document.querySelector("#username");
@@ -18,12 +20,14 @@
     let emailValue = email.value.trim();
     let passwordValue = password.value.trim();
     let confirmPasswordValue = confirmPassword.value.trim();
+    let counter= 0;
 
     //  Checking for username
     if (userNameValue === "") {
       setErrorFor(userName, "Username cannot be blank");
     } else {
       setSuccessFor(userName);
+      counter++;
     }
 
     // Checking for email
@@ -33,6 +37,7 @@
       setErrorFor(email, "Email is not valid");
     } else {
       setSuccessFor(email);
+      counter++;
     }
 
     // Checking for password
@@ -42,6 +47,7 @@
       setErrorFor(password, "Password length should be between 6 and 30");
     } else {
       setSuccessFor(password);
+      counter++;
     }
 
     // Checking for confirm password
@@ -54,6 +60,11 @@
       );
     } else {
       setSuccessFor(confirmPassword);
+      counter++;
+    }
+
+    if(counter>=4){
+      signUp();
     }
 
   }
@@ -70,6 +81,7 @@
   function setSuccessFor(input) {
     let formControl = input.parentElement;
     formControl.className = "form-control success";
+    
   }
 
   // To check if email is valid or not ?

@@ -1,16 +1,17 @@
 
 import { apiFetch } from '../scripts/apiFetch.js';
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+import { getFirestore, collection, getDocs, doc, setDoc, addDoc, query, where, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+import {firebaseCredentials} from '../../config.js';
 
-// import { addToWatchlist } from '../YourWatchList/watchlist.js';
+const firebaseConfig = firebaseCredentials;
 
-
-
-
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 
 const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-
 
 
 const returnGenre = (genreIds, genreList) => {
@@ -27,8 +28,22 @@ const returnGenre = (genreIds, genreList) => {
 };
 
 
+const getUserWatchlist = async () =>{
+    let watchlistMovieId = []
+    const docList = await getDocs(collection(db,"users",localStorage.getItem("userId"),"watchlist"));
+    docList.forEach((doc) => {
+        let item = doc.data();
+        let id = item.id;
+        watchlistMovieId.push(id.toString());
+    });
+    console.log(watchlistMovieId);
+    return watchlistMovieId;
+    
+}
+
 
 const upcomingMoviesSection = async () => {
+    
     let minDate = "2023-12-20";
     let maxDate = "2024-01-10";
     const apiUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&release_date.gte=${minDate}&release_date.lte=${maxDate}`;
@@ -98,6 +113,9 @@ const upcomingMoviesSection = async () => {
 
 
         movieListSorted.forEach(item => {
+            
+
+
             console.log(item);
             item.map(movieList => {
                 console.log(movieList);
@@ -115,29 +133,26 @@ const upcomingMoviesSection = async () => {
 
 
 
-            item.map(movie => {
+            item.map(async(movie) => {
+
+                let icon;
+                let watchlistMovieId = await getUserWatchlist();
+
+                if (watchlistMovieId.includes(movie.id.toString())) {
+                    console.log("yes in");
+                    icon =  `<i class="bi bi-bookmark-x-fill "  id="watchlistButton" data-title="${movie.title}" data-poster="${movie.poster}" data-genre="${movie.genre}" data-id="${movie.id}" ></i>`
+
+                } else {
+                    console.log("not in");
+                    icon =  `<i class="bi bi-bookmark-plus-fill "  id="watchlistButton" data-title="${movie.title}" data-poster="${movie.poster}" data-genre="${movie.genre}" data-id="${movie.id}" ></i>`
+                }
 
                 // Append each movie to the card
                 const movieDetails = document.createElement('div');
-
                 movieDetails.classList.add('movie-details');
-
-
                 movieDetails.style.minHeight = '6rem';
-
-
-                // movieDetails.onclick = function() {
-
-                
-
-
-                //     window.location.href = `../MovieDetails/movieDetails.html?id=${movie.id}`;
-                // };
-                // <a href = "../MovieDetails/movieDetails.html?id=${movie.id}" style="min-height:6rem;";
                 movieDetails.innerHTML = `
-                    
-
-                        
+                                  
                         <div class="movie-contents" >
                             
                                 <div class="movie-content-poster">
@@ -151,7 +166,7 @@ const upcomingMoviesSection = async () => {
                         </div>
 
                         <div class="watchlist" id="watchlistButton-container" data-title="${movie.title}" data-poster="${movie.poster}" data-genre="${movie.genre}" data-id="${movie.id}" >
-                                <i class="bi bi-bookmark-plus-fill "  id="watchlistButton" data-title="${movie.title}" data-poster="${movie.poster}" data-genre="${movie.genre}" data-id="${movie.id}" ></i>
+                                ${icon}
                         </div>
                         <hr>
                     `;
@@ -179,26 +194,16 @@ upcomingMoviesSection();
 
 const upcomingTVSection = async () => {
 
-    const API_KEY = 'Bearer dd35036818633025b77e437d6e8b9964';
-    const ACCESS_TOKEN = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZDM1MDM2ODE4NjMzMDI1Yjc3ZTQzN2Q2ZThiOTk2NCIsInN1YiI6IjY1ODFkODQ1YmYwZjYzMDg5MzYyYjg5NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.sT5e5quy6JNqGpb4QC2D008yWeeV9goKw0jwdPwFY6I'
     const tvApi = 'https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc'
     const tv_genre_api = 'https://api.themoviedb.org/3/genre/tv/list?language=en'
 
     try {
-        // const response = await fetch(tvApi, options);
-        // const result = await response.json();
+
         const result = await apiFetch(tvApi);
-        // const genre = await fetch(tv_genre_api, options);
-        // const genreList = await genre.json();
         const genreList = await apiFetch(tv_genre_api);
         let image_url = "https://image.tmdb.org/t/p/w185"
 
-        // console.log(genreList);
-        // console.log(result.results);
-
         let resultList = result.results;
-
-
         let tvByMonth = {};
         let releasedatesArray = [];
 
@@ -252,7 +257,21 @@ const upcomingTVSection = async () => {
             card.classList.add('card');
             card.id = 'movie-card';
 
-            item.map(tv => {
+            item.map(async tv => {
+
+                let icon;
+                let watchlistMovieId = await getUserWatchlist();
+                console.log(watchlistMovieId);
+                console.log(tv.id);
+
+                if (watchlistMovieId.includes(tv.id.toString())) {
+                    console.log("yes in");
+                    icon =  `<i class="bi bi-bookmark-x-fill "  id="watchlistButton" data-title="${tv.title}" data-poster="${tv.poster}" data-genre="${tv.genre}" data-id="${tv.id}" ></i>`
+
+                } else {
+                    console.log("not in");
+                    icon =  `<i class="bi bi-bookmark-plus-fill "  id="watchlistButton" data-title="${tv.title}" data-poster="${tv.poster}" data-genre="${tv.genre}" data-id="${tv.id}" ></i>`
+                }
 
                 // Append each movie to the card
                 const movieDetails = document.createElement('div');
@@ -263,21 +282,21 @@ const upcomingTVSection = async () => {
                 // };
 
                 movieDetails.innerHTML = `
-                <div class="movie-contents" >
-                    <div class="movie-content-poster">
-                        <img class="movie-poster" src="${tv.poster}" alt="movie-poster" >
-                    </div>
-                    <div class="movie-content-title-genre">
-                        <a class="movie-title" href="../TvDetails/tvDetails.html?id=${tv.id}" >${tv.title}</a><br>
-                        <a class="dynamicGenre">${tv.genre} </a>       
-                    </div>  
+                        <div class="movie-contents" >
+                            <div class="movie-content-poster">
+                                <img class="movie-poster" src="${tv.poster}" alt="movie-poster" >
+                            </div>
+                            <div class="movie-content-title-genre">
+                                <a class="movie-title" href="../TvDetails/tvDetails.html?id=${tv.id}" >${tv.title}</a><br>
+                                <a class="dynamicGenre">${tv.genre} </a>       
+                            </div>  
 
 
-                </div>
-            <div class="watchlist" id="watchlistButtonlll" data-title="${tv.title}" data-poster="${tv.poster}" data-genre="${tv.genre}" data-id="${tv.id}" >
-                    <i class="bi bi-bookmark-plus-fill "  id="watchlistButton" data-title="${tv.title}" data-poster="${tv.poster}" data-genre="${tv.genre}" data-id="${tv.id}" ></i>
-            </div>
-            <hr>
+                        </div>
+                        <div class="watchlist" id="watchlistButtonlll" data-title="${tv.title}" data-poster="${tv.poster}" data-genre="${tv.genre}" data-id="${tv.id}" >
+                            ${icon}
+                        </div>
+                        <hr>
                     `;
                 card.appendChild(movieDetails);
             });
@@ -294,9 +313,6 @@ const upcomingTVSection = async () => {
         console.log(error);
     }
 }
-
-
-
 
 document.getElementById('movie').addEventListener('click', function (event) {
     event.preventDefault(); // Prevent the default behavior of the anchor tag

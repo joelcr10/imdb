@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="whatToWatch.css">
+    <link rel="stylesheet" href="../css/recentlyview.css">
     <link rel="stylesheet" href="../UserRating/userrating.css">
+    <link rel="stylesheet" href="../RecentlyViewed/recentlyview.css">
 
 
     <title>What To Watch - IMDb</title>
@@ -57,10 +59,7 @@
                 
             </div>
             <br>
-            <div id="apirecentlyviewed" class="recentely-viewed">
-                <h2>Recently Viewed</h2>
-                <label for="">You have no recently viewed pages</label>
-            </div>
+           
         </div>
 
         <div id="tab2" class="tab-content">
@@ -82,10 +81,7 @@
                     
                 </div>
             </div>
-            <div id="apirecentlyviewed" class="recentely-viewed">
-                <h2>Recently Viewed</h2>
-                <label for="">You have no recently viewed pages</label>
-            </div>
+            
         </div>
 
         <div id="tab3" class="tab-content">
@@ -135,10 +131,7 @@
             </div>
             <br>
 
-            <div id="apirecentlyviewed" class="recentely-viewed">
-                <h2>Recently Viewed</h2>
-                <label for="">You have no recently viewed pages</label>
-            </div>
+            
         </div>
 
         <div id="tab5" class="tab-content">
@@ -162,13 +155,15 @@
                 
             </div>
             <br>
-            <div id="apirecentlyviewed" class="recentely-viewed">
-                <h2>Recently Viewed</h2>
-                <label for="">You have no recently viewed pages</label>
-            </div>
+            
         </div>
-    
-
+        <div id="recent-view-container">
+        <h2 class="recent-view-heading">Recently Viewed</h2>
+        <div id="recent-movies">
+            
+        </div>
+        </div>
+     
     <div id="footer-container"></div>
 
 
@@ -192,7 +187,7 @@
         });
 
     </script>
-
+    <script src="../RecentlyViewed/recentview.js" type="module"></script>
     <script src="whatToWatch.js" type="module"></script>
     <script src="../LandingPage/main.js" type="module"></script>
     <script src="../scripts/navbarMenu.js"></script>

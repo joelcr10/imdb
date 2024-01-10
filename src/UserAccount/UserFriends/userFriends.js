@@ -32,7 +32,7 @@ export const searchUsername = async () =>{
   
       });
 
-    console.log(tempDocList);
+    // console.log(tempDocList);
     
     document.getElementById("search-results").innerHTML = "";
     //creating the results
@@ -46,9 +46,10 @@ export const searchUsername = async () =>{
                 let span = document.createElement("span");
                 span.innerText = tempDocList[i].name;
                 span.onclick = function(){
+                    // console.log("testing");
                     openModal(tempDocList[i]);
                 }
-                console.log(tempDocList[i]);
+                // console.log(tempDocList[i]);
                 document.getElementById("search-results").append(span);
             }
         }
@@ -150,10 +151,11 @@ export const displayFriendRequests = async () =>{
     
     }else{
         
+        console.log(friendRequest);
         for(let i=0; i<friendRequest.length;i++){
             
             let userDoc = await getUserDoc(friendRequest[i]); //getting the doc of each friend request
-
+            console.log(userDoc);
             const username = userDoc.username;
             
             //creating card for friend
@@ -366,3 +368,5 @@ const showSnackbar = (textMessage) =>{
     // After 3 seconds, remove the show class from DIV
     setTimeout(function(){ snackbar.className = snackbar.className.replace("show", ""); }, 3000);
 }
+
+

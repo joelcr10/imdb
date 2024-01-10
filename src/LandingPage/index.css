@@ -205,9 +205,9 @@ body{
 }
 
 .celeb-card img{
-    border-radius: 110px;
+    border-radius: 9%;
     height: 200px;
-    width: 200px;
+    width: 170px;
 }
 
 .celeb-card label{

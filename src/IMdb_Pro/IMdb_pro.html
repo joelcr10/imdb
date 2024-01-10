@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <link rel="stylesheet" href="IMdb_Pro.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+  </head>
+  <body>
+    <div class="header-container">
+      <div class="imdb-pro-logo">
+        <img src="../../assets/img/imdb_pro_logo.png" id="main-logo" />
+      </div>
+      <div class="login-container">
+        <p>Hi! Do you have an account</p>
+        <p>If not ? <a href="../Login_Page/login.html">Sign Up</a></p>
+      </div>
+      <hr />
+    </div>
+    <div id="background-video-container">
+      <video
+        src="../../assets/videos/pexels-karolina-grabowska-5662333 (2160p).mp4"
+        id="background-video"
+        autoplay
+        muted
+      ></video>
+    </div>
+    <h3 class="header-subscription">Choose the Subscription meant for you!</h3>
+
+
+    <div class="subscription-option">
+      <div class="premium-subscription">
+
+
+        <div class="premium-popular-tag">
+          <span class="small-heading"> Most Popular </span>
+        </div>
+
+
+        <div class="premium-subscription-conatiner">
+          <h2 class="premium-subscription-header">Premium Subscription</h2>
+          <div class="premium-subscription-info">
+            <span class="small-heading-subscription-info">
+              Try Premium Subscription for $1/month($12/year)
+            </span>
+            <img
+              src="../../assets/img/premium_image.jpg"
+              width="400px"
+              class="image-premium"
+            />
+            <!-- <h3 class="premium-subscription-list-heading">
+              With a premium subscription you can:
+            </h3>
+            <div class="premium-subscription-list">
+                  With premium subscription you can enjoy
+                <ul class="premium-list">
+                  <li>High Quality Video</li>
+                  <li>Personalised Journal</li>
+                </ul>
+            </div> -->
+
+            <h3>With a premium subscription you can:</h3>
+          <div class="premium-subscription-list">
+            <span>
+                With premium subscription you can enjoy<br>
+                <ul class="premium-list">
+                  <li>High Quality Video</li>
+                  <li>Personalised Journal</li>
+                </ul>
+            </span>
+          </div>
+
+
+            <button class="premium-btn" type="button" onclick="openPayment()">
+              START PREMIUM MEMBERSHIP
+            </button>
+
+            <div class="popup-container" id="popup">
+              <form id="getpayment">
+                <span class="close-btn" onclick="closePopup()">&times;</span>
+                <h3>ENTER IMDB CREDENTIALS</h3>
+                <label for="username" class="username-input"
+                  >IMDB UserName</label
+                ><br />
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  required
+                  placeholder="UserName "
+                  oninput="checkUserName()"
+                />
+                <br />
+                <label for="phonenumber" class="phonenumber-input"
+                  >IMDB Password</label
+                ><br />
+                <input
+                  type="text"
+                  id="phonenumber"
+                  name="phonenumber"
+                  required
+                  placeholder="Password "
+                />
+                <br /><br /><br />
+                <script
+                  src="https://checkout.razorpay.com/v1/payment-button.js"
+                  data-payment_button_id="pl_NLiu9E6KQUN1KN"
+                  async
+                ></script>
+              </form>
+            </div>
+            <div class="overlay" id="overlay" onclick="closePopup()"></div>
+          </div>
+        </div>
+      </div>
+      <div class="basic-plan">
+        <div class="inner-box-basic-plan">
+          <h2>Basic Subscription</h2>
+          <div class="basic-plan-cost">
+            <span>Get a basic Subscription at no cost</span>
+          </div>
+          <img
+            src="../../assets/img/imdb_pro_basic_plan.png"
+            width="380px"
+            height="230px" id="basic-image"
+          />
+          <h3>With a basic subscription you can:</h3>
+          <div class="basic-subscription-list">
+            <span>
+              <ul class="basic-plan-list">
+                <li>Enjoy all imdb videos at no extra cost</li>
+                <li>create personalised watchlist</li>
+              </ul>
+            </span>
+          </div>
+          <a id="goback-btn" href="../LandingPage/index.html"
+            ><button>GO BACK</button></a
+          >
+        </div>
+      </div>
+    </div>
+    <br /><br /><br />
+
+    <button id="return-home">Return to Home</button>
+    <br /><br /><br />
+    <div id="footer-container"></div>
+    <script src="../scripts/includeNavbar&Footer.js" type="module"></script>
+
+    <script src="IMdb_Pro.js"></script>
+  </body>
+</html>

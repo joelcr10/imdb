@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="./movieDetails.css">
-    <link rel="stylesheet" href="../review/review.css">
+    <link rel="stylesheet" href="../review/reviews.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../UserRating/userrating.css" />
 
@@ -31,11 +31,7 @@
           ></label>
         </div>
         <div class="rating-container">
-          <div class="journal">
-            <a href="../IMDbjOURNAL/journal.html">
-              <button id="journalButton">Write a Journal</button>
-            </a>
-          </div>
+          
           <div class="imdb-rating">
             <label class="rating-heading">IMDb RATING</label>
             <div class="rating">
@@ -51,7 +47,7 @@
               <span class="rating-text">RATING</span>
               &#9733;
             </div>
-            <div id="userRating">Rate</div>
+            <div id="userRating"></div>
           </div>
           <div class="imdb-rating">
             <label class="rating-heading">POPULARITY</label>
@@ -116,10 +112,16 @@
           </div>
         </div>
         <div class="watchlist-right-side">
-          <div class="movie-info-watchlist-container">
-            <label>+</label>
-            <span>Add to Watchlist</span>
-          </div>
+            <div class="movie-info-watchlist-container">
+              <label>+</label>
+              <span>Add to Watchlist</span>
+            </div>
+
+            <div class="journal">
+              <a href="../IMDbjOURNAL/journal.html">
+                <button id="journalButton">Write a Journal</button>
+              </a>
+            </div>
         </div>
       </div>
     </div>
@@ -201,40 +203,64 @@
           </div>
         </div>
 
-        <div class="details-container">
-          <div class="header-line">
-            <div class="yellow-line"></div>
-            <h1>Details</h1>
-          </div>
-          <div class="top-cast-bts">
-            <div class="info-line">
-              <b>Release Date</b>
-              <span id="release-date">December 22, 2023</span>
+            <div class="details-container">
+                <div class="header-line">
+                    <div class="yellow-line"></div>
+                    <h1>Details</h1>
+                </div>
+                <div class="top-cast-bts">
+                    <div class="info-line">
+                        <b>Release Date</b>
+                        <span id="release-date">December 22, 2023</span>
+                    </div>
+                    <div class="info-line">
+                        <b>Country of Origin</b>
+                        <span id="countryOrigin">United States &nbsp; <div class="dot"></div> &nbsp; Canada &nbsp; <div
+                                class="dot"></div> &nbsp;United Kingdom</span>
+                    </div>
+                    <div class="info-line">
+                        <b>Official Site</b>
+                        <span><a href="" id="official-movie-site"></a></span>
+                    </div>
+                    <div class="info-line">
+                        <b>Language</b>
+                        <span id="movie-language"></span>
+                    </div>
+                    <div class="info-line">
+                        <b>Box Office</b>
+                        <span id="movie-budget"></span>
+                    </div>
+                </div>
             </div>
-            <div class="info-line">
-              <b>Country of Origin</b>
-              <span id="countryOrigin"
-                >United States &nbsp;
-                <div class="dot"></div>
-                &nbsp; Canada &nbsp;
-                <div class="dot"></div>
-                &nbsp;United Kingdom</span
-              >
+            <div class="reviews" id="main-review-container">
+                <div class="header-line">
+                    <div class="yellow-line"></div>
+                    <div class="review-head">
+                        <h1>Reviews</h1>
+                        <i class="bi bi-pencil-square" id="open-popup"></i>
+                    </div>
+                </div>
+                <div class="review-details">
+                    <div class="popup-container" id="popup-container">
+                        <div class="popup">
+                            <span class="close-popup" id="close-popup">&times;</span>
+                            <div class="popup-inner">
+                                <h3 id="pop-head">Enter your Review Below</h3>
+                                <textarea id="review-msg" placeholder="Enter your review"></textarea>
+
+
+                                <p id="review-submit">Submit Review</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="review-display" id="review-display">
+
+                </div>
             </div>
-            <div class="info-line">
-              <b>Official Site</b>
-              <span><a href="" id="official-movie-site"></a></span>
-            </div>
-            <div class="info-line">
-              <b>Language</b>
-              <span id="movie-language"></span>
-            </div>
-            <div class="info-line">
-              <b>Box Office</b>
-              <span id="movie-budget"></span>
-            </div>
-          </div>
-        </div>
 
         <div class="more-like-this-container">
           <div class="header-line">
@@ -250,10 +276,10 @@
     <script src="../scripts/includeNavbar&Footer.js" type="module"></script>
     <script src="../scripts/navbarMenu.js"></script>
     <script src="./movieDetails.js" type="module"></script>
-    <script src="../review/review.js" type="module"></script>
-    <script type="module">
+    <!-- <script src="../review/review.js" type="module"></script> -->
+    <!-- <script type="module" >
       import { addRating } from "../UserRating/userratingDB.js";
-      import {openRatingModal} from "../MovieDetails/userrating.js";
+      import {openRatingModal} from  './userrating.js';
 
 
       console.log("testing something");
@@ -283,8 +309,9 @@
             console.log("fetched rating:", fetchedId);
           }
         });
-    </script>
+    </script> -->
     <script src="./userrating.js" type="module"></script>
+    <script src="../review/review.js" type="module"></script>
   </body>
 
 </html>

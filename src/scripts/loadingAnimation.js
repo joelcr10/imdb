@@ -1,5 +1,3 @@
-
-
 const loadingAnimation = async (loadContent) =>{
     setTimeout(async function() {
       // Hide the loader
