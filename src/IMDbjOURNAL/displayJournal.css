@@ -1,0 +1,47 @@
+.journal-image{
+    height: 300px;
+    width: auto;
+    margin-top: 1em;
+}
+
+.journal-entries{
+    margin-left: 0px;
+    width: 90%;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: lightgoldenrodyellow;
+    background-color: lightgoldenrodyellow;
+    
+}
+
+.container-row-journal {
+    display: flex;
+    justify-content: center;
+  }
+
+  .entryResultRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: lightgoldenrodyellow;
+    position: relative;
+  }
+
+
+  .journal-date {
+    background-color: lightgoldenrodyellow;
+    width: 100%;
+  }
+
+  .heading-results {
+    margin-left: 0px;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: lightgoldenrodyellow;
+    background-color: lightgoldenrodyellow;
+  }
+
+
+  
+  

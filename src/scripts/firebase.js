@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+import { getFirestore, doc, setDoc, addDoc, collection} from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 import { getAuth,createUserWithEmailAndPassword,  signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 import { firebaseCredentials } from "../../config.js";
 
@@ -26,9 +26,10 @@ const auth = getAuth(); //initializing firebase auth
     const username = document.getElementById("username").value;
     try{
 
+      console.log("entering create username with email and pwd");
       createUserWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
-        
+        console.log("inside create");
         await setDoc(doc(db, "users", userCredential.user.uid ), {
           username: username,
           profile: "https://robohash.org/"+email+"?set=set5",
@@ -38,9 +39,20 @@ const auth = getAuth(); //initializing firebase auth
           email: email,
           imdb_pro:0
         });
-        window.location.href = "../Login_Page/login.html";
-        // window.location.href = "D:/IMDB-Clone/src/Login_Page/login.html";
-        
+
+        console.log("created db");
+
+        const ratingCollection = collection(db, 'users', userCredential.user.uid, 'userRatings');
+        console.log(ratingCollection);
+        const ratingDoc = doc(ratingCollection,"rating");
+        await setDoc(ratingDoc,{});
+
+        const journalCollection = collection(db, 'users', userCredential.user.uid, "userJournal");
+        const journalDoc = doc(journalCollection,"journalEntries");
+        await setDoc(journalDoc,{});
+
+        console.log("setting userRatings");
+        window.location.href = "../Login_Page/login.html"; 
         alert("Signup successfull");
         
       })

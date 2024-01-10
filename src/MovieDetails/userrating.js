@@ -33,6 +33,7 @@ export const openRatingModal = (movieName, id) => {
 
   // Update the rating modal content
   document.getElementById("ratingModal").innerHTML = ratingContainer;
+  console.log("exiting ope rating modal");
 }
 
 // Function to close the rating modal
