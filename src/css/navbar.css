@@ -41,11 +41,7 @@
     height: 70px;
 
 }
-#imdb_pro_icon{
-    width: 70px;
-    height: 40px;
-    background-color: black;
-}
+
 .search-container{
     width: 50%;
 }
@@ -398,10 +394,7 @@
 
  }
 
- #imdb_pro_icon{
-    max-height: 50px !important;
-    width:100px;
- }
+
  .imageBox {
     /* background-color: red; */
     border: 1px solid orange;
@@ -505,4 +498,8 @@
     left: 95px;
     z-index: 5;
 }
-
+#imdb_pro_icon{
+    
+    width:100px;
+   
+ }

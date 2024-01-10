@@ -2,7 +2,7 @@
 import { apiFetch } from '../scripts/apiFetch.js';
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
 import { getFirestore, collection, getDocs, doc, setDoc, addDoc, query, where, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
-import {firebaseCredentials} from '../../config.js';
+import { firebaseCredentials } from '../../config.js';
 
 const firebaseConfig = firebaseCredentials;
 
@@ -28,22 +28,27 @@ const returnGenre = (genreIds, genreList) => {
 };
 
 
-const getUserWatchlist = async () =>{
-    let watchlistMovieId = []
-    const docList = await getDocs(collection(db,"users",localStorage.getItem("userId"),"watchlist"));
-    docList.forEach((doc) => {
-        let item = doc.data();
-        let id = item.id;
-        watchlistMovieId.push(id.toString());
-    });
-    console.log(watchlistMovieId);
-    return watchlistMovieId;
-    
+const getUserWatchlist = async () => {
+    try {
+        let watchlistMovieId = []
+        const docList = await getDocs(collection(db, "users", localStorage.getItem("userId"), "watchlist"));
+        docList.forEach((doc) => {
+            let item = doc.data();
+            let id = item.id;
+            watchlistMovieId.push(id.toString());
+        });
+        console.log(watchlistMovieId);
+        return watchlistMovieId;
+    } catch (e) {
+        console.log()
+    }
+
+
 }
 
 
 const upcomingMoviesSection = async () => {
-    
+
     let minDate = "2023-12-20";
     let maxDate = "2024-01-10";
     const apiUrl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_release_type=2|3&release_date.gte=${minDate}&release_date.lte=${maxDate}`;
@@ -99,7 +104,6 @@ const upcomingMoviesSection = async () => {
 
 
 
-
         console.log(sortedDates);
 
         const movieListSorted = []; //creates a empty array to push the moies in correct upcomming order
@@ -111,78 +115,7 @@ const upcomingMoviesSection = async () => {
         })
         console.log(movieListSorted);
 
-
-        movieListSorted.forEach(item => {
-            
-
-
-            console.log(item);
-            item.map(movieList => {
-                console.log(movieList);
-            })
-            const month_year = month[new Date(item[0].releaseDate).getMonth()] + "  " + new Date(item[0].releaseDate).getFullYear();
-
-
-            const section = document.createElement('div');
-            section.innerHTML = `<h2 style="padding-top:3%;padding-bottom:1%;font-size: 1.6rem">${month_year}</h2>`;
-
-            // Create a single card for the month
-            const card = document.createElement('div');
-            card.classList.add('card');
-            card.id = 'movie-card';
-
-
-
-            item.map(async(movie) => {
-
-                let icon;
-                let watchlistMovieId = await getUserWatchlist();
-
-                if (watchlistMovieId.includes(movie.id.toString())) {
-                    console.log("yes in");
-                    icon =  `<i class="bi bi-bookmark-x-fill "  id="watchlistButton" data-title="${movie.title}" data-poster="${movie.poster}" data-genre="${movie.genre}" data-id="${movie.id}" ></i>`
-
-                } else {
-                    console.log("not in");
-                    icon =  `<i class="bi bi-bookmark-plus-fill "  id="watchlistButton" data-title="${movie.title}" data-poster="${movie.poster}" data-genre="${movie.genre}" data-id="${movie.id}" ></i>`
-                }
-
-                // Append each movie to the card
-                const movieDetails = document.createElement('div');
-                movieDetails.classList.add('movie-details');
-                movieDetails.style.minHeight = '6rem';
-                movieDetails.innerHTML = `
-                                  
-                        <div class="movie-contents" >
-                            
-                                <div class="movie-content-poster">
-                                    <img class="movie-poster" src="${movie.poster}" alt="movie-poster" >
-                                </div>
-                                <div class="movie-content-title-genre">
-                                    <a class="movie-title" href='../MovieDetails/movieDetails.html?id=${movie.id}' >${movie.title} </a><br>
-                                    <a class="dynamicGenre">${movie.genre} </a>       
-                                </div>  
-                            
-                        </div>
-
-                        <div class="watchlist" id="watchlistButton-container" data-title="${movie.title}" data-poster="${movie.poster}" data-genre="${movie.genre}" data-id="${movie.id}" >
-                                ${icon}
-                        </div>
-                        <hr>
-                    `;
-                card.appendChild(movieDetails);
-            });
-
-            // Append the card to the section
-            section.appendChild(card);
-
-            // Append the section to the container
-            document.getElementById("movie-per-date").appendChild(section);
-        });
-
-
-
-
+        await createElement(movieListSorted);
 
 
     } catch (error) {
@@ -243,76 +176,14 @@ const upcomingTVSection = async () => {
             tvListSorted.push(tvByMonth[dates]); //they key will be the release dates
         })
 
-
-        tvListSorted.map(item => {
-
-            const month_year = month[new Date(item[0].releaseDate).getMonth()] + "  " + new Date(item[0].releaseDate).getFullYear();
-
-
-            const section = document.createElement('div');
-            section.innerHTML = `<h2 style="padding-top:3%;padding-bottom:1%;font-size: 1.6rem">${month_year}</h2>`;
-
-            // Create a single card for the month
-            const card = document.createElement('div');
-            card.classList.add('card');
-            card.id = 'movie-card';
-
-            item.map(async tv => {
-
-                let icon;
-                let watchlistMovieId = await getUserWatchlist();
-                console.log(watchlistMovieId);
-                console.log(tv.id);
-
-                if (watchlistMovieId.includes(tv.id.toString())) {
-                    console.log("yes in");
-                    icon =  `<i class="bi bi-bookmark-x-fill "  id="watchlistButton" data-title="${tv.title}" data-poster="${tv.poster}" data-genre="${tv.genre}" data-id="${tv.id}" ></i>`
-
-                } else {
-                    console.log("not in");
-                    icon =  `<i class="bi bi-bookmark-plus-fill "  id="watchlistButton" data-title="${tv.title}" data-poster="${tv.poster}" data-genre="${tv.genre}" data-id="${tv.id}" ></i>`
-                }
-
-                // Append each movie to the card
-                const movieDetails = document.createElement('div');
-                movieDetails.classList.add('movie-details');
-                // movieDetails.onclick = function () {
-
-                //     window.location.href = `../TvDetails/tvDetails.html?id=${tv.id}`;
-                // };
-
-                movieDetails.innerHTML = `
-                        <div class="movie-contents" >
-                            <div class="movie-content-poster">
-                                <img class="movie-poster" src="${tv.poster}" alt="movie-poster" >
-                            </div>
-                            <div class="movie-content-title-genre">
-                                <a class="movie-title" href="../TvDetails/tvDetails.html?id=${tv.id}" >${tv.title}</a><br>
-                                <a class="dynamicGenre">${tv.genre} </a>       
-                            </div>  
-
-
-                        </div>
-                        <div class="watchlist" id="watchlistButtonlll" data-title="${tv.title}" data-poster="${tv.poster}" data-genre="${tv.genre}" data-id="${tv.id}" >
-                            ${icon}
-                        </div>
-                        <hr>
-                    `;
-                card.appendChild(movieDetails);
-            });
-
-            // Append the card to the section
-            section.appendChild(card);
-
-            // Append the section to the container
-            document.getElementById("movie-per-date").appendChild(section);
-        });
+         await createElement(tvListSorted);
 
 
     } catch (error) {
         console.log(error);
     }
 }
+
 
 document.getElementById('movie').addEventListener('click', function (event) {
     event.preventDefault(); // Prevent the default behavior of the anchor tag
@@ -327,5 +198,91 @@ document.getElementById('tv').addEventListener('click', function (event) {
 });
 
 
+const createElement = async (movieListSorted) => {
+
+    try {
 
 
+
+
+
+        movieListSorted.forEach(async item => {
+
+
+
+            console.log(item);
+            item.map(movieList => {
+                console.log(movieList);
+            })
+            const month_year = month[new Date(item[0].releaseDate).getMonth()] + "  " + new Date(item[0].releaseDate).getFullYear();
+
+
+            const section = document.createElement('div');
+            section.innerHTML = `<h2 style="padding-top:3%;padding-bottom:1%;font-size: 1.6rem">${month_year}</h2>`;
+
+            // Create a single card for the month
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.id = 'movie-card';
+
+
+
+            item.map(async (movie) => {
+                console.log(movie);
+
+                let icon;
+                
+                if(localStorage.getItem("userId") != null){
+                    let watchlistMovieId = await getUserWatchlist();
+
+                if (watchlistMovieId.includes(movie.id.toString())) {
+                    console.log("yes in");
+                    icon = `<i class="bi bi-bookmark-x-fill "  id="watchlistButton" data-title="${movie.title}" data-poster="${movie.poster}" data-genre="${movie.genre}" data-id="${movie.id}" ></i>`
+
+                } else {
+                    console.log("not in");
+                    icon = `<i class="bi bi-bookmark-plus-fill "  id="watchlistButton" data-title="${movie.title}" data-poster="${movie.poster}" data-genre="${movie.genre}" data-id="${movie.id}" ></i>`
+                }
+                }
+                else{
+                    icon = `<i class="bi bi-bookmark-plus-fill "  id="watchlistButton-disabled" data-title="${movie.title}" data-poster="${movie.poster}" data-genre="${movie.genre}" data-id="${movie.id}" ></i>`
+                    
+                }
+                
+
+                // Append each movie to the card
+                const movieDetails = document.createElement('div');
+                movieDetails.classList.add('movie-details');
+                movieDetails.style.minHeight = '6rem';
+                movieDetails.innerHTML = `
+                              
+                    <div class="movie-contents" >
+                        
+                            <div class="movie-content-poster">
+                                <img class="movie-poster" src="${movie.poster}" alt="movie-poster" >
+                            </div>
+                            <div class="movie-content-title-genre">
+                                <a class="movie-title" href='../MovieDetails/movieDetails.html?id=${movie.id}' >${movie.title} </a><br>
+                                <a class="dynamicGenre">${movie.genre} </a>       
+                            </div>  
+                        
+                    </div>
+
+                    <div class="watchlist" id="watchlistButton-container" data-title="${movie.title}" data-poster="${movie.poster}" data-genre="${movie.genre}" data-id="${movie.id}" >
+                            ${icon}
+                    </div>
+                    <hr>
+                `;
+                card.appendChild(movieDetails);
+            });
+
+            // Append the card to the section
+            section.appendChild(card);
+
+            // Append the section to the container
+            document.getElementById("movie-per-date").appendChild(section);
+        });
+    } catch (e) {
+        console.log(e);
+    }
+}
