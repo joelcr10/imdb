@@ -12,28 +12,7 @@ const openPayment=async()=> {
     gotosignupPage();
   }
 }
-const showCredentials=async()=>{
-  const popup= document.getElementById('popup');
-const username=localStorage.getItem('userName');
-// popup.innerHTML=`
-// <form id="getpayment">
-//                       <span class="close-btn" onclick="closePopup()">&times;</span>
-//                   <h3>ENTER IMDB CREDENTIALS</h3>
-//                   <label for="username" class="username-input">HEY ${username}</label><br>
-//                   <p>Upgrade your IMDB Account at $1/month</p>
-//                   <br><br><br>
-//                       <div id="payment-btn">
-//                           <script src="https://checkout.razorpay.com/v1/payment-button.js" 
-//                           data-payment_button_id="pl_NLiu9E6KQUN1KN"
-                          
-//                           async> 
-                          
-//                           </script>
-//                       </div>
-//                   </form>
-// `;
 
-}
 function gotosignupPage() {
 const popup_signin = document.getElementById('popup');
 popup_signin.innerHTML = `
@@ -59,3 +38,22 @@ document.getElementById("payment-btn").addEventListener("click",closefunction);
 function closefunction(){
 closePopup();
 }
+// function checkUserName() {
+//   const inputElement = document.getElementById('username');
+//   const errorMessageElement = document.getElementById('error-message');
+
+//   // Retrieve the stored username from localStorage
+//   const storedUsername = localStorage.getItem('user');
+
+//   // Get the current input value
+//   const currentInputValue = inputElement.value.trim();
+
+//   // Compare the input value with the stored username
+//   if (currentInputValue !== storedUsername) {
+//     // Display the error message
+//     errorMessageElement.style.display = 'block';
+//   } else {
+//     // Hide the error message if the input matches the stored username
+//     errorMessageElement.style.display = 'none';
+//   }
+// }
