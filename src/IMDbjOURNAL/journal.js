@@ -1,8 +1,12 @@
+import { addJournal } from "./journalDB.js";
+
 // Journal Entry Form
 const movieNameGlobal = localStorage.getItem("journal-movie-title");
 const moviePoster = localStorage.getItem("journal-movie-image");
+const movieId = localStorage.getItem("journal-movie-id");
 console.log(moviePoster);
 console.log(movieNameGlobal);
+var divElement = "";
 // Selecting the entry form, entry results section, result item, and result row elements
 const entryForm = document.querySelector(`#entryForm`);
 const entryResultsSection = document.querySelector(`#entryResultsSection`);
@@ -38,6 +42,7 @@ function addEntryToDom(event) {
   const entryDiv = document.createElement(`div`);
   entryDiv.className = `single-entry-div`;
   entryResultRow.appendChild(entryDiv);
+  divElement = entryDiv;
 
   // Creating an h2 element for the entry movie name
   const entryImage = document.createElement(`img`);
@@ -55,6 +60,7 @@ function addEntryToDom(event) {
   const entryHeading = document.createElement(`h3`);
   entryHeading.className = `single-entry-heading`;
   entryHeading.textContent = getEntryTitle[0].value;
+  let journalHeading =entryHeading.textContent;
   entryDiv.appendChild(entryHeading);
 
   // Creating a paragraph element for the entry date
@@ -66,15 +72,20 @@ function addEntryToDom(event) {
     entryDate.textContent = `Date Added: ${day} ${n} ${year}`;
     entryDiv.appendChild(entryDate);
   }
+  let journalDate = `${day} ${n} ${year}`;
 
   // Creating a paragraph element for the entry text
   const entryParagraph = document.createElement(`p`);
   entryParagraph.className = `single-entry-text`;
   entryParagraph.textContent = getEntryText[0].value;
+  let journalParagraph = entryParagraph.textContent;
   entryDiv.appendChild(entryParagraph);
 
   // Clearing the entry text box
   getEntryText[0].value = ``;
+
+  addJournal(movieId,movieNameGlobal,moviePoster,journalHeading,journalDate,journalParagraph);
+  
 }
 
 // Adding an event listener to the entry form to trigger the addEntryToDom function on form submission
