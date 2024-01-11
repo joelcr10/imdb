@@ -28,7 +28,7 @@ let movieid;
                                 </div>
                                 <p id="selectedRating">Your Rating: 0</p>
                                 <button class = "submit" ">Rate</button>
-                                <button class = "close" onclick="closeRatingModal()">Close</button>
+                                <button class = "closee" onclick="closeRatingModal()">Close</button>
                             </div>`;
 
   // Update the rating modal content

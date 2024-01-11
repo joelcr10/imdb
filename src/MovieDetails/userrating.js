@@ -28,7 +28,7 @@ export const openRatingModal = (movieName, id) => {
                                 </div>
                                 <p id="selectedRating">Your Rating: 0</p>
                                 <button id="rateButton" class = "submit" onclick="displayUserRating()">Rate</button>
-                                <button id="close" class = "close">Close</button>
+                                <button id="close" class = "closee">Close</button>
                              </div>`;
 
   // Update the rating modal content
