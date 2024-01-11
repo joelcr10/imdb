@@ -1,47 +1,76 @@
-.journal-image{
-    height: 300px;
-    width: auto;
-    margin-top: 1em;
+
+/* Journal Entry Container */
+.journal-entry {
+  background-color: black;
+  color: rgb(255, 187, 0);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease-in-out;
+  overflow: hidden;
+  position: relative;
+
 }
 
-.journal-entries{
-    margin-left: 0px;
-    width: 90%;
-    text-align: center;
-    text-decoration: underline;
-    text-decoration-color: lightgoldenrodyellow;
-    background-color: lightgoldenrodyellow;
-    
+.journal-entry:hover {
+  transform: scale(1.05);
 }
 
-.container-row-journal {
-    display: flex;
-    justify-content: center;
-  }
+/* Journal Entry Image */
+.journal-image {
+  width: 10%;
+  height: auto;
+  border-radius: 8px;
+}
 
-  .entryResultRow {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    background-color: lightgoldenrodyellow;
-    position: relative;
-  }
+/* Journal Entry Name */
+.journal-name {
+  margin-top: 10px;
+  font-size: 50px;
+  font-weight: bold;
+  position: absolute;
+  left: 180px;
+  top: 10px;
+}
+
+/* Journal Entry Date */
+.journal-date {
+  margin-top: 5px;
+  color: rgb(121, 121, 121);
+  font-size: 14px;
+  position: absolute;
+  left: 180px;
+  top: 100px;
+}
+
+/* Journal Entry Heading */
+.journal-heading {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  position: absolute;
+  left: 180px;
+  top: 120px;
+}
+
+/* Journal Entry Paragraph */
+.journal-paragraph {
+  margin-top: 10px;
+  line-height: 1.5;
+  color: white;
+  font-size: 16px;
+  position: absolute;
+  left: 180px;
+  top: 150px;
+}
 
 
-  .journal-date {
-    background-color: lightgoldenrodyellow;
-    width: 100%;
-  }
+#journal-entries{
+  background-color: black;
+}
 
-  .heading-results {
-    margin-left: 0px;
-    text-align: center;
-    text-decoration: underline;
-    text-decoration-color: lightgoldenrodyellow;
-    background-color: lightgoldenrodyellow;
-  }
-
-
-  
-  
+.heading-results{
+  background-color: black;
+  color: rgb(255, 187, 0);
+  text-decoration: none;
+}

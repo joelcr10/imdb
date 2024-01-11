@@ -57,7 +57,7 @@ console.log(db);
             entryContainer.appendChild(imageElement);
         
             // Create name element
-            const nameElement = document.createElement('h2');
+            const nameElement = document.createElement('h1');
             nameElement.textContent = journalData[journalKey].movieName;
             nameElement.classList.add('journal-name'); // Add a class name to the name element
             entryContainer.appendChild(nameElement);
