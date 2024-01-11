@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Document</title>
+    <title>IMDB PRO</title>
+    <link rel="icon" href="../../assets/img/imdb-logo.png">
     <link rel="stylesheet" href="IMdb_Pro.css" />
     <link rel="stylesheet" href="../css/footer.css" />
   </head>
@@ -47,16 +48,7 @@
               width="400px"
               class="image-premium"
             />
-            <!-- <h3 class="premium-subscription-list-heading">
-              With a premium subscription you can:
-            </h3>
-            <div class="premium-subscription-list">
-                  With premium subscription you can enjoy
-                <ul class="premium-list">
-                  <li>High Quality Video</li>
-                  <li>Personalised Journal</li>
-                </ul>
-            </div> -->
+           
 
             <h3>With a premium subscription you can:</h3>
           <div class="premium-subscription-list">
@@ -76,11 +68,11 @@
 
             <div class="popup-container" id="popup">
               <form id="getpayment">
-                <span class="close-btn" onclick="closePopup()">&times;</span>
+                <span class="close-btn" onclick="closePopup()" style="color: black;">&times;</span>
                 <h3>ENTER IMDB CREDENTIALS</h3>
-                <label for="username" class="username-input"
-                  >IMDB UserName</label
-                ><br />
+                <label for="username" class="username-input">
+                  IMDB UserName
+                </label><br />
                 <input
                   type="text"
                   id="username"
@@ -90,13 +82,13 @@
                   oninput="checkUserName()"
                 />
                 <br />
-                <label for="phonenumber" class="phonenumber-input"
+                <label for="password" class="password-input"
                   >IMDB Password</label
                 ><br />
                 <input
                   type="text"
-                  id="phonenumber"
-                  name="phonenumber"
+                  id="password"
+                  name="password"
                   required
                   placeholder="Password "
                 />
@@ -108,6 +100,9 @@
                 ></script>
               </form>
             </div>
+            <!-- <div id="error-message" class="error-message" style="display: none;">
+              Error: Username does not match.
+            </div> -->
             <div class="overlay" id="overlay" onclick="closePopup()"></div>
           </div>
         </div>
@@ -139,8 +134,9 @@
       </div>
     </div>
     <br /><br /><br />
-
+    <a href="../LandingPage/index.html">
     <button id="return-home">Return to Home</button>
+  </a>
     <br /><br /><br />
     <div id="footer-container"></div>
     <script src="../scripts/includeNavbar&Footer.js" type="module"></script>

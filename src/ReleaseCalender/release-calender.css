@@ -314,6 +314,10 @@ footer {
 	color: rgb(120, 206, 120);
 }
 
+#watchlistButton-disabled{
+	color: rgb(209, 209, 209);
+}
+
 
 @keyframes grow {
     from {

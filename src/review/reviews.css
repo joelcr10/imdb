@@ -63,7 +63,7 @@
   animation: grow 0.5s ease-in-out forwards;
 }
 
-#close-popup {
+.close {
   position: absolute;
   top: 5px;
   right: 10px;

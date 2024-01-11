@@ -41,8 +41,7 @@ p {
   font-size: 1rem;
 }
 
-form,
-textarea {
+form, textarea {
   font-size: 1rem;
 }
 
@@ -108,11 +107,11 @@ header {
   background-color: #0a2472;
 }
 
-button[class^="btn-"]:hover,
-a[class^="btn-"]:hover,
-input[class^="btn-"]:hover {
+button[class^=btn-]:hover,
+a[class^=btn-]:hover,
+input[class^=btn-]:hover {
   background-color: lightgoldenrodyellow;
-  color:rgb(255, 187, 0);
+  color: rgb(255, 187, 0);
   font-weight: 700;
   transform: scale(1.08);
 }
